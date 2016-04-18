@@ -1,0 +1,181 @@
+<link rel="stylesheet" href="bower_components/Swiper/dist/css/swiper.min.css">
+<link rel="stylesheet" href="modules/index/css/index.css">
+<!--App bar For index-->
+<div class="container">
+    <div class="row app-bar text-center">
+        <div style="margin: 0.6rem 0;padding:0;width: 20%;font-size: 1.3rem" class="col-xs-2 single-line" ng-click="changeCity()">
+            {{cityName}}<i class="fa fa-angle-down" style="padding-left: 0.5rem"></i>
+        </div>
+        <div style="position: relative">
+            <img src="img/topbar/search-icon.png" class="app-bar-search-icon"
+                 style="left: 24%">
+            <form>
+                <input class="app-bar-search-frame col-xs-7" style="width: 65%" id="search" placeholder="瘦脸针"
+                       type="search" ng-keyup="search($event)" ng-model="searchContent">
+            </form>
+            <img src="img/topbar/qrcode-icon.png" class="app-bar-search-icon" ng-click="qrcode()"
+                 style="right: 20%;">
+        </div>
+        <img src="img/topbar/message-icon.png" style="width: 1.8rem;padding: 0.4rem 0">
+    </div>
+</div>
+
+
+<!--PullToRefreshArea-->
+<!-- Swiper -->
+<div class="pullToRefreshArea" style="height: 100%;padding: 3.6rem 0;">
+    <div class="swiper-wrapper" style="height: auto">
+        <div class="swiper-slide">
+            <!-- Swiper -->
+
+            <!-- Banner -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="modules/index/img/banner.jpg" width="100%" height="auto">
+                    </div>
+                    <div class="swiper-slide"><img src="modules/index/img/banner.jpg" width="100%" height="auto">
+                    </div>
+                    <div class="swiper-slide"><img src="modules/index/img/banner.jpg" width="100%" height="auto">
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+
+        <div class="swiper-slide">
+            <!--Categories-->
+            <div class="container" onclick="window.location.href='#/list'">
+                <img class="index-kind-img" src="modules/index/img/face-kind.png">
+                <img class="index-kind-img" src="modules/index/img/eye-kind.png">
+                <img class="index-kind-img" src="modules/index/img/tooth-kind.png">
+                <img class="index-kind-img" src="modules/index/img/nose-kind.png">
+                <img class="index-kind-img" src="modules/index/img/body-kind.png">
+                <img class="index-kind-img" src="modules/index/img/wrinkle-kind.png">
+                <img class="index-kind-img" src="modules/index/img/breast-kind.png">
+                <img class="index-kind-img" src="modules/index/img/hair-kind.png">
+                <img class="index-kind-img" src="modules/index/img/skin-kind.png">
+                <img class="index-kind-img" src="modules/index/img/all-kind.png">
+            </div>
+        </div>
+
+        <!--activities-->
+        <div class="swiper-slide">
+            <div class="container index-activities-container" onclick="window.location.href='#/activities/graduation'">
+                <div class="row">
+                    <div class="col-xs-6" style="padding-left: 0;padding-right: 5px">
+                        <img src="modules/index/img/activities-sales.jpg" width="100%">
+                    </div>
+                    <div class="col-xs-6" style="padding-right: 0;padding-left: 5px">
+                        <div class="col-xs-6" style="padding: 1px">
+                            <img src="modules/index/img/activities-president.jpg" width="100%">
+                        </div>
+                        <div class="col-xs-6" style="padding: 1px">
+                            <img src="modules/index/img/activities-one-yuan.jpg" width="100%">
+                        </div>
+                        <div class="col-xs-12" style="padding: 1px">
+                            <img src="modules/index/img/activities-set.jpg" width="100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--best recommend-->
+        <div class="swiper-slide" onclick="window.location.href='#/recommend'">
+            <div class="container index-recommend-container">
+                <div class="row" style="background-color: #FFFFFF;padding: 1rem">
+                    <div class="col-xs-6 text-left">精品推荐</div>
+                    <div class="col-xs-6 text-right">
+                        <i class="fa fa-lg fa-angle-right"></i>
+                    </div>
+                </div>
+                <hr class="app-bootstrap-hr">
+
+
+                <div class="row index-white-background">
+                    <div class="col-xs-6 index-recommend-left-area">
+                        <div class="col-xs-12 index-white-background" style="padding: 1rem 1.5rem">
+                            <img src="modules/index/img/temp-set.png" width="100%">
+                            <div class="single-line grey-text index-grey-middle-text">
+                                海薇玻尿酸 限时不限价
+                            </div>
+                            <div class="index-pink-background-white-label">
+                                月供最低只要456.00
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 index-recommend-right-area">
+                        <div class="col-xs-12 index-white-background" style="padding: 1.25rem 1rem;margin-bottom: 1px">
+                            <div class="col-xs-5 index-recommend-img">
+                                <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
+                            </div>
+                            <div class="col-xs-7 index-recommend-text">
+                                <div class="double-line grey-text" style="height: 3rem">网红套餐玻尿酸</div>
+                                <div class="pink-text single-line">月供最低234起</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 index-white-background" style="padding: 1.25rem 1rem;margin-top: 1px">
+                            <div class="col-xs-5 index-recommend-img">
+                                <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
+                            </div>
+                            <div class="col-xs-7 index-recommend-text">
+                                <p class="double-line grey-text" style="height: 3rem">网红套餐玻尿酸</p>
+                                <p class="pink-text single-line">月供最低234起</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--hot projects-->
+        <div class="swiper-slide">
+            <div class="container index-recommend-container">
+                <div class="row" style="background-color: #FFFFFF;padding: 1rem">
+                    <div class="col-xs-6 text-left">热门项目</div>
+                    <div class="col-xs-6 text-right">
+                        <i class="fa fa-lg fa-angle-right"></i>
+                    </div>
+                </div>
+                <hr class="app-bootstrap-hr">
+
+                <div onclick="window.location.href='#/goods'">
+                    <div class="row app-project-container">
+                        <div class="col-xs-5">
+                            <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
+                        </div>
+                        <div class="col-xs-7 app-project-content">
+                            <div class="double-line index-hot-project-title">
+                                【上海海薇玻尿酸注射整形】 海薇玻尿酸 限时不限购 疯狂变美丽节日盛典
+                            </div>
+                            <div class="single-line app-project-hospital">
+                                华山整形医院
+                            </div>
+                            <div class="col-xs-12 text-left app-project-price-area">
+                                <div class="col-xs-4 app-pink-text" style="padding: 0">
+                                    <span style="font-size: 1.2rem">￥</span><span
+                                        style="font-size: 2rem;line-height: 2.6rem">887</span>
+                                </div>
+                                <div class="col-xs-4 text-left" style="padding: 0">
+                                    <span class="grey-text app-project-original-price">￥6645</span>
+                                </div>
+                                <div class="col-xs-4 text-center"
+                                     style="padding: 0;font-size: 0.7rem;margin-top:0.5rem">
+                                    <div class="col-xs-12" style="padding: 0;">
+                                        <div class="app-project-yellow-background-radius col-xs-6">已售</div>
+                                        <div class="app-project-yellow-text-radius col-xs-6">4442</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="app-bootstrap-hr">
+                </div>
+            </div>
+        </div>
+        <!--Swiper-->
+    </div>
+</div>
+<!--PullToRefreshArea End-->

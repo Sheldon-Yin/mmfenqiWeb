@@ -1,0 +1,209 @@
+<link rel="stylesheet" href="modules/goods/css/goods.css">
+
+
+<div class="container">
+    <!--App bar For goods details-->
+    <div class="row app-bar text-center">
+        <div class="col-xs-2" style="width: 15%" ng-click="goBack()"><i class="fa fa-angle-left fa-2x"></i></div>
+        <div class="col-xs-8 app-title-bar">产品详情</div>
+    </div>
+</div>
+
+<div class="pullToRefreshArea" style="height: 100%;padding-top: 3.6rem;padding-bottom: 4.8rem">
+    <div class="swiper-wrapper" style="height: auto">
+        <div class="swiper-slide">
+            <!-- Swiper -->
+
+            <!-- Banner -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="modules/goods/img/template.png" width="100%" height="auto">
+                    </div>
+                    <div class="swiper-slide"><img src="modules/goods/img/template.png" width="100%" height="auto">
+                    </div>
+                    <div class="swiper-slide"><img src="modules/goods/img/template.png" width="100%" height="auto">
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+
+
+            <!--base information-->
+            <div class="container">
+
+                <div class="goods-information-title">
+                    【半永久妆】 性格嘟嘟唇 台湾进口玻尿酸 【杭州华山连天美医疗美容医院】
+                </div>
+
+                <div class="row">
+
+                    <div class="goods-information-hospital col-xs-9">
+                        华山连天美医疗美容医院
+                    </div>
+
+                    <div class="goods-information-limit-time-sales">
+                        限时抢购
+                    </div>
+
+                </div>
+
+                <hr class="app-bootstrap-hr">
+
+
+                <div class="row">
+                    <div class="col-xs-12 text-left">
+                        <div class="col-xs-3 app-pink-text" style="padding: 0">
+                            <span style="font-size: 1.2rem">￥</span><span
+                                style="font-size: 2rem;line-height: 2.6rem">887</span>
+                        </div>
+                        <div class="col-xs-3 text-left" style="padding: 0">
+                            <span class="grey-text app-project-original-price">￥6645</span>
+                        </div>
+                        <div class="col-xs-6 text-center"
+                             style="padding: 0;font-size: 0.7rem;margin-top:0.5rem">
+                            <div class="col-xs-6 col-xs-offset-6" style="padding: 0;">
+                                <div class="app-project-yellow-background-radius col-xs-6">已售</div>
+                                <div class="app-project-yellow-text-radius col-xs-6">4442</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <hr class="app-bootstrap-hr-no-match">
+
+                <div class="row text-center goods-information-feature" style="font-size: 0.8rem">
+                    <div class="col-xs-1" style="width: auto">
+                        <img src="modules/goods/img/yes.png" style="width: 1rem">未消费随便退
+                    </div>
+
+                    <div class="col-xs-1" style="width: auto">
+                        <img src="modules/goods/img/yes.png" style="width: 1rem">0首付分期
+                    </div>
+
+                    <div class="col-xs-1" style="width: auto">
+                        <img src="modules/goods/img/yes.png" style="width: 1rem">医美全程陪护
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="app-bootstrap-grey-bold-hr"></div>
+
+            <!--规格品种 Area-->
+
+            <form name="categoriesForm">
+
+                <!--For one-->
+                <div class="container">
+                    <div class="goods-categories-title">
+                        品牌
+                    </div>
+                    <div class="row">
+
+                        <label class="goods-categories-radio" style="width: auto">
+                            <input type="radio" ng-model="color.name" class="goods-categories-radio-input" value="1">
+                            <span>伊婉</span>
+                        </label>
+
+                        <label class="goods-categories-radio" style="width: auto">
+                            <input type="radio" ng-model="color.name" class="goods-categories-radio-input" value="2">
+                            <span>爱弗兰</span>
+                        </label>
+                        <label class="goods-categories-radio" style="width: auto">
+                            <input type="radio" ng-model="color.name" class="goods-categories-radio-input" value="3">
+                            <span>瑞蓝</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!--For one-->
+                <div class="container">
+                    <div class="goods-categories-title">
+                        数量
+                    </div>
+                    <div class="row">
+
+                        <label class="goods-categories-radio" style="width: auto">
+                            <input type="radio" ng-model="color.xxx" class="goods-categories-radio-input" value="1">
+                            <span>三支</span>
+                        </label>
+
+                        <label class="goods-categories-radio" style="width: auto">
+                            <input type="radio" ng-model="color.xxx" class="goods-categories-radio-input" value="2">
+                            <span>六支</span>
+                        </label>
+                        <label class="goods-categories-radio" style="width: auto">
+                            <input type="radio" ng-model="color.xxx" class="goods-categories-radio-input" value="3">
+                            <span>九支</span>
+                        </label>
+                    </div>
+
+                    <hr class="app-bootstrap-hr" style="margin-top: 1.5rem">
+
+                </div>
+
+            </form>
+
+
+            <div class="container" style="padding-top: 1rem;padding-bottom: 1rem">
+                <div class="col-xs-2 goods-categories-user-must-know">
+                    用户须知
+                </div>
+
+                <div class="col-xs-10" style="font-size: 0.9rem">
+                    由于个体差异，该项目可能并不适合所有求美者，详情请咨询医院
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-slide">
+            <div class="container" style="background-color: #ececec;color: #999999;">
+                <div class="row text-center" style="padding: 2rem 0">
+                    <div class="col-xs-3">
+                        ──────
+                    </div>
+                    <div class="col-xs-6">
+                        继续拖动，查看图文详情
+                    </div>
+                    <div class="col-xs-3">
+                        ──────
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper-slide">
+
+            <div class="container">
+                <img src="modules/goods/img/details.png" style="width: 100%">
+            </div>
+
+            <div class="app-bootstrap-grey-bold-hr"></div>
+
+        </div>
+    </div>
+</div>
+
+<div class="goods-categories-bottom-bar">
+
+    <div style="width: 20%;text-align: center;border-right: #ececec 1px solid;float: left">
+        <img src="modules/goods/img/phone.png" style="width: 35%">
+        <div>
+            电话咨询
+        </div>
+    </div>
+
+    <div style="width: 30%;float: left;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: center">
+        <span class="app-pink-text" style="font-size: 0.5rem">￥</span><span class="app-pink-text"
+                                                                            style="font-size: 1.2rem">255.43 X 8 期</span>
+    </div>
+
+    <div style="width: 50%;float: left;background-color: #fb1787;color: #FFFFFF;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: center"
+         onclick="window.location.href='#/order'">
+        立即分期
+    </div>
+
+</div>

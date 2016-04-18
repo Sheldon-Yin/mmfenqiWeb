@@ -1,0 +1,86 @@
+
+.grey-text {
+    color: rgb(102, 102, 102);
+}
+
+/*.swiper-container {*/
+    /*width: 100%;*/
+    /*height: auto;*/
+    /*margin-bottom: 0.5rem;*/
+/*}*/
+
+/*.swiper-slide {*/
+    /*height: auto;*/
+/*}*/
+
+.index-kind-img {
+    position: relative;
+    min-height: 1px;
+    padding-right: 5px;
+    padding-left: 5px;
+    width: 20%;
+    float: left;
+    margin: 0.5rem 0;
+}
+
+.index-activities-container {
+    background-color: #F8F8F8;
+    padding-top: 1rem;
+    padding-bottom: 2rem
+}
+
+.index-recommend-container {
+    background-color: #F8F8F8;
+    padding-top: 1rem;
+    padding-bottom: 1rem
+}
+
+.index-recommend-text {
+    height: auto;
+    background-color: #FFFFFF;
+    padding-top: 0.3rem;
+    padding-left: 0.3rem;
+    padding-right: 0;
+    font-size: 0.9rem;
+}
+
+.index-recommend-img {
+    height: auto;
+    background-color: #FFFFFF;
+    padding: 0
+}
+
+.index-recommend-left-area {
+    padding-left: 0;
+    padding-right: 1px;
+    background-color: #F8F8F8;
+}
+
+.index-recommend-right-area {
+    padding-right: 0;
+    padding-left: 1px;
+    background-color: #F8F8F8;
+}
+
+.index-grey-background {
+    background-color: #F8F8F8;
+}
+
+.index-white-background {
+    background-color: #FFFFFF;
+}
+
+.index-pink-background-white-label {
+    font-size: 1.3rem;
+    padding: 0.3rem;
+    color: #FFFFFF;
+    background-color: rgb(251, 23, 135);
+    text-align: center;
+    margin: 0.4rem 0;
+}
+
+.index-grey-middle-text {
+    font-size: 1.3rem;
+    line-height: 2rem;
+    margin: 0.4rem 0;
+}

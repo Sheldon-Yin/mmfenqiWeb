@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+<meta charset="utf-8">
+<p id="demo">点击这个按钮，获得您的坐标：</p>
+<button onclick="getLocation()">试一下</button>
+<script>
+    var x=document.getElementById("demo");
+    function getLocation()
+    {
+        alert('获取定位');
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            alert(navigator.geolocation);
+        }
+        else{x.innerHTML="Geolocation is not supported by this browser.";}
+    }
+    function showPosition(position)
+    {
+
+        var a ="Latitude: " + position.coords.latitude +
+                "<br />Longitude: " + position.coords.longitude;
+        alert(a);
+        document.getElementById("demo").innerHTML = a;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+.goods-information-title {
+    font-weight: bold;
+    font-size: 1.4rem;
+    padding-top: 1rem;
+    color: #333333;
+}
+
+.goods-information-hospital {
+    color: #999999;
+    padding: 1rem 15px;
+}
+
+.goods-information-limit-time-sales {
+    padding: 1rem 15px;
+    color: #FC58AE;
+}
+
+.goods-information-feature {
+    padding: 0.8rem 0;
+}
+
+.goods-categories-title {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.goods-categories-radio {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: auto;
+}
+
+.goods-categories-radio > span {
+    border: #999999 solid 2px;
+    border-radius: 0.3rem;
+    -webkit-border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    color: #999999;
+}
+
+.goods-categories-radio-input {
+    display: none;
+}
+
+.goods-categories-radio-input:checked + span {
+    border: #fc6eaa solid 2px;
+    border-radius: 0.3rem;
+    -webkit-border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    color: #fc6eaa;
+}
+
+.goods-categories-user-must-know {
+    background-color: #61C2FF;
+    font-size: 0.5rem;
+    border-radius: 0.8rem;
+    -webkit-border-radius: 0.5rem;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+.goods-categories-bottom-bar {
+    background-color: #FFFFFF;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 4.8rem;
+    padding: 0.6rem 0;
+    z-index: 99;
+    border-top: solid 1px #ececec
+}

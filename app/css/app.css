@@ -1,0 +1,233 @@
+/* app css stylesheet */
+
+html body {
+    height: 100%;
+    position: relative;
+}
+
+body {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+p,
+blockquote,
+pre,
+address,
+img,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+input,
+tfoot,
+thead,
+tr,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: normal;
+    font-variant: normal;
+    font-style: normal;
+}
+
+.single-line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.double-line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.app-bar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 0.5rem 0;
+    background-color: #FFFFFF;
+    z-index: 99;
+    border-bottom: solid rgb(202, 202, 202) 1px;
+}
+
+.app-bar-search-frame {
+    background: #f0f0f0;
+    border-radius: 1.6rem;
+    -webkit-border-radius: 1.6rem;
+    padding: 0.6rem 0;
+    font-size: 1rem;
+    border: 0;
+    outline: none;
+    text-indent: 2.8rem;
+    mso-text-indent-alt: 2.8rem;
+}
+
+.app-bar-search-icon {
+    position: absolute;
+    z-index: 10;
+    top: 0.7rem;
+    width: 1.2rem
+}
+
+.app-project-container {
+    background-color: #FFFFFF;
+    padding-top: 1rem;
+    padding-bottom: 1rem
+}
+
+.app-project-hospital {
+    color: rgb(102, 102, 102);
+    font-size: 1rem;
+    padding-top: 1rem;
+}
+
+.app-project-title {
+    color: rgb(51, 51, 51);
+    font-size: 1.4rem;
+}
+
+.app-project-content {
+    padding-left: 0;
+    padding-right: 0.5rem;
+
+}
+
+.app-project-original-price {
+    line-height: 2.9rem;
+    text-decoration: line-through;
+    font-size: 1.5rem;
+}
+
+.app-project-price-area {
+    padding-top: 1.5rem;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.app-project-yellow-background-radius {
+    background-color: rgb(255, 185, 36);
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+    -webkit-border-top-left-radius: 0.2rem;
+    -webkit-border-bottom-left-radius: 0.2rem;
+    color: #FFFFFF;
+    padding: 0.2rem;
+}
+
+.app-project-yellow-text-radius {
+    background-color: #FFFFFF;
+    border-top-right-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+    -webkit-border-top-right-radius: 0.2rem;
+    -webkit-border-bottom-right-radius: 0.2rem;
+    color: rgb(255, 185, 35);
+    padding: 0.10rem;
+    border: solid rgb(255, 185, 35) 0.1rem;
+}
+
+.app-project-blue-background-radius {
+    background-color: #61C2FF;
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+    -webkit-border-top-left-radius: 0.2rem;
+    -webkit-border-bottom-left-radius: 0.2rem;
+    color: #FFFFFF;
+    padding: 0.2rem;
+}
+
+.app-project-blue-text-radius {
+    background-color: #FFFFFF;
+    border-top-right-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+    -webkit-border-top-right-radius: 0.2rem;
+    -webkit-border-bottom-right-radius: 0.2rem;
+    color: #61C2FF;
+    padding: 0.10rem;
+    border: solid #61C2FF 0.1rem;
+}
+
+.app-title-bar {
+    font-size: 1.6rem;
+    line-height: 2.5rem
+}
+
+.app-blue-text {
+    color: #61C2FF;
+}
+
+.app-pink-text {
+    color: rgb(251, 23, 135);
+}
+
+/*swpier slide配置*/
+
+.swiper-container {
+    width: 100%;
+    min-height: 100% !important;
+    height: auto !important;
+    margin-bottom: 0.5rem;
+}
+
+.swiper-slide {
+    min-height: 100% !important;
+    height: auto !important;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #fb1787 !important;
+}
+
+/*bootstrap 补充*/
+
+
+.app-bootstrap-hr {
+    padding: 0;
+    margin: 0 -15px;
+    color: rgb(204, 204, 204);
+}
+
+.app-bootstrap-hr-no-match {
+    padding: 0;
+    margin: 0;
+    color: rgb(204, 204, 204);
+}
+
+.app-bootstrap-grey-bold-hr {
+    width: 100%;
+    background-color: #F8F8F8;
+    height: 1rem
+}
+
+.app-bootstrap-padding-zero {
+    padding: 0;
+}

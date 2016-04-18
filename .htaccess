@@ -1,0 +1,18 @@
+#RewriteEngine On
+   #RewriteBase /relative/web/path/
+#   RewriteCond %{REQUEST_FILENAME} -f [OR]
+#   RewriteCond %{REQUEST_FILENAME} -d
+#   RewriteRule ^(.+) - [PT,L]
+#   RewriteCond %{REQUEST_URI} !=/favicon.ico
+#   RewriteRule ^app/(.*) app/index.html
+#   RewriteCond %{HTTP:Authorization}  !^$
+#   RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+
+RewriteEngine Off  
+  # If an existing asset or directory is requested go to it as it is
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+  RewriteRule ^ - [L]
+
+  # If the requested resource doesn't exist, use index.html
+  RewriteRule ^app app/index.html

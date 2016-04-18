@@ -1,0 +1,107 @@
+<link rel="stylesheet" href="modules/order/css/order.css">
+
+<div class="container">
+    <!--App bar For goods details-->
+    <div class="row app-bar text-center">
+        <div class="col-xs-2" style="width: 15%" ng-click="goBack()"><img src="modules/order/img/cancel.png"
+                                                                          style="width:1.6rem;padding-top: 0.5rem">
+        </div>
+        <div class="col-xs-8 app-title-bar">提交订单</div>
+    </div>
+</div>
+
+
+<div class="container" style="padding-top: 3.6rem;font-size: 1.2rem">
+
+    <div class="row" style="padding: 1rem">
+
+        <div class="col-xs-6 text-left">
+            订单金额
+        </div>
+
+        <div class="col-xs-6 text-right app-pink-text">
+            ￥{{total}}
+        </div>
+
+    </div>
+
+    <hr class="app-bootstrap-hr-no-match">
+
+    <div class="row" style="padding: 1rem">
+
+        <div class="col-xs-6 text-left">
+            首付比例
+            <select ng-model="selectedFirstRatio" style="margin-left: 1rem" class="app-pink-text"
+                    ng-options="x.ratio*100 +'%' for x in firstRatio">
+            </select>
+        </div>
+
+        <div class="col-xs-6 text-right" style="color: #999999;">
+            ￥{{ total * selectedFirstRatio.ratio}}
+        </div>
+
+    </div>
+
+    <hr class="app-bootstrap-hr-no-match">
+
+    <div class="row" style="padding: 1rem">
+        <div class="col-xs-12">
+            选择分期
+        </div>
+    </div>
+
+    <div class="row text-center">
+
+        <label class="order-stage-choose" ng-repeat="x in stages">
+            <input type="radio" ng-model="x.isSelectedStage" value="{{x.stage}}" class="order-stage-choose-input"
+                   ng-checked="selectedStage == x.stage" ng-disabled="selectedStage == x.stage"
+                   ng-change="updateStage(x)">
+            <span class="col-xs-12">分{{x.stage}}期</span>
+        </label>
+
+    </div>
+
+    <div class="row" style="color: #666666">
+
+        <div class="col-xs-9" style="padding: 1rem">
+            <img src="modules/order/img/checked.png" style="width: 1rem">
+            <span style="padding-left: 1rem">貌美如花意外险(价值700元，赠送)</span>
+        </div>
+
+        <div class="col-xs-3 text-right" style="padding: 0.7rem">
+            <i class="fa fa-angle-right fa-2x"></i>
+        </div>
+
+    </div>
+
+    <hr class="app-bootstrap-hr-no-match">
+
+    <div class="row" style="padding-top: 2rem">
+        <div class="col-xs-6">
+            信用支付：<span class="app-pink-text">￥{{total  - total * selectedFirstRatio.ratio  | number:2}}</span>
+        </div>
+    </div>
+
+    <div class="row" style="padding: 2rem 0">
+        <div class="col-xs-9">
+            月供：<span style="padding-left: 2rem" class="app-pink-text"> ￥{{(total  - total * selectedFirstRatio.ratio)/selectedStage | number:2 }}（{{selectedStage}}期）</span>
+        </div>
+    </div>
+
+    <hr class="app-bootstrap-hr-no-match">
+
+    <div class="row text-center" style="padding: 1rem 0">
+        <div>支付成功后可获得<span style="color: #92d2ff">{{total  - total * selectedFirstRatio.ratio  | number:2}}</span>积分
+        </div>
+    </div>
+
+</div>
+
+<div class="order-bottom-bar">
+
+    <div style="width: 100%;float: left;background-color: #fb1787;color: #FFFFFF;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: center"
+         ng-click="goToPay()">
+        立即下单
+    </div>
+
+</div>
