@@ -65,6 +65,22 @@ define(function (require, exports, module) {
                     controller: 'RecommendCtrl',
                     controllerUrl: './modules/recommend/controller/recommendCtrl.js'
                 }).
+
+
+                //0首付验证码
+                when('/pay/allCredit', {
+                    templateUrl: 'modules/pay/allCredit.html',
+                    controller: 'AllCreditCtrl',
+                    controllerUrl: './modules/pay/controller/allCreditCtrl.js'
+                }).
+
+                //支付首付
+                when('/pay/firstPay', {
+                    templateUrl: 'modules/pay/firstPay.html',
+                    controller: 'FirstPay',
+                    controllerUrl: './modules/pay/controller/firstPayCtrl.js'
+                }).
+
                 //默认首页
                 otherwise({
                     redirectTo: '/index'
