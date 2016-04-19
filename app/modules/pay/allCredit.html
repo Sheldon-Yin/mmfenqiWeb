@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="modules/pay/css/pay.css">
+
+<div class="container">
+    <!--App bar For goods details-->
+    <div class="row app-bar text-center">
+        <div class="col-xs-2" style="width: 15%" ng-click="goBack()"><img src="modules/order/img/cancel.png"
+                                                                          style="width:1.6rem;padding-top: 0.5rem">
+        </div>
+        <div class="col-xs-8 app-title-bar">支付确认</div>
+    </div>
+</div>
+
+<div class="container" style="background-color: #f7f7f7;min-height: 100%">
+
+    <div class="row text-center" style="margin-top: 3.6rem;padding-top: 3rem">
+
+        <div class="col-xs-12">
+            已发送验证码（免费）到号码
+        </div>
+
+        <div class="col-xs-12 app-blue-text" style="font-size: 3rem">
+            130 6773 8382
+        </div>
+
+        <div class="col-xs-12" style="padding-top: 3rem">
+            为保障您的账户安全，请输入短信验证码完成信用支付
+        </div>
+
+    </div>
+
+    <form class="verifyCodeForm">
+        <div class="pay-white-radius-input app-padding-one container" style="margin-top: 3rem">
+
+            <div class="row text-center">
+
+                <div style="font-size: 1.6rem;width: 25%;float: left">
+                    验证码
+                </div>
+
+                <input placeholder="输入验证码" style="width: 40%;float: left;margin-top: 0.3rem">
+
+                <div class="app-blue-text" id="getVerifyCodeBtn" style="width: 35%;float: left;margin-top: 0.3rem"
+                     ng-click="getVerifyCode()" ng-disabled="verifyCodeState">
+                    获取验证码
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="pay-pink-radius-button app-padding-one container" style="margin-top: 2rem">
+
+            <div class="row text-center">
+                确认支付
+            </div>
+
+        </div>
+    </form>
+
+</div>
+

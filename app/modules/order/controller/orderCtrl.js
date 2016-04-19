@@ -7,8 +7,21 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.controller('OrderCtrl', ['$scope',
             function ($scope) {
+
                 $scope.goBack = function () {
                     window.history.go(-1);
+                };
+
+                $scope.showConfirm = function () {
+                    if (myBridge) {
+                        myBridge.callHandler('sendMessage', {type: 8, data: {}}, function (response) {
+                            if(response.length>0){
+                                document.getElementById('confirmDialogContainer').style.display = 'block';
+                            } else {
+                                //TODO
+                            }
+                        })
+                    }
                 };
 
                 $scope.goToPay = function () {
@@ -39,7 +52,7 @@ define(function (require, exports, module) {
                     }
                 ];
 
-                $scope.selectedFirstRatio = $scope.firstRatio[0];
+                $scope.selectedFirstRatio = $scope.firstRatio[2];
 
                 $scope.stages = [
                     {stage: 3},

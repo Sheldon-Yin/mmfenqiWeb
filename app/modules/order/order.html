@@ -1,5 +1,27 @@
 <link rel="stylesheet" href="modules/order/css/order.css">
 
+
+<div id="confirmDialogContainer" class="app-grey-dialog-container">
+    <div class="order-confirm-dialog">
+        <div class="container">
+            <div class="order-confirm-dialog-title text-center">
+                提示
+            </div>
+            <p style="padding-top:1rem">
+                1、一般商品，计息规则为医院收费票据提交美眉分期平台审核通过后的当日开始计息，10个自然日无法退款。
+            </p>
+            <p style="padding-top: 1rem">
+                2、特价商品，计费规则为下单支付后开始计息，下单支付成功后无法退款
+            </p>
+
+            <div class="row text-center app-pink-text" style="font-size: 1.8rem;padding: 1rem" ng-click="goToPay()">
+                确定
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="container">
     <!--App bar For goods details-->
     <div class="row app-bar text-center">
@@ -31,9 +53,11 @@
 
         <div class="col-xs-6 text-left">
             首付比例
-            <select ng-model="selectedFirstRatio" style="margin-left: 1rem" class="app-pink-text"
-                    ng-options="x.ratio*100 +'%' for x in firstRatio">
-            </select>
+            <label>
+                <select ng-model="selectedFirstRatio" class="app-pink-text order-first-pay-select"
+                        ng-options="x.ratio*100 +'%' for x in firstRatio">
+                </select>
+            </label>
         </div>
 
         <div class="col-xs-6 text-right" style="color: #999999;">
@@ -97,10 +121,10 @@
 
 </div>
 
-<div class="order-bottom-bar">
+<div class="app-pink-bottom-bar">
 
     <div style="width: 100%;float: left;background-color: #fb1787;color: #FFFFFF;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: center"
-         ng-click="goToPay()">
+         ng-click="showConfirm()">
         立即下单
     </div>
 

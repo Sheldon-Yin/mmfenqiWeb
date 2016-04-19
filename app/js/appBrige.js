@@ -10,4 +10,4 @@ document.addEventListener('WebViewJavascriptBridgeReady', function(event) {
         responseCallback(data)
     });
     myBridge = bridge;
-}, false)
+}, false);

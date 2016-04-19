@@ -7,6 +7,7 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.controller('GoodsCtrl', ['$scope',
             function ($scope) {
+
                 $scope.goBack = function () {
                     window.history.back(-1);
                 };
@@ -26,6 +27,21 @@ define(function (require, exports, module) {
                     shortSwipes: false,
                     watchActiveIndex: true
                 });
+
+                $scope.share = function () {
+                    if (myBridge) {
+                        myBridge.callHandler('sendMessage', {type: 0, data: {
+                            'url': 'http://www.baidu.com',
+                            'description': 'mmfenqiTest',
+                            'title': '产品详情页',
+                            'imageUrl': 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png'
+                        }}, function (response) {
+                            //
+
+
+                        })
+                    }
+                }
 
             }])
     }

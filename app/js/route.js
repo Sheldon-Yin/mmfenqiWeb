@@ -6,22 +6,36 @@
 define(function (require, exports, module) {
     "use strict";
     module.exports = function (app) {
-        app.config(['$routeProvider', '$locationProvider',
-            function ($routeProvider, $locationProvider) {
+        app.config(['$routeProvider',
+            function ($routeProvider) {
                 $routeProvider.
-                //案例-手机
-                when('/demo/phones', {
-                    templateUrl: './modules/demo/phone-list.html',
-                    controller: 'PhoneListCtrl',
-                    controllerUrl: '../app/modules/demo/phone-controller.js'
-                }).when('/demo/phones/:phoneId', {    //案例-手机列表
-                    templateUrl: './modules/demo/phone-detail.html',
-                    controller: 'PhoneDetailCtrl',
-                    controllerUrl: './modules/demo/phone-controller.js'
-                }).when('/swiper', {
-                    templateUrl: './modules/demomodules/swiper/swiper.html',
-                }).when('/pulltorefresh', {
-                    templateUrl: './modules/demomodules/swiper/pulltoRefresh.html'
+
+                //首页
+                when('/index', {
+                    templateUrl: 'modules/index/index.html',
+                    controller: 'IndexCtrl',
+                    controllerUrl: './modules/index/controller/indexCtrl.js'
+                }).
+
+                //分类页面
+                when('/categories', {
+                    templateUrl: 'modules/categories/categories.html',
+                    controller: 'CategoriesCtrl',
+                    controllerUrl: './modules/categories/controller/categoriesCtrl.js'
+                }).
+
+                //订单列表
+                when('/order/list', {
+                    templateUrl: 'modules/orderList/orderList.html',
+                    controller: 'OrderListCtrl',
+                    controllerUrl: './modules/orderList/controller/orderListCtrl.js'
+                }).
+
+                //订单详情
+                when('/order/detail', {
+                    templateUrl: 'modules/orderList/orderDetail.html',
+                    controller: 'OrderDetailCtrl',
+                    controllerUrl: './modules/orderList/controller/orderDetailCtrl.js'
                 }).
 
                 //毕业季活动页面
@@ -52,12 +66,6 @@ define(function (require, exports, module) {
                     controllerUrl: './modules/order/controller/orderCtrl.js'
                 }).
 
-                //首页
-                when('/index', {
-                    templateUrl: 'modules/index/index.html',
-                    controller: 'IndexCtrl',
-                    controllerUrl: './modules/index/controller/indexCtrl.js'
-                }).
 
                 //精品推荐
                 when('/recommend', {
