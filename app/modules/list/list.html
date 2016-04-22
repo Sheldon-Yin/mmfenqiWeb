@@ -23,36 +23,29 @@
         <div class="row list-sort-bar-border list-sort-bar-toolbar">
 
             <!--排序分类-->
-            <div class="col-xs-4" ng-click="(selectState==1) ? (selectState=0) : (selectState=1)">
+            <div class="col-xs-4 single-line" style="padding: 0"
+                 ng-click="(selectState==1) ? (selectState=0) : (selectState=1)">
                 <div ng-show="selectState == 1" style="color: #FC58AE">
-                    全部医院 <i class="fa fa-angle-up"></i>
+                    {{nowHospital}} <i class="fa fa-angle-up"></i>
                 </div>
                 <div ng-hide="selectState == 1">
-                    全部医院 <i class="fa fa-angle-down"></i>
+                    {{nowHospital}} <i class="fa fa-angle-down"></i>
                 </div>
             </div>
             <div class="row list-sort-bar-list-view" ng-show="selectState == 1">
                 <div class="col-xs-12" style="background-color: #FFFFFF;height: auto;text-align: left;z-index: 2">
-                    <div style="padding: 1rem">
+                    <div style="padding: 1rem" ng-click="setAllHospital()"
+                         ng-class="{true:'app-pink-text'}[nowHospital == '全部医院']">
                         全部医院
                     </div>
                     <hr class="app-bootstrap-hr">
-                    <div style="padding: 1rem">
-                        杭州美莱医疗整形医院
-                    </div>
-                    <hr class="app-bootstrap-hr">
-                    <div style="padding: 1rem">
-                        杭州华山医疗美容医院
-                    </div>
-                    <hr class="app-bootstrap-hr">
-                    <div style="padding: 1rem">
-                        杭州时光医疗美容医院
-                    </div>
-                    <hr class="app-bootstrap-hr">
-                    <div style="padding: 1rem">
-                        杭州格莱美医疗美容医院
-                    </div>
-                    <hr class="app-bootstrap-hr">
+                    <label ng-repeat="x in hospital.data.hospitalListResponse.hospitalAppList" ng-click="setHospital(x)"
+                           ng-class="{true:'app-pink-text'}[nowHospital == x.hospitalName]">
+                        <div style="padding: 1rem">
+                            {{x.hospitalName}}
+                        </div>
+                        <hr class="app-bootstrap-hr">
+                    </label>
                 </div>
                 <div class="list-sort-bar-list-view-background" style="z-index: 1" ng-click="selectState=0">
                 </div>
@@ -60,24 +53,36 @@
 
 
             <!--项目分类-->
-            <div class="col-xs-4" ng-click="(selectState==2) ? (selectState=0) : (selectState=2)">
+            <div class="col-xs-4 single-line" style="padding: 0"
+                 ng-click="(selectState==2) ? (selectState=0) : (selectState=2)">
                 <div ng-show="selectState == 2" style="color: #FC58AE">
-                    全部类目 <i class="fa fa-angle-up"></i>
+                    {{nowCategory}} <i class="fa fa-angle-up"></i>
                 </div>
                 <div ng-hide="selectState == 2">
-                    全部类目 <i class="fa fa-angle-down"></i>
+                    {{nowCategory}} <i class="fa fa-angle-down"></i>
                 </div>
             </div>
             <div class="row list-sort-bar-list-view" ng-show="selectState == 2">
                 <div style="height: 50%;background-color: white">
                     <div class="col-xs-4 list-sort-bar-subject">
-                        <div style="padding: 1rem" ng-repeat="x in projects" ng-click="setItems(x.items)">
-                            {{x.project}}
+                        <div style="padding: 1rem" ng-click="setAllParentCategories()"
+                             ng-class="{true:'list-sort-bar-subject-checked'}[chosenParentCategory =='']">
+                            全部类目
+                        </div>
+                        <div style="padding: 1rem" ng-repeat="x in categories.data.categoryListResponse.categoryList"
+                             ng-class="{true:'list-sort-bar-subject-checked'}[chosenParentCategory==x.categoryName]"
+                             ng-click="setParentItems(x)">
+                            {{x.categoryName}}
                         </div>
                     </div>
                     <div class="col-xs-8 list-sort-bar-items">
-                        <div style="padding: 1rem" ng-repeat="key in items">
-                            {{key}}
+                        <div style="padding: 1rem" ng-class="{true:'app-pink-text'}[chosenSubCategory == '']"
+                             ng-click="setAllSubItems()" ng-if="chosenParentCategory != ''">
+                            全部{{chosenParentCategory}}
+                        </div>
+                        <div style="padding: 1rem" ng-repeat="key in subCategories" ng-click="setSubItems(key)"
+                             ng-class="{true:'app-pink-text'}[chosenSubCategory == key.categoryName]">
+                            {{key.categoryName}}
                         </div>
                     </div>
                 </div>
@@ -86,27 +91,29 @@
                 </div>
             </div>
 
-
             <!--排序分类-->
             <div class="col-xs-4" ng-click="(selectState==3) ? (selectState=0) : (selectState=3)">
                 <div ng-show="selectState == 3" style="color: #FC58AE">
-                    智能排序 <i class="fa fa-angle-up"></i>
+                    {{nowSort}} <i class="fa fa-angle-up"></i>
                 </div>
                 <div ng-hide="selectState == 3">
-                    智能排序 <i class="fa fa-angle-down"></i>
+                    {{nowSort}} <i class="fa fa-angle-down"></i>
                 </div>
             </div>
             <div class="row list-sort-bar-list-view" ng-show="selectState == 3">
                 <div class="col-xs-12" style="background-color: #FFFFFF;height: auto;text-align: left;z-index: 2">
-                    <div style="padding: 1rem">
+                    <div style="padding: 1rem" ng-click="setSort(1)"
+                         ng-class="{true:'app-pink-text'}[nowSort == '销量最高']">
                         销量最高
                     </div>
                     <hr class="app-bootstrap-hr">
-                    <div style="padding: 1rem">
+                    <div style="padding: 1rem" ng-click="setSort(2)"
+                         ng-class="{true:'app-pink-text'}[nowSort == '价格最低']">
                         价格最低
                     </div>
                     <hr class="app-bootstrap-hr">
-                    <div style="padding: 1rem">
+                    <div style="padding: 1rem" ng-click="setSort(3)"
+                         ng-class="{true:'app-pink-text'}[nowSort == '最新上架']">
                         最新上架
                     </div>
                     <hr class="app-bootstrap-hr">
@@ -121,67 +128,68 @@
 
     <!--列表开始-->
     <div style="margin-top: 6.9rem">
-        <div class="row app-project-container">
-            <div class="col-xs-5">
-                <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
-            </div>
-            <div class="col-xs-7 app-project-content">
-                <div class="double-line index-hot-project-title">
-                    【上海海薇玻尿酸注射整形】 海薇玻尿酸 限时不限购 疯狂变美丽节日盛典
-                </div>
-                <div class="single-line app-project-hospital">
-                    华山整形医院
-                </div>
-                <div class="col-xs-12 text-left app-project-price-area">
-                    <div class="col-xs-4 app-blue-text" style="padding: 0">
-                        <span style="font-size: 1.2rem">￥</span><span
-                            style="font-size: 2rem;line-height: 2.6rem">887</span>
-                    </div>
-                    <div class="col-xs-4 text-left" style="padding: 0">
-                        <span class="grey-text app-project-original-price">￥6645</span>
-                    </div>
-                    <div class="col-xs-4 text-center" style="padding: 0;font-size: 0.7rem;margin-top:0.5rem">
-                        <div class="col-xs-12" style="padding: 0;">
-                            <div class="app-project-yellow-background-radius col-xs-6">已售</div>
-                            <div class="app-project-yellow-text-radius col-xs-6">4442</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr class="app-bootstrap-hr">
-    </div>
 
-    <div>
-        <div class="row app-project-container">
-            <div class="col-xs-5">
-                <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
+        <div style="width: 100%;position: fixed;height:100%;background-color:#F7F7F7;left: 0" ng-if="!goods.data">
+            <div style="top: 30%;position: absolute;width: 100%;left: 35%">
+                <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 30%">
             </div>
-            <div class="col-xs-7 app-project-content">
-                <div class="double-line index-hot-project-title">
-                    【上海海薇玻尿酸注射整形】 海薇玻尿酸 限时不限购 疯狂变美丽节日盛典
-                </div>
-                <div class="single-line app-project-hospital">
-                    华山整形医院
-                </div>
-                <div class="col-xs-12 text-left app-project-price-area">
-                    <div class="col-xs-4 app-blue-text" style="padding: 0">
-                        <span style="font-size: 1.2rem">￥</span><span
-                            style="font-size: 2rem;line-height: 2.6rem">887</span>
-                    </div>
-                    <div class="col-xs-4 text-left" style="padding: 0">
-                        <span class="grey-text app-project-original-price">￥6645</span>
-                    </div>
-                    <div class="col-xs-4 text-center" style="padding: 0;font-size: 0.7rem;margin-top:0.5rem">
-                        <div class="col-xs-12" style="padding: 0;">
-                            <div class="app-project-yellow-background-radius col-xs-6">已售</div>
-                            <div class="app-project-yellow-text-radius col-xs-6">4442</div>
-                        </div>
+            <div style="top: 30%;position: absolute;width: 100%;left: 35%">
+                <img src="img/loading/loadingInner.png" style="width: 30%">
+            </div>
+        </div>
+
+        <div style="width: 100%;position: fixed;height:100%;background-color:#F7F7F7;left: 0" ng-if="goods.data.goodsListResponse.goodsItemList==''">
+            <div style="top: 35%;position: absolute;width: 100%">
+                <div class="container text-center">
+                    <div>
+                        该类目下什么都没有哦~看看其他的吧~
                     </div>
                 </div>
             </div>
         </div>
-        <hr class="app-bootstrap-hr">
+
+        <div style="width: 100%;position: fixed;height:100%;background-color:#F7F7F7;left: 0" ng-if="badConnection">
+            <div style="top: 35%;position: absolute;width: 100%">
+                <div class="container text-center">
+                    <div>
+                        网络可能有问题哦~要不刷新试试？也可能是服务器被挤爆了，程序猿会修复的~
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <label ng-repeat="x in goods.data.goodsListResponse.goodsItemList">
+            <div class="row app-project-container">
+                <div class="col-xs-5">
+                    <img ng-src="{{x.goodsHerPic}}" width="100%">
+                </div>
+                <div class="col-xs-7 app-project-content">
+                    <div class="double-line app-project-title">
+                        {{x.hotItemName}}
+                    </div>
+                    <div class="single-line app-project-hospital">
+                        {{x.hospitalName}}
+                    </div>
+                    <div class="col-xs-12 text-left app-project-price-area">
+                        <div class="col-xs-4 app-blue-text" style="padding: 0">
+                            <span style="font-size: 1.2rem">￥</span><span
+                                style="font-size: 1.6rem;line-height: 2.6rem">{{x.presentPrice}}</span>
+                        </div>
+                        <div class="col-xs-4 text-left" style="padding: 0">
+                            <span class="grey-text app-project-original-price">￥{{x.marketPrice}}</span>
+                        </div>
+                        <div class="col-xs-4 text-center" style="padding: 0;font-size: 0.7rem;margin-top:0.5rem">
+                            <div class="col-xs-12" style="padding: 0;">
+                                <div class="app-project-yellow-background-radius col-xs-6">已售</div>
+                                <div class="app-project-yellow-text-radius col-xs-6">{{x.soldNumber}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="app-bootstrap-hr">
+        </label>
+
     </div>
 
 </div>

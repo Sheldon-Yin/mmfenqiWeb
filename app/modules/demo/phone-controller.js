@@ -11,6 +11,7 @@ define(function (require, exports, module) {
                 $scope.orderProp = 'age';
                 Phone.query();
                 $scope.phones = Phone.query();
+                console.log($scope.phones);
             }]);
         app.register.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
             function ($scope, $routeParams, Phone) {

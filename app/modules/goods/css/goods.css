@@ -33,11 +33,11 @@
 }
 
 .goods-categories-radio > span {
-    border: #999999 solid 2px;
+    border: #cccccc solid 1px;
     border-radius: 0.3rem;
     -webkit-border-radius: 0.3rem;
     padding: 0.5rem 1rem;
-    color: #999999;
+    color: #666666;
 }
 
 .goods-categories-radio-input {
@@ -45,11 +45,13 @@
 }
 
 .goods-categories-radio-input:checked + span {
-    border: #fc6eaa solid 2px;
+    border: #fb1787 solid 1px;
     border-radius: 0.3rem;
     -webkit-border-radius: 0.3rem;
     padding: 0.5rem 1rem;
-    color: #fc6eaa;
+    color: #fb1787;
+    background: url("../img/goodsChecked.png") bottom right no-repeat;
+    background-size: 1rem 1rem;
 }
 
 .goods-categories-user-must-know {

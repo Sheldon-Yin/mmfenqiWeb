@@ -14,6 +14,18 @@ define(function (require, exports, module) {
                         }
                     }
                 };
-            })
+            });
+        app.directive('onFinishRenderFiltersCopy', function ($timeout) {
+            return {
+                restrict: 'A',
+                link: function(scope, element, attr) {
+                    if (scope.$last === true) {
+                        $timeout(function() {
+                            scope.$emit('ngRepeatFinishedCopy');
+                        });
+                    }
+                }
+            };
+        })
     }
 });

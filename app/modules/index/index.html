@@ -3,7 +3,8 @@
 <!--App bar For index-->
 <div class="container">
     <div class="row app-bar text-center">
-        <div style="margin: 0.6rem 0;padding:0;width: 20%;font-size: 1.3rem" class="col-xs-2 single-line" ng-click="changeCity()">
+        <div style="margin: 0.6rem 0;padding:0;width: 20%;font-size: 1.3rem" class="col-xs-2 single-line"
+             ng-click="changeCity()">
             {{cityName}}<i class="fa fa-angle-down" style="padding-left: 0.5rem"></i>
         </div>
         <div style="position: relative">
@@ -20,162 +21,165 @@
     </div>
 </div>
 
-
 <!--PullToRefreshArea-->
-<!-- Swiper -->
-<div class="pullToRefreshArea" style="height: 100%;padding: 3.6rem 0;">
-    <div class="swiper-wrapper" style="height: auto">
-        <div class="swiper-slide">
-            <!-- Swiper -->
+<div>
+    <div id="content" style="height: 100%;padding: 3.8rem 0;width: 100%">
 
-            <!-- Banner -->
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="modules/index/img/banner.jpg" width="100%" height="auto">
-                    </div>
-                    <div class="swiper-slide"><img src="modules/index/img/banner.jpg" width="100%" height="auto">
-                    </div>
-                    <div class="swiper-slide"><img src="modules/index/img/banner.jpg" width="100%" height="auto">
-                    </div>
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
-
+        <div class="container text-center" id="slideDown"
+             style="padding:1rem 0;font-size: 1.6rem">
+            <i class="fa fa-angle-double-down fa-lg" style="margin-right: 1rem"></i><span>下拉以刷新</span>
         </div>
 
-        <div class="swiper-slide">
+        <div class="container">
+            <div class="row">
+                <!-- Swiper -->
+
+                <!-- Banner -->
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" ng-repeat="x in index.data.showIndexResponse.advertisingLinkList"
+                             on-finish-render-filters>
+                            <img ng-src="{{x.linkHerPic}}" width="100%" height="20%">
+                        </div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+
             <!--Categories-->
-            <div class="container" onclick="window.location.href='#/list'">
-                <img class="index-kind-img" src="modules/index/img/face-kind.png">
-                <img class="index-kind-img" src="modules/index/img/eye-kind.png">
-                <img class="index-kind-img" src="modules/index/img/tooth-kind.png">
-                <img class="index-kind-img" src="modules/index/img/nose-kind.png">
-                <img class="index-kind-img" src="modules/index/img/body-kind.png">
-                <img class="index-kind-img" src="modules/index/img/wrinkle-kind.png">
-                <img class="index-kind-img" src="modules/index/img/breast-kind.png">
-                <img class="index-kind-img" src="modules/index/img/hair-kind.png">
-                <img class="index-kind-img" src="modules/index/img/skin-kind.png">
-                <img class="index-kind-img" src="modules/index/img/all-kind.png">
-            </div>
-        </div>
-
-        <!--activities-->
-        <div class="swiper-slide">
-            <div class="container index-activities-container" onclick="window.location.href='#/activities/graduation'">
-                <div class="row">
-                    <div class="col-xs-6" style="padding-left: 0;padding-right: 5px">
-                        <img src="modules/index/img/activities-sales.jpg" width="100%">
-                    </div>
-                    <div class="col-xs-6" style="padding-right: 0;padding-left: 5px">
-                        <div class="col-xs-6" style="padding: 1px">
-                            <img src="modules/index/img/activities-president.jpg" width="100%">
-                        </div>
-                        <div class="col-xs-6" style="padding: 1px">
-                            <img src="modules/index/img/activities-one-yuan.jpg" width="100%">
-                        </div>
-                        <div class="col-xs-12" style="padding: 1px">
-                            <img src="modules/index/img/activities-set.jpg" width="100%">
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="container" onclick="window.location.href='#/list'">
+                    <img class="index-kind-img" ng-repeat="x in index.data.showIndexResponse.itemCategoryList"
+                         ng-src="{{x.categoryHerPic}}">
                 </div>
             </div>
-        </div>
 
-        <!--best recommend-->
-        <div class="swiper-slide" onclick="window.location.href='#/recommend'">
-            <div class="container index-recommend-container">
-                <div class="row" style="background-color: #FFFFFF;padding: 1rem">
-                    <div class="col-xs-6 text-left">精品推荐</div>
-                    <div class="col-xs-6 text-right">
-                        <i class="fa fa-lg fa-angle-right"></i>
-                    </div>
-                </div>
-                <hr class="app-bootstrap-hr">
-
-
-                <div class="row index-white-background">
-                    <div class="col-xs-6 index-recommend-left-area">
-                        <div class="col-xs-12 index-white-background" style="padding: 1rem 1.5rem">
-                            <img src="modules/index/img/temp-set.png" width="100%">
-                            <div class="single-line grey-text index-grey-middle-text">
-                                海薇玻尿酸 限时不限价
-                            </div>
-                            <div class="index-pink-background-white-label">
-                                月供最低只要456.00
-                            </div>
+            <!--activities-->
+            <div class="row">
+                <div class="container index-activities-container"
+                     onclick="window.location.href='#/activities/graduation'">
+                    <div class="row">
+                        <div class="col-xs-6" style="padding-left: 0;padding-right: 5px"
+                             ng-repeat="x in index.data.showIndexResponse.themeZoneList | filter: themeZoneType:'4'">
+                            <img ng-src="x.themeZoneHerPic" width="100%">
                         </div>
-                    </div>
-                    <div class="col-xs-6 index-recommend-right-area">
-                        <div class="col-xs-12 index-white-background" style="padding: 1.25rem 1rem;margin-bottom: 1px">
-                            <div class="col-xs-5 index-recommend-img">
-                                <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
+                        <div class="col-xs-6" style="padding-right: 0;padding-left: 5px">
+                            <div class="col-xs-6" style="padding: 1px"
+                                 ng-repeat="x in index.data.showIndexResponse.themeZoneList | filter: themeZoneType:'1'">
+                                <img ng-src="x.themeZoneHerPic" width="100%">
                             </div>
-                            <div class="col-xs-7 index-recommend-text">
-                                <div class="double-line grey-text" style="height: 3rem">网红套餐玻尿酸</div>
-                                <div class="pink-text single-line">月供最低234起</div>
+                            <div class="col-xs-6" style="padding: 1px"
+                                 ng-repeat="x in index.data.showIndexResponse.themeZoneList | filter: themeZoneType:'3'">
+                                <img ng-src="x.themeZoneHerPic" width="100%">
                             </div>
-                        </div>
-                        <div class="col-xs-12 index-white-background" style="padding: 1.25rem 1rem;margin-top: 1px">
-                            <div class="col-xs-5 index-recommend-img">
-                                <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
-                            </div>
-                            <div class="col-xs-7 index-recommend-text">
-                                <p class="double-line grey-text" style="height: 3rem">网红套餐玻尿酸</p>
-                                <p class="pink-text single-line">月供最低234起</p>
+                            <div class="col-xs-12" style="padding: 1px"
+                                 ng-repeat="x in index.data.showIndexResponse.themeZoneList | filter: themeZoneType:'2'">
+                                <img ng-src="x.themeZoneHerPic" width="100%">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!--hot projects-->
-        <div class="swiper-slide">
-            <div class="container index-recommend-container">
-                <div class="row" style="background-color: #FFFFFF;padding: 1rem">
-                    <div class="col-xs-6 text-left">热门项目</div>
-                    <div class="col-xs-6 text-right">
-                        <i class="fa fa-lg fa-angle-right"></i>
-                    </div>
-                </div>
-                <hr class="app-bootstrap-hr">
-
-                <div onclick="window.location.href='#/goods'">
-                    <div class="row app-project-container">
-                        <div class="col-xs-5">
-                            <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
+            <!--best recommend-->
+            <div class="row" onclick="window.location.href='#/recommend'">
+                <div class="container index-recommend-container">
+                    <div class="row" style="background-color: #FFFFFF;padding: 1rem">
+                        <div class="col-xs-6 text-left">精品推荐</div>
+                        <div class="col-xs-6 text-right">
+                            <i class="fa fa-lg fa-angle-right"></i>
                         </div>
-                        <div class="col-xs-7 app-project-content">
-                            <div class="double-line index-hot-project-title">
-                                【上海海薇玻尿酸注射整形】 海薇玻尿酸 限时不限购 疯狂变美丽节日盛典
-                            </div>
-                            <div class="single-line app-project-hospital">
-                                华山整形医院
-                            </div>
-                            <div class="col-xs-12 text-left app-project-price-area">
-                                <div class="col-xs-4 app-pink-text" style="padding: 0">
-                                    <span style="font-size: 1.2rem">￥</span><span
-                                        style="font-size: 2rem;line-height: 2.6rem">887</span>
+                    </div>
+                    <hr class="app-bootstrap-hr">
+
+
+                    <div class="row index-white-background">
+                        <div class="col-xs-6 index-recommend-left-area">
+                            <div class="col-xs-12 index-white-background" style="padding: 1rem 1.5rem">
+                                <img src="modules/index/img/temp-set.png" width="100%">
+                                <div class="single-line grey-text index-grey-middle-text">
+                                    海薇玻尿酸 限时不限价
                                 </div>
-                                <div class="col-xs-4 text-left" style="padding: 0">
-                                    <span class="grey-text app-project-original-price">￥6645</span>
+                                <div class="index-pink-background-white-label">
+                                    月供最低只要456.00
                                 </div>
-                                <div class="col-xs-4 text-center"
-                                     style="padding: 0;font-size: 0.7rem;margin-top:0.5rem">
-                                    <div class="col-xs-12" style="padding: 0;">
-                                        <div class="app-project-yellow-background-radius col-xs-6">已售</div>
-                                        <div class="app-project-yellow-text-radius col-xs-6">4442</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 index-recommend-right-area">
+                            <div class="col-xs-12 index-white-background"
+                                 style="padding: 1.25rem 1rem;margin-bottom: 1px">
+                                <div class="col-xs-5 index-recommend-img">
+                                    <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
+                                </div>
+                                <div class="col-xs-7 index-recommend-text">
+                                    <div class="double-line grey-text" style="height: 3rem">网红套餐玻尿酸</div>
+                                    <div class="pink-text single-line">月供最低234起</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 index-white-background" style="padding: 1.25rem 1rem;margin-top: 1px">
+                                <div class="col-xs-5 index-recommend-img">
+                                    <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
+                                </div>
+                                <div class="col-xs-7 index-recommend-text">
+                                    <p class="double-line grey-text" style="height: 3rem">网红套餐玻尿酸</p>
+                                    <p class="pink-text single-line">月供最低234起</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--hot projects-->
+            <div class="row">
+                <div class="container index-recommend-container">
+                    <div class="row" style="background-color: #FFFFFF;padding: 1rem">
+                        <div class="col-xs-6 text-left">热门项目</div>
+                        <div class="col-xs-6 text-right">
+                            <i class="fa fa-lg fa-angle-right"></i>
+                        </div>
+                    </div>
+                    <hr class="app-bootstrap-hr">
+
+                    <div onclick="window.location.href='#/goods'"
+                         ng-repeat="x in index.data.showIndexResponse.goodsItemList" on-finish-render-filters-copy>
+                        <div class="row app-project-container">
+                            <div class="col-xs-5">
+                                <img ng-src="{{x.goodsHerPic}}" width="100%">
+                            </div>
+                            <div class="col-xs-7 app-project-content">
+                                <div class="double-line index-hot-project-title">
+                                    {{x.hotItemName}}
+                                </div>
+                                <div class="single-line app-project-hospital">
+                                    {{x.hospitalName}}
+                                </div>
+                                <div class="col-xs-12 text-left app-project-price-area">
+                                    <div class="col-xs-4 app-pink-text" style="padding: 0">
+                                        <span style="font-size: 1.2rem">￥</span><span
+                                            style="font-size: 1.6rem;line-height: 2.6rem">{{x.presentPrice}}</span>
+                                    </div>
+                                    <div class="col-xs-4 text-left" style="padding: 0">
+                                        <span class="grey-text app-project-original-price">￥{{x.marketPrice}}</span>
+                                    </div>
+                                    <div class="col-xs-4 text-center"
+                                         style="padding: 0;font-size: 0.7rem;margin-top:0.5rem">
+                                        <div class="col-xs-12" style="padding: 0;">
+                                            <div class="app-project-yellow-background-radius col-xs-6">已售</div>
+                                            <div class="app-project-yellow-text-radius col-xs-6">{{x.soldNumber}}</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <hr class="app-bootstrap-hr">
                     </div>
-                    <hr class="app-bootstrap-hr">
                 </div>
             </div>
+
         </div>
-        <!--Swiper-->
     </div>
+    <!--PullToRefreshArea End-->
 </div>
-<!--PullToRefreshArea End-->

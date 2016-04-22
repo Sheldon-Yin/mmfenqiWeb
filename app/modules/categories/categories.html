@@ -7,8 +7,8 @@
     </div>
 </div>
 
-
 <div class="container">
+
     <div class="row text-center" style="margin-top: 3.6rem;color: #333333">
         <!--项目分类-->
         <div class="col-xs-12" style="margin: 1rem 0" ng-click="(selectState==1) ? (selectState=0) : (selectState=1)">
@@ -24,8 +24,16 @@
     <div class="row categories-sort-bar-list-view" ng-show="selectState == 1">
         <div style="height: 36%;background-color: white">
             <div class="col-xs-12 categories-sort-bar-subject">
-                <div style="padding-top: 1rem;padding-left: 1rem" ng-repeat="x in projects" ng-click="setItems(x.project)">
-                    {{x.project}}
+                <div style="padding-top: 1rem;padding-left: 1rem" ng-click="setAll()">
+                    全部类目<span ng-if="filterProject == ''" class="fa fa-check text-right fa-lg"
+                              style="position: absolute;right: 1rem"></span>
+                    <hr class="app-bootstrap-hr-no-match" style="margin-top: 1rem;margin-left: -1rem">
+                </div>
+                <div style="padding-top: 1rem;padding-left: 1rem"
+                     ng-repeat="x in categories.data.categoryListResponse.categoryList"
+                     ng-click="setItems(x.categoryName)">
+                    {{x.categoryName}}<span ng-if="filterProject == x.categoryName" class="fa fa-check text-right fa-lg"
+                                            style="position: absolute;right: 1rem"></span>
                     <hr class="app-bootstrap-hr-no-match" style="margin-top: 1rem;margin-left: -1rem">
                 </div>
             </div>
@@ -37,64 +45,17 @@
 
 </div>
 
-<div class="container categories-project-container" onclick="window.location.href='#/list'">
+<div class="container categories-project-container" onclick="window.location.href='#/list'"
+     ng-repeat="x in categories.data.categoryListResponse.categoryList  | filter: {categoryName: filterProject}">
 
     <div class="categories-project-title">
-        热门项目
+        {{x.categoryName}}<i class="fa fa-angle-right fa-lg" style="position: absolute;right: 2rem"></i>
     </div>
 
     <div class="row categories-project-projects">
-
-        <div class="col-xs-4">
-            双眼皮
-        </div>
-        <div class="col-xs-4">
-            眼角
-        </div>
-        <div class="col-xs-4">
-            泪沟
-        </div>
-        <div class="col-xs-4">
-            双眼皮
-        </div>
-        <div class="col-xs-4">
-            眼角
-        </div>
-        <div class="col-xs-4">
-            泪沟
+        <div class="col-xs-4" ng-repeat="key in x.categoryList">
+            {{key.categoryName}}
         </div>
     </div>
 
 </div>
-
-<div class="container categories-project-container" onclick="window.location.href='#/list'">
-
-    <div class="categories-project-title">
-        热门项目
-    </div>
-
-    <div class="row categories-project-projects">
-
-        <div class="col-xs-4">
-            双眼皮
-        </div>
-        <div class="col-xs-4">
-            眼角
-        </div>
-        <div class="col-xs-4">
-            泪沟
-        </div>
-        <div class="col-xs-4">
-            双眼皮
-        </div>
-        <div class="col-xs-4">
-            眼角
-        </div>
-        <div class="col-xs-4">
-            泪沟
-        </div>
-    </div>
-
-</div>
-
-

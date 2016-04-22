@@ -10,6 +10,13 @@ define(function (require, exports, module) {
             function ($routeProvider) {
                 $routeProvider.
 
+                //Demo
+                when('/phones/list', {
+                    templateUrl: 'modules/demo/phone-list.html',
+                    controller: 'PhoneListCtrl',
+                    controllerUrl: './modules/demo/phone-controller.js'
+                }).
+
                 //首页
                 when('/index', {
                     templateUrl: 'modules/index/index.html',
@@ -22,6 +29,13 @@ define(function (require, exports, module) {
                     templateUrl: 'modules/categories/categories.html',
                     controller: 'CategoriesCtrl',
                     controllerUrl: './modules/categories/controller/categoriesCtrl.js'
+                }).
+
+                //分类页面
+                when('/phones', {
+                    templateUrl: 'modules/demo/phone-list.html',
+                    controller: 'PhoneListCtrl',
+                    controllerUrl: './modules/demo/phone-controller.js'
                 }).
 
                 //订单列表

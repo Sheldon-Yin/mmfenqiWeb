@@ -2,97 +2,138 @@
  * Created by sheldon on 2016/3/25.
  */
 
-'use strict'
+'use strict';
 define(function (require, exports, module) {
     module.exports = function (app) {
-        app.register.controller('ListCtrl', ['$scope',
-            function ($scope) {
-                
+        require('services/goodsSearchService.js')(app);
+        require('services/hospitalService.js')(app);
+        require('services/categoriesService.js')(app);
+        app.register.controller('ListCtrl', ['$scope', 'GoodsSearch', 'Hospital', 'Categories','$timeout',
+            function ($scope, GoodsSearch, Hospital, Categories,$timeout) {
+
+                $scope.goods = GoodsSearch.query();
+                $scope.hospital = Hospital.query();
+                $scope.categories = Categories.query();
+                $scope.parentCategoryId = 0;
+                $scope.subCategoryId = 0;
+                $scope.hospitalId = 0;
+                $scope.sortId = 1;
+                $scope.cityId = 2;
+
+                $scope.refreshData = function () {
+                    $scope.goods = GoodsSearch.query(
+                        {
+                            sortId: $scope.sortId,
+                            cityId: $scope.cityId,
+                            hospitalId: $scope.hospitalId,
+                            parentCategoryId: $scope.parentCategoryId,
+                            categoryId: $scope.subCategoryId
+                        }
+                    )
+                };
+
                 $scope.goBack = function () {
                     window.history.go(-1);
                 };
-                $scope.$root.title = '美眉分期';
-                $scope.baseUrl = 'modules/groupbuy/';
-                $scope.orderProp = 'age';
-                $scope.selectState = 0;
-                $scope.citys =
-                    [
-                        {x: 1},
-                        {x: 2},
-                        {x: 3},
-                        {x: 1},
-                        {x: 2},
-                        {x: 3}
-                    ];
-                $scope.setItems = function (items) {
-                    $scope.items = items;
+
+
+                //类目设置模块开始
+                $scope.nowCategory = '全部类目';
+                $scope.chosenParentCategory = '';
+                $scope.setParentItems = function (parentCategory) {
+                    $scope.chosenParentCategory = parentCategory.categoryName;
+                    $scope.subCategories = parentCategory.categoryList;
+                    $scope.parentCategoryId = parentCategory.categoryId;
                 };
 
-                $scope.projects = [
-                    {
-                        project : "面部轮廓",
-                        items : [
-                            "瘦脸针",
-                            "半永久妆",
-                            "祛痘"
-                        ]
-                    },
-                    {
-                        project : "眼部",
-                        items : [
-                            "单眼皮",
-                            "双眼皮",
-                            "三眼神童"
-                        ]
-                    },
-                    {
-                        project : "鼻部",
-                        items : [
-                            "隆鼻",
-                            "牙齿矫正",
-                        ]
-                    },
-                    {
-                        project : "面部轮廓",
-                        items : [
-                            "瘦脸针",
-                            "半永久妆",
-                            "祛痘"
-                        ]
-                    },
-                    {
-                        project : "面部轮廓",
-                        items : [
-                            "瘦脸针",
-                            "半永久妆",
-                            "祛痘"
-                        ]
-                    },
-                    {
-                        project : "面部轮廓",
-                        items : [
-                            "瘦脸针",
-                            "半永久妆",
-                            "祛痘"
-                        ]
-                    },
-                    {
-                        project : "面部轮廓",
-                        items : [
-                            "瘦脸针",
-                            "半永久妆",
-                            "祛痘"
-                        ]
-                    },
-                    {
-                        project : "面部轮廓",
-                        items : [
-                            "瘦脸针",
-                            "半永久妆",
-                            "祛痘"
-                        ]
+                $scope.setAllParentCategories = function () {
+                    $scope.chosenParentCategory = '';
+                    $scope.subCategories = '';
+                    $scope.nowCategory = '全部类目';
+                    $scope.selectState = 0;
+                    $scope.parentCategoryId = 0;
+                    $scope.refreshData();
+                };
+
+                $scope.setSubItems = function (subCategory) {
+                    $scope.chosenSubCategory = subCategory.categoryName;
+                    $scope.nowCategory = subCategory.categoryName;
+                    $scope.selectState = 0;
+                    $scope.subCategoryId = subCategory.categoryId;
+                    $scope.refreshData();
+                };
+
+                $scope.setAllSubItems = function () {
+                    $scope.chosenSubCategory = '';
+                    $scope.nowCategory = $scope.chosenParentCategory;
+                    $scope.selectState = 0;
+                    $scope.subCategoryId = 0;
+                    $scope.refreshData();
+                };
+                //类目设置模块结束
+
+                //医院设置模块开始
+                $scope.nowHospital = '全部医院';
+                $scope.setHospital = function (hospital) {
+                    $scope.selectState = 0;
+                    $scope.nowHospital = hospital.hospitalName;
+                    $scope.hospitalId = hospital.hospitalId;
+                    $scope.refreshData();
+                };
+
+                $scope.setAllHospital = function () {
+                    $scope.selectState = 0;
+                    $scope.nowHospital = '全部医院';
+                    $scope.hospitalId = 0;
+                    $scope.refreshData();
+                };
+                //医院设置模块结束
+
+                //排序方式开始
+                $scope.nowSort = '销量最高';
+                $scope.setSort = function (x) {
+                    $scope.sortId = x;
+                    switch (x) {
+                        case 1:
+                            $scope.nowSort = '销量最高';
+                            break;
+                        case 2:
+                            $scope.nowSort = '价格最低';
+                            break;
+                        case 3:
+                            $scope.nowSort = '最新上架';
+                            break;
+                        default:
+                            break;
                     }
-                ];
+                    $scope.selectState = 0;
+                    $scope.refreshData();
+                };
+                //排序方式结束
+
+                var timeout;
+
+                //监控数据加载情况
+                $scope.loading = function () {
+                    if($scope.goods.data==undefined){
+                        console.log('数据刷新了')
+                        timeout = $timeout(function() {
+                            $scope.badConnection = 1;
+                        }, 10000);
+                    }
+                };
+                $scope.loading();
+
+                //设置timeout监控是否加载到，长时加载不到显示服务器错误
+                $scope.$watch('goods', function (newVal, oldVal) {
+                    if (newVal !== oldVal) {
+                        $scope.badConnection = 0;
+                        if (timeout) $timeout.cancel(timeout);
+                        $scope.loading();
+                    }
+                }, true);
+
+
             }]);
     }
 });

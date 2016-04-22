@@ -129,7 +129,7 @@ td {
 .app-project-original-price {
     line-height: 2.9rem;
     text-decoration: line-through;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .app-project-price-area {
@@ -214,16 +214,17 @@ td {
 
 /*swpier slide配置*/
 
-.swiper-container {
-    width: 100%;
-    min-height: 100% !important;
-    height: auto !important;
-    margin-bottom: 0.5rem;
-}
+/*.swiper-container {*/
+    /*width: 100%!important;*/
+    /*!*min-height: 100% !important;*!*/
+    /*height: auto !important;*/
+    /*margin-bottom: 0.5rem!important;*/
+    /*position: relative!important;*/
+/*}*/
 
 .swiper-slide {
-    min-height: 100% !important;
-    height: auto !important;
+    height: 20% !important;
+    min-height: 50%;
 }
 
 .swiper-pagination-bullet-active {
