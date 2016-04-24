@@ -103,8 +103,8 @@
                     {{x.name}}
                 </div>
                 <div class="row">
-                    <label class="goods-categories-radio"  style="width: auto" ng-repeat="key in x.list" ng-click="onSelect(key.name)">
-                        <input type="radio" ng-model="x.nameId" class="goods-categories-radio-input" value="{{key}}">
+                    <label class="goods-categories-radio"  style="width: auto" ng-repeat="key in x.list">
+                        <input type="radio" ng-model="x.nameId" class="goods-categories-radio-input" value="{{key}}" ng-click="onSelect(key.name)">
                         <span ng-class="{'js-selected': keyMap[key.name].selected, 'js-disabled': keyMap[key.name].disabled}" style="line-height: 3rem;">{{key.name}}</span>
                     </label>
 
