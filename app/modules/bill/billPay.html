@@ -1,0 +1,79 @@
+<div style="background-color: #ECECEC;min-height: 100%;padding-bottom: 4.8rem">
+
+    <div class="container">
+        <!--App bar For bill list-->
+        <div class="row app-bar text-center">
+            <div class="col-xs-2" style="width: 15%" ng-click="goBack()"><i class="fa fa-angle-left fa-2x"></i></div>
+            <div class="col-xs-8 app-title-bar">账单还款</div>
+        </div>
+    </div>
+
+    <div class="app-bootstrap-grey-bold-hr" style="margin-top: 3.6rem"></div>
+
+    <div class="container text-center" style="background-color: #FFFFFF">
+        <div class="row" style="padding: 1rem;font-size: 2rem">
+            账单金额
+        </div>
+        <div class="row app-pink-text" style="padding: 1rem;font-size: 3rem">
+            ￥400.0
+        </div>
+    </div>
+
+    <div class="app-bootstrap-grey-bold-hr"></div>
+
+    <div class="container" style="background-color: #FFFFFF">
+        <div class="row app-padding-one">
+            <div class="col-xs-6">
+                使用第三方支付平台
+            </div>
+            <div class="col-xs-6 app-pink-text text-right">
+                ￥400.0
+            </div>
+        </div>
+        <hr class="app-bootstrap-hr">
+
+        <form>
+            <label style="display: block">
+                <div class="row app-padding-one">
+                    <div class="col-xs-6">
+                        <img src="modules/bill/img/bill-alipay.png" style="margin-right: 1rem;width: 2rem">支付宝
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <input ng-model="payWay" type="radio" ng-change="setAliPay()"
+                               value="alipay" checked="checked" style="display: none">
+                        <img ng-src="{{alipayImg}}" style="width: 2rem">
+                    </div>
+                </div>
+            </label>
+
+            <hr class="app-bootstrap-hr">
+
+            <label style="display: block">
+                <div class="row app-padding-one">
+                    <div class="col-xs-6">
+                        <img src="modules/bill/img/bill-wxpay.png" style="margin-right: 1rem;width: 2rem">微信支付
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <input ng-model="payWay" type="radio" ng-change="setWxPay()"
+                               value="wxpay" style="display: none">
+                        <img ng-src="{{wxpayImg}}" style="width: 2rem">
+                    </div>
+                </div>
+            </label>
+
+        </form>
+
+    </div>
+
+    <div class="container">
+        <div class="app-pink-radius-button app-padding-one container" style="margin-top: 2rem" ng-click="goToPay()">
+
+            <div class="row text-center">
+                确认支付
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

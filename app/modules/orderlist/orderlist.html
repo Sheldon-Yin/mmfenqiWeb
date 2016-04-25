@@ -39,33 +39,34 @@
 
 </div>
 
-<div ng-click="goToOrderDetail()">
+
+<div ng-click="goToOrderDetail()" ng-repeat="x in data.data.myOrderResponse">
 
     <div class="app-bootstrap-grey-bold-hr"></div>
     <div class="container">
         <div class="row app-padding-one">
             <div class="col-xs-6">
-                <span>订单号:{{}}</span>
+                <span>订单号:{{x.orderId}}</span>
             </div>
             <div class="col-xs-6 text-right">
-                已取消
+                {{x.orderStatus}}
             </div>
         </div>
         <hr class="app-bootstrap-hr-no-match">
         <div class="row app-project-container">
             <div class="col-xs-4">
-                <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
+                <img ng-src="{{x.goodsPic}}" width="100%">
             </div>
             <div class="col-xs-8 app-project-content">
                 <div class="double-line index-hot-project-title">
-                    【上海海薇玻尿酸注射整形】 海薇玻尿酸 限时不限购 疯狂变美丽节日盛典
+                    {{x.goodsDescription}}
                 </div>
                 <div class="col-xs-12 text-left app-project-price-area">
                     <div class="col-xs-3 app-pink-text" style="padding: 0;text-decoration: line-through">
-                        <span style="font-size: 1.4rem;line-height: 2.6rem;">￥887</span>
+                        <span style="font-size: 1.4rem;line-height: 2.6rem;">￥{{x.orderPrice}}</span>
                     </div>
                     <div class="col-xs-9 text-right" style="font-size: 1rem;line-height: 2.6rem;">
-                        首付：<span class="app-blue-text">￥1399.50</span>
+                        首付：<span class="app-blue-text">￥{{x.downpayAmount}}</span>
                     </div>
                 </div>
             </div>
@@ -75,91 +76,7 @@
 
         <div class="row">
             <div class="col-xs-12 text-right app-padding-one" style="font-size: 1.4rem">
-                共1期 每期付款： <span class="app-blue-text">￥1555.00</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div ng-click="goToOrderDetail()">
-
-    <div class="app-bootstrap-grey-bold-hr"></div>
-    <div class="container">
-        <div class="row app-padding-one">
-            <div class="col-xs-6">
-                <span>订单号:{{}}</span>
-            </div>
-            <div class="col-xs-6 text-right">
-                已取消
-            </div>
-        </div>
-        <hr class="app-bootstrap-hr-no-match">
-        <div class="row app-project-container">
-            <div class="col-xs-4">
-                <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
-            </div>
-            <div class="col-xs-8 app-project-content">
-                <div class="double-line index-hot-project-title">
-                    【上海海薇玻尿酸注射整形】 海薇玻尿酸 限时不限购 疯狂变美丽节日盛典
-                </div>
-                <div class="col-xs-12 text-left app-project-price-area">
-                    <div class="col-xs-3 app-pink-text" style="padding: 0;text-decoration: line-through">
-                        <span style="font-size: 1.4rem;line-height: 2.6rem;">￥887</span>
-                    </div>
-                    <div class="col-xs-9 text-right" style="font-size: 1rem;line-height: 2.6rem;">
-                        首付：<span class="app-blue-text">￥1399.50</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr class="app-bootstrap-hr-no-match">
-
-        <div class="row">
-            <div class="col-xs-12 text-right app-padding-one" style="font-size: 1.4rem">
-                共1期 每期付款： <span class="app-blue-text">￥1555.00</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div ng-click="goToOrderDetail()">
-
-    <div class="app-bootstrap-grey-bold-hr"></div>
-    <div class="container">
-        <div class="row app-padding-one">
-            <div class="col-xs-6">
-                <span>订单号:{{}}</span>
-            </div>
-            <div class="col-xs-6 text-right">
-                已取消
-            </div>
-        </div>
-        <hr class="app-bootstrap-hr-no-match">
-        <div class="row app-project-container">
-            <div class="col-xs-4">
-                <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
-            </div>
-            <div class="col-xs-8 app-project-content">
-                <div class="double-line index-hot-project-title">
-                    【上海海薇玻尿酸注射整形】 海薇玻尿酸 限时不限购 疯狂变美丽节日盛典
-                </div>
-                <div class="col-xs-12 text-left app-project-price-area">
-                    <div class="col-xs-3 app-pink-text" style="padding: 0;text-decoration: line-through">
-                        <span style="font-size: 1.4rem;line-height: 2.6rem;">￥887</span>
-                    </div>
-                    <div class="col-xs-9 text-right" style="font-size: 1rem;line-height: 2.6rem;">
-                        首付：<span class="app-blue-text">￥1399.50</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr class="app-bootstrap-hr-no-match">
-
-        <div class="row">
-            <div class="col-xs-12 text-right app-padding-one" style="font-size: 1.4rem">
-                共1期 每期付款： <span class="app-blue-text">￥1555.00</span>
+                共{{x.staging}}期 每期付款： <span class="app-blue-text">￥{{x.stagingPrice}}</span>
             </div>
         </div>
     </div>

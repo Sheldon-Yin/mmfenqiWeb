@@ -1,0 +1,62 @@
+<div style="background-color: #ECECEC;min-height: 100%;padding-bottom: 4.8rem">
+
+    <div class="container">
+        <!--App bar For bill list-->
+        <div class="row app-bar text-center">
+            <div class="col-xs-2" style="width: 15%" ng-click="goBack()"><i class="fa fa-angle-left fa-2x"></i></div>
+            <div class="col-xs-8 app-title-bar">产品详情</div>
+            <div class="col-xs-2" style="padding: 0;line-height: 2.6rem">还款记录</div>
+        </div>
+    </div>
+
+    <div class="app-bootstrap-grey-bold-hr" style="margin-top: 3.6rem"></div>
+
+    <!--for one-->
+    <div style="background-color: #FFFFFF;padding: 1rem 0" ng-repeat="x in bill.data.myBillResponse">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2" style="line-height: 2.7rem">
+                    <img src="modules/bill/img/bill-checked.png" style="width: 1.6rem;">
+                </div>
+                <div class="col-xs-7">
+                    <div>
+                        距还款日还有 {{x.to_repayment_date}} 天
+                    </div>
+                    <div>
+                        （第{{x.repayment_staging}}/{{x.staging}}期） {{x.goodsName}}
+                    </div>
+                </div>
+                <div class="col-xs-3 text-center" style="padding: 0;line-height: 3rem">
+                    <span>￥{{x.payAmount}}</span><span class="fa fa-angle-right"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-pink-bottom-bar">
+
+        <div style="width: 60%;float: left;background-color: #FFFFFF;color: #000;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: left"
+             ng-click="showConfirm()">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <img src="modules/bill/img/bill-checked.png" style="width: 1.6rem;">
+                    </div>
+                    <div class="col-xs-4">
+                        全选
+                    </div>
+                    <div class="col-xs-6">
+                        ￥448.94
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 40%;float: left;background-color: #fb1787;color: #FFFFFF;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: center"
+             ng-click="showConfirm()">
+            还款
+        </div>
+
+    </div>
+
+</div>

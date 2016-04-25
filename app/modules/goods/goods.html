@@ -20,8 +20,8 @@
         <!-- Banner -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" ng-repeat="x in goods.data.goodsDetailsResponse.goodsItem.showPicList">
-                    <img src="modules/goods/img/template.png" width="100%" height="auto">
+                <div class="swiper-slide" ng-repeat="x in goods.data.goodsDetailsResponse.goodsItem.showPicList" on-finish-render-filters>
+                    <img ng-src="{{x}}" width="100%" height="auto">
                 </div>
             </div>
             <!-- Add Pagination -->
@@ -100,12 +100,12 @@
             <!--For one-->
             <div class="container" ng-repeat="x in type">
                 <div class="goods-categories-title">
-                    {{x.name}}
+                    {{x.combinationTypeName}}
                 </div>
                 <div class="row">
-                    <label class="goods-categories-radio"  style="width: auto" ng-repeat="key in x.list">
-                        <input type="radio" ng-model="x.nameId" class="goods-categories-radio-input" value="{{key}}" ng-click="onSelect(key.name)">
-                        <span ng-class="{'js-selected': keyMap[key.name].selected, 'js-disabled': keyMap[key.name].disabled}" style="line-height: 3rem;">{{key.name}}</span>
+                    <label  style="width: auto" ng-repeat="key in x.combinationDefinitionInfoList">
+                        <input type="radio" ng-model="x.sortNo" class="goods-categories-radio-input" value="{{key}}" ng-click="onSelect(key.combinationName)">
+                        <span class="goods-categories-radio" ng-class="{'js-selected': keyMap[key.combinationName].selected, 'js-disabled': keyMap[key.combinationName].disabled}" style="line-height: 3rem;">{{key.combinationName}}</span>
                     </label>
 
                 </div>
@@ -126,31 +126,32 @@
 
     </div>
 
-    <div class="row">
-        <div class="container" style="background-color: #ececec;color: #999999;">
-            <div class="row text-center" style="padding: 2rem 0">
-                <div class="col-xs-3">
-                    ──────
-                </div>
-                <div class="col-xs-6">
-                    继续拖动，查看图文详情
-                </div>
-                <div class="col-xs-3">
-                    ──────
-                </div>
-            </div>
-        </div>
-    </div>
+    <!--待定-->
+    <!--<div class="row">-->
+        <!--<div class="container" style="background-color: #ececec;color: #999999;">-->
+            <!--<div class="row text-center" style="padding: 2rem 0">-->
+                <!--<div class="col-xs-3">-->
+                    <!--──────-->
+                <!--</div>-->
+                <!--<div class="col-xs-6">-->
+                    <!--继续拖动，查看图文详情-->
+                <!--</div>-->
+                <!--<div class="col-xs-3">-->
+                    <!--──────-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
-    <div class="row">
+    <!--<div class="row">-->
 
-        <div class="container">
-            <img src="modules/goods/img/details.png" style="width: 100%">
-        </div>
+        <!--<div class="container">-->
+            <!--<img src="modules/goods/img/details.png" style="width: 100%">-->
+        <!--</div>-->
 
-        <div class="app-bootstrap-grey-bold-hr"></div>
+        <!--<div class="app-bootstrap-grey-bold-hr"></div>-->
 
-    </div>
+    <!--</div>-->
 </div>
 
 <div class="goods-categories-bottom-bar">
@@ -168,7 +169,7 @@
     </div>
 
     <div style="width: 50%;float: left;background-color: #fb1787;color: #FFFFFF;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: center"
-         onclick="window.location.href='#/order'">
+         ng-click="goToOrder()">
         立即分期
     </div>
 

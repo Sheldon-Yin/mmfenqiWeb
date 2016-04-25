@@ -106,60 +106,17 @@ define(function (require, exports, module) {
                     swiper = new Swiper('.swiper-container', {
                         pagination: '.swiper-pagination',
                         paginationClickable: true,
-                        loop: true
+                        loop: true,
+                        autoplay : 5000
                     });
                     //初始化banner图的swiper
                 };
                 $scope.initBannerSwiper();
 
-                //$scope.initPullToRefreshSwiper = function () {
-                //    //下面是在table render完成后执行的js
-                //    //和下拉刷新的swiper
-                //    pullToRefreshSwiper = new Swiper('.pullToRefreshArea', {
-                //        direction: 'vertical',
-                //        slidesPerView: 'auto',
-                //        freeMode: true,
-                //        watchActiveIndex: true,
-                //        freeModeMomentum: true,
-                //        shortSwipes: false,
-                //        onTouchMove: function (pullToRefreshSwiper) {
-                //            if (pullToRefreshSwiper.translate >= 40 && !document.getElementById('swiper-pull-header')) {
-                //                pullToRefreshSwiper.prependSlide(
-                //                    '<div class="swiper-slide container text-center" id="swiper-pull-header" style="padding:1rem 0;font-size: 1.6rem">' +
-                //                    '<i class="fa fa-angle-double-down fa-lg" style="margin-right: 1rem"></i><span>下拉以刷新</span>' +
-                //                    '</div>'
-                //                ); //加到Swiper的第一个
-                //            }
-                //        },
-                //        onTouchEnd: function (pullToRefreshSwiper) {
-                //            if (pullToRefreshSwiper.translate >= 0 && !!document.getElementById('swiper-pull-header')) {
-                //                document.getElementById('swiper-pull-header').innerHTML = '<i class="fa fa-refresh fa-spin fa-lg" style="margin-right: 1rem"></i><span>刷新中</span>';
-                //                pullToRefreshSwiper.slideTo(0);
-                //                pullToRefreshSwiper.detachEvents();
-                //                setTimeout(function () {
-                //                    pullToRefreshSwiper.slideTo(1, 1000,
-                //                        function () {
-                //                            window.location.reload();
-                //                            document.getElementById('swiper-pull-header').innerHTML = '<i class="fa fa-check-circle-o fa-lg" style="margin-right: 1rem"></i><span>刷新成功</span>';
-                //                            //$route.reload();
-                //                            setTimeout(function () {
-                //                                pullToRefreshSwiper.attachEvents();
-                //                                pullToRefreshSwiper.removeSlide(0);
-                //                            }, 1000)
-                //                        }())
-                //                }, 200)
-                //            } else if (!!document.getElementById('swiper-pull-header')) {
-                //                pullToRefreshSwiper.removeSlide(0);
-                //            }
-                //        }
-                //    });
-                //    //初始化下拉刷新的swiper
-                //};
-                //$scope.initPullToRefreshSwiper();
-
 
                 $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
                     swiper.update();
+                    swiper.reLoop();
                 });
                 //$scope.$on('ngRepeatFinishedCopy', function (ngRepeatFinishedCopyEvent) {
                 //    console.log(2);

@@ -73,7 +73,7 @@
         </div>
 
         <div class="col-xs-6 text-right app-padding-one app-pink-text">
-            ￥299.0
+            ￥{{order.shoufuAmt}}
         </div>
 
     </div>
@@ -87,7 +87,7 @@
         </div>
 
         <div class="col-xs-6 text-right app-padding-one app-pink-text">
-            ￥2468.33
+            ￥{{order.orderAmount - order.shoufuAmt}}
         </div>
 
     </div>
@@ -101,7 +101,7 @@
         </div>
 
         <div class="col-xs-6 text-right app-padding-one app-pink-text">
-            ￥140.33（24期）
+            ￥{{order.yuefu}}（{{order.staging}}期）
         </div>
 
     </div>
@@ -119,7 +119,7 @@
         </div>
 
         <div class="col-xs-6 text-right app-padding-one app-pink-text">
-            ￥2799.99
+            ￥{{order.orderAmount}}
         </div>
 
     </div>
@@ -156,7 +156,7 @@
 
             <form>
 
-                <label>
+                <label style="display: block">
                     <div class="row pay-choose-pay-way-dialog-row">
                         <div class="col-xs-6">
                             <img src="modules/pay/img/alipay.png" style="margin-right: 1rem">支付宝
@@ -171,7 +171,7 @@
 
                 <hr class="app-bootstrap-hr">
 
-                <label>
+                <label style="display: block">
                     <div class="row pay-choose-pay-way-dialog-row">
                         <div class="col-xs-6">
                             <img src="modules/pay/img/wxpay.png" style="margin-right: 1rem">微信支付
@@ -193,7 +193,7 @@
             立即支付
         </div>
         <div style="width: 100%;float: left;background-color: #fb1787;color: #FFFFFF;height: 1.2rem;line-height:0;text-align: center;font-size: 0.7rem">
-            （支付：￥800.0）
+            （支付：￥{{order.shoufuAmt}}）
         </div>
     </div>
 </div>

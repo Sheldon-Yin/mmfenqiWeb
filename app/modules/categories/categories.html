@@ -45,15 +45,15 @@
 
 </div>
 
-<div class="container categories-project-container" onclick="window.location.href='#/list'"
+<div class="container categories-project-container"
      ng-repeat="x in categories.data.categoryListResponse.categoryList  | filter: {categoryName: filterProject}">
 
-    <div class="categories-project-title">
+    <div class="categories-project-title" ng-click="jumpTo('#/list?parentId='+x.categoryId+'&parentName='+x.categoryName)">
         {{x.categoryName}}<i class="fa fa-angle-right fa-lg" style="position: absolute;right: 2rem"></i>
     </div>
 
     <div class="row categories-project-projects">
-        <div class="col-xs-4" ng-repeat="key in x.categoryList">
+        <div class="col-xs-4" ng-repeat="key in x.categoryList"  ng-click="jumpTo('#/list?parentId='+x.categoryId+'&parentName='+x.categoryName+'&subId='+key.categoryId+'&subName='+key.categoryName)">
             {{key.categoryName}}
         </div>
     </div>

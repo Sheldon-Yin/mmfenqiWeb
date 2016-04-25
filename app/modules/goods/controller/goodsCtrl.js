@@ -6,11 +6,44 @@
 define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/goodsDetail.js')(app);
-        app.register.controller('GoodsCtrl', ['$scope', 'GoodsDetail', 'utilService',
-            function ($scope, GoodsDetail) {
+        app.register.controller('GoodsCtrl', ['$scope', 'GoodsDetail','$location', 'utilService',
+            function ($scope, GoodsDetail ,$location) {
 
-                $scope.goods = GoodsDetail.get();
-                console.log($scope.goods);
+                var swiper;
+                $scope.initBannerSwiper = function () {
+                    //下面是在table render完成后执行的js
+                    swiper = new Swiper('.swiper-container', {
+                        pagination: '.swiper-pagination',
+                        paginationClickable: true,
+                        loop : true,
+                        autoplay : 5000
+                    });
+                    //初始化banner图的swiper
+                };
+                $scope.initBannerSwiper();
+
+
+                $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
+                    swiper.update();
+                    swiper.reLoop();
+                });
+
+
+                var goodsId = $location.search();
+                console.log(goodsId);
+
+                $scope.goods = GoodsDetail.get(goodsId);
+
+                $scope.skuData = $scope.goods;
+
+                $scope.goods.$promise.then(function(response){
+                    $scope.res = response;
+                    console.log(response);
+                    $scope.defaultPrice = response.data.goodsDetailsResponse.goodsItem.presentPrice;
+                    $scope.type = response.data.goodsDetailsResponse.combinationTypeInfoList;
+                    $scope.skuData = response.data.goodsDetailsResponse.goodsCombinationExtMap;
+                    console.log($scope.skuData);
+                });
 
                 $scope.goBack = function () {
                     window.history.back(-1);
@@ -21,15 +54,6 @@ define(function (require, exports, module) {
                     pagination: '.swiper-pagination',
                     paginationClickable: true,
                     loop: true
-                });
-
-                var pullToRefreshSwiper = new Swiper('.pullToRefreshArea', {
-                    direction: 'vertical',
-                    slidesPerView: 'auto',
-                    freeMode: true,
-                    freeModeMomentum: true,
-                    shortSwipes: false,
-                    watchActiveIndex: true
                 });
 
                 $scope.share = function () {
@@ -47,103 +71,26 @@ define(function (require, exports, module) {
                     }
                 };
 
-
                 //商品属性
 
                 $scope.splitStr = '#';
 
-
-                $scope.defaultPrice = 20;
-
                 $scope.onOk = function (result) {
-                    $scope.count = result.count;
                     $scope.price = result.price;
+                    $scope.storeId = result.storeId;
+                    console.log(result);
                 };
 
 
-                $scope.type =
-                    [
-                        {
-                            name: '颜色',
-                            nameId: 1,
-                            list: [{
-                                name: '红色'
-                            }, {
-                                name: '橙色'
-                            }, {
-                                name: '黄色'
-                            }, {
-                                name: '绿色'
-                            }, {
-                                name: '蓝色'
-                            }, {
-                                name: '紫色'
-                            }]
-                        },
-                        {
-                            name: '性别',
-                            nameId: 2,
-                            list: [
-                                {
-                                    name: '男'
-                                },
-                                {
-                                    name: '女'
-                                }
-                            ]
-                        }
-                    ]
-                ;
-
-                $scope.skuData = {
-                    '红色#男': {
-                        count: 10,
-                        price: 1
-                    },
-
-                    '橙色#男': {
-                        count: 1,
-                        price: 3
-                    },
-
-                    '橙色#女': {
-                        count: 1,
-                        price: 4
-                    },
-                    '黄色#男': {
-                        count: 1,
-                        price: 5
-                    },
-                    '黄色#女': {
-                        count: 1,
-                        price: 6
-                    },
-                    '绿色#男': {
-                        count: 1,
-                        price: 7
-                    },
-                    '绿色#女': {
-                        count: 1,
-                        price: 8
-                    },
-                    '蓝色#男': {
-                        count: 1,
-                        price: 9
-                    },
-                    '蓝色#女': {
-                        count: 1,
-                        price: 10
-                    },
-                    '紫色#男': {
-                        count: 1,
-                        price: 11
-                    },
-                    '紫色#女': {
-                        count: 1,
-                        price: 120
+                $scope.goToOrder = function () {
+                    if (!!$scope.storeId){
+                        window.location.href = '#/order?orderAmount='+$scope.price+'&goodsId='+goodsId.goodsId+'&storeGoodsCombinationId='+$scope.storeId;
+                    }else if ($scope.skuData.length == 0 || !$scope.skuData.length){
+                        window.location.href = '#/order?orderAmount='+ $scope.defaultPrice +'&goodsId='+goodsId.goodsId;
+                    }else {
+                        Toast('请选择完整的商品信息',2000);
                     }
-                };
-                //商品属性逻辑结束
+                }
 
             }])
     }

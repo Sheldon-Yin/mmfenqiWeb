@@ -4,9 +4,9 @@
 
 var myBridge;
 
-document.addEventListener('WebViewJavascriptBridgeReady', function(event) {
+document.addEventListener('WebViewJavascriptBridgeReady', function (event) {
     var bridge = event.bridge;
-    bridge.init(function(message, responseCallback) {
+    bridge.init(function (message, responseCallback) {
         responseCallback(data)
     });
     myBridge = bridge;

@@ -158,10 +158,10 @@
             </div>
         </div>
 
-        <label ng-repeat="x in goods.data.goodsListResponse.goodsItemList">
+        <label ng-repeat="x in goods.data.goodsListResponse.goodsItemList" style="display: block" ng-click="jumpTo('#/goods?goodsId='+x.goodsHerf)">
             <div class="row app-project-container">
                 <div class="col-xs-5">
-                    <img ng-src="{{x.goodsHerPic}}" width="100%">
+                    <img ng-src="{{x.goodsHerPic}}" style="width: 100%">
                 </div>
                 <div class="col-xs-7 app-project-content">
                     <div class="double-line app-project-title">

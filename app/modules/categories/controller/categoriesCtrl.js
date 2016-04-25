@@ -30,6 +30,10 @@ define(function (require, exports, module) {
                     $scope.filterProject = '';
                     $scope.nowProject = '全部类目';
                     $scope.selectState = 0;
+                };
+
+                $scope.jumpTo = function(x) {
+                    window.location.href = encodeURI(x);
                 }
 
             }])

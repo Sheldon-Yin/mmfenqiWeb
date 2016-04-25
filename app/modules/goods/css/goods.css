@@ -32,10 +32,11 @@
     width: auto;
 }
 
-.goods-categories-radio > span {
+.goods-categories-radio {
     border: #cccccc solid 1px;
     border-radius: 0.3rem;
     -webkit-border-radius: 0.3rem;
+    margin: 0.5rem 1rem;
     padding: 0.5rem 1rem;
     color: #666666;
 }
@@ -44,7 +45,12 @@
     display: none;
 }
 
-.goods-categories-radio-input:checked + span {
+.js-disabled{
+    border: #f4f4f4 solid 1px;
+    color: #f4f4f4;
+}
+
+.js-selected {
     border: #fb1787 solid 1px;
     border-radius: 0.3rem;
     -webkit-border-radius: 0.3rem;

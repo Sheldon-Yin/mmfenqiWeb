@@ -8,7 +8,7 @@ function Toast(msg,duration){
     var m = document.createElement('div');
     m.innerHTML = msg;
     m.style.cssText="width:20rem;opacity:0.5; height:40px; color:#fff; line-height:40px; " +
-        "text-align:center; border-radius:1rem; position:absolute; bottom:5rem; left:50%; z-index:999999; " +
+        "text-align:center; border-radius:1rem; position:fixed; bottom:5rem; left:50%; z-index:999999; " +
         "font-weight:bold; filter: alpha(opacity=80); background: #000;margin-left: -10rem;";
     document.body.appendChild(m);
     setTimeout(function() {

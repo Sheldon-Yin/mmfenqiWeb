@@ -52,6 +52,30 @@ define(function (require, exports, module) {
                     controllerUrl: './modules/orderList/controller/orderDetailCtrl.js'
                 }).
 
+                //账单模块
+                when('/bill/list', {
+                    templateUrl: 'modules/bill/billList.html',
+                    controller: 'BillListCtrl',
+                    controllerUrl: './modules/bill/controller/billListCtrl.js'
+                }).when('/bill/detail', {
+                    templateUrl: 'modules/bill/billDetail.html',
+                    controller: 'BillDetailCtrl',
+                    controllerUrl: './modules/bill/controller/billDetailCtrl.js'
+                }).when('/bill/pay', {
+                    templateUrl: 'modules/bill/billPay.html',
+                    controller: 'BillPayCtrl',
+                    controllerUrl: './modules/bill/controller/billPayCtrl.js'
+                }).when('/bill/record', {
+                    templateUrl: 'modules/bill/billRecord.html',
+                    controller: 'BillRecordCtrl',
+                    controllerUrl: './modules/bill/controller/billRecordCtrl.js'
+                }).when('/bill/paySuccess', {
+                    templateUrl: 'modules/bill/billPaySuccess.html',
+                    controller: 'BillPaySuccessCtrl',
+                    controllerUrl: './modules/bill/controller/billPaySuccessCtrl.js'
+                }).
+
+
                 //毕业季活动页面
                 when('/activities/graduation', {
                     templateUrl: 'modules/activities/graduation/graduation.html',

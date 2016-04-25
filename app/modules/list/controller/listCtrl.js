@@ -8,17 +8,20 @@ define(function (require, exports, module) {
         require('services/goodsSearchService.js')(app);
         require('services/hospitalService.js')(app);
         require('services/categoriesService.js')(app);
-        app.register.controller('ListCtrl', ['$scope', 'GoodsSearch', 'Hospital', 'Categories','$timeout',
-            function ($scope, GoodsSearch, Hospital, Categories,$timeout) {
+        app.register.controller('ListCtrl', ['$scope', 'GoodsSearch', 'Hospital', 'Categories','$timeout','$location',
+            function ($scope, GoodsSearch, Hospital, Categories,$timeout,$location) {
 
-                $scope.goods = GoodsSearch.query();
-                $scope.hospital = Hospital.query();
-                $scope.categories = Categories.query();
-                $scope.parentCategoryId = 0;
-                $scope.subCategoryId = 0;
-                $scope.hospitalId = 0;
-                $scope.sortId = 1;
-                $scope.cityId = 2;
+                var searchObject = $location.search();
+                console.log(searchObject);
+
+
+                $scope.parentCategoryId = $location.search().parentId ? $location.search().parentId : 0;
+                $scope.subCategoryId = $location.search().subId ? $location.search().subId : 0;
+                $scope.hospitalId = $location.search().hospitalId ? $location.search().hospitalId : 0;
+                $scope.sortId = $location.search().sortId ? $location.search().sortId : 1;
+                $scope.cityId = $location.search().cityId ? $location.search().cityId : 2;
+                $scope.searchInfo = $location.search().keywords ? $location.search().keywords : '';
+
 
                 $scope.refreshData = function () {
                     $scope.goods = GoodsSearch.query(
@@ -27,18 +30,28 @@ define(function (require, exports, module) {
                             cityId: $scope.cityId,
                             hospitalId: $scope.hospitalId,
                             parentCategoryId: $scope.parentCategoryId,
-                            categoryId: $scope.subCategoryId
+                            categoryId: $scope.subCategoryId,
+                            searchInfo: $scope.searchInfo
                         }
                     )
                 };
+
+                $scope.hospital = Hospital.query();
+                $scope.categories = Categories.query();
+                $scope.refreshData();
 
                 $scope.goBack = function () {
                     window.history.go(-1);
                 };
 
+                $scope.jumpTo = function(x) {
+                    window.location.href = encodeURI(x);
+                };
 
                 //类目设置模块开始
                 $scope.nowCategory = '全部类目';
+                $scope.nowCategory = $location.search().parentName ? $location.search().parentName : $scope.nowCategory;
+                $scope.nowCategory = $location.search().subName ? $location.search().subName : $scope.nowCategory;
                 $scope.chosenParentCategory = '';
                 $scope.setParentItems = function (parentCategory) {
                     $scope.chosenParentCategory = parentCategory.categoryName;
@@ -116,7 +129,7 @@ define(function (require, exports, module) {
                 //监控数据加载情况
                 $scope.loading = function () {
                     if($scope.goods.data==undefined){
-                        console.log('数据刷新了')
+                        console.log('数据刷新了');
                         timeout = $timeout(function() {
                             $scope.badConnection = 1;
                         }, 10000);
@@ -132,7 +145,6 @@ define(function (require, exports, module) {
                         $scope.loading();
                     }
                 }, true);
-
 
             }]);
     }
