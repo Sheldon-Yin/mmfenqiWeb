@@ -59,7 +59,8 @@ define(function (require, exports, module) {
                         if ($scope.payWay == 'alipay') {
                             var alipay = Alipay.query({
                                 orderId: res.data.orderId,
-                                downpayAmount: res.data.bill_amount
+                                downpayAmount: res.data.bill_amount,
+                                type: 1
                             });
                             alipay.$promise.then(function (result) {
                                 console.log(result);
@@ -80,7 +81,8 @@ define(function (require, exports, module) {
                         } else if ($scope.payWay == 'wxpay') {
                             var wxpay = Wxpay.query({
                                 orderId: res.data.orderId,
-                                downpayAmount: res.data.bill_amount
+                                downpayAmount: res.data.bill_amount,
+                                type: 1
                             });
                             wxpay.$promise.then(function (result) {
                                 console.log(result);

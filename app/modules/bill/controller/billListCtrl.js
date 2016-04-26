@@ -86,7 +86,6 @@ define(function (require, exports, module) {
                         }
                     };
 
-
                     $scope.goToPay = function () {
                         if ($scope.repaymentPlanIds.length > 0){
                             window.location.href = '#/bill/pay?repaymentPlanId=' + $scope.repaymentPlanIds;
@@ -96,7 +95,6 @@ define(function (require, exports, module) {
                     }
 
                 });
-
 
                 $scope.goBack = function () {
                     if (myBridge) {
@@ -109,6 +107,10 @@ define(function (require, exports, module) {
                 $scope.goToBillDetails = function(x) {
                     window.location.href = '#/bill/detail?billId='+ x.billId;
                 };
+
+                $scope.goToBillRecord = function () {
+                    window.location.href = '#/bill/record';
+                }
 
             }])
     }

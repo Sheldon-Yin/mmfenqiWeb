@@ -14,7 +14,6 @@ define(function (require, exports, module) {
                     window.history.back(-1);
                 };
 
-
                 if (myBridge) {
                     myBridge.callHandler('sendMessage', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {

@@ -23,5 +23,11 @@ define(function (require, exports, module) {
                     query: {method:'GET'}
                 })
             }]);
+        app.register.factory('MyBillRecord', ['$resource',
+            function ($resource) {
+                return $resource('/api/appinterface/query_repayment_record',{},{
+                    query: {method:'GET'}
+                })
+            }]);
     }
 });

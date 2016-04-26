@@ -6,8 +6,8 @@
 define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/orderService.js')(app);
-        app.register.controller('OrderCtrl', ['$scope', '$location', 'CreateOrder','OrderInfoForEnsure',
-            function ($scope, $location, CreateOrder,OrderInfoForEnsure) {
+        app.register.controller('OrderCtrl', ['$scope', '$location', 'CreateOrder', 'OrderInfoForEnsure',
+            function ($scope, $location, CreateOrder, OrderInfoForEnsure) {
 
                 if (myBridge) {
                     myBridge.callHandler('sendMessage', {type: 8, data: {}}, function (response) {
@@ -44,7 +44,7 @@ define(function (require, exports, module) {
                         $scope.selectedFirstRatio = $scope.firstRatio[0];
                         $scope.stages[0].isSelectedStage = true;
                         $scope.selectedStage = $scope.stages[0].staging;
-                        $scope.selectedConfigId =  $scope.stages[0].configId;
+                        $scope.selectedConfigId = $scope.stages[0].configId;
                         $scope.getFenqiMode();
                     }
                 });
@@ -69,29 +69,55 @@ define(function (require, exports, module) {
 
                 $scope.goToPay = function () {
                     if ($scope.selectedFirstRatio.ratio == 0) {
-                        window.location.href = '#/pay/allCredit'
-                    } else if ($scope.selectedFirstRatio.ratio != 0) {
 
                         $scope.ensure = OrderInfoForEnsure.query({
-                            appToken:$scope.appToken,
+                            appToken: $scope.appToken,
                             goodsId: $scope.info.goodsId,
                             orderAmount: $scope.info.orderAmount,
                             shoufuId: $scope.selectedFirstRatio.shoufuId,
-                            configId:$scope.selectedConfigId,
-                            storeGoodsCombinationId:$scope.info.storeGoodsCombinationId,
-                            goodsNumber:1
+                            configId: $scope.selectedConfigId,
+                            storeGoodsCombinationId: $scope.info.storeGoodsCombinationId,
+                            goodsNumber: 1
                         });
 
+                        document.getElementById('confirmDialogContainer').style.display = 'none';
+
                         $scope.ensure.$promise.then(function (res) {
-                            if (res.result == 0){
-                                window.location.href = encodeURI('#/pay/firstPay?appToken=' + $scope.appToken +'&goodsId='+$scope.info.goodsId+
-                                    '&orderAmount='+$scope.info.orderAmount+'&storeGoodsCombinationId='+$scope.info.storeGoodsCombinationId+
-                                    '&goodsNumber=1&shoufuId='+$scope.selectedFirstRatio.shoufuId + '&configId=' + $scope.selectedConfigId);
+                            if (res.result == 0) {
+                                window.location.href = encodeURI('#/pay/allCredit?appToken=' + $scope.appToken + '&goodsId=' + $scope.info.goodsId +
+                                    '&orderAmount=' + $scope.info.orderAmount + '&storeGoodsCombinationId=' + $scope.info.storeGoodsCombinationId +
+                                    '&goodsNumber=1&shoufuId=' + $scope.selectedFirstRatio.shoufuId + '&configId=' + $scope.selectedConfigId + '&telephone='+res.data.goodsConfirmInfoResponse.telphone);
                             } else {
-                                Toast(res.msg,2000);
+                                Toast(res.msg, 2000);
                             }
                         }).catch(function (error) {
-                            Toast('服务器返回错误',2000);
+                            Toast('服务器返回错误', 2000);
+                        });
+
+                    } else if ($scope.selectedFirstRatio.ratio != 0) {
+
+                        $scope.ensure = OrderInfoForEnsure.query({
+                            appToken: $scope.appToken,
+                            goodsId: $scope.info.goodsId,
+                            orderAmount: $scope.info.orderAmount,
+                            shoufuId: $scope.selectedFirstRatio.shoufuId,
+                            configId: $scope.selectedConfigId,
+                            storeGoodsCombinationId: $scope.info.storeGoodsCombinationId,
+                            goodsNumber: 1
+                        });
+
+                        document.getElementById('confirmDialogContainer').style.display = 'none';
+
+                        $scope.ensure.$promise.then(function (res) {
+                            if (res.result == 0) {
+                                window.location.href = encodeURI('#/pay/firstPay?appToken=' + $scope.appToken + '&goodsId=' + $scope.info.goodsId +
+                                    '&orderAmount=' + $scope.info.orderAmount + '&storeGoodsCombinationId=' + $scope.info.storeGoodsCombinationId +
+                                    '&goodsNumber=1&shoufuId=' + $scope.selectedFirstRatio.shoufuId + '&configId=' + $scope.selectedConfigId);
+                            } else {
+                                Toast(res.msg, 2000);
+                            }
+                        }).catch(function (error) {
+                            Toast('服务器返回错误', 2000);
                         });
                     }
                 };

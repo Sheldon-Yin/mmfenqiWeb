@@ -15,10 +15,10 @@
 
     <div class="row">
         <div class="col-xs-6 text-left" style="padding: 1rem">
-            何超颖
+            {{order.realNmae}}
         </div>
         <div class="col-xs-6 text-right app-blue-text" style="padding: 1rem;">
-            13067738382
+            {{order.telphone}}
         </div>
     </div>
 
@@ -29,19 +29,19 @@
 <div class="container">
     <div class="row app-project-container">
         <div class="col-xs-5">
-            <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
+            <img ng-src="{{order.herPic}}" width="100%" style="min-height: 5rem;">
         </div>
         <div class="col-xs-7 app-project-content">
             <div class="double-line index-hot-project-title">
-                【上海海薇玻尿酸注射整形】 海薇玻尿酸 限时不限购 疯狂变美丽节日盛典
+                {{order.hotItemName}}
             </div>
-            <div class="single-line app-project-hospital">
-                华山整形医院
-            </div>
+            <!--<div class="single-line app-project-hospital">-->
+                <!--华山整形医院-->
+            <!--</div>-->
             <div class="col-xs-12 text-left app-project-price-area">
                 <div class="col-xs-4 app-pink-text" style="padding: 0">
                     <span style="font-size: 1.2rem">￥</span><span
-                        style="font-size: 2rem;line-height: 2.6rem">887</span>
+                        style="font-size: 2rem;line-height: 2.6rem">{{order.presentPrice}}</span>
                 </div>
             </div>
         </div>

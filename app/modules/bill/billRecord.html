@@ -12,32 +12,17 @@
 
     <!--for one-->
     <div style="background-color: #FFFFFF;">
-        <div class="container" style="font-size: 1.5rem">
-            <div class="row text-center" style="padding:1rem 0" ng-click="toggleShowHide(1)">
-                <div class="col-xs-2">
-                    4月
-                </div>
-                <div class="col-xs-7">
-                    共还款630.29元
-                </div>
-                <div class="col-xs-3 text-center" style="padding: 0;">
-                    <i class="fa fa-angle-down fa-lg"></i>
-                </div>
-            </div>
-            <hr class="app-bootstrap-hr">
-        </div>
-        <div class="container" ng-show="showHiddenList[1]" style="background-color: #FCFCFC" >
-            <!--隐藏区域-->
+        <div class="container" style="background-color: #FCFCFC" ng-repeat="x in billRecord.data.repaymentRecordResponse">
             <div class="row">
                 <div class="col-xs-8" style="font-size: 1.4rem;line-height: 2.4rem">
-                    （第1/3期） 伊婉玻尿酸2
+                    （第{{x.repayment_staging}}/{{x.staging}}期） {{x.goodsName}}
                 </div>
                 <div class="col-xs-4 text-right" style="font-size: 0.6rem">
                     <div>
-                        ￥124.44
+                        ￥{{x.repayment_amount}}
                     </div>
                     <div>
-                        2016-04-08
+                        {{x.repayment_date}}
                     </div>
                 </div>
 
