@@ -15,7 +15,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-6" style="line-height: 2.7rem;font-size: 1.6rem;padding-top: 1rem">
-                    伊婉玻尿酸
+                    {{bill.data.billDetailResponse.goodsName}}
                 </div>
                 <div class="col-xs-6 text-right">
                     <img src="modules/bill/img/bill-using.png" style="width: 2.4rem">
@@ -23,17 +23,17 @@
             </div>
             <div class="row" style="padding: 1rem 0">
                 <div class="col-xs-6">
-                    订单编号：xxxxxx
+                    订单编号：{{bill.data.billDetailResponse.orderSn}}
                 </div>
                 <div class="col-xs-6 text-right">
-                    2015-04-08
+                    {{bill.data.billDetailResponse.order_createTime}}
                 </div>
             </div>
             <hr class="app-bootstrap-hr">
             <div class="row text-center" style="padding: 1rem">
                 <div class="col-xs-4">
                     <div class="app-pink-text">
-                        ￥2375.44
+                        ￥{{bill.data.billDetailResponse.totalAmount}}
                     </div>
                     <div>
                         分期总额
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-xs-4">
                     <div class="app-blue-text">
-                        24
+                        {{bill.data.billDetailResponse.staging}}
                     </div>
                     <div>
                         分期数
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-xs-4">
                     <div class="app-pink-text">
-                        ￥15.69
+                        ￥{{bill.data.billDetailResponse.monthService}}
                     </div>
                     <div>
                         每月服务费
@@ -58,62 +58,51 @@
             </div>
             <hr class="app-bootstrap-hr">
         </div>
-    </div>
-
-    <!--for one-->
-    <div class="container">
-        <div class="row" style="background-color: #FFFFFF;padding: 1rem 0">
-            <div class="col-xs-2">
-                <img src="modules/bill/img/bill-checked.png" style="width: 1.4rem;margin-top: -0.2rem">
-            </div>
-            <div class="col-xs-3" style="padding: 0">
-                ￥448.94
-            </div>
-            <div class="col-xs-3" style="padding: 0">
-                (1/6)期
-            </div>
-            <div class="col-xs-4" style="padding: 0">2016-04-12待付</div>
+        <!--for one-->
+        <div class="container" ng-repeat="x in bill.data.billDetailResponse.repaymentList">
+            <label style="display: block">
+                <input type="checkbox" style="display: none" ng-init="x.isChecked=false" ng-model="x.isChecked"
+                       ng-change="countPrice(x)">
+                <div class="row" style="background-color: #FFFFFF;padding: 1rem 0">
+                    <div class="col-xs-2">
+                        <img style="width: 1.6rem;" src="modules/bill/img/bill-checked.png" ng-show="x.isChecked" ng-if="x.repayment_status!=1">
+                        <img style="width: 1.6rem;" src="modules/bill/img/bill-unchecked.png" ng-hide="x.isChecked" ng-if="x.repayment_status!=1">
+                    </div>
+                    <div class="col-xs-3" style="padding: 0">
+                        ￥{{x.repaymentAmount}}
+                    </div>
+                    <div class="col-xs-3" style="padding: 0">
+                        ({{x.repayment_staging}}/{{bill.data.billDetailResponse.repaymentList.length}})期
+                    </div>
+                    <div class="col-xs-4" style="padding: 0">{{x.repayment_date}}待付</div>
+                </div>
+            </label>
+            <hr class="app-bootstrap-hr">
         </div>
-        <hr class="app-bootstrap-hr">
-    </div>
-    <!--for one-->
-    <div class="container">
-        <div class="row" style="background-color: #FFFFFF;padding: 1rem 0">
-            <div class="col-xs-2">
-                <img src="modules/bill/img/bill-checked.png" style="width: 1.4rem;margin-top: -0.2rem">
-            </div>
-            <div class="col-xs-3" style="padding: 0">
-                ￥448.94
-            </div>
-            <div class="col-xs-3" style="padding: 0">
-                (1/6)期
-            </div>
-            <div class="col-xs-4" style="padding: 0">2016-04-12待付</div>
-        </div>
-        <hr class="app-bootstrap-hr">
     </div>
 
     <div class="app-pink-bottom-bar">
 
         <div style="width: 60%;float: left;background-color: #FFFFFF;color: #000;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: left"
-             ng-click="showConfirm()">
+             ng-click="selectAll()">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-2">
-                        <img src="modules/bill/img/bill-checked.png" style="width: 1.6rem;">
+                        <img style="width: 1.6rem;" src="modules/bill/img/bill-checked.png" ng-show="isSelectAll">
+                        <img style="width: 1.6rem;" src="modules/bill/img/bill-unchecked.png" ng-hide="isSelectAll">
                     </div>
                     <div class="col-xs-4">
                         全选
                     </div>
                     <div class="col-xs-6">
-                        ￥448.94
+                        ￥{{selectedPrice}}
                     </div>
                 </div>
             </div>
         </div>
 
         <div style="width: 40%;float: left;background-color: #fb1787;color: #FFFFFF;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: center"
-             ng-click="showConfirm()">
+             ng-click="goToPay()">
             还款
         </div>
 

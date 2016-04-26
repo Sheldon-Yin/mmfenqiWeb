@@ -40,6 +40,13 @@ define(function (require, exports, module) {
                     console.log(3);
                     var slideDown = document.getElementById("slideDown");
                     slideDown.innerHTML = '<i class="fa fa-check fa-lg" style="margin-right: 1rem"></i><span>刷新成功</span>';
+                    setTimeout(slideDownStep4(),500);
+                }
+
+                //有时候直接弹回
+                function slideDownStep4() {
+                    var slideDown = document.getElementById('slideDown');
+                    slideDown.style.display = 'none';
                 }
 
                 //下滑刷新调用
@@ -87,10 +94,10 @@ define(function (require, exports, module) {
                             slideDownStep2();
                             //刷新成功则
                             //模拟刷新成功进入第三步
-                        } else if (document.body.scrollTop < 5 && _end < -30) {
+                        } else if (document.body.scrollTop < 5 && _end > -50) {
                             console.log("左滑或上滑touchend " + _end);
                             console.log(document.body.scrollTop + '位置touchend');
-                            slideDownStep3();
+                            slideDownStep4();
                         } else {
                             setTimeout(slideDownStep3(), 500);
                         }
@@ -161,6 +168,11 @@ define(function (require, exports, module) {
                         }
                     }
                 };
+
+                $scope.jumpTo = function (x) {
+                    window.location.href = x;
+                }
+
             }]);
     }
 });

@@ -26,7 +26,7 @@
         <div style="height: 36%;background-color: white">
             <div class="col-xs-12 order-list-sort-bar-subject">
                 <div style="padding-top: 1rem;padding-left: 1rem" ng-repeat="x in projects"
-                     ng-click="setItems(x.project)">
+                     ng-click="setItems(x)">
                     {{x.project}}
                     <hr class="app-bootstrap-hr-no-match" style="margin-top: 1rem;margin-left: -1rem">
                 </div>
@@ -40,16 +40,16 @@
 </div>
 
 
-<div ng-click="goToOrderDetail()" ng-repeat="x in data.data.myOrderResponse">
+<div ng-click="goToOrderDetail(x)" ng-repeat="x in data.data.myOrderResponse">
 
     <div class="app-bootstrap-grey-bold-hr"></div>
     <div class="container">
         <div class="row app-padding-one">
-            <div class="col-xs-6">
-                <span>订单号:{{x.orderId}}</span>
+            <div class="col-xs-10">
+                <span>订单号:{{x.orderSn}}</span>
             </div>
-            <div class="col-xs-6 text-right">
-                {{x.orderStatus}}
+            <div class="col-xs-2 text-right" style="padding-left: 0">
+                {{x.orderStatus | orderStatus}}
             </div>
         </div>
         <hr class="app-bootstrap-hr-no-match">

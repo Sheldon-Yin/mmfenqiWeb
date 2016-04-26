@@ -57,6 +57,7 @@ define(function (require, exports, module) {
                     $scope.chosenParentCategory = parentCategory.categoryName;
                     $scope.subCategories = parentCategory.categoryList;
                     $scope.parentCategoryId = parentCategory.categoryId;
+                    $scope.subCategoryId = 0;
                 };
 
                 $scope.setAllParentCategories = function () {
@@ -65,6 +66,7 @@ define(function (require, exports, module) {
                     $scope.nowCategory = '全部类目';
                     $scope.selectState = 0;
                     $scope.parentCategoryId = 0;
+                    $scope.subCategoryId = 0;
                     $scope.refreshData();
                 };
 

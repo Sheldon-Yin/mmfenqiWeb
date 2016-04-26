@@ -4,3 +4,24 @@
     margin-top: 1rem;
     border-radius: 0.5rem;
 }
+
+.order-pay-white-radius-input {
+    background-color: #FFFFFF;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+}
+
+.order-pay-choose-pay-way-radio-area {
+    bottom: 0;
+    position: fixed;
+    background-color: #FFFFFF;
+    width: 100%
+}
+
+.order-pay-choose-pay-way-dialog-row {
+    padding: 2rem;
+}
+
+.order-pay-choose-pay-way-dialog-row > div > img {
+    width: 2rem;
+}

@@ -42,7 +42,18 @@ define(function (require, exports, module) {
                     $scope.defaultPrice = response.data.goodsDetailsResponse.goodsItem.presentPrice;
                     $scope.type = response.data.goodsDetailsResponse.combinationTypeInfoList;
                     $scope.skuData = response.data.goodsDetailsResponse.goodsCombinationExtMap;
-                    console.log($scope.skuData);
+
+
+                    $scope.goToOrder = function () {
+                        if (!!$scope.skuData && !!$scope.storeId){
+                            window.location.href = '#/order?orderAmount='+$scope.price+'&goodsId='+goodsId.goodsId+'&storeGoodsCombinationId='+$scope.storeId;
+                        }else if ($scope.type.length == 0){
+                            window.location.href = '#/order?orderAmount='+ $scope.defaultPrice +'&goodsId='+goodsId.goodsId;
+                        }else {
+                            Toast('请选择完整的商品信息',2000);
+                        }
+                    }
+
                 });
 
                 $scope.goBack = function () {
@@ -81,16 +92,6 @@ define(function (require, exports, module) {
                     console.log(result);
                 };
 
-
-                $scope.goToOrder = function () {
-                    if (!!$scope.storeId){
-                        window.location.href = '#/order?orderAmount='+$scope.price+'&goodsId='+goodsId.goodsId+'&storeGoodsCombinationId='+$scope.storeId;
-                    }else if ($scope.skuData.length == 0 || !$scope.skuData.length){
-                        window.location.href = '#/order?orderAmount='+ $scope.defaultPrice +'&goodsId='+goodsId.goodsId;
-                    }else {
-                        Toast('请选择完整的商品信息',2000);
-                    }
-                }
 
             }])
     }

@@ -9,17 +9,17 @@
 </div>
 
 <div style="height: 100%;background-color: #ECECEC">
-    <img src="modules/orderList/img/background.png" style="width: 80%;top: 10%;left:10%;position: absolute">
+    <img src="modules/orderList/img/background.png" style="width: 80%;top: 10%;left:10%;height:75%;position: absolute">
 
     <div style="position: absolute;width: 80%;left: 10%;top: 14%">
         <div class="container">
             <div class="row">
                 <div class="col-xs-6 text-center">
-                    <div style="font-size: 1.6rem">
-                        李沫沫
+                    <div style="font-size: 1.6rem" class="single-line">
+                        {{orderDetail.data.orderDetailResponse.userName}}
                     </div>
                     <div class="app-blue-text app-padding-one" style="font-size: 1.4rem">
-                        15857111038
+                        {{orderDetail.data.orderDetailResponse.telphone}}
                     </div>
                 </div>
                 <div class="col-xs-6 text-center">
@@ -27,7 +27,7 @@
                         状态
                     </div>
                     <div class="app-blue-text app-padding-one" style="font-size: 1.4rem">
-                        已完成
+                        {{orderDetail.data.orderDetailResponse.orderStatus | orderStatus}}
                     </div>
                 </div>
             </div>
@@ -38,44 +38,160 @@
 
         <div class="container">
 
-            <div class="row app-project-container">
+            <div class="row app-project-container" style="padding-top: 0">
                 <div class="col-xs-4">
                     <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
                 </div>
                 <div class="col-xs-8 app-project-content">
                     <div class="double-line index-hot-project-title">
-                        【上海海薇玻尿酸注射整形】 海薇玻尿酸 限时不限购 疯狂变美丽节日盛典
+                        {{orderDetail.data.orderDetailResponse.goodsDescription}}
                     </div>
                     <div class="col-xs-12 text-right app-project-price-area" style="padding-top: 0.3rem">
-                        <div><span>订单号：883-52{{}}</span></div>
-                        <div><span>下单时间：2016-04-05 15:22:22{{}}</span></div>
+                        <div>订单号：{{orderDetail.data.orderDetailResponse.orderSn}}</div>
+                        <div><span>下单时间：{{orderDetail.data.orderDetailResponse.createTime}}</span></div>
                     </div>
                 </div>
             </div>
 
-            <div class="row text-center app-padding-one" style="margin-top: 1rem">
+            <div class="row text-center app-padding-one">
                 <div class="col-xs-6">
-                    首付：<span class="app-blue-text">￥290.0</span>
+                    首付：<span class="app-blue-text">￥{{orderDetail.data.orderDetailResponse.downpay_amount}}</span>
                 </div>
                 <div class="col-xs-6">
-                    信用支付<span class="app-blue-text">￥2430</span>
+                    信用支付<span class="app-blue-text">￥{{orderDetail.data.orderDetailResponse.credit_payment}}</span>
                 </div>
             </div>
 
-            <div class="row text-center app-pink-text app-padding-one" style="font-size: 2rem;padding-top: 2rem">
-                订单总计：￥2799.99元
+            <div class="row text-left" style="padding-bottom: 0.5rem">
+                <div class="col-xs-6">
+                    查看合同
+                </div>
+                <div class="col-xs-6 text-right">
+                    <i class="fa fa-angle-right"></i>
+                </div>
+            </div>
+            <hr class="app-bootstrap-hr-no-match">
+            <div class="row text-left" style="padding-top: 0.5rem">
+                <div class="col-xs-6">
+                    查看合同
+                </div>
+                <div class="col-xs-6 text-right">
+                    <i class="fa fa-angle-right"></i>
+                </div>
+            </div>
+
+            <div class="row text-center app-pink-text app-padding-one" style="font-size: 2rem">
+                订单总计：￥{{orderDetail.data.orderDetailResponse.orderPrice}}元
             </div>
 
         </div>
     </div>
 
-    <div style="position: absolute;width: 76%;left: 12%;bottom: 5%">
-        <div class="order-pink-radius-button text-center app-padding-one">
+
+
+
+    <!--//1，待支付-取消订单-支付-->
+    <div style="position: absolute;width: 76%;left: 12%;bottom: 5%" ng-if="orderDetail.data.orderDetailResponse.orderStatus==1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6" style="padding-left: 0">
+                    <div class="order-pink-radius-button text-center app-padding-one" style="background-color: #F2AACF" ng-click="cancelOrder()">
+                        取消订单
+                    </div>
+                </div>
+                <div class="col-xs-6" style="padding-right: 0">
+                    <div class="order-pink-radius-button text-center app-padding-one" ng-click="choosePayWay()">
+                        支 付
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//2，待完成-取消订单-->
+    <div style="position: absolute;width: 76%;left: 12%;bottom: 5%" ng-if="orderDetail.data.orderDetailResponse.orderStatus==2">
+        <div class="order-pink-radius-button text-center app-padding-one" style="background-color: #F2AACF" ng-click="cancelOrder()">
+            取消订单
+        </div>
+    </div>
+    <!--//3，已完成-提前还款-进入账单-->
+    <div style="position: absolute;width: 76%;left: 12%;bottom: 5%" ng-if="orderDetail.data.orderDetailResponse.orderStatus==3">
+        <div class="order-pink-radius-button text-center app-padding-one" ng-click="goToBill()">
             提前还款
         </div>
     </div>
-
+    <!--4，已取消-重新购买-->
+    <!--6，退款成功-重新购买-->
+    <div style="position: absolute;width: 76%;left: 12%;bottom: 5%" ng-if="orderDetail.data.orderDetailResponse.orderStatus==4 || orderDetail.data.orderDetailResponse.orderStatus==5">
+        <div class="order-pink-radius-button text-center app-padding-one" ng-click="goToGoods()">
+            重新购买
+        </div>
+    </div>
+    <!--5，退款审核中-无-->
 
 </div>
 
 
+
+
+
+<!--确认支付浮层弹出窗口-->
+<div id="choosePayWayDialogContainer" class="app-grey-dialog-container">
+    <div class="order-pay-choose-pay-way-radio-area">
+        <div class="container" style="margin-bottom: 4.8rem">
+
+            <div class="row">
+                <div class="col-xs-9 app-padding-one text-left" style="font-size: 1.6rem;
+                            line-height: 2.5rem">
+                    使用第三方支付平台
+                </div>
+                <div class="col-xs-3 text-right app-padding-one app-pink-text" ng-click="closeChoosePayWayDialog()">
+                    <img src="modules/pay/img/cancel.png"
+                         style="width:1.6rem;padding-top: 0.5rem">
+                </div>
+            </div>
+
+            <hr class="app-bootstrap-hr">
+
+            <form>
+
+                <label style="display: block">
+                    <div class="row order-pay-choose-pay-way-dialog-row">
+                        <div class="col-xs-6">
+                            <img src="modules/pay/img/alipay.png" style="margin-right: 1rem">支付宝
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <input ng-model="payWay" type="radio" ng-change="setAliPay()"
+                                   value="alipay" checked="checked" style="display: none">
+                            <img ng-src="{{alipayImg}}">
+                        </div>
+                    </div>
+                </label>
+
+                <hr class="app-bootstrap-hr">
+
+                <label style="display: block">
+                    <div class="row order-pay-choose-pay-way-dialog-row">
+                        <div class="col-xs-6">
+                            <img src="modules/pay/img/wxpay.png" style="margin-right: 1rem">微信支付
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <input ng-model="payWay" type="radio" ng-change="setWxPay()"
+                                   value="wxpay" style="display: none">
+                            <img ng-src="{{wxpayImg}}">
+                        </div>
+                    </div>
+                </label>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="app-pink-bottom-bar" ng-click="goToPay()">
+        <div style="width: 100%;float: left;background-color: #fb1787;color: #FFFFFF;margin-top: -0.6rem;height: 3.6rem;line-height: 3.6rem;text-align: center">
+            立即支付
+        </div>
+        <div style="width: 100%;float: left;background-color: #fb1787;color: #FFFFFF;height: 1.2rem;line-height:0;text-align: center;font-size: 0.7rem">
+            （支付：￥{{orderDetail.data.orderDetailResponse.downpay_amount}}）
+        </div>
+    </div>
+</div>

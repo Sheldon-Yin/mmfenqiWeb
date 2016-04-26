@@ -15,45 +15,50 @@
     <div style="background-color: #FFFFFF;padding: 1rem 0" ng-repeat="x in bill.data.myBillResponse">
         <div class="container">
             <div class="row">
-                <div class="col-xs-2" style="line-height: 2.7rem">
-                    <img src="modules/bill/img/bill-checked.png" style="width: 1.6rem;">
-                </div>
-                <div class="col-xs-7">
-                    <div>
-                        距还款日还有 {{x.to_repayment_date}} 天
+                <label style="display: block">
+                    <input type="checkbox" style="display: none" ng-init="x.isChecked=false" ng-model="x.isChecked" ng-change="countPrice(x)">
+                    <div class="col-xs-2" style="line-height: 2.7rem">
+                        <img style="width: 1.6rem;" src="modules/bill/img/bill-checked.png" ng-show="x.isChecked">
+                        <img style="width: 1.6rem;" src="modules/bill/img/bill-unchecked.png" ng-hide="x.isChecked">
                     </div>
-                    <div>
-                        （第{{x.repayment_staging}}/{{x.staging}}期） {{x.goodsName}}
+                </label>
+                <label style="display: block" ng-click="goToBillDetails(x)">
+                    <div class="col-xs-7">
+                        <div>
+                            距还款日还有 {{x.to_repayment_date}} 天
+                        </div>
+                        <div>
+                            （第{{x.repayment_staging}}/{{x.staging}}期） {{x.goodsName}}
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-3 text-center" style="padding: 0;line-height: 3rem">
-                    <span>￥{{x.payAmount}}</span><span class="fa fa-angle-right"></span>
-                </div>
+                    <div class="col-xs-3 text-center" style="padding: 0;line-height: 3rem">
+                        <span>￥{{x.payAmount}}</span><span class="fa fa-angle-right" style="padding: 1rem"></span>
+                    </div>
+                </label>
             </div>
         </div>
     </div>
 
     <div class="app-pink-bottom-bar">
-
         <div style="width: 60%;float: left;background-color: #FFFFFF;color: #000;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: left"
-             ng-click="showConfirm()">
+             ng-click="selectAll()">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-2">
-                        <img src="modules/bill/img/bill-checked.png" style="width: 1.6rem;">
+                        <img style="width: 1.6rem;" src="modules/bill/img/bill-checked.png" ng-show="isSelectAll">
+                        <img style="width: 1.6rem;" src="modules/bill/img/bill-unchecked.png" ng-hide="isSelectAll">
                     </div>
                     <div class="col-xs-4">
                         全选
                     </div>
                     <div class="col-xs-6">
-                        ￥448.94
+                        ￥{{selectedPrice}}
                     </div>
                 </div>
             </div>
         </div>
-
         <div style="width: 40%;float: left;background-color: #fb1787;color: #FFFFFF;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: center"
-             ng-click="showConfirm()">
+             ng-click="goToPay()">
             还款
         </div>
 
