@@ -26,10 +26,12 @@ define(function (require, exports, module) {
                             console.log($scope.billRecord);
                             $scope.billRecord.$promise.then(function (res) {
                                 if (res.result != 0){
-                                    Toast(res.msg, 3000)
+                                    Toast(response.msg,3000);
+                                    $scope.loadError = true;
                                 }
                             }).catch(function (error) {
                                 Toast('服务器返回失败',3000);
+                                $scope.loadError = true;
                             })
                         });
                     })

@@ -10,9 +10,9 @@ define(function (require, exports, module) {
         require('services/wxpayService.js')(app);
         app.register.controller('OrderDetailCtrl', ['$scope','$location','OrderDetails','Alipay','Wxpay','CancelOrder',
             function ($scope,$location,OrderDetails,Alipay,Wxpay,CancelOrder) {
-                $scope.goBack = function () {
-                    window.history.back(-1);
-                };
+                //$scope.goBack = function () {
+                //    window.history.back(-1);
+                //};
 
                 if (myBridge) {
                     myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
@@ -29,9 +29,10 @@ define(function (require, exports, module) {
                 });
 
                 $scope.orderDetail.$promise.then(function (res) {
-                    if(res.result!=0){
-                        Toast(res.msg, 2000);
-                        return;
+                    if (res.result != 0){
+                        Toast(response.msg,3000);
+                        $scope.loadError = true;
+                        return
                     }
 
                     console.log(res);
@@ -43,7 +44,8 @@ define(function (require, exports, module) {
                                 type: 2, data: {
                                     url: jumpUrl,
                                     leftNavItems: [1],
-                                    title: '订单详情'
+                                    title: '商品详情',
+                                    rightNavItems:[0]
                                 }
                             }, function (response) {
                                 //todo custom
@@ -58,7 +60,7 @@ define(function (require, exports, module) {
                                 type: 2, data: {
                                     url: jumpUrl,
                                     leftNavItems: [1],
-                                    title: '订单详情'
+                                    title: '账单详情'
                                 }
                             }, function (response) {
                                 //todo custom
@@ -124,8 +126,44 @@ define(function (require, exports, module) {
                         })
                     };
 
+                    $scope.choosePayWay = function () {
+                        if (res.data.orderDetailResponse.downpay_amount>0){
+                            var choosePayWayContainer = document.getElementById('choosePayWayDialogContainer');
+                            choosePayWayContainer.style.display = 'block';
+                        }else {
+                            if (myBridge) {
+                                var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/pay/allCredit?orderId='+res.data.OrderDetailResponse.orderId+'&telephone='+res.data.OrderDetailResponse.telphone);
+                                myBridge.callHandler('sendMessageToApp', {
+                                    type: 2, data: {
+                                        url: jumpUrl,
+                                        title: '信用额度支付',
+                                        leftNavItems: [1]
+                                    }
+                                }, function (response) {
+                                    //todo custom
+                                });
+                            }
+                        }
+                    };
+
+                    $scope.closeChoosePayWayDialog = function () {
+                        document.getElementById('choosePayWayDialogContainer').style.display = 'none';
+                    };
+
+                    $scope.setAliPay = function () {
+                        $scope.alipayImg = checkedImgSrc;
+                        $scope.wxpayImg = uncheckedImgSrc;
+
+                    };
+
+                    $scope.setWxPay = function () {
+                        $scope.alipayImg = uncheckedImgSrc;
+                        $scope.wxpayImg = checkedImgSrc;
+                    };
+
                 }).catch(function (error) {
                     Toast('服务器错误，请重新进入页面再试一次',2000);
+                    $scope.loadError = true;
                 });
 
                 var checkedImgSrc = 'modules/pay/img/checked.png';
@@ -133,26 +171,6 @@ define(function (require, exports, module) {
                 $scope.alipayImg = checkedImgSrc;
                 $scope.wxpayImg = uncheckedImgSrc;
                 $scope.payWay = 'alipay';
-
-                $scope.choosePayWay = function () {
-                    var choosePayWayContainer = document.getElementById('choosePayWayDialogContainer');
-                    choosePayWayContainer.style.display = 'block';
-                };
-
-                $scope.closeChoosePayWayDialog = function () {
-                    document.getElementById('choosePayWayDialogContainer').style.display = 'none';
-                };
-
-                $scope.setAliPay = function () {
-                    $scope.alipayImg = checkedImgSrc;
-                    $scope.wxpayImg = uncheckedImgSrc;
-
-                };
-
-                $scope.setWxPay = function () {
-                    $scope.alipayImg = uncheckedImgSrc;
-                    $scope.wxpayImg = checkedImgSrc;
-                };
 
             }])
     }

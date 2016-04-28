@@ -7,7 +7,18 @@
     <!--</div>-->
 <!--</div>-->
 
+<div style="width: 100%;position: fixed;height:100%;left: 0;z-index:999" ng-if="!categories.data  && !loadError">
+    <div style="top: 45%;position: absolute;width: 100%;left: 45%">
+        <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 10%">
+    </div>
+    <div style="top: 45%;position: absolute;width: 100%;left: 45%">
+        <img src="img/loading/loadingInner.png" style="width: 10%">
+    </div>
+</div>
+
 <div class="container">
+
+
 
     <div class="row text-center" style="color: #333333">
         <!--项目分类-->

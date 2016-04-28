@@ -6,8 +6,8 @@
 define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/billService.js')(app);
-        app.register.controller('BillListCtrl', ['$scope', 'MyBillList','$location',
-            function ($scope, MyBillList,$location) {
+        app.register.controller('BillListCtrl', ['$scope', 'MyBillList', '$location',
+            function ($scope, MyBillList, $location) {
 
                 if (myBridge) {
                     myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
@@ -25,8 +25,8 @@ define(function (require, exports, module) {
                 });
                 console.log($scope.bill);
                 $scope.bill.$promise.then(function (res) {
-                    if(res.result==0){
-                        Toast('获取账单成功',3000);
+                    if (res.result == 0) {
+                        Toast('获取账单成功', 3000);
                         $scope.isSelectAll = false;
                         $scope.couldSelect = 0;
                         $scope.hasSelect = 0;
@@ -106,12 +106,14 @@ define(function (require, exports, module) {
                                 Toast('请选择要付款的项目', 2000);
                             }
                         }
-                    }else {
-                        Toast(res.msg,2000)
+                    } else {
+                        Toast(response.msg, 3000);
+                        $scope.loadError = true;
                     }
 
                 }).catch(function (error) {
                     Toast(error, 2000);
+                    $scope.loadError = true;
                 });
 
                 $scope.goBack = function () {

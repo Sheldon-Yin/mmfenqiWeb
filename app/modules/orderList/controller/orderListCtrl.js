@@ -24,14 +24,15 @@ define(function (require, exports, module) {
 
                 $scope.data = QueryMyOrder.query({appToken: $scope.appToken});
                 $scope.data.$promise.then(function (res) {
-                    if (res.result==0){
-                        Toast('成功获取订单信息',2000);
-                        //Toast($scope.appToken,2000)
+                    if (res.result != 0){
+                        Toast(response.msg,3000);
+                        $scope.loadError = true;
                     }else {
                         Toast('服务器返回错误',2020);
                     }
                 }).catch(function (error) {
                     Toast(error,2000);
+                    $scope.loadError = true;
                 });
 
                 $scope.goBack = function () {

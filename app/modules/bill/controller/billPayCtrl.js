@@ -52,9 +52,10 @@ define(function (require, exports, module) {
                 });
 
                 $scope.payment.$promise.then(function (res) {
-                    if(res.result!=0){
-                        Toast(res.msg, 2000);
-                        return;
+                    if (res.result != 0){
+                        Toast(response.msg,3000);
+                        $scope.loadError = true;
+                        return
                     }
                     console.log(res);
                     $scope.goToPay = function () {
@@ -107,6 +108,7 @@ define(function (require, exports, module) {
 
                 }).catch(function (error) {
                     Toast('没有返回数据',2000);
+                    $scope.loadError = true;
                 });
 
 

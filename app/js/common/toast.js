@@ -2,6 +2,7 @@
  * Created by sheldon on 2016/3/28.
  */
 
+"use strict";
 
 function Toast(msg,duration){
     duration=isNaN(duration)?3000:duration;

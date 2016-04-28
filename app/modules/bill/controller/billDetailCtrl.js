@@ -33,7 +33,11 @@ define(function (require, exports, module) {
                     billId: $location.search().billId
                 });
                 $scope.bill.$promise.then(function (res) {
-
+                    if (res.result != 0) {
+                        Toast(res.msg, 3000);
+                        $scope.loadError = true;
+                        return
+                    }
                     $scope.isSelectAll = false;
                     $scope.couldSelect = 0;
                     $scope.hasSelect = 0;
@@ -95,23 +99,25 @@ define(function (require, exports, module) {
                     };
 
                     $scope.goToPay = function () {
-                        if ($scope.repaymentPlanIds.length > 0){
+                        if ($scope.repaymentPlanIds.length > 0) {
                             if (myBridge) {
                                 var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/bill/pay?repaymentPlanId=' + $scope.repaymentPlanIds);
                                 myBridge.callHandler('sendMessageToApp', {
                                     type: 2, data: {
                                         url: jumpUrl,
                                         leftNavItems: [1],
-                                        title:'账单还款'
+                                        title: '账单还款'
                                     }
                                 }, function (response) {
                                     //todo custom
                                 });
                             }
-                        }else {
-                            Toast('请选择要付款的项目',2000);
+                        } else {
+                            Toast('请选择要付款的项目', 2000);
                         }
                     }
+                }).catch(function (error) {
+                    $scope.loadError = true;
                 });
 
                 console.log($scope.bill);

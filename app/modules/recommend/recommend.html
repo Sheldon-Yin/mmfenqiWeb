@@ -1,17 +1,26 @@
+<div style="width: 100%;position: fixed;height:100%;left: 0;z-index: 999" ng-if="!data.data  && !loadError">
+    <div style="top: 50%;position: absolute;width: 100%;left: 45%;">
+        <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 10%">
+    </div>
+    <div style="top: 50%;position: absolute;width: 100%;left: 45%;">
+        <img src="img/loading/loadingInner.png" style="width: 10%">
+    </div>
+</div>
+
 <div class="container">
 
-    <!--App bar For GoodsList-->
-    <div class="row app-bar text-center">
-        <div class="col-xs-2" style="width: 15%" ng-click="goBack()"><i class="fa fa-angle-left fa-2x"></i></div>
-        <div class="col-xs-8 app-title-bar">精品推荐</div>
-    </div>
+    <!--&lt;!&ndash;App bar For GoodsList&ndash;&gt;-->
+    <!--<div class="row app-bar text-center">-->
+        <!--<div class="col-xs-2" style="width: 15%" ng-click="goBack()"><i class="fa fa-angle-left fa-2x"></i></div>-->
+        <!--<div class="col-xs-8 app-title-bar">精品推荐</div>-->
+    <!--</div>-->
 
-    <div class="row" style="margin-top: 3.6rem">
+    <div class="row">
         <img width="100%" src="modules/recommend/img/templete.png">
         <div class="app-bootstrap-grey-bold-hr"></div>
     </div>
 
-    <div ng-repeat="x in data.data.qoutiqueListResponse.goodsItemList" ng-click="jumpToGoods(x)">
+    <div ng-repeat="x in data.data.qoutiqueListResponse.goodsItemList" ng-click="jumpToGoods('#/goods?goodsId='+x.goodsHerf)">
         <div class="row app-project-container">
             <div class="col-xs-5">
                 <img ng-src="{{x.goodsHerPic}}" style="width: 100%;min-height: 5rem">

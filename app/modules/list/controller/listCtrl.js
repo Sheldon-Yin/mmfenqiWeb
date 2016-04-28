@@ -20,7 +20,8 @@ define(function (require, exports, module) {
                 $scope.hospitalId = $location.search().hospitalId ? $location.search().hospitalId : 0;
                 $scope.sortId = $location.search().sortId ? $location.search().sortId : 1;
                 $scope.cityId = $location.search().cityId ? $location.search().cityId : 2;
-                $scope.searchInfo = $location.search().keywords ? $location.search().keywords : '';
+                $scope.searchInfo = $location.search().keyword ? $location.search().keyword : '';
+                $scope.cityName = $location.search().cityName ? $location.search().cityName : '';
 
 
                 $scope.refreshData = function () {
@@ -31,7 +32,8 @@ define(function (require, exports, module) {
                             hospitalId: $scope.hospitalId,
                             parentCategoryId: $scope.parentCategoryId,
                             categoryId: $scope.subCategoryId,
-                            searchInfo: $scope.searchInfo
+                            searchInfo: $scope.searchInfo,
+                            cityName: $scope.cityName
                         }
                     )
                 };
@@ -40,12 +42,24 @@ define(function (require, exports, module) {
                 $scope.categories = Categories.query();
                 $scope.refreshData();
 
-                $scope.goBack = function () {
-                    window.history.go(-1);
-                };
+                //$scope.goBack = function () {
+                //    window.history.go(-1);
+                //};
 
-                $scope.jumpTo = function(x) {
-                    window.location.href = encodeURI(x);
+                $scope.jumpToGoods = function (x) {
+                    if (myBridge) {
+                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + x);
+                        myBridge.callHandler('sendMessageToApp', {
+                            type: 2, data: {
+                                url: jumpUrl,
+                                title: '商品详情',
+                                leftNavItems: [1],
+                                rightNavItems: [0]
+                            }
+                        }, function (response) {
+                            //todo custom
+                        });
+                    }
                 };
 
                 //类目设置模块开始
@@ -147,6 +161,22 @@ define(function (require, exports, module) {
                         $scope.loading();
                     }
                 }, true);
+
+
+                if (myBridge) {
+                    myBridge.registerHandler('sendMessageToHTML', function (message, callback) {
+                        var jumpUrl;
+                        if (message.type==10001) {
+                            jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/list?keyword='+message.data+'&cityName='+$scope.cityName);
+                            window.location.href= jumpUrl;
+                        } else {
+                            myBridge.callHandler('sendMessageToApp', {type: message, data: {}}, function (response) {
+                                //todo custom
+                            });
+                        }
+
+                    });
+                }
 
             }]);
     }

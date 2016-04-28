@@ -8,9 +8,18 @@ define(function (require, exports, module) {
         require('services/indexService.js')(app);
         app.register.controller('IndexCtrl', ['$scope', 'Index', '$location',
             function ($scope, Index, $location) {
-                $scope.cityName = '全国';
-                $scope.index = Index.get({cityId: 2, index: 1});
+                $scope.cityName = '杭州';
+                $scope.cityId = 2;
+                $scope.index = Index.get({cityId: $scope.cityId, index: 1});
 
+                $scope.index.$promise.then(function (res) {
+                    if (res.result != 0){
+                        Toast(response.msg,3000);
+                        $scope.loadError = true;
+                    }
+                }).catch(function (error) {
+                    $scope.loadError = true;
+                });
 
                 //if (myBridge) {
                 //    alert(myBridge);
@@ -144,17 +153,19 @@ define(function (require, exports, module) {
                 //    }
                 //};
 
-                //if (myBridge) {
-                //    myBridge.callHandler('sendMessage', {type: 6, data: {}}, function (response) {
-                //        $scope.$apply(function () {
-                //            if (response == "") {
-                //                $scope.cityName = "圈外";
-                //            } else {
-                //                $scope.cityName = response;
-                //            }
-                //        });
-                //    });
-                //}
+                if (myBridge) {
+                    myBridge.callHandler('sendMessageToApp', {type: 6, data: {}}, function (response) {
+                        $scope.$apply(function () {
+                            if (response == "") {
+                                $scope.cityId = 2;
+                                $scope.index = Index.get({cityId: $scope.cityId, index: 1});
+                            } else {
+                                $scope.cityName = response;
+                                $scope.index = Index.get({cityName: $scope.cityName, index: 1});
+                            }
+                        });
+                    });
+                }
 
                 //$scope.qrcode = function () {
                 //    if (myBridge) {
@@ -173,14 +184,14 @@ define(function (require, exports, module) {
                 //};
 
                 $scope.jumpToGoods = function (x) {
-                    Toast('要跳转了',2000);
                     if (myBridge) {
                         var jumpUrl = encodeURI($location.absUrl().split('#')[0] + x);
                         myBridge.callHandler('sendMessageToApp', {
                             type: 2, data: {
                                 url: jumpUrl,
                                 title: '商品详情',
-                                leftNavItems: [1]
+                                leftNavItems: [1],
+                                rightNavItems: [0]
                             }
                         }, function (response) {
                             //todo custom
@@ -189,13 +200,14 @@ define(function (require, exports, module) {
                 };
 
                 $scope.jumpToRecommend = function () {
-                    Toast('要跳转了',2000);
+                    window.location.href = encodeURI($location.absUrl().split('#')[0] + '#/recommend'+'?cityName='+$scope.cityName);
                     if (myBridge) {
-                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/recommend');
+                        //var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/recommend'+'&cityName='+$scope.cityName);
+
                         myBridge.callHandler('sendMessageToApp', {
                             type: 2, data: {
                                 url: jumpUrl,
-                                title: '商品详情',
+                                title: '精品推荐',
                                 leftNavItems: [1]
                             }
                         }, function (response) {
@@ -205,9 +217,8 @@ define(function (require, exports, module) {
                 };
 
                 $scope.jumpToList = function (x) {
-                    //Toast('readyToStart' + myBridge, 2000);
                     if (myBridge) {
-                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/list?subId=' + x.categoryHerf + '&subName=' + x.categoryName);
+                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/list?subId=' + x.categoryHerf + '&subName=' + x.categoryName + '&cityName=' + $scope.cityName);
                         myBridge.callHandler('sendMessageToApp', {
                             type: 2, data: {
                                 url: jumpUrl,
@@ -225,8 +236,28 @@ define(function (require, exports, module) {
 
                 if (myBridge) {
                     myBridge.registerHandler('sendMessageToHTML', function (message, callback) {
-                        if (!!message.type) {
-                            alert(message.data);
+                        if (message.type == 10001) {
+                            var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/list?keyword=' + message.data + '&cityName=' + $scope.cityName);
+                            myBridge.callHandler('sendMessageToApp', {
+                                type: 2, data: {
+                                    url: jumpUrl,
+                                    hasSearchView: true,
+                                    leftNavItems: [1],
+                                    searchViewPlaceholder: message.data
+                                }
+                            }, function (response) {
+                                //todo custom
+                            });
+                        } else if (message == 7) {
+                            myBridge.callHandler('sendMessageToApp', {type: 7, data: {}}, function (response) {
+                                if (response == "") {
+                                    $scope.cityId = 2;
+                                    $scope.index = Index.get({cityId: $scope.cityId, index: 1});
+                                } else {
+                                    $scope.cityName = response;
+                                    $scope.index = Index.get({cityName: $scope.cityName, index: 1});
+                                }
+                            });
                         } else {
                             myBridge.callHandler('sendMessageToApp', {type: message, data: {}}, function (response) {
                                 //todo custom

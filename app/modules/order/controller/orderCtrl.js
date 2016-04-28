@@ -16,6 +16,7 @@ define(function (require, exports, module) {
                         });
                     })
                 }
+
                 //$scope.appToken = 'MMFQ:hfB4RC9zM80v4ZI5ANbXiVVKyivU3TTJIZnhZfqx5btQzwgzDUxlgdnqjQDPw85z';
 
                 $scope.info = $location.search();
@@ -35,8 +36,9 @@ define(function (require, exports, module) {
 
                 console.log($scope.orderInfo);
                 $scope.orderInfo.$promise.then(function (res) {
-                    if (res.result == 1) {
-                        Toast(res.msg, 2000);
+                    if (res.result != 0){
+                        Toast(response.msg,3000);
+                        $scope.loadError = true;
                     } else {
                         $scope.firstRatio = res.data.goodsStagingInfoResponse.fenqiShowfuInfoList;
                         $scope.stages = res.data.goodsStagingInfoResponse.fenqiConfigList;
@@ -49,9 +51,9 @@ define(function (require, exports, module) {
                     }
                 });
 
-                $scope.goBack = function () {
-                    window.history.go(-1);
-                };
+                //$scope.goBack = function () {
+                //    window.history.go(-1);
+                //};
 
                 $scope.showConfirm = function () {
                     //if (myBridge) {
@@ -82,7 +84,18 @@ define(function (require, exports, module) {
                         $scope.ensure.$promise.then(function (res) {
                             document.getElementById('confirmDialogContainer').style.display = 'none';
                             if (res.result == 0) {
-                                window.location.href = encodeURI('#/pay/allCredit?orderId='+res.data.goodsConfirmOrderResponse.orderId+'&telephone='+res.data.goodsConfirmOrderResponse.userInfo.telephone);
+                                if (myBridge) {
+                                    var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/pay/allCredit?orderId='+res.data.goodsConfirmOrderResponse.orderId+'&telephone='+res.data.goodsConfirmOrderResponse.userInfo.telephone);
+                                    myBridge.callHandler('sendMessageToApp', {
+                                        type: 2, data: {
+                                            url: jumpUrl,
+                                            title: '信用额度支付',
+                                            leftNavItems: [1]
+                                        }
+                                    }, function (response) {
+                                        //todo custom
+                                    });
+                                }
                             } else {
                                 Toast(res.msg, 2000);
                             }
@@ -108,15 +121,27 @@ define(function (require, exports, module) {
                         $scope.ensure.$promise.then(function (res) {
                             if (res.result == 0) {
                                 var response = res.data.goodsConfirmOrderResponse;
-                                window.location.href = encodeURI('#/pay/firstPay?realName='+response.userInfo.realName+'&telephone='+response.userInfo.telephone+
-                                '&hrefPic='+response.goodsItem.hrefPic+'&hotItemName='+response.goodsItem.hotItemName+'&presentPrice='+response.goodsItem.presentPrice+
-                                '&shoufuAmt='+response.fenqi.shoufuAmt+'&monthPay='+response.fenqi.monthPay+'&totalAmount='+response.fenqi.totalAmount+'&staging='+response.fenqi.staging+
-                                '&orderId='+response.orderId+'&orderAmount='+response.orderAmount+'&creditPayment='+response.creditPayment);
+                                if (myBridge) {
+                                    var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/pay/firstPay?realName='+response.userInfo.realName+'&telephone='+response.userInfo.telephone+
+                                        '&hrefPic='+response.goodsItem.hrefPic+'&hotItemName='+response.goodsItem.hotItemName+'&presentPrice='+response.goodsItem.presentPrice+
+                                        '&shoufuAmt='+response.fenqi.shoufuAmt+'&monthPay='+response.fenqi.monthPay+'&totalAmount='+response.fenqi.totalAmount+'&staging='+response.fenqi.staging+
+                                        '&orderId='+response.orderId+'&orderAmount='+response.orderAmount+'&creditPayment='+response.creditPayment);
+                                    myBridge.callHandler('sendMessageToApp', {
+                                        type: 2, data: {
+                                            url: jumpUrl,
+                                            title: '订单首付',
+                                            leftNavItems: [1]
+                                        }
+                                    }, function (response) {
+                                        //todo custom
+                                    });
+                                }
                             } else {
                                 Toast(res.msg, 2000);
                             }
                         }).catch(function (error) {
                             Toast('服务器返回错误', 2000);
+                            $scope.loadError = true;
                         });
                     }
                 };

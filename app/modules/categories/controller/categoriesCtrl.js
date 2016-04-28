@@ -12,10 +12,18 @@ define(function (require, exports, module) {
 
                 $scope.categories = Categories.query();
                 console.log($scope.categories);
+                $scope.categories.$promise.then(function (res) {
+                    if (res.result != 0){
+                        Toast(response.msg,3000);
+                        $scope.loadError = true;
+                    }
+                }).catch(function (error) {
+                    $scope.loadError = true;
+                });
 
-                $scope.goBack = function () {
-                    window.history.back(-1);
-                };
+                //$scope.goBack = function () {
+                //    window.history.back(-1);
+                //};
 
                 $scope.nowProject = '全部类目';
                 $scope.filterProject = '';
@@ -33,8 +41,18 @@ define(function (require, exports, module) {
                 };
 
                 $scope.jumpTo = function(x) {
-
-                    window.location.href = encodeURI(x);
+                    if (myBridge) {
+                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + x);
+                        myBridge.callHandler('sendMessageToApp', {
+                            type: 2, data: {
+                                url: jumpUrl,
+                                hasSearchView: true,
+                                leftNavItems: [1]
+                            }
+                        }, function (response) {
+                            //todo custom
+                        });
+                    }
                 }
 
             }])

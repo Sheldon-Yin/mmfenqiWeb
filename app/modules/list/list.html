@@ -17,7 +17,6 @@
         <!--</div>-->
     <!--</div>-->
 
-
     <div>
         <!--排序选择框-->
         <div class="row list-sort-bar-border list-sort-bar-toolbar">
@@ -130,11 +129,11 @@
     <div style="padding-top: 3.3rem">
 
         <div style="width: 100%;position: fixed;height:100%;background-color:#F7F7F7;left: 0" ng-if="!goods.data">
-            <div style="top: 30%;position: absolute;width: 100%;left: 35%">
-                <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 30%">
+            <div style="top: 45%;position: absolute;width: 100%;left: 45%">
+                <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 10%">
             </div>
-            <div style="top: 30%;position: absolute;width: 100%;left: 35%">
-                <img src="img/loading/loadingInner.png" style="width: 30%">
+            <div style="top: 45%;position: absolute;width: 100%;left: 45%">
+                <img src="img/loading/loadingInner.png" style="width: 10%">
             </div>
         </div>
 
@@ -158,7 +157,7 @@
             </div>
         </div>
 
-        <label ng-repeat="x in goods.data.goodsListResponse.goodsItemList" style="display: block" ng-click="jumpTo('#/goods?goodsId='+x.goodsHerf)">
+        <label ng-repeat="x in goods.data.goodsListResponse.goodsItemList" style="display: block" ng-click="jumpToGoods('#/goods?goodsId='+x.goodsHerf)">
             <div class="row app-project-container">
                 <div class="col-xs-5">
                     <img ng-src="{{x.goodsHerPic}}" style="width: 100%">

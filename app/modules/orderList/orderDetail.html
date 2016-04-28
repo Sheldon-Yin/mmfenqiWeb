@@ -8,6 +8,15 @@
     <!--</div>-->
 <!--</div>-->
 
+<div style="width: 100%;position: fixed;height:100%;left: 0;z-index: 999" ng-if="!orderDetail.data  && !loadError">
+    <div style="top: 50%;position: absolute;width: 100%;left: 45%;">
+        <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 10%">
+    </div>
+    <div style="top: 50%;position: absolute;width: 100%;left: 45%;">
+        <img src="img/loading/loadingInner.png" style="width: 10%">
+    </div>
+</div>
+
 <div style="height: 100%;background-color: #ECECEC">
     <img src="modules/orderList/img/background.png" style="width: 80%;top: 10%;left:10%;height:75%;position: absolute">
 
