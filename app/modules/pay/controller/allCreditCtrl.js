@@ -64,9 +64,10 @@ define(function (require, exports, module) {
                                 //}).catch(function (error) {
                                 //    Toast('服务器返回错误',2000);
                                 //})
+                                Toast('开始了',2000);
                                 if (myBridge) {
                                     myBridge.callHandler('sendMessageToApp', {
-                                        type: 10, data: {
+                                        type: 11, data: {
                                             orderId: $scope.orderId,
                                             smsCode: $scope.inputCode
                                         }

@@ -7,8 +7,10 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/goodsDetail.js')(app);
         require('services/isRealNameService.js')(app);
-        app.register.controller('GoodsCtrl', ['$scope', 'GoodsDetail', '$location', 'utilService', 'IsRealName',
+        app.register.controller('GoodsCtrl', ['$scope', 'GoodsDetail', '$location', 'IsRealName',
             function ($scope, GoodsDetail, $location, IsRealName) {
+
+
 
                 var swiper;
                 $scope.initBannerSwiper = function () {
@@ -35,6 +37,7 @@ define(function (require, exports, module) {
 
                 $scope.goods = GoodsDetail.get(goodsId);
 
+
                 $scope.skuData = $scope.goods;
 
                 $scope.goods.$promise.then(function (response) {
@@ -55,8 +58,8 @@ define(function (require, exports, module) {
                     $scope.goToOrder = function () {
                         if (myBridge) {
                             myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
-
                                 $scope.appToken = response;
+
                                 $scope.isRealName = IsRealName.get({
                                     appToken: $scope.appToken
                                 });
@@ -66,7 +69,6 @@ define(function (require, exports, module) {
                                         Toast(res.msg);
                                         return
                                     }
-
                                     if (res.data.isIdentityAuth == 1) {
                                         var jumpUrl;
                                         if (!!$scope.skuData && !!$scope.storeId) {
@@ -108,6 +110,9 @@ define(function (require, exports, module) {
                                             Toast('请耐心等待实名认证结果', 2000);
                                         });
                                     }
+                                }).catch(function (error) {
+                                    Toast(error,20000);
+                                    Toast('服务器返回出错',2000);
                                 });
 
                             });

@@ -9,8 +9,6 @@ define(function (require, exports, module) {
         app.register.controller('OrderListCtrl', ['$scope', 'QueryMyOrder','$location',
             function ($scope, QueryMyOrder,$location) {
 
-
-
                 if (myBridge) {
                     myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
@@ -25,7 +23,7 @@ define(function (require, exports, module) {
                 $scope.data = QueryMyOrder.query({appToken: $scope.appToken});
                 $scope.data.$promise.then(function (res) {
                     if (res.result != 0){
-                        Toast(response.msg,3000);
+                        Toast(res.msg,3000);
                         $scope.loadError = true;
                     }else {
                         Toast('服务器返回错误',2020);
