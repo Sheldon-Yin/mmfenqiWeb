@@ -6,10 +6,11 @@
 define(function (require, exports, module) {
     "use strict";
     module.exports = function (app) {
+        app.value('mmfqBaseUrl','http://192.168.0.116/app/');
         app.config(['$routeProvider',
             function ($routeProvider) {
-                $routeProvider.
 
+                $routeProvider.
                 //Demo
                 when('/phones/list', {
                     templateUrl: 'modules/demo/phone-list.html',
@@ -126,6 +127,33 @@ define(function (require, exports, module) {
                     controller: 'FirstPay',
                     controllerUrl: './modules/pay/controller/firstPayCtrl.js'
                 }).
+
+
+
+
+
+
+
+                //临时页面
+                when('/temp/signup', {
+                    templateUrl: 'modules/temp/signup.html'
+                }).//临时页面
+                when('/temp/signupSuccess', {
+                    templateUrl: 'modules/temp/signupSuccess.html'
+                }).//临时页面
+                when('/temp/myCredit1', {
+                    templateUrl: 'modules/temp/myCredit1.html'
+                }).//临时页面
+                when('/temp/myCredit2', {
+                    templateUrl: 'modules/temp/myCredit2.html'
+                }).
+
+
+
+
+
+
+
 
                 //默认首页
                 otherwise({

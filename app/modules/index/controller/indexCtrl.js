@@ -6,11 +6,15 @@
 define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/indexService.js')(app);
-        app.register.controller('IndexCtrl', ['$scope', 'Index',
-            function ($scope, Index) {
+        app.register.controller('IndexCtrl', ['$scope', 'Index', '$location',
+            function ($scope, Index, $location) {
                 $scope.cityName = '全国';
                 $scope.index = Index.get({cityId: 2, index: 1});
 
+
+                //if (myBridge) {
+                //    alert(myBridge);
+                //}
 
                 ////ddd
                 ////第一步：下拉过程
@@ -113,8 +117,8 @@ define(function (require, exports, module) {
                     swiper = new Swiper('.swiper-container', {
                         pagination: '.swiper-pagination',
                         paginationClickable: true,
-                        loop: true,
-                        autoplay : 5000
+                        //loop: true,
+                        autoplay: 5000
                     });
                     //初始化banner图的swiper
                 };
@@ -123,7 +127,6 @@ define(function (require, exports, module) {
 
                 $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
                     swiper.update();
-                    swiper.reLoop();
                 });
                 //$scope.$on('ngRepeatFinishedCopy', function (ngRepeatFinishedCopyEvent) {
                 //    console.log(2);
@@ -131,46 +134,106 @@ define(function (require, exports, module) {
                 //});
 
                 //APP事件处理
-                $scope.changeCity = function () {
+                //$scope.changeCity = function () {
+                //    if (myBridge) {
+                //        myBridge.callHandler('sendMessage', {type: 7, data: {}}, function (response) {
+                //            $scope.$apply(function () {
+                //                $scope.cityName = response;
+                //            });
+                //        })
+                //    }
+                //};
+
+                //if (myBridge) {
+                //    myBridge.callHandler('sendMessage', {type: 6, data: {}}, function (response) {
+                //        $scope.$apply(function () {
+                //            if (response == "") {
+                //                $scope.cityName = "圈外";
+                //            } else {
+                //                $scope.cityName = response;
+                //            }
+                //        });
+                //    });
+                //}
+
+                //$scope.qrcode = function () {
+                //    if (myBridge) {
+                //        myBridge.callHandler('sendMessage', {type: 5, data: {}}, function (response) {
+                //            alert(response);
+                //        })
+                //    }
+                //};
+                //$scope.search = function (e) {
+                //    var keycode = window.event ? e.keyCode : e.which;
+                //    if (keycode == 13) {
+                //        if (!!$scope.searchContent) {
+                //            document.getElementById('search').blur();
+                //        }
+                //    }
+                //};
+
+                $scope.jumpToGoods = function (x) {
+                    Toast('要跳转了',2000);
                     if (myBridge) {
-                        myBridge.callHandler('sendMessage', {type: 7, data: {}}, function (response) {
-                            $scope.$apply(function () {
-                                $scope.cityName = response;
-                            });
-                        })
+                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + x);
+                        myBridge.callHandler('sendMessageToApp', {
+                            type: 2, data: {
+                                url: jumpUrl,
+                                title: '商品详情',
+                                leftNavItems: [1]
+                            }
+                        }, function (response) {
+                            //todo custom
+                        });
                     }
+                };
+
+                $scope.jumpToRecommend = function () {
+                    Toast('要跳转了',2000);
+                    if (myBridge) {
+                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/recommend');
+                        myBridge.callHandler('sendMessageToApp', {
+                            type: 2, data: {
+                                url: jumpUrl,
+                                title: '商品详情',
+                                leftNavItems: [1]
+                            }
+                        }, function (response) {
+                            //todo custom
+                        });
+                    }
+                };
+
+                $scope.jumpToList = function (x) {
+                    //Toast('readyToStart' + myBridge, 2000);
+                    if (myBridge) {
+                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/list?subId=' + x.categoryHerf + '&subName=' + x.categoryName);
+                        myBridge.callHandler('sendMessageToApp', {
+                            type: 2, data: {
+                                url: jumpUrl,
+                                hasSearchView: true,
+                                leftNavItems: [1]
+                            }
+                        }, function (response) {
+                            //todo custom
+                        });
+                    }
+                };
+
+                $scope.jumpToActivity = function (x) {
                 };
 
                 if (myBridge) {
-                    myBridge.callHandler('sendMessage', {type: 6, data: {}}, function (response) {
-                        $scope.$apply(function () {
-                            if (response == "") {
-                                $scope.cityName = "圈外";
-                            } else {
-                                $scope.cityName = response;
-                            }
-                        });
-                    });
-                }
-
-                $scope.qrcode = function () {
-                    if (myBridge) {
-                        myBridge.callHandler('sendMessage', {type: 5, data: {}}, function (response) {
-                            alert(response);
-                        })
-                    }
-                };
-                $scope.search = function (e) {
-                    var keycode = window.event ? e.keyCode : e.which;
-                    if (keycode == 13) {
-                        if (!!$scope.searchContent) {
-                            document.getElementById('search').blur();
+                    myBridge.registerHandler('sendMessageToHTML', function (message, callback) {
+                        if (!!message.type) {
+                            alert(message.data);
+                        } else {
+                            myBridge.callHandler('sendMessageToApp', {type: message, data: {}}, function (response) {
+                                //todo custom
+                            });
                         }
-                    }
-                };
 
-                $scope.jumpTo = function (x) {
-                    window.location.href = x;
+                    });
                 }
 
             }]);

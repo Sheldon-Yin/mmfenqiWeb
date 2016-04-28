@@ -15,7 +15,7 @@ define(function (require, exports, module) {
                 };
 
                 if (myBridge) {
-                    myBridge.callHandler('sendMessage', {type: 8, data: {}}, function (response) {
+                    myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
                             $scope.appToken = response;
                         });
@@ -29,23 +29,44 @@ define(function (require, exports, module) {
                 });
 
                 $scope.orderDetail.$promise.then(function (res) {
+                    if(res.result!=0){
+                        Toast(res.msg, 2000);
+                        return;
+                    }
 
                     console.log(res);
 
                     $scope.goToGoods = function () {
-                        window.location.href = '#/goods?goodsId=' + res.data.goodsId;
+                        if (myBridge) {
+                            var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/goods?goodsId=' + res.data.goodsId);
+                            myBridge.callHandler('sendMessageToApp', {
+                                type: 2, data: {
+                                    url: jumpUrl,
+                                    leftNavItems: [1],
+                                    title: '订单详情'
+                                }
+                            }, function (response) {
+                                //todo custom
+                            });
+                        }
                     };
 
                     $scope.goToBill = function () {
-                        window.location.href = '#/bill/detail?billId='+ res.data.billId;
+                        if (myBridge) {
+                            var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/bill/detail?billId='+ res.data.billId);
+                            myBridge.callHandler('sendMessageToApp', {
+                                type: 2, data: {
+                                    url: jumpUrl,
+                                    leftNavItems: [1],
+                                    title: '订单详情'
+                                }
+                            }, function (response) {
+                                //todo custom
+                            });
+                        }
                     };
 
                     $scope.goToPay = function () {
-                        if(res.result!=0){
-                            Toast(res.msg, 2000);
-                            return;
-                        }
-
                         if ($scope.payWay == 'alipay') {
                             var alipay = Alipay.query({
                                 orderId: res.data.orderDetailResponse.orderId,
@@ -55,7 +76,7 @@ define(function (require, exports, module) {
                                 console.log(result);
                                 //alipay
                                 if (myBridge) {
-                                    myBridge.callHandler('sendMessage', {
+                                    myBridge.callHandler('sendMessageToApp', {
                                         type: 3, data: {
                                             'notify_url': result.data.notify_url,
                                             'out_trade_no': result.data.out_trade_no,
@@ -76,7 +97,7 @@ define(function (require, exports, module) {
                                 console.log(result);
                                 //wxpay
                                 if (myBridge) {
-                                    myBridge.callHandler('sendMessage', {
+                                    myBridge.callHandler('sendMessageToApp', {
                                         type: 4, data: {
                                             'appid': result.data.resPar.parameters.appid,
                                             'partnerid': result.data.resPar.parameters.partnerid,
@@ -106,7 +127,6 @@ define(function (require, exports, module) {
                 }).catch(function (error) {
                     Toast('服务器错误，请重新进入页面再试一次',2000);
                 });
-
 
                 var checkedImgSrc = 'modules/pay/img/checked.png';
                 var uncheckedImgSrc = 'modules/pay/img/unchecked.png';

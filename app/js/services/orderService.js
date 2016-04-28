@@ -7,7 +7,7 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('QueryMyOrder', ['$resource',
             function ($resource) {
-                return $resource('/api/appinterface/query_my_order',{},{
+                return $resource('/api/appinterface/query_my_order',{appToken:'@appToken'},{
                     query: {method:'GET',params:{orderStatus:-1}}
                 })
             }]);
@@ -36,6 +36,14 @@ define(function (require, exports, module) {
         app.register.factory('CancelOrder', ['$resource',
             function ($resource) {
                 return $resource('/api/appinterface/cancer_order', {}, {
+                    query:{
+                        method: 'GET'
+                    }
+                });
+            }]);
+        app.register.factory('EnsureOrderForMessage', ['$resource',
+            function ($resource) {
+                return $resource('/api/appinterface/user_Order_Confirm_Pay', {}, {
                     query:{
                         method: 'GET'
                     }

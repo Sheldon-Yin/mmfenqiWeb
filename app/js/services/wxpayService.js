@@ -7,7 +7,7 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('Wxpay', ['$resource',
             function ($resource) {
-                return $resource('/api/weixin/appinterface_weixinMchPay', {cityId:'@cityId'}, {
+                return $resource('/api/weixin/appinterface_weixinMchPay', {}, {
                     query: {method: 'GET', params: {
                         orderName: 'mmfq',
                         type: 0

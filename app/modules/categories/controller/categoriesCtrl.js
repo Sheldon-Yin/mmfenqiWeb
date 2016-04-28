@@ -7,8 +7,8 @@
 define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/categoriesService.js')(app);
-        app.register.controller('CategoriesCtrl', ['$scope','Categories',
-            function ($scope,Categories) {
+        app.register.controller('CategoriesCtrl', ['$scope','Categories','$location',
+            function ($scope,Categories,$location) {
 
                 $scope.categories = Categories.query();
                 console.log($scope.categories);
@@ -33,6 +33,7 @@ define(function (require, exports, module) {
                 };
 
                 $scope.jumpTo = function(x) {
+
                     window.location.href = encodeURI(x);
                 }
 

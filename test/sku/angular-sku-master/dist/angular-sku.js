@@ -52,7 +52,7 @@
         },
 
         /**
-         * 矩阵转置前的2维数组
+         * 矩阵转置前的2维素组
          */
         getSkuList: function(obj){
           var array = [];
@@ -116,7 +116,7 @@
          * @param data
          * @returns {Number}
          */
-        getPrice: function(key, data){
+        getNum: function(key, data){
           var result = 0,
             i, j, m,
             items, n = [];
@@ -130,45 +130,45 @@
 
           //已选择数据是最小路径，直接从已端数据获取
           if (items.length === keys.length) {
-            return data[key] ? data[key].price : 0;
-          } else return null;
+            return data[key] ? data[key].count : 0;
+          }
 
-          ////拼接子串
-          //for (i = 0; i < keys.length; i++) {
-          //  for (j = 0; j < keys[i].length && items.length > 0; j++) {
-          //    if (keys[i][j] == items[0]) {
-          //      break;
-          //    }
-          //  }
-          //
-          //  if (j < keys[i].length && items.length > 0) {
-          //    //找到该项，跳过
-          //    n.push(items.shift());
-          //  } else {
-          //    //分解求值
-          //    for (m = 0; m < keys[i].length; m++) {
-          //      result += this.getNum(n.concat(keys[i][m], items).join(skuConfig.splitStr), data);
-          //    }
-          //    break;
-          //  }
-          //}
-          //
-          ////缓存
-          //key_account_Map[key] = result;
-          //return result;
+          //拼接子串
+          for (i = 0; i < keys.length; i++) {
+            for (j = 0; j < keys[i].length && items.length > 0; j++) {
+              if (keys[i][j] == items[0]) {
+                break;
+              }
+            }
+
+            if (j < keys[i].length && items.length > 0) {
+              //找到该项，跳过
+              n.push(items.shift());
+            } else {
+              //分解求值
+              for (m = 0; m < keys[i].length; m++) {
+                result += this.getNum(n.concat(keys[i][m], items).join(skuConfig.splitStr), data);
+              }
+              break;
+            }
+          }
+
+          //缓存
+          key_account_Map[key] = result;
+          return result;
         }
       };
     }])
     .directive('uiSku', ['$log', 'skuConfig', 'utilService', function($log, skuConfig, utilService){
       return{
         restrict: 'A',
-        //transclude: true,
-        //scope: {
-        //  splitStr:'@',
-        //  initSku:'@',
-        //  onOk: '&',
-        //  skuData: '='
-        //},
+        transclude: true,
+        scope: {
+          splitStr:'@',
+          initSku:'@',
+          onOk: '&',
+          skuData: '='
+        },
         controller: ['$scope', '$element', '$attrs',function($scope, $element, $attrs) {
           // 设置选中
           this.checkIn = function(keys) {
@@ -193,9 +193,9 @@
 
           // 手动设置transclude,解决用ng-transclude scope作用域问题
           // https://gist.github.com/meanJim/1c3339bde5cbeac6417d
-          //transclude(scope, function(clone){
-          //  element.append(clone);
-          //});
+          transclude(scope, function(clone){
+            element.append(clone);
+          });
 
           // 初始化选中
           scope.initSelect = function(keys){
@@ -208,7 +208,6 @@
 
           // 页面ng-click事件
           scope.onSelect = function(key){
-            console.log('haha');
             var keyMap = scope.keyMap, check = [];
             if(keyMap[key].disabled) return;
             scope.checkItem(key);
@@ -219,7 +218,7 @@
             });
 
             // fire callback
-            scope.onOk({price:utilService.getPrice(check.join(skuConfig.splitStr),scope.skuData)});
+            scope.onOk({$event:utilService.getNum(check.join(skuConfig.splitStr), scope.skuData)});
           };
 
           // 检查每一项的状态
@@ -248,7 +247,7 @@
                 check = utilService.filter(copy, function(value, index){
                   return angular.isDefined(value);
                 });
-                keyMap[key].disabled = utilService.getPrice(check.join(skuConfig.splitStr), scope.skuData) > 0? false: true;
+                keyMap[key].disabled = utilService.getNum(check.join(skuConfig.splitStr), scope.skuData) > 0? false: true;
               });
             });
           };

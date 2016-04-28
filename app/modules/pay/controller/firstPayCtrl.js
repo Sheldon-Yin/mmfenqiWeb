@@ -15,76 +15,66 @@ define(function (require, exports, module) {
                     window.history.back(-1);
                 };
 
-                var data = $location.search();
-                console.log(data);
+                $scope.order = $location.search();
+                console.log($scope.order);
 
-                OrderInfoForEnsure.query(data).$promise.then(function (res) {
-                    console.log(res);
-                    if (res.result == 0) {
-                        $scope.order = res.data.goodsConfirmOrderResponse;
-                    } else {
-                        Toast(res.msg, 3000);
-                    }
-
-                    $scope.goToPay = function () {
-                        if ($scope.payWay == 'alipay') {
-                            if (!!$scope.order) {
-                                var alipay = Alipay.query({
-                                    orderId: $scope.order.orderId,
-                                    downpayAmount: $scope.order.shoufuAmt,
-                                    type: 0
-                                });
-                                alipay.$promise.then(function (res) {
-                                    console.log(res);
-                                    //alipay
-                                    if (myBridge) {
-                                        myBridge.callHandler('sendMessage', {
-                                            type: 3, data: {
-                                                'notify_url': res.data.notify_url,
-                                                'out_trade_no': res.data.out_trade_no,
-                                                'subject': res.data.subject,
-                                                'total_fee': res.data.total_fee
-                                            }
-                                        }, function (response) {
-                                        });
-                                    }
-                                }).catch(function (error) {
-                                    alert('服务器返回失败');
-                                    console.log(error);
-                                })
-                            }
-                        } else if ($scope.payWay == 'wxpay') {
-                            if (!!$scope.order) {
-                                var wxpay = Wxpay.query({
-                                    orderId: $scope.order.orderId,
-                                    downpayAmount: $scope.order.shoufuAmt,
-                                    type: 0
-                                });
-                                wxpay.$promise.then(function (res) {
-                                    console.log(res);
-                                    //wxpay
-                                    if (myBridge) {
-                                        myBridge.callHandler('sendMessage', {
-                                            type: 4, data: {
-                                                'appid': res.data.resPar.parameters.appid,
-                                                'partnerid': res.data.resPar.parameters.partnerid,
-                                                'sign': res.data.resPar.parameters.sign,
-                                                'timestamp': res.data.resPar.parameters.timestamp,
-                                                'noncestr': res.data.resPar.parameters.noncestr
-                                            }
-                                        }, function (response) {
-                                        });
-                                    }
-                                }).catch(function (error) {
-                                    alert('服务器返回失败');
-                                    console.log(error);
-                                })
-                            }
+                $scope.goToPay = function () {
+                    if ($scope.payWay == 'alipay') {
+                        if (!!$scope.order) {
+                            var alipay = Alipay.query({
+                                orderId: $scope.order.orderId,
+                                downpayAmount: $scope.order.shoufuAmt,
+                                type: 0
+                            });
+                            alipay.$promise.then(function (res) {
+                                console.log(res);
+                                //alipay
+                                if (myBridge) {
+                                    myBridge.callHandler('sendMessageToApp', {
+                                        type: 3, data: {
+                                            'notify_url': res.data.notify_url,
+                                            'out_trade_no': res.data.out_trade_no,
+                                            'subject': res.data.subject,
+                                            'total_fee': res.data.total_fee
+                                        }
+                                    }, function (response) {
+                                    });
+                                }
+                            }).catch(function (error) {
+                                alert('服务器返回失败');
+                                console.log(error);
+                            })
                         }
-
+                    } else if ($scope.payWay == 'wxpay') {
+                        if (!!$scope.order) {
+                            var wxpay = Wxpay.query({
+                                orderId: $scope.order.orderId,
+                                downpayAmount: $scope.order.shoufuAmt,
+                                type: 0
+                            });
+                            wxpay.$promise.then(function (res) {
+                                console.log(res);
+                                //wxpay
+                                if (myBridge) {
+                                    myBridge.callHandler('sendMessageToApp', {
+                                        type: 4, data: {
+                                            'appid': res.data.resPar.parameters.appid,
+                                            'partnerid': res.data.resPar.parameters.partnerid,
+                                            'sign': res.data.resPar.parameters.sign,
+                                            'timestamp': res.data.resPar.parameters.timestamp,
+                                            'noncestr': res.data.resPar.parameters.noncestr,
+                                            'prepayid': res.data.resPar.parameters.prepayid
+                                        }
+                                    }, function (response) {
+                                    });
+                                }
+                            }).catch(function (error) {
+                                alert('服务器返回失败');
+                                console.log(error);
+                            })
+                        }
                     }
-
-                });
+                };
 
                 var checkedImgSrc = 'modules/pay/img/checked.png';
                 var uncheckedImgSrc = 'modules/pay/img/unchecked.png';
@@ -112,6 +102,8 @@ define(function (require, exports, module) {
                     $scope.wxpayImg = checkedImgSrc;
                 };
 
-            }])
+            }
+        ])
     }
-});
+})
+;

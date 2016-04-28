@@ -8,14 +8,18 @@ define(function (require, exports, module) {
         require('services/billService.js')(app);
         app.register.controller('BillDetailCtrl', ['$scope', '$location', 'BillDetail',
             function ($scope, $location, BillDetail) {
-                $scope.goBack = function () {
-                    window.history.back(-1);
-                };
+                //$scope.goBack = function () {
+                //    if (myBridge) {
+                //        myBridge.callHandler('sendMessage', {type: 1, data: {}}, function (response) {
+                //            alert(response);
+                //        })
+                //    }
+                //};
 
                 $scope.selectedPrice = 0;
 
                 if (myBridge) {
-                    myBridge.callHandler('sendMessage', {type: 8, data: {}}, function (response) {
+                    myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
                             $scope.appToken = response;
                         });
@@ -92,12 +96,24 @@ define(function (require, exports, module) {
 
                     $scope.goToPay = function () {
                         if ($scope.repaymentPlanIds.length > 0){
-                            window.location.href = '#/bill/pay?repaymentPlanId=' + $scope.repaymentPlanIds;
+                            if (myBridge) {
+                                var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/bill/pay?repaymentPlanId=' + $scope.repaymentPlanIds);
+                                myBridge.callHandler('sendMessageToApp', {
+                                    type: 2, data: {
+                                        url: jumpUrl,
+                                        leftNavItems: [1],
+                                        title:'账单还款'
+                                    }
+                                }, function (response) {
+                                    //todo custom
+                                });
+                            }
                         }else {
                             Toast('请选择要付款的项目',2000);
                         }
                     }
                 });
+
                 console.log($scope.bill);
             }])
     }

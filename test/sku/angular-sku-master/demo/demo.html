@@ -8,14 +8,22 @@
 <body ng-app="skuApp" ng-cloak>
 <section ng-controller="skuController" class="m-detail">
   <div class="m-detail">
-    <span>{{test}}</span>
-    <div class="row"><h1 class="title">go</h1></div>
-    <div ui-sku split-str="#" sku-data="skuInfo" ng-data="test" on-ok="callback($event)" for-test="{{test}}">
-      <span ng-init="ok=1">什么鬼{{ok}}</span>
-      <span>{{skuData}}我的test</span>
+    <div class="row"><h1 class="title">5折ONLY秋装新品雪纺衬衫领A字无袖连衣裙裙子女</h1></div>
+    <div ui-sku split-str="#" sku-data="skuInfo" on-ok="callback($event)">
       <div class="row f-cb">
         <div class="l-col">价格</div>
         <div class="r-col price"><span class="yen">¥</span> 259.00</div>
+      </div>
+      <div class="row f-cb">
+        <div class="l-col">尺码</div>
+        <div class="r-col">
+          <ul class="m-sku f-cb">
+            <li><span ng-class="{'js-seleted': keyMap['S'].selected, 'js-disabled': keyMap['S'].disabled}" ng-click="onSelect('S')">S</span></li>
+            <li><span ng-class="{'js-seleted': keyMap['M'].selected, 'js-disabled': keyMap['M'].disabled}" ng-click="onSelect('M')">M</span></li>
+            <li><span ng-class="{'js-seleted': keyMap['L'].selected, 'js-disabled': keyMap['L'].disabled}" ng-click="onSelect('L')">L</span></li>
+            <li><span ng-class="{'js-seleted': keyMap['XL'].selected, 'js-disabled': keyMap['XL'].disabled}" ng-click="onSelect('XL')">XL</span></li>
+          </ul>
+        </div>
       </div>
       <div class="row f-cb">
         <div class="l-col">颜色</div>
@@ -43,13 +51,9 @@
     <div class="row f-cb">
       <div class="l-col">库存</div>
       <div class="r-col account">{{count||805}}件</div>
-      <div class="r-col account">{{price||defaultPrice}}元</div>
     </div>
-
-
-
   </div>
 </section>
-<script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular.min.js"></script>
+<script src="../../../../app/bower_components/angular/angular.min.js"></script>
+<script src="../dist/angular-sku.min.js"></script>
 <script src="./demo.js"></script>
-<script src="../dist/angular-sku.js"></script>

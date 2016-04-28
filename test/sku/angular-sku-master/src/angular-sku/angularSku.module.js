@@ -162,6 +162,13 @@
     .directive('uiSku', ['$log', 'skuConfig', 'utilService', function($log, skuConfig, utilService){
       return{
         restrict: 'A',
+        transclude: true,
+        scope: {
+          splitStr:'@',
+          initSku:'@',
+          onOk: '&',
+          skuData: '='
+        },
         controller: ['$scope', '$element', '$attrs',function($scope, $element, $attrs) {
           // 设置选中
           this.checkIn = function(keys) {

@@ -69,7 +69,7 @@ define(function (require, exports, module) {
 
                 $scope.share = function () {
                     if (myBridge) {
-                        myBridge.callHandler('sendMessage', {
+                        myBridge.callHandler('sendMessageToApp', {
                             type: 0, data: {
                                 'url': 'http://www.baidu.com',
                                 'description': 'mmfenqiTest',

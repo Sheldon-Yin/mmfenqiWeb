@@ -8,12 +8,16 @@ define(function (require, exports, module) {
         require('services/billService.js')(app);
         app.register.controller('BillRecordCtrl', ['$scope','MyBillRecord',
             function ($scope,MyBillRecord) {
-                $scope.goBack = function () {
-                    window.history.back(-1);
-                };
+                //$scope.goBack = function () {
+                //    if (myBridge) {
+                //        myBridge.callHandler('sendMessage', {type: 1, data: {}}, function (response) {
+                //            alert(response);
+                //        })
+                //    }
+                //};
 
                 if (myBridge) {
-                    myBridge.callHandler('sendMessage', {type: 8, data: {}}, function (response) {
+                    myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
                             $scope.appToken = response;
                             $scope.billRecord = MyBillRecord.query({
@@ -34,12 +38,12 @@ define(function (require, exports, module) {
 
                 $scope.showHiddenList = [0];
 
-                $scope.toggleShowHide = function (id) {
-                    if (!$scope.showHiddenList[id]){
-                        $scope.showHiddenList[id] = 0;
-                    }
-                    $scope.showHiddenList[id] = !$scope.showHiddenList[id];
-                }
+                //$scope.toggleShowHide = function (id) {
+                //    if (!$scope.showHiddenList[id]){
+                //        $scope.showHiddenList[id] = 0;
+                //    }
+                //    $scope.showHiddenList[id] = !$scope.showHiddenList[id];
+                //}
 
             }])
     }

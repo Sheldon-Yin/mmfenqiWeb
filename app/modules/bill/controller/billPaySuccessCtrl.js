@@ -7,9 +7,13 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.controller('BillPaySuccessCtrl', ['$scope',
             function ($scope) {
-                $scope.goBack = function () {
-                    window.history.back(-1);
-                };
+                //$scope.goBack = function () {
+                //    if (myBridge) {
+                //        myBridge.callHandler('sendMessage', {type: 1, data: {}}, function (response) {
+                //            alert(response);
+                //        })
+                //    }
+                //};
             }])
     }
 });

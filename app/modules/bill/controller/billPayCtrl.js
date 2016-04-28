@@ -10,9 +10,13 @@ define(function (require, exports, module) {
         require('services/wxpayService.js')(app);
         app.register.controller('BillPayCtrl', ['$scope', '$location', 'BillPay','Alipay','Wxpay',
             function ($scope, $location, BillPay,Alipay,Wxpay) {
-                $scope.goBack = function () {
-                    window.history.back(-1);
-                };
+                //$scope.goBack = function () {
+                //    if (myBridge) {
+                //        myBridge.callHandler('sendMessage', {type: 1, data: {}}, function (response) {
+                //            alert(response);
+                //        })
+                //    }
+                //};
 
                 var checkedImgSrc = 'modules/pay/img/checked.png';
                 var uncheckedImgSrc = 'modules/pay/img/unchecked.png';
@@ -33,7 +37,7 @@ define(function (require, exports, module) {
 
 
                 if (myBridge) {
-                    myBridge.callHandler('sendMessage', {type: 8, data: {}}, function (response) {
+                    myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
                             $scope.appToken = response;
                         });
@@ -48,14 +52,12 @@ define(function (require, exports, module) {
                 });
 
                 $scope.payment.$promise.then(function (res) {
+                    if(res.result!=0){
+                        Toast(res.msg, 2000);
+                        return;
+                    }
                     console.log(res);
                     $scope.goToPay = function () {
-
-                        if(res.result!=0){
-                            Toast(res.msg, 2000);
-                            return;
-                        }
-
                         if ($scope.payWay == 'alipay') {
                             var alipay = Alipay.query({
                                 orderId: res.data.orderId,
@@ -66,15 +68,14 @@ define(function (require, exports, module) {
                                 console.log(result);
                                 //alipay
                                 if (myBridge) {
-                                    myBridge.callHandler('sendMessage', {
+                                    myBridge.callHandler('sendMessageToApp', {
                                         type: 3, data: {
-                                            'notify_url': result.notify_url,
-                                            'out_trade_no': result.out_trade_no,
-                                            'subject': result.subject,
-                                            'total_fee': result.total_fee
+                                            'notify_url': result.data.notify_url,
+                                            'out_trade_no': result.data.out_trade_no,
+                                            'subject': result.data.subject,
+                                            'total_fee': result.data.total_fee
                                         }
                                     }, function (response) {
-
                                     });
                                 }
                             })
@@ -88,13 +89,14 @@ define(function (require, exports, module) {
                                 console.log(result);
                                 //wxpay
                                 if (myBridge) {
-                                    myBridge.callHandler('sendMessage', {
+                                    myBridge.callHandler('sendMessageToApp', {
                                         type: 4, data: {
-                                            'appid': result.resPar.parameters.appid,
-                                            'partnerid': result.resPar.parameters.partnerid,
-                                            'sign': result.resPar.parameters.sign,
-                                            'timestamp': result.resPar.parameters.timestamp,
-                                            'noncestr': result.resPar.parameters.noncestr
+                                            'appid': result.data.resPar.parameters.appid,
+                                            'partnerid': result.data.resPar.parameters.partnerid,
+                                            'sign': result.data.resPar.parameters.sign,
+                                            'timestamp': result.data.resPar.parameters.timestamp,
+                                            'noncestr': result.data.resPar.parameters.noncestr,
+                                            'prepayid': res.data.resPar.parameters.prepayid
                                         }
                                     }, function (response) {
                                     });
@@ -103,6 +105,8 @@ define(function (require, exports, module) {
                         }
                     };
 
+                }).catch(function (error) {
+                    Toast('没有返回数据',2000);
                 });
 
 

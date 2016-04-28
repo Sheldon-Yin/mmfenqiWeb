@@ -29,7 +29,7 @@
 <div class="container">
     <div class="row app-project-container">
         <div class="col-xs-5">
-            <img ng-src="{{order.herPic}}" width="100%" style="min-height: 5rem;">
+            <img ng-src="{{order.hrefPic}}" width="100%" style="min-height: 5rem;">
         </div>
         <div class="col-xs-7 app-project-content">
             <div class="double-line index-hot-project-title">
@@ -87,7 +87,7 @@
         </div>
 
         <div class="col-xs-6 text-right app-padding-one app-pink-text">
-            ￥{{order.orderAmount - order.shoufuAmt}}
+            ￥{{order.creditPayment}}
         </div>
 
     </div>
@@ -101,7 +101,7 @@
         </div>
 
         <div class="col-xs-6 text-right app-padding-one app-pink-text">
-            ￥{{order.yuefu}}（{{order.staging}}期）
+            ￥{{order.monthPay}}（{{order.staging}}期）
         </div>
 
     </div>
@@ -119,7 +119,7 @@
         </div>
 
         <div class="col-xs-6 text-right app-padding-one app-pink-text">
-            ￥{{order.orderAmount}}
+            ￥{{order.totalAmount}}
         </div>
 
     </div>

@@ -6,24 +6,37 @@
 define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/orderService.js')(app);
-        app.register.controller('OrderListCtrl', ['$scope', 'QueryMyOrder',
-            function ($scope, QueryMyOrder) {
+        app.register.controller('OrderListCtrl', ['$scope', 'QueryMyOrder','$location',
+            function ($scope, QueryMyOrder,$location) {
+
 
 
                 if (myBridge) {
-                    myBridge.callHandler('sendMessage', {type: 8, data: {}}, function (response) {
+                    myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
                             $scope.appToken = response;
                         });
                     })
                 }
                 //TODO
+
                 //$scope.appToken = 'MMFQ:hfB4RC9zM80v4ZI5ANbXiVVKyivU3TTJIZnhZfqx5btQzwgzDUxlgdnqjQDPw85z';
+
                 $scope.data = QueryMyOrder.query({appToken: $scope.appToken});
+                $scope.data.$promise.then(function (res) {
+                    if (res.result==0){
+                        Toast('成功获取订单信息',2000);
+                        //Toast($scope.appToken,2000)
+                    }else {
+                        Toast('服务器返回错误',2020);
+                    }
+                }).catch(function (error) {
+                    Toast(error,2000);
+                });
 
                 $scope.goBack = function () {
                     if (myBridge) {
-                        myBridge.callHandler('sendMessage', {type: 1, data: {}}, function (response) {
+                        myBridge.callHandler('sendMessageToApp', {type: 1, data: {}}, function (response) {
                             alert(response);
                         })
                     }
@@ -65,7 +78,18 @@ define(function (require, exports, module) {
                 $scope.nowType = '全部订单';
 
                 $scope.goToOrderDetail = function (x) {
-                    window.location.href = '#/order/detail?orderId=' + x.orderId;
+                    if (myBridge) {
+                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/order/detail?orderId=' + x.orderId);
+                        myBridge.callHandler('sendMessageToApp', {
+                            type: 2, data: {
+                                url: jumpUrl,
+                                leftNavItems: [1],
+                                title: '订单详情'
+                            }
+                        }, function (response) {
+                            //todo custom
+                        });
+                    }
                 };
 
                 $scope.setItems = function(x) {

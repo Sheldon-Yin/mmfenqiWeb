@@ -10,7 +10,7 @@ define(function (require, exports, module) {
             function ($scope, $location, CreateOrder, OrderInfoForEnsure) {
 
                 if (myBridge) {
-                    myBridge.callHandler('sendMessage', {type: 8, data: {}}, function (response) {
+                    myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
                             $scope.appToken = response;
                         });
@@ -49,22 +49,21 @@ define(function (require, exports, module) {
                     }
                 });
 
-
                 $scope.goBack = function () {
                     window.history.go(-1);
                 };
 
                 $scope.showConfirm = function () {
-                    if (myBridge) {
-                        myBridge.callHandler('sendMessage', {type: 8, data: {}}, function (response) {
-                            if (response.length > 0) {
-                                document.getElementById('confirmDialogContainer').style.display = 'block';
-                            } else {
-                                //TODO
-                            }
-                        })
-                    }
-                    //document.getElementById('confirmDialogContainer').style.display = 'block';
+                    //if (myBridge) {
+                    //    myBridge.callHandler('sendMessage', {type: 8, data: {}}, function (response) {
+                    //        if (response.length > 0) {
+                    //            document.getElementById('confirmDialogContainer').style.display = 'block';
+                    //        } else {
+                    //            //TODO
+                    //        }
+                    //    })
+                    //}
+                    document.getElementById('confirmDialogContainer').style.display = 'block';
                 };
 
                 $scope.goToPay = function () {
@@ -80,17 +79,15 @@ define(function (require, exports, module) {
                             goodsNumber: 1
                         });
 
-                        document.getElementById('confirmDialogContainer').style.display = 'none';
-
                         $scope.ensure.$promise.then(function (res) {
+                            document.getElementById('confirmDialogContainer').style.display = 'none';
                             if (res.result == 0) {
-                                window.location.href = encodeURI('#/pay/allCredit?appToken=' + $scope.appToken + '&goodsId=' + $scope.info.goodsId +
-                                    '&orderAmount=' + $scope.info.orderAmount + '&storeGoodsCombinationId=' + $scope.info.storeGoodsCombinationId +
-                                    '&goodsNumber=1&shoufuId=' + $scope.selectedFirstRatio.shoufuId + '&configId=' + $scope.selectedConfigId + '&telephone='+res.data.goodsConfirmInfoResponse.telphone);
+                                window.location.href = encodeURI('#/pay/allCredit?orderId='+res.data.goodsConfirmOrderResponse.orderId+'&telephone='+res.data.goodsConfirmOrderResponse.userInfo.telephone);
                             } else {
                                 Toast(res.msg, 2000);
                             }
                         }).catch(function (error) {
+                            document.getElementById('confirmDialogContainer').style.display = 'none';
                             Toast('服务器返回错误', 2000);
                         });
 
@@ -110,9 +107,11 @@ define(function (require, exports, module) {
 
                         $scope.ensure.$promise.then(function (res) {
                             if (res.result == 0) {
-                                window.location.href = encodeURI('#/pay/firstPay?appToken=' + $scope.appToken + '&goodsId=' + $scope.info.goodsId +
-                                    '&orderAmount=' + $scope.info.orderAmount + '&storeGoodsCombinationId=' + $scope.info.storeGoodsCombinationId +
-                                    '&goodsNumber=1&shoufuId=' + $scope.selectedFirstRatio.shoufuId + '&configId=' + $scope.selectedConfigId);
+                                var response = res.data.goodsConfirmOrderResponse;
+                                window.location.href = encodeURI('#/pay/firstPay?realName='+response.userInfo.realName+'&telephone='+response.userInfo.telephone+
+                                '&hrefPic='+response.goodsItem.hrefPic+'&hotItemName='+response.goodsItem.hotItemName+'&presentPrice='+response.goodsItem.presentPrice+
+                                '&shoufuAmt='+response.fenqi.shoufuAmt+'&monthPay='+response.fenqi.monthPay+'&totalAmount='+response.fenqi.totalAmount+'&staging='+response.fenqi.staging+
+                                '&orderId='+response.orderId+'&orderAmount='+response.orderAmount+'&creditPayment='+response.creditPayment);
                             } else {
                                 Toast(res.msg, 2000);
                             }
