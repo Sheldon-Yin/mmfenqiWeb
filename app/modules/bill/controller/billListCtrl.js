@@ -12,12 +12,12 @@ define(function (require, exports, module) {
                 if (myBridge) {
                     myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
-                            $scope.appToken = response;
+                            $scope.appToken = encodeURI(response);
                             //Toast(response,3000);
                         });
                     })
                 }
-                $scope.appToken = 'MMFQ:hfB4RC9zM80v4ZI5ANbXiVVKyivU3TTJIZnhZfqx5buAFSJ5lwxsPY9rsOgkIiEj';
+                //$scope.appToken = 'MMFQ:hfB4RC9zM80v4ZI5ANbXiVVKyivU3TTJIZnhZfqx5btjx1K7fKQZt6z4d4pCUvuo';
 
                 $scope.selectedPrice = 0;
                 $scope.bill = MyBillList.get({
@@ -107,7 +107,7 @@ define(function (require, exports, module) {
                             }
                         }
                     } else {
-                        Toast(response.msg, 3000);
+                        Toast(res.msg, 3000);
                         $scope.loadError = true;
                     }
 
@@ -152,8 +152,26 @@ define(function (require, exports, module) {
                             //todo custom
                         });
                     }
+                };
 
+
+                if (myBridge) {
+                    myBridge.registerHandler('sendMessageToHTML', function (message, callback) {
+                        if (message.type == 10002) {
+                            var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/bill/record');
+                            myBridge.callHandler('sendMessageToApp', {
+                                type: 2, data: {
+                                    url: jumpUrl,
+                                    leftNavItems: [1],
+                                    title: '订单记录'
+                                }
+                            }, function (response) {
+                                //todo custom
+                            });
+                        }
+                    });
                 }
+
 
             }])
     }

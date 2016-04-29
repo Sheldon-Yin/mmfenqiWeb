@@ -1,16 +1,13 @@
 /**
- * Created by sheldon on 2016/4/18.
+ * Created by sheldon on 2016/4/29.
  */
-'use strict';
 
 define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/goodsDetail.js')(app);
         require('services/isRealNameService.js')(app);
-        app.register.controller('GoodsCtrl', ['$scope', 'GoodsDetail', '$location', 'IsRealName',
+        app.register.controller('DiyGoodsCtrl', ['$scope', 'GoodsDetail', '$location', 'IsRealName',
             function ($scope, GoodsDetail, $location, IsRealName) {
-
-
 
                 var swiper;
                 $scope.initBannerSwiper = function () {
@@ -29,7 +26,6 @@ define(function (require, exports, module) {
                     swiper.update();
                     swiper.reLoop()
                 });
-
 
                 var goodsId = $location.search();
                 console.log(goodsId);
@@ -122,33 +118,6 @@ define(function (require, exports, module) {
                     $scope.loadError = true;
                 });
 
-//$scope.goBack = function () {
-//    window.history.back(-1);
-//};
-
-////初始化banner图的swiper和下拉刷新的swiper
-//var goodsSwiper = new Swiper('.swiper-container', {
-//    pagination: '.swiper-pagination',
-//    paginationClickable: true,
-//    loop: true
-//});
-
-//$scope.share = function () {
-//    if (myBridge) {
-//        myBridge.callHandler('sendMessageToApp', {
-//            type: 0, data: {
-//                'url': 'http://www.baidu.com',
-//                'description': 'mmfenqiTest',
-//                'title': '产品详情页',
-//                'imageUrl': 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png'
-//            }
-//        }, function (response) {
-//            //
-//        })
-//    }
-//};
-
-//商品属性
 
                 $scope.splitStr = '#';
 

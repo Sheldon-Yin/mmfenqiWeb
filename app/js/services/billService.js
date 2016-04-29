@@ -7,8 +7,8 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('MyBillList', ['$resource',
             function ($resource) {
-                return $resource('/api/appinterface/query_my_bill',{appToken:'@appToken'},{
-                    save: {method:'POST'}
+                return $resource('/api/appinterface/query_my_bill',{},{
+                    save: {method:'GET'}
                 })
             }]);
         app.register.factory('BillDetail', ['$resource',

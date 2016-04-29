@@ -39,7 +39,7 @@ define(function (require, exports, module) {
                 if (myBridge) {
                     myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
-                            $scope.appToken = response;
+                            $scope.appToken = encodeURI(response);
                         });
                     })
                 }

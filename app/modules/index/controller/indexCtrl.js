@@ -21,6 +21,7 @@ define(function (require, exports, module) {
                     $scope.loadError = true;
                 });
 
+
                 //if (myBridge) {
                 //    alert(myBridge);
                 //}
@@ -258,7 +259,33 @@ define(function (require, exports, module) {
                                     $scope.index = Index.get({cityName: $scope.cityName, index: 1});
                                 }
                             });
-                        } else {
+                        }else if(message == 5){
+                            myBridge.callHandler('sendMessageToApp',{type:5,data:{}}, function (response) {
+                                var url = response;
+                                var parameters = url.split('?')[1];
+                                var parametersArray = parameters.split('&');
+                                var jsonArray = new Array;
+                                angular.forEach(parametersArray, function (each) {
+                                    var key = each.split('=')[0];
+                                    var value = each.split('=')[1];
+                                    jsonArray.push('"'+key+'":'+value);
+                                });
+                                var string = '{'+jsonArray.join(',')+'}';
+                                var jsonParameters =  JSON.parse(string);
+                                if (jsonParameters.type==1){//type=1代表为自定义商品详情
+                                    myBridge.callHandler('sendMessageToApp', {
+                                        type: 2, data: {
+                                            url: url,
+                                            title: '商品详情',
+                                            leftNavItems: [1],
+                                            rightNavItems: [0]
+                                        }
+                                    }, function (response) {
+                                        //todo custom
+                                    });
+                                }
+                            })
+                        } else{
                             myBridge.callHandler('sendMessageToApp', {type: message, data: {}}, function (response) {
                                 //todo custom
                             });

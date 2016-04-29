@@ -12,13 +12,13 @@ define(function (require, exports, module) {
                 if (myBridge) {
                     myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
-                            $scope.appToken = response;
+                            $scope.appToken = encodeURI(response);
                         });
                     })
                 }
                 //TODO
 
-                //$scope.appToken = 'MMFQ:hfB4RC9zM80v4ZI5ANbXiVVKyivU3TTJIZnhZfqx5btQzwgzDUxlgdnqjQDPw85z';
+                //$scope.appToken = 'MMFQ:hfB4RC9zM80v4ZI5ANbXiVVKyivU3TTJIZnhZfqx5btjx1K7fKQZt6z4d4pCUvuo';
 
                 $scope.data = QueryMyOrder.query({appToken: $scope.appToken});
                 $scope.data.$promise.then(function (res) {

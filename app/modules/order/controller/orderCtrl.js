@@ -12,7 +12,7 @@ define(function (require, exports, module) {
                 if (myBridge) {
                     myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
-                            $scope.appToken = response;
+                            $scope.appToken = encodeURI(response);
                         });
                     })
                 }
@@ -56,16 +56,15 @@ define(function (require, exports, module) {
                 //};
 
                 $scope.showConfirm = function () {
-                    //if (myBridge) {
-                    //    myBridge.callHandler('sendMessage', {type: 8, data: {}}, function (response) {
-                    //        if (response.length > 0) {
-                    //            document.getElementById('confirmDialogContainer').style.display = 'block';
-                    //        } else {
-                    //            //TODO
-                    //        }
-                    //    })
-                    //}
-                    document.getElementById('confirmDialogContainer').style.display = 'block';
+                    if (myBridge) {
+                        myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
+                            if (response.length > 0) {
+                                document.getElementById('confirmDialogContainer').style.display = 'block';
+                            } else {
+                                //TODO
+                            }
+                        })
+                    }
                 };
 
                 $scope.goToPay = function () {

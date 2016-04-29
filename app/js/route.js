@@ -6,7 +6,6 @@
 define(function (require, exports, module) {
     "use strict";
     module.exports = function (app) {
-        app.value('mmfqBaseUrl','http://192.168.0.116/app/');
         app.config(['$routeProvider',
             function ($routeProvider) {
 
@@ -98,6 +97,13 @@ define(function (require, exports, module) {
                     controllerUrl: './modules/goods/controller/goodsCtrl.js'
                 }).
 
+                    //医院自定义商品
+                    when('/diy/goods',{
+                    templateUrl: './modules/diyGoods/diyGoods.html',
+                    controller: 'DiyGoodsCtrl',
+                    controllerUrl: './modules/diyGoods/controller/diyGoodsCtrl.js'
+                }).
+
                 //下订单
                 when('/order', {
                     templateUrl: './modules/order/order.html',
@@ -129,24 +135,6 @@ define(function (require, exports, module) {
                 }).
 
 
-
-
-
-
-
-                //临时页面
-                when('/temp/signup', {
-                    templateUrl: 'modules/temp/signup.html'
-                }).//临时页面
-                when('/temp/signupSuccess', {
-                    templateUrl: 'modules/temp/signupSuccess.html'
-                }).//临时页面
-                when('/temp/myCredit1', {
-                    templateUrl: 'modules/temp/myCredit1.html'
-                }).//临时页面
-                when('/temp/myCredit2', {
-                    templateUrl: 'modules/temp/myCredit2.html'
-                }).
 
 
 
