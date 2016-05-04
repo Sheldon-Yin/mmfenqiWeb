@@ -14,11 +14,12 @@ define(function (require, exports, module) {
 
                 $scope.index.$promise.then(function (res) {
                     if (res.result != 0){
-                        Toast(response.msg,3000);
+                        Toast(res.msg,3000);
                         $scope.loadError = true;
                     }
                 }).catch(function (error) {
                     $scope.loadError = true;
+                    Toast('服务器返回失败');
                 });
 
 
@@ -233,6 +234,18 @@ define(function (require, exports, module) {
                 };
 
                 $scope.jumpToActivity = function (x) {
+                    if (myBridge){
+                        myBridge.callHandler('sendMessageToApp', {
+                            type: 2, data: {
+                                url: x.linkHerf,
+                                title: '精品活动',
+                                leftNavItems: [1],
+                                rightNavItems: [0]
+                            }
+                        }, function (response) {
+                            //todo custom
+                        });
+                    }
                 };
 
                 if (myBridge) {

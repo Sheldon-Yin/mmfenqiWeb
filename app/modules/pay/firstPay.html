@@ -11,20 +11,20 @@
 
 <div class="app-bootstrap-grey-bold-hr"></div>
 
-<div class="container">
+<!--<div class="container">-->
 
-    <div class="row">
-        <div class="col-xs-6 text-left" style="padding: 1rem">
-            {{order.realNmae}}
-        </div>
-        <div class="col-xs-6 text-right app-blue-text" style="padding: 1rem;">
-            {{order.telphone}}
-        </div>
-    </div>
+    <!--<div class="row">-->
+        <!--<div class="col-xs-6 text-left" style="padding: 1rem">-->
+            <!--{{order.realNmae}}-->
+        <!--</div>-->
+        <!--<div class="col-xs-6 text-right app-blue-text" style="padding: 1rem;">-->
+            <!--{{order.telphone}}-->
+        <!--</div>-->
+    <!--</div>-->
 
-</div>
+<!--</div>-->
 
-<div class="app-bootstrap-grey-bold-hr"></div>
+<!--<div class="app-bootstrap-grey-bold-hr"></div>-->
 
 <div class="container">
     <div class="row app-project-container">
@@ -53,20 +53,6 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-6 text-left app-padding-one">
-            可用优惠券
-        </div>
-        <div class="col-xs-6 text-right app-padding-one">
-            <span class="app-blue-text">1</span>张<i class="app-grey-text fa fa-angle-right fa-lg"
-                                                    style="padding-left: 1rem"></i>
-        </div>
-    </div>
-</div>
-
-<div class="app-bootstrap-grey-bold-hr"></div>
-
-<div class="container">
-    <div class="row">
 
         <div class="col-xs-6 app-padding-one">
             首付
@@ -86,8 +72,8 @@
             信用支付
         </div>
 
-        <div class="col-xs-6 text-right app-padding-one app-pink-text">
-            ￥{{order.creditPayment}}
+        <div class="col-xs-6 text-right app-padding-one app-blue-text">
+            -￥{{order.creditPayment}}
         </div>
 
     </div>
@@ -108,9 +94,40 @@
 
 </div>
 
+<div class="app-bootstrap-grey-bold-hr" ng-if="order.isInsuranceBuy"></div>
+
+<div class="container" ng-if="order.isInsuranceBuy">
+    <div class="row">
+        <div class="col-xs-6 text-left app-padding-one">
+            保险
+        </div>
+        <div class="col-xs-6 text-right app-padding-one app-pink-text">
+            ￥{{order.insuranceAmount}}
+        </div>
+    </div>
+</div>
+
 <div class="app-bootstrap-grey-bold-hr"></div>
 
-<div class="container" style="margin-bottom: 6rem">
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-xs-6 app-padding-one">
+            保险
+        </div>
+
+        <div class="col-xs-6 text-right app-padding-one app-pink-text">
+            ￥{{order.insuranceAmount}}
+        </div>
+
+    </div>
+
+</div>
+
+<div class="app-bootstrap-grey-bold-hr"></div>
+
+<div class="container">
 
     <div class="row">
 
@@ -126,6 +143,13 @@
 
 </div>
 
+<div class="app-bootstrap-grey-bold-hr"></div>
+
+<div class="container text-center"  style="margin-bottom: 6rem;margin-top: 1rem">
+
+    <img style="width: 1rem;margin-right: 0.5rem" src="modules/pay/img/contact-checked.png">我已同意并授权<a class="app-blue-text">《分期服务协议》、</a><a class="app-blue-text">《借款协议》</a>
+
+</div>
 
 <div class="app-pink-bottom-bar" ng-click="choosePayWay()">
 
@@ -134,7 +158,6 @@
     </div>
 
 </div>
-
 
 <!--确认支付浮层弹出窗口-->
 <div id="choosePayWayDialogContainer" class="app-grey-dialog-container">
@@ -188,7 +211,7 @@
         </div>
     </div>
 
-    <div class="app-pink-bottom-bar" ng-click="goToPay()">
+    <div class="app-pink-bottom-bar" ng-click="goToPay()" style="background-color: #FB1787">
         <div style="width: 100%;float: left;background-color: #fb1787;color: #FFFFFF;margin-top: -0.6rem;height: 3.6rem;line-height: 3.6rem;text-align: center">
             立即支付
         </div>

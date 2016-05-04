@@ -9,8 +9,8 @@ define(function (require, exports, module) {
         require('services/orderService.js')(app);
         require('services/alipayService.js')(app);
         require('services/wxpayService.js')(app);
-        app.register.controller('FirstPay', ['$scope', 'OrderInfoForEnsure', '$location', 'Wxpay', 'Alipay',
-            function ($scope, OrderInfoForEnsure, $location, Wxpay, Alipay) {
+        app.register.controller('FirstPayCtrl', ['$scope', 'OrderInfoForEnsure', '$location', 'Wxpay', 'Alipay','$rootScope',
+            function ($scope, OrderInfoForEnsure, $location, Wxpay, Alipay,$rootScope) {
                 $scope.goBack = function () {
                     window.history.back(-1);
                 };

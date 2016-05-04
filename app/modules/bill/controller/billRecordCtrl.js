@@ -26,7 +26,7 @@ define(function (require, exports, module) {
                             console.log($scope.billRecord);
                             $scope.billRecord.$promise.then(function (res) {
                                 if (res.result != 0){
-                                    Toast(response.msg,3000);
+                                    Toast(res.msg,3000);
                                     $scope.loadError = true;
                                 }
                             }).catch(function (error) {

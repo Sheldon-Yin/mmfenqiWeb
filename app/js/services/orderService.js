@@ -7,14 +7,14 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('QueryMyOrder', ['$resource',
             function ($resource) {
-                return $resource('/api/appinterface/query_my_order',{appToken:'@appToken'},{
-                    query: {method:'GET',params:{orderStatus:-1}}
+                return $resource('/api/appinterface/query_my_order',{},{
+                    query: {method:'GET'}
                 })
             }]);
         app.register.factory('CreateOrder', ['$resource',
             function ($resource) {
                 return $resource('/api/appinterface/query_goods_staging_order_app',{},{
-                    get: {method:'GET',params:{cityId:2}}
+                    get: {method:'GET',params:{}}
                 })
             }]);
         app.register.factory('OrderInfoForEnsure', ['$resource',
@@ -44,6 +44,14 @@ define(function (require, exports, module) {
         app.register.factory('EnsureOrderForMessage', ['$resource',
             function ($resource) {
                 return $resource('/api/appinterface/user_Order_Confirm_Pay', {}, {
+                    query:{
+                        method: 'GET'
+                    }
+                });
+            }]);
+        app.register.factory('InsuranceDetail', ['$resource',
+            function ($resource) {
+                return $resource('/api/appinterface/query_insuranceInfo', {}, {
                     query:{
                         method: 'GET'
                     }

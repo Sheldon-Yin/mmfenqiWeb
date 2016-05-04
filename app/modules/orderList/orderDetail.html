@@ -71,18 +71,19 @@
                 </div>
             </div>
 
-            <div class="row text-left" style="padding-bottom: 0.5rem">
-                <div class="col-xs-6">
-                    查看合同
+            <div class="row text-left app-blue-text" style="padding-bottom: 0.5rem;">
+                <div class="col-xs-6" ng-click="goToServiceContact(orderDetail.data.orderDetailResponse.service_contract_url)">
+                    《分期服务协议》
                 </div>
-                <div class="col-xs-6 text-right">
-                    <i class="fa fa-angle-right"></i>
+                <div class="col-xs-6 text-right" ng-click="goToLoanContact(orderDetail.data.orderDetailResponse.loan_contract_url)">
+                    《借款协议》
                 </div>
             </div>
+
             <hr class="app-bootstrap-hr-no-match">
-            <div class="row text-left" style="padding-top: 0.5rem">
+            <div class="row text-left" style="padding-top: 0.5rem" ng-click="goToInsurance()" ng-show="orderDetail.data.orderDetailResponse.isInsuranceBuy">
                 <div class="col-xs-6">
-                    查看合同
+                    查看保险
                 </div>
                 <div class="col-xs-6 text-right">
                     <i class="fa fa-angle-right"></i>

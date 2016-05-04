@@ -7,11 +7,12 @@ define(function (require, exports, module) {
   //console.log('init app...' + (new Date().getTime()));
 
   //Step3: add 'angular-lazyload' to your main module's list of dependencies
-  var app = angular.module('app', ['angular-lazyload', 'ngRoute','ngResource','ngAnimate','ui.angularSku']);
+  var app = angular.module('app', ['angular-lazyload', 'ngRoute','ngResource','ui.angularSku']);
   require('./route.js')(app);
   require('./filters/filters.js')(app);
   require('./directives/directives.js')(app);
-  require('./animations/animations.js')(app);
+  //require('./animations/animations.js')(app);
+  //require('./common/core.js')(app);
   //配置期
 
   //运行期

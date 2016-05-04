@@ -9,21 +9,47 @@ define(function (require, exports, module) {
         app.register.controller('OrderCtrl', ['$scope', '$location', 'CreateOrder', 'OrderInfoForEnsure',
             function ($scope, $location, CreateOrder, OrderInfoForEnsure) {
 
+
                 if (myBridge) {
                     myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
                             $scope.appToken = encodeURI(response);
+                            $scope.info = $location.search();
+                            console.log($scope.info);
+                            $scope.orderInfo = CreateOrder.get(
+                                {
+                                    goodsId: $scope.info.goodsId,
+                                    appToken: $scope.appToken,
+                                    storeGoodsCombinationId: $scope.info.storeGoodsCombinationId
+                                }
+                            );
+                            console.log($scope.orderInfo);
+                            $scope.orderInfo.$promise.then(function (res) {
+                                if (res.result != 0){
+                                    Toast(res.msg,3000);
+                                    $scope.loadError = true;
+                                } else {
+                                    $scope.firstRatio = res.data.goodsStagingInfoResponse.fenqiShowfuInfoList;
+                                    $scope.stages = res.data.goodsStagingInfoResponse.fenqiConfigList;
+                                    $scope.mmfenqiMode = res.data.goodsStagingInfoResponse.fenqiObj;
+                                    $scope.insuranceAmount = res.data.goodsStagingInfoResponse.insuranceAmountList;
+                                    $scope.selectedFirstRatio = $scope.firstRatio[0];
+                                    $scope.stages[0].isSelectedStage = true;
+                                    $scope.insuranceAmount[0].isSelectedInsurance = true;
+                                    $scope.selectedStage = $scope.stages[0].staging;
+                                    $scope.selectedConfigId = $scope.stages[0].configId;
+                                    $scope.selectedInsurance = $scope.insuranceAmount[0].price;
+                                    $scope.isInsuranceBuy = false;
+                                    $scope.getFenqiMode();
+                                }
+                            }).catch(function (error) {
+                                Toast('服务器返回错误', 2000);
+                                $scope.loadError = true;
+                            });
                         });
                     })
                 }
 
-                //$scope.appToken = 'MMFQ:hfB4RC9zM80v4ZI5ANbXiVVKyivU3TTJIZnhZfqx5btQzwgzDUxlgdnqjQDPw85z';
-
-                $scope.info = $location.search();
-                console.log($scope.info);
-                $scope.orderInfo = CreateOrder.get(
-                    $scope.info
-                );
                 $scope.total = $location.search().orderAmount;
 
                 $scope.getFenqiMode = function () {
@@ -33,23 +59,6 @@ define(function (require, exports, module) {
                         }
                     })
                 };
-
-                console.log($scope.orderInfo);
-                $scope.orderInfo.$promise.then(function (res) {
-                    if (res.result != 0){
-                        Toast(response.msg,3000);
-                        $scope.loadError = true;
-                    } else {
-                        $scope.firstRatio = res.data.goodsStagingInfoResponse.fenqiShowfuInfoList;
-                        $scope.stages = res.data.goodsStagingInfoResponse.fenqiConfigList;
-                        $scope.mmfenqiMode = res.data.goodsStagingInfoResponse.fenqiObj;
-                        $scope.selectedFirstRatio = $scope.firstRatio[0];
-                        $scope.stages[0].isSelectedStage = true;
-                        $scope.selectedStage = $scope.stages[0].staging;
-                        $scope.selectedConfigId = $scope.stages[0].configId;
-                        $scope.getFenqiMode();
-                    }
-                });
 
                 //$scope.goBack = function () {
                 //    window.history.go(-1);
@@ -66,9 +75,24 @@ define(function (require, exports, module) {
                         })
                     }
                 };
+                
+                $scope.goToInsuranceIntroduce = function () {
+                    if (myBridge) {
+                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/insurance/introduce');
+                        myBridge.callHandler('sendMessageToApp', {
+                            type: 2, data: {
+                                url: jumpUrl,
+                                title: '保险说明',
+                                leftNavItems: [1]
+                            }
+                        }, function (response) {
+                            //todo custom
+                        });
+                    }
+                };
 
                 $scope.goToPay = function () {
-                    if ($scope.selectedFirstRatio.ratio == 0) {
+                    if ($scope.selectedFirstRatio.ratio == 0 && $scope.isInsuranceBuy == false) {
 
                         $scope.ensure = OrderInfoForEnsure.query({
                             appToken: $scope.appToken,
@@ -77,7 +101,9 @@ define(function (require, exports, module) {
                             shoufuId: $scope.selectedFirstRatio.shoufuId,
                             configId: $scope.selectedConfigId,
                             storeGoodsCombinationId: $scope.info.storeGoodsCombinationId,
-                            goodsNumber: 1
+                            goodsNumber: 1,
+                            isInsuranceBuy: $scope.isInsuranceBuy,
+                            insuranceAmount: $scope.isInsuranceBuy ? $scope.selectedInsurance : 0
                         });
 
                         $scope.ensure.$promise.then(function (res) {
@@ -101,9 +127,10 @@ define(function (require, exports, module) {
                         }).catch(function (error) {
                             document.getElementById('confirmDialogContainer').style.display = 'none';
                             Toast('服务器返回错误', 2000);
+                            $scope.loadError = true;
                         });
 
-                    } else if ($scope.selectedFirstRatio.ratio != 0) {
+                    } else {
 
                         $scope.ensure = OrderInfoForEnsure.query({
                             appToken: $scope.appToken,
@@ -112,7 +139,9 @@ define(function (require, exports, module) {
                             shoufuId: $scope.selectedFirstRatio.shoufuId,
                             configId: $scope.selectedConfigId,
                             storeGoodsCombinationId: $scope.info.storeGoodsCombinationId,
-                            goodsNumber: 1
+                            goodsNumber: 1,
+                            isInsuranceBuy: $scope.isInsuranceBuy,
+                            insuranceAmount: $scope.isInsuranceBuy ? $scope.selectedInsurance : 0
                         });
 
                         document.getElementById('confirmDialogContainer').style.display = 'none';
@@ -124,7 +153,7 @@ define(function (require, exports, module) {
                                     var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/pay/firstPay?realName='+response.userInfo.realName+'&telephone='+response.userInfo.telephone+
                                         '&hrefPic='+response.goodsItem.hrefPic+'&hotItemName='+response.goodsItem.hotItemName+'&presentPrice='+response.goodsItem.presentPrice+
                                         '&shoufuAmt='+response.fenqi.shoufuAmt+'&monthPay='+response.fenqi.monthPay+'&totalAmount='+response.fenqi.totalAmount+'&staging='+response.fenqi.staging+
-                                        '&orderId='+response.orderId+'&orderAmount='+response.orderAmount+'&creditPayment='+response.creditPayment);
+                                        '&orderId='+response.orderId+'&orderAmount='+response.orderAmount+'&creditPayment='+response.creditPayment+'&insuranceAmount='+($scope.isInsuranceBuy ? $scope.selectedInsurance : 0) );
                                     myBridge.callHandler('sendMessageToApp', {
                                         type: 2, data: {
                                             url: jumpUrl,
@@ -156,7 +185,57 @@ define(function (require, exports, module) {
                             each.isSelectedStage = false;
                         }
                     });
-                }
+                };
+
+                $scope.updateInsurance = function (x) {
+                    angular.forEach($scope.insuranceAmount, function (each) {
+                        if (x.price == each.price) {
+                            each.isSelectedInsurance = true;
+                            $scope.selectedInsurance = each.price;
+                        } else {
+                            each.isSelectedInsurance = false;
+                        }
+                    });
+                };
+
+                ////与优惠券选择页面交互
+                //$scope.iframeWindow = document.getElementById("ii").contentWindow;
+                ////setInterval(function () {
+                ////    console.log($scope.coupon.scope.test)
+                ////},1000);
+                //var subIframe = document.getElementById("ii");
+                //subIframe. onload = subIframe. onreadystatechange = iframeload;
+                //subIframe.src = '#/coupon';
+                //$scope.couponBtn = '不使用优惠券';
+                //
+                //function iframeload() {
+                //    if (!subIframe.readyState || subIframe.readyState == "complete") {
+                //        setTimeout(function () {
+                //            $scope.iframeWindow.scope.$watch('couponInput', function(newValue, oldValue) {
+                //                console.log(newValue);
+                //                $scope.couponPrice = newValue;
+                //                if (!!newValue){
+                //                    $scope.$apply(function () {
+                //                        $scope.couponBtn = '优惠：' + newValue +'元';
+                //                    });
+                //                }
+                //            });
+                //        },1)
+                //    }
+                //}
+                //
+                //$scope.chooseCoupon = function () {
+                //    $scope.isChooseCoupon = true;
+                //};
+                //
+                //$scope.closeCoupon = function () {
+                //    $scope.isChooseCoupon = false;
+                //};
+                //
+                //$scope.setCoupon = function () {
+                //    $scope.selectedCoupon = $scope.couponPrice;
+                //    $scope.isChooseCoupon = false;
+                //}
 
             }])
     }

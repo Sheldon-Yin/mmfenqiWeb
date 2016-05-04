@@ -10,8 +10,6 @@ define(function (require, exports, module) {
         app.register.controller('GoodsCtrl', ['$scope', 'GoodsDetail', '$location', 'IsRealName',
             function ($scope, GoodsDetail, $location, IsRealName) {
 
-
-
                 var swiper;
                 $scope.initBannerSwiper = function () {
                     //下面是在table render完成后执行的js
@@ -52,7 +50,6 @@ define(function (require, exports, module) {
                     $scope.defaultPrice = response.data.goodsDetailsResponse.goodsItem.presentPrice;
                     $scope.type = response.data.goodsDetailsResponse.combinationTypeInfoList;
                     $scope.skuData = response.data.goodsDetailsResponse.goodsCombinationExtMap;
-
 
                     $scope.goToOrder = function () {
                         if (myBridge) {
@@ -167,7 +164,6 @@ define(function (require, exports, module) {
                         })
                     }
                 };
-
 
                 if (myBridge) {
                     myBridge.registerHandler('sendMessageToHTML', function (message, callback) {

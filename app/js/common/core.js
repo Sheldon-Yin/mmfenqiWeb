@@ -1,7 +1,3 @@
-/**
- * Created by sheldon on 2016/3/21.
- */
-
 //console.log('route中');
 define(function (require, exports, module) {
     "use strict";
@@ -52,13 +48,6 @@ define(function (require, exports, module) {
                     controllerUrl: './modules/orderList/controller/orderDetailCtrl.js'
                 }).
 
-                //保险详情
-                when('/insurance/details', {
-                    templateUrl: 'modules/insurance/insurance.html',
-                    controller: 'InsuranceCtrl',
-                    controllerUrl: './modules/insurance/controller/insuranceCtrl.js'
-                }).
-
                 //账单模块
                 when('/bill/list', {
                     templateUrl: 'modules/bill/billList.html',
@@ -105,7 +94,7 @@ define(function (require, exports, module) {
                 }).
 
                 //医院自定义商品
-                when('/diy/goods', {
+                when('/diy/goods',{
                     templateUrl: './modules/diyGoods/diyGoods.html',
                     controller: 'DiyGoodsCtrl',
                     controllerUrl: './modules/diyGoods/controller/diyGoodsCtrl.js'
@@ -137,22 +126,17 @@ define(function (require, exports, module) {
                 //支付首付
                 when('/pay/firstPay', {
                     templateUrl: 'modules/pay/firstPay.html',
-                    controller: 'FirstPayCtrl',
+                    controller: 'FirstPay',
                     controllerUrl: './modules/pay/controller/firstPayCtrl.js'
                 }).
 
 
-                //保险说明静态页
-                when('/insurance/introduce', {
-                    templateUrl: 'modules/static/insuranceIntroduce.html'
-                }).
 
-                //优惠券
-                when('/coupon', {
-                    templateUrl: 'modules/coupon/coupon.html',
-                    controller: 'CouponCtrl',
-                    controllerUrl: './modules/coupon/controller/couponCtrl.js'
-                }).
+
+
+
+
+
 
 
                 //默认首页
@@ -161,5 +145,66 @@ define(function (require, exports, module) {
                 });
                 //$locationProvider.html5Mode(true);
             }]);
+        app.directive('onFinishRenderFilters', function ($timeout) {
+            return {
+                restrict: 'A',
+                link: function(scope, element, attr) {
+                    if (scope.$last === true) {
+                        $timeout(function() {
+                            scope.$emit('ngRepeatFinished');
+                        });
+                    }
+                }
+            };
+        });
+        app.directive('onFinishRenderFiltersCopy', function ($timeout) {
+            return {
+                restrict: 'A',
+                link: function(scope, element, attr) {
+                    if (scope.$last === true) {
+                        $timeout(function() {
+                            scope.$emit('ngRepeatFinishedCopy');
+                        });
+                    }
+                }
+            };
+        });
+        app.filter('checkmark', function() {
+            return function (input) {
+                return input ? '\u2713' : '\u2718';
+            }
+        });
+        app.filter('percent',function() {
+            return function (input) {
+                return input*10 + '%';
+            }
+        });
+        app.filter('orderStatus', function () {
+            return function (input) {
+                var res;
+                switch (input){
+                    case "1":
+                        res = '待支付';
+                        break;
+                    case "2":
+                        res = '待完成';
+                        break;
+                    case "3":
+                        res = '已完成';
+                        break;
+                    case "4":
+                        res = '已取消';
+                        break;
+                    case "5":
+                        res = '退款审核中';
+                        break;
+                    case "6":
+                        res = '退款成功 ';
+                        break;
+                }
+                console.log(res);
+                return res;
+            }
+        })
     }
 });

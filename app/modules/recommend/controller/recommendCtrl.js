@@ -18,7 +18,7 @@ define(function (require, exports, module) {
                 });
                 $scope.data.$promise.then(function (res) {
                     if (res.result != 0){
-                        Toast(response.msg,3000);
+                        Toast(res.msg,3000);
                         $scope.loadError = true;
                     }
                 }).catch(function(error){

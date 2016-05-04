@@ -115,7 +115,6 @@
                         <input type="radio" ng-model="x.sortNo" class="goods-categories-radio-input" value="{{key}}" ng-click="onSelect(key.combinationName)">
                         <span class="goods-categories-radio" ng-class="{'js-selected': keyMap[key.combinationName].selected, 'js-disabled': keyMap[key.combinationName].disabled}" style="line-height: 3rem;">{{key.combinationName}}</span>
                     </label>
-
                 </div>
             </div>
 
@@ -139,7 +138,7 @@
 
     </div>
 
-    <!--待定-->
+    <!---->
     <!--<div class="row">-->
         <!--<div class="container" style="background-color: #ececec;color: #999999;">-->
             <!--<div class="row text-center" style="padding: 2rem 0">-->
@@ -165,6 +164,7 @@
         <!--<div class="app-bootstrap-grey-bold-hr"></div>-->
 
     <!--</div>-->
+
 </div>
 
 <div class="goods-categories-bottom-bar">
@@ -177,11 +177,11 @@
     </div>
 
     <div style="width: 30%;float: left;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: center">
-        <span class="app-pink-text" style="font-size: 0.5rem">￥</span><span class="app-pink-text"
-                                                                            style="font-size: 1.2rem">{{price||defaultPrice}}元</span>
+        <span class="app-pink-text" style="font-size: 1.2rem">￥</span><span class="app-pink-text"
+                                                                            style="font-size: 1.9rem">{{price||defaultPrice}}元</span>
     </div>
 
-    <div style="width: 50%;float: left;background-color: #fb1787;color: #FFFFFF;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: center"
+    <div style="font-size: 1.5rem;width: 50%;float: left;background-color: #fb1787;color: #FFFFFF;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: center"
          ng-click="goToOrder()">
         立即分期
     </div>

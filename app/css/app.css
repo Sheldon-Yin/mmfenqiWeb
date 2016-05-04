@@ -130,6 +130,7 @@ td {
     line-height: 2.9rem;
     text-decoration: line-through;
     font-size: 1.4rem;
+    color: rgb(102,102,102);
 }
 
 .app-project-price-area {
@@ -146,6 +147,7 @@ td {
     -webkit-border-bottom-left-radius: 0.2rem;
     color: #FFFFFF;
     padding: 0.2rem;
+    font-size: 1rem;
 }
 
 .app-project-yellow-text-radius {
@@ -154,6 +156,7 @@ td {
     border-bottom-right-radius: 0.2rem;
     -webkit-border-top-right-radius: 0.2rem;
     -webkit-border-bottom-right-radius: 0.2rem;
+    font-size: 1rem;
     color: rgb(255, 185, 35);
     padding: 0.10rem;
     border: solid rgb(255, 185, 35) 0.1rem;

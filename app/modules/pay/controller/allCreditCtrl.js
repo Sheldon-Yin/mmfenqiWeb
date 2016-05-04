@@ -18,7 +18,6 @@ define(function (require, exports, module) {
                 $scope.telephone = $location.search().telephone;
                 $scope.orderId = $location.search().orderId;
 
-
                 //$scope.appToken = 'MMFQ:hfB4RC9zM80v4ZI5ANbXiVVKyivU3TTJIZnhZfqx5btQzwgzDUxlgdnqjQDPw85z';
                 //$scope.ensurePay = function () {
                 //    if ($scope.inputCode==null || $scope.inputCode==''){
@@ -64,7 +63,6 @@ define(function (require, exports, module) {
                                 //}).catch(function (error) {
                                 //    Toast('服务器返回错误',2000);
                                 //})
-                                Toast('开始了',2000);
                                 if (myBridge) {
                                     myBridge.callHandler('sendMessageToApp', {
                                         type: 11, data: {
