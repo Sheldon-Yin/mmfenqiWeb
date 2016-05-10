@@ -39,6 +39,27 @@ define(function (require, exports, module) {
               console.log(res);
               return res;
           }
+      });
+      app.filter('billStatus', function () {
+          return function (input) {
+              var res;
+              switch (input){
+                  case "0":
+                      res = '待还款';
+                      break;
+                  case "1":
+                      res = '已还款';
+                      break;
+                  case "2":
+                      res = '延期还款';
+                      break;
+                  case "3":
+                      res = '逾期还款';
+                      break;
+              }
+              console.log(res);
+              return res;
+          }
       })
   }
 });

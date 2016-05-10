@@ -121,7 +121,6 @@ define(function (require, exports, module) {
                 //
                 ////ddd
 
-
                 var swiper;
                 $scope.initBannerSwiper = function () {
                     //下面是在table render完成后执行的js
@@ -191,7 +190,7 @@ define(function (require, exports, module) {
                         myBridge.callHandler('sendMessageToApp', {
                             type: 2, data: {
                                 url: jumpUrl,
-                                title: '商品详情',
+                                title: '产品详情',
                                 leftNavItems: [1],
                                 rightNavItems: [0]
                             }
@@ -205,7 +204,6 @@ define(function (require, exports, module) {
                     //window.location.href = encodeURI($location.absUrl().split('#')[0] + '#/recommend'+'?cityName='+$scope.cityName);
                     if (myBridge) {
                         var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/recommend'+'?cityName='+$scope.cityName);
-
                         myBridge.callHandler('sendMessageToApp', {
                             type: 2, data: {
                                 url: jumpUrl,
@@ -237,7 +235,7 @@ define(function (require, exports, module) {
                     if (myBridge){
                         myBridge.callHandler('sendMessageToApp', {
                             type: 2, data: {
-                                url: x.linkHerf,
+                                url: x,
                                 title: '精品活动',
                                 leftNavItems: [1],
                                 rightNavItems: [0]
@@ -274,6 +272,7 @@ define(function (require, exports, module) {
                             });
                         }else if(message == 5){
                             myBridge.callHandler('sendMessageToApp',{type:5,data:{}}, function (response) {
+                                //document.getElementById('ok').src = 'data:image/png;base64,'+response;
                                 var url = response;
                                 var parameters = url.split('?')[1];
                                 var parametersArray = parameters.split('&');
@@ -289,7 +288,7 @@ define(function (require, exports, module) {
                                     myBridge.callHandler('sendMessageToApp', {
                                         type: 2, data: {
                                             url: url,
-                                            title: '商品详情',
+                                            title: '产品详情',
                                             leftNavItems: [1],
                                             rightNavItems: [0]
                                         }

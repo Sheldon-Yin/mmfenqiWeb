@@ -9,11 +9,7 @@ define(function (require, exports, module) {
         require('services/alipayService.js')(app);
         require('services/wxpayService.js')(app);
         app.register.controller('OrderDetailCtrl', ['$scope', '$location', 'OrderDetails', 'Alipay', 'Wxpay', 'CancelOrder',
-            function (                               $scope,   $location,   OrderDetails,   Alipay,   Wxpay,   CancelOrder ) {
-                //$scope.goBack = function () {
-                //    window.history.back(-1);
-                //};
-
+            function ($scope, $location, OrderDetails, Alipay, Wxpay, CancelOrder) {
 
                 if (myBridge) {
                     myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
@@ -39,7 +35,7 @@ define(function (require, exports, module) {
                                             type: 2, data: {
                                                 url: jumpUrl,
                                                 leftNavItems: [1],
-                                                title: '商品详情',
+                                                title: '产品详情',
                                                 rightNavItems: [0]
                                             }
                                         }, function (response) {
@@ -108,6 +104,14 @@ define(function (require, exports, module) {
                                     }
                                 };
 
+                                $scope.hideQrCodeImg = function () {
+                                    document.getElementById('qrCodeDialog').style.display = 'none';
+                                };
+
+                                $scope.showQrCodeImg = function () {
+                                    document.getElementById('qrCodeDialog').style.display = 'block';
+                                };
+
                                 $scope.goToPay = function () {
                                     if ($scope.payWay == 'alipay') {
                                         var alipay = Alipay.query({
@@ -155,6 +159,21 @@ define(function (require, exports, module) {
                                     }
                                 };
 
+                                $scope.goToInform = function () {
+                                    if (myBridge) {
+                                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/order/inform?orderId=' + $scope.orderId);
+                                        myBridge.callHandler('sendMessageToApp', {
+                                            type: 2, data: {
+                                                url: jumpUrl,
+                                                leftNavItems: [1],
+                                                title: '知情同意书',
+                                            }
+                                        }, function (response) {
+                                            //todo custom
+                                        });
+                                    }
+                                };
+
                                 $scope.cancelOrder = function () {
                                     $scope.cancelOrder = CancelOrder.query({
                                         orderId: $scope.orderId,
@@ -170,6 +189,14 @@ define(function (require, exports, module) {
                                     }).catch(function (error) {
                                         Toast(error, 2000);
                                     })
+                                };
+
+                                $scope.showConfirm = function () {
+                                    document.getElementById('confirmDialogContainer').style.display = 'block';
+                                };
+
+                                $scope.hideConfirm = function () {
+                                    document.getElementById('confirmDialogContainer').style.display = 'none';
                                 };
 
                                 $scope.choosePayWay = function () {

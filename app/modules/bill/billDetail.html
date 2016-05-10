@@ -83,7 +83,7 @@
                     <div class="col-xs-3" style="padding: 0">
                         ({{x.repayment_staging}}/{{bill.data.billDetailResponse.repaymentList.length}})期
                     </div>
-                    <div class="col-xs-4" style="padding: 0">{{x.repayment_date}}待付</div>
+                    <div class="col-xs-4" style="padding: 0">{{x.repayment_date}}{{x.repayment_status | billStatus}}</div>
                 </div>
             </label>
             <hr class="app-bootstrap-hr">
@@ -104,7 +104,7 @@
                         全选
                     </div>
                     <div class="col-xs-6">
-                        ￥{{selectedPrice}}
+                        ￥{{selectedPrice | number:2}}
                     </div>
                 </div>
             </div>

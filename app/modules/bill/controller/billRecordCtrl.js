@@ -37,7 +37,6 @@ define(function (require, exports, module) {
                     })
                 }
 
-
                 $scope.showHiddenList = [0];
 
                 //$scope.toggleShowHide = function (id) {

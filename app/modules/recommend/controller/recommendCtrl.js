@@ -33,7 +33,7 @@ define(function (require, exports, module) {
                         myBridge.callHandler('sendMessageToApp', {
                             type: 2, data: {
                                 url: jumpUrl,
-                                title: '商品详情',
+                                title: '产品详情',
                                 leftNavItems: [1],
                                 rightNavItems: [0]
                             }

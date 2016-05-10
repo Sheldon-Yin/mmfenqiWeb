@@ -1,0 +1,92 @@
+<!-- list -->
+<ul class="nav">
+    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+        <span>基础功能</span>
+    </li>
+    <li ng-class="{active:$state.includes('app.customer')}">
+        <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+            <i class="glyphicon glyphicon-list"></i>
+            <span>客户管理</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span>客户管理</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.customer.list">
+                    <span>客户列表</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.customer.add">
+                    <span>添加客户</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li ng-class="{active:$state.includes('app.employee')}" ng-show="app.user.role == 'admin'">
+        <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+            <i class="fa fa-group"></i>
+            <span>员工管理</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span>员工管理</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.employee.list">
+                    <span>员工列表</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.employee.add">
+                    <span>添加员工</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-show="app.user.role == 'admin'">
+        <span>高级工具</span>
+    </li>
+    <li ng-class="{active:$state.includes('app.statistic')}" ng-show="app.user.role == 'admin'">
+        <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+            <i class="icon icon-graph"></i>
+            <span>统计信息</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span>统计信息</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.statistic.order">
+                    <span>订单统计</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.statistic.tips">
+                    <span>统计标签</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<!-- / list -->

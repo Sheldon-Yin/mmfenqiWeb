@@ -7,25 +7,25 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('MyBillList', ['$resource',
             function ($resource) {
-                return $resource('/api/appinterface/query_my_bill',{},{
+                return $resource('/appinterface/query_my_bill',{},{
                     save: {method:'GET'}
                 })
             }]);
         app.register.factory('BillDetail', ['$resource',
             function ($resource) {
-                return $resource('/api/appinterface/query_early_repayment',{},{
+                return $resource('/appinterface/query_early_repayment',{},{
                     query: {method:'GET'}
                 })
             }]);
         app.register.factory('BillPay', ['$resource',
             function ($resource) {
-                return $resource('/api/appinterface/repayment',{},{
+                return $resource('/appinterface/repayment',{},{
                     query: {method:'GET'}
                 })
             }]);
         app.register.factory('MyBillRecord', ['$resource',
             function ($resource) {
-                return $resource('/api/appinterface/query_repayment_record',{},{
+                return $resource('/appinterface/query_repayment_record',{},{
                     query: {method:'GET'}
                 })
             }]);

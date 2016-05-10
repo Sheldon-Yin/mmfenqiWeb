@@ -1,0 +1,64 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">新建员工</h1>
+</div>
+<div class="wrapper-md">
+    <div ng-controller="EmployeeAddCtrl">
+        <!-- toaster directive -->
+        <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        <!-- / toaster directive -->
+        <div class="row">
+            <div class="col-sm-12">
+                <form name="forma" class="form-horizontal form-validation" ng-submit="addCustomer()">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>新建员工</strong>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">用户名</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="用户名：6~20位" ng-model="employee.name" ng-maxlength="20" ng-minlength="6"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">密码</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="密码：6~20位"
+                                           ng-model="employee.password"  ng-minlength="6" ng-maxlength="20"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">真实姓名</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="真实姓名" ng-model="employee.real_name"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">角色</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control"  ng-model="employee.role"
+                                           required>
+                                        <option value=""></option>
+                                        <option value="admin">admin</option>
+                                        <option value="manager">manager</option>
+                                        <option value="employee">employee</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="panel-footer text-right bg-light lter">
+                            <button type="submit" ng-click="backList()" class="btn btn-info">保存并返回列表</button>
+                            <button type="submit" ng-click="createNext()" class="btn btn-success">保存并新建下一个</button>
+                        </footer>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

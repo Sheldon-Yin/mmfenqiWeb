@@ -6,7 +6,6 @@
         <img src="img/loading/loadingInner.png" style="width: 10%">
     </div>
 </div>
-
 <div style="background-color: #ECECEC;min-height: 100%;padding-bottom: 4.8rem">
 
     <!--<div class="container">-->
@@ -27,14 +26,17 @@
                 <label style="display: block">
                     <input type="checkbox" style="display: none" ng-init="x.isChecked=false" ng-model="x.isChecked" ng-change="countPrice(x)">
                     <div class="col-xs-2" style="line-height: 2.7rem">
-                        <img style="width: 1.6rem;" src="modules/bill/img/bill-checked.png" ng-show="x.isChecked">
-                        <img style="width: 1.6rem;" src="modules/bill/img/bill-unchecked.png" ng-hide="x.isChecked">
+                        <img style="width: 1.6rem;" src="modules/bill/img/bill-checked.png" ng-show="x.isChecked && x.repayment_status != 1">
+                        <img style="width: 1.6rem;" src="modules/bill/img/bill-unchecked.png" ng-show="!x.isChecked && x.repayment_status != 1">
                     </div>
                 </label>
                 <label style="display: block" ng-click="goToBillDetails(x)">
                     <div class="col-xs-7">
-                        <div>
+                        <div ng-show="x.repayment_status!=1">
                             距还款日还有 {{x.to_repayment_date}} 天
+                        </div>
+                        <div ng-show="x.repayment_status==1">
+                            本期已还
                         </div>
                         <div>
                             （第{{x.repayment_staging}}/{{x.staging}}期） {{x.goodsName}}
@@ -61,7 +63,7 @@
                         全选
                     </div>
                     <div class="col-xs-6">
-                        ￥{{selectedPrice}}
+                        ￥{{selectedPrice | number:2 }}
                     </div>
                 </div>
             </div>

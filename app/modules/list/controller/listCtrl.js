@@ -14,7 +14,6 @@ define(function (require, exports, module) {
                 var searchObject = $location.search();
                 console.log(searchObject);
 
-
                 $scope.parentCategoryId = $location.search().parentId ? $location.search().parentId : 0;
                 $scope.subCategoryId = $location.search().subId ? $location.search().subId : 0;
                 $scope.hospitalId = $location.search().hospitalId ? $location.search().hospitalId : 0;
@@ -52,7 +51,7 @@ define(function (require, exports, module) {
                         myBridge.callHandler('sendMessageToApp', {
                             type: 2, data: {
                                 url: jumpUrl,
-                                title: '商品详情',
+                                title: '产品详情',
                                 leftNavItems: [1],
                                 rightNavItems: [0]
                             }

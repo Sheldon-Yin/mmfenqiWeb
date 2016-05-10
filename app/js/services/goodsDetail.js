@@ -7,7 +7,7 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('GoodsDetail', ['$resource',
             function ($resource) {
-                return $resource('/api/appinterface/query_goodsDetails_app', {}, {
+                return $resource('/appinterface/query_goodsDetails_app', {}, {
                     get:{
                         params:{
                             goodsId: 344

@@ -81,7 +81,6 @@ define(function (require, exports, module) {
                                         });
                                         wxpay.$promise.then(function (result) {
                                             //wxpay
-                                            Toast(result.data.resPar.parameters,20000);
                                             if (myBridge) {
                                                 myBridge.callHandler('sendMessageToApp', {
                                                     type: 4, data: {

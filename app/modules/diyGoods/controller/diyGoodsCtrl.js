@@ -72,7 +72,7 @@ define(function (require, exports, module) {
                                                 myBridge.callHandler('sendMessageToApp', {
                                                     type: 2, data: {
                                                         url: jumpUrl,
-                                                        title: '确认下单',
+                                                        title: '提交订单',
                                                         leftNavItems: [1]
                                                     }
                                                 }, function (response) {
@@ -85,7 +85,7 @@ define(function (require, exports, module) {
                                                 myBridge.callHandler('sendMessageToApp', {
                                                     type: 2, data: {
                                                         url: jumpUrl,
-                                                        title: '确认下单',
+                                                        title: '提交订单',
                                                         leftNavItems: [1]
                                                     }
                                                 }, function (response) {

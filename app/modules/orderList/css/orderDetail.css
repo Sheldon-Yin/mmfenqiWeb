@@ -25,3 +25,19 @@
 .order-pay-choose-pay-way-dialog-row > div > img {
     width: 2rem;
 }
+
+.order-confirm-dialog-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding-top: 1rem
+}
+
+.order-confirm-dialog {
+    position: absolute;
+    top: 30%;
+    background-color: #FFFFFF;
+    width: 80%;
+    right: 10%;
+    height: auto;
+    border-radius: 1rem
+}

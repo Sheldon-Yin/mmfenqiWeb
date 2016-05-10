@@ -1,0 +1,116 @@
+      <!-- navbar header -->
+      <div class="navbar-header {{app.settings.navbarHeaderColor}}">
+        <button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">
+          <i class="glyphicon glyphicon-cog"></i>
+        </button>
+        <button class="pull-right visible-xs" ui-toggle-class="off-screen" data-target=".app-aside" ui-scroll="app">
+          <i class="glyphicon glyphicon-align-justify"></i>
+        </button>
+        <!-- brand -->
+        <a href="#/" class="navbar-brand text-lt">
+          <i class="fa fa-smile-o"></i>
+          <img src="img/logo.png" alt="." class="hide">
+          <span class="hidden-folded m-l-xs">{{app.name}}</span>
+        </a>
+        <!-- / brand -->
+      </div>
+      <!-- / navbar header -->
+
+      <!-- navbar collapse -->
+      <div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}">
+        <!-- buttons -->
+        <div class="nav navbar-nav hidden-xs">
+          <a href class="btn no-shadow navbar-btn" ng-click="app.settings.asideFolded = !app.settings.asideFolded">
+            <i class="fa {{app.settings.asideFolded ? 'fa-indent' : 'fa-dedent'}} fa-fw"></i>
+          </a>
+          <a href class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
+            <i class="icon-user fa-fw"></i>
+          </a>
+        </div>
+        <!-- / buttons -->
+
+        <!-- nabar right -->
+        <ul class="nav navbar-nav navbar-right">
+
+
+          <li class="hidden-xs">
+            <a ui-fullscreen></a>
+          </li>
+
+          <li class="dropdown" dropdown>
+            <a href class="dropdown-toggle" dropdown-toggle>
+              <i class="icon-bell fa-fw"></i>
+              <span class="visible-xs-inline">Notifications</span>
+              <span class="badge badge-sm up bg-danger pull-right-xs" ng-show="noVisitTips.length">{{noVisitTips.length}}</span>
+            </a>
+            <!-- dropdown -->
+            <div class="dropdown-menu w-xl animated fadeInUp">
+              <div class="panel bg-white">
+                <div class="panel-heading b-light bg-light">
+                  <strong>你有<span>{{noVisitTips.length}}</span>个待回访用户</strong>
+                </div>
+                <div class="list-group">
+                  <a href="#/app/customer/detail?id={{noVisitTips[0].id}}" class="media list-group-item" ng-show="!!noVisitTips[0]">
+                    <div class="row">
+                      <div class="col-xs-9">
+                                 <span class="media-body block m-b-none">
+                              {{noVisitTips[0].name}}<br>
+                              <small class="text-muted">{{noVisitTips[0].telephone}}</small>
+                            </span>
+                      </div>
+                      <div class="col-xs-3">
+                          <span class="badge bg-info pull-right-xs text-right">{{noVisitTips[0].return_visit_records_count}}</span>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="#/app/customer/detail?id={{noVisitTips[1].id}}" class="media list-group-item" ng-show="!!noVisitTips[1]">
+                    <span class="media-body block m-b-none">
+                      {{noVisitTips[1].name}}<br>
+                      <small class="text-muted">{{noVisitTips[1].telephone}}</small>
+                    </span>
+                  </a>
+                  <a href="#/app/customer/detail?id={{noVisitTips[2].id}}" class="media list-group-item" ng-show="!!noVisitTips[2]">
+                    <span class="media-body block m-b-none">
+                      {{noVisitTips[2].name}}<br>
+                      <small class="text-muted">{{noVisitTips[2].telephone}}</small>
+                    </span>
+                  </a>
+                  <a href="#/app/customer/not-return" class="media list-group-item">
+                    <span class="media-body block m-b-none">
+                      查看更多<br>
+                      <small class="text-muted"></small>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- / dropdown -->
+          </li>
+
+          <li class="dropdown" dropdown>
+            <a href class="dropdown-toggle clear" dropdown-toggle>
+              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                <img src="img/a0.jpg" alt="...">
+                <i class="on md b-white bottom"></i>
+              </span>
+              <span class="hidden-sm hidden-md">{{app.user.name}}</span> <b class="caret"></b>
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu animated fadeInRight w">
+              <li>
+                <a ui-sref="app.user">
+                  个人中心
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a ui-sref="access.signin">登出</a>
+              </li>
+            </ul>
+            <!-- / dropdown -->
+          </li>
+        </ul>
+        <!-- / navbar right -->
+
+      </div>
+      <!-- / navbar collapse -->

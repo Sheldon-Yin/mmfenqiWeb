@@ -1,0 +1,391 @@
+<style>
+    .project-selected {
+        background-color: #E2E6E7;
+    }
+</style>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->
+<tabset class="tab-container" ng-controller="CustomerDetailCtrl">
+    <tab>
+        <tab-heading>
+            客户详情
+        </tab-heading>
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+                <div class="col-xs-11">
+                    <h1 class="m-n font-thin h3">客户详情</h1>
+                </div>
+
+                <!-- modal -->
+                <div class="col-xs-1">
+                    <script type="text/ng-template" id="myModalContent.html">
+                        <div class="modal-header">
+                            <h3 class="modal-title">确认删除？</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div>删除的数据将无法还原，请谨慎操作</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" ng-click="$root.cancelDelete()">取消</button>
+                            <button class="btn btn-primary" ng-click="$root.okDelete()">确认</button>
+                        </div>
+                    </script>
+                    <i class="fa fa-times fa-2x" ng-click="openDelete()"></i>
+                </div>
+                <!-- /modal -->
+
+            </div>
+        </div>
+        <div class="wrapper-md">
+            <div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form name="coustomForm" class="form-horizontal form-validation" ng-submit="updateCustomer()">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <strong>客户详情</strong>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">姓名</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" placeholder="姓名"
+                                                   ng-model="customer.name"
+                                                   required>
+                                        </div>
+                                    </div>
+                                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">手机号</label>
+                                        <div class="col-sm-9">
+                                            <input type="tel" class="form-control" placeholder="手机号"
+                                                   ng-model="customer.telephone" ng-pattern="/1[0-9]{10}$/"
+                                                   required>
+                                        </div>
+                                    </div>
+                                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">年龄</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" placeholder="年龄"
+                                                   ng-model="customer.age"
+                                                   required>
+                                        </div>
+                                    </div>
+                                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">学校</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" placeholder="学校"
+                                                   ng-model="customer.school" required>
+                                        </div>
+                                    </div>
+                                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">地推</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" placeholder="地推人员"
+                                                   ng-model="customer.push" required>
+                                        </div>
+                                    </div>
+                                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">签单时间</label>
+                                        <div class="col-sm-9" ng-controller="DatepickerDemoCtrl">
+                                            <div class="input-group w-md">
+                                                <input type="text" class="form-control" datepicker-popup="{{format}}"
+                                                       ng-model="customer.sign_date" placeholder="时间" is-open="opened"
+                                                       datepicker-options="dateOptions"
+                                                       ng-required="true" close-text="Close"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <footer class="panel-footer text-right bg-light lter">
+                                    <button type="submit" class="btn btn-success">保存修改</button>
+                                </footer>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </tab>
+    <tab>
+        <tab-heading>
+            项目列表
+        </tab-heading>
+        <div class="hbox hbox-auto-xs">
+            <div class="col w-auto-xs bg-light lter b-r" style="width: 30%">
+                <div class="wrapper">
+                    <div class="row" ng-click="addProject()">
+                        <div class="col-xs-12 text-center" style="margin-bottom: 10px">
+                            <button class="btn btn-primary">新建项目<i class="fa fa-plus"></i></button>
+                        </div>
+                        <div class="line b-b"></div>
+                    </div>
+                    <label style="display: block" ng-repeat="x in projects" ng-class="{'project-selected':x.isSelect}">
+                        <div ng-click="showProject(x)">
+                            <div class="row">
+                                <div class="col-xs-10">
+                                    <div class="col-xs-12">
+                                        {{x.description}}
+                                    </div>
+                                    <div class="col-xs-12">
+                                        {{x.create_date}}
+                                    </div>
+                                </div>
+                                <div class="col-xs-2" ng-click="deleteProject(x)">
+                                    <i class="fa fa-times" style="padding-top: 1em;padding-bottom: 1em"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="line b-b" style="margin: 0;"></div>
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="wrapper" style="padding-top: 0">
+                    <form name="projectForm" class="form-horizontal form-validation" ng-submit="changeProject()">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"><i class="fa fa-star"
+                                                                             style="color: #F05050"></i>描述</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="简单的描述"
+                                               ng-model="project.description"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="line line-dashed b-b pull-in"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">详情</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" rows="3" placeholder="有关的详细情况"
+                                                  ng-model="project.detail"></textarea>
+                                    </div>
+                                </div>
+                                <div class="line line-dashed b-b pull-in"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">首付</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" placeholder="首付金额"
+                                               ng-model="project.advance_payment">
+                                    </div>
+                                </div>
+                                <div class="line line-dashed b-b pull-in"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">分期数</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" placeholder="分期数（月）"
+                                               ng-model="project.by_stages">
+                                    </div>
+                                </div>
+                                <div class="line line-dashed b-b pull-in"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">下次还款日期</label>
+                                    <div class="col-sm-9" ng-controller="DatepickerDemoCtrl">
+                                        <div class="input-group w-md">
+                                            <input type="text" class="form-control" datepicker-popup="{{format}}"
+                                                   ng-model="project.repayment_date" placeholder="下次还款日期"
+                                                   is-open="opened" datepicker-options="dateOptions"
+                                                   close-text="Close"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line line-dashed b-b pull-in"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">每期还款</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" placeholder="每期还款金额"
+                                               ng-model="project.per_payment">
+                                    </div>
+                                </div>
+                                <div class="line line-dashed b-b pull-in"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">医院地址</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="医院地址"
+                                               ng-model="project.hospital_location">
+                                    </div>
+                                </div>
+
+                                <div class="line line-dashed b-b pull-in"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">医院名称</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="医院名称"
+                                               ng-model="project.hospital_name">
+                                    </div>
+                                </div>
+
+                                <div class="line line-dashed b-b pull-in"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"><i class="fa fa-star"
+                                                                             style="color: #F05050"></i>项目类型</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" ng-model="project.project_kind" required>
+                                            <option value=""></option>
+                                            <option ng-repeat="x in projectKinds" value="{{x.label}}">{{x.label}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="line line-dashed b-b pull-in"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"><i class="fa fa-star"
+                                                                             style="color: #F05050"></i>项目状态</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" ng-model="project.stat" required>
+                                            <option value=""></option>
+                                            <option value="complete">完成</option>
+                                            <option value="cancel">取消</option>
+                                            <option value="want">有意向</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="line line-dashed b-b pull-in"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">咨询师</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="咨询师姓名"
+                                               ng-model="project.counselor">
+                                    </div>
+                                </div>
+                                <div class="line line-dashed b-b pull-in"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">相关链接</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="http://"
+                                               ng-model="project.url">
+                                    </div>
+                                </div>
+                                <div class="line line-dashed b-b pull-in"></div>
+                            </div>
+
+                            <footer class="panel-footer text-right bg-light lter">
+                                <button type="submit" class="btn btn-success" ng-hide="isCreate">保存修改</button>
+                                <button type="submit" class="btn btn-primary" ng-show="isCreate">新建项目</button>
+                            </footer>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </tab>
+    <tab>
+        <tab-heading>
+            回访列表
+        </tab-heading>
+        <div class="hbox hbox-auto-xs hbox-auto-sm">
+            <!-- .col -->
+            <div class="col w-lg bg-light dk b-r bg-auto" id="aside">
+                <div class="wrapper bg b-b">
+                    <h3 class="m-n font-thin">回访记录</h3>
+                </div>
+                <div class="wrapper">
+                    <form name="visitForm" class="form-validation" ng-submit="addVisit()">
+                        <div class="form-group">
+                            <label>计划回访日期</label>
+                            <div ng-controller="DatepickerDemoCtrl">
+                                <div class="input-group w-md">
+                                    <input type="text" class="form-control" datepicker-popup="{{format}}"
+                                           ng-model="$root.visitCreateDate" placeholder="日期" is-open="opened"
+                                           datepicker-options="dateOptions"
+                                           ng-required="true" close-text="Close"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>计划回访时间</label>
+                            <!-- timepicker -->
+                            <div ng-controller="TimepickerDemoCtrl" class="m-b-lg">
+                                <timepicker ng-model="$root.visitCreateTime" ng-change="changed()" hour-step="1"
+                                            minute-step="5" show-meridian="ismeridian"></timepicker>
+
+                                <pre class="alert alert-info">Time is: {{$root.visitCreateTime | date:'HH:mm' }}</pre>
+
+                            </div>
+                            <!-- / tiempicker -->
+                        </div>
+
+                        <div class="m-t-md m-b-md">
+                            <button class="btn btn-sm btn-primary">添加一条计划</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.col -->
+
+            <!-- .col -->
+            <div class="col">
+                <div class="wrapper">
+                    <ul class="timeline">
+                        <li class="tl-header" style="margin-left: 4em">
+                            <div class="btn btn-info">Now</div>
+                        </li>
+                        <li class="tl-item tl-left" ng-repeat="x in visitList">
+                            <div class="tl-wrap" style="margin-left: 10em;"
+                                 ng-class="{1:'b-success',0:'b-primary'}[{{x.is_return}}]">
+                                <span class="tl-date" style="margin-left: -12.5em;width: 10em">{{x.return_date | date:'yyyy-MM-dd HH:mm'}}</span>
+                                <div class="tl-content panel padder b-a block">
+                                    <span class="arrow left pull-up hidden-left"></span>
+                                    <span class="arrow right pull-up visible-left"></span>
+                                    <div class="text-lt m-b-sm">
+                                        <div class="row">
+                                            <div class="col-xs-10">
+                                                {{x.is_return | visitReturn}}
+                                            </div>
+                                            <div class="col-xs-2" ng-click="deleteVisit(x)">
+                                                <i class="fa fa-lg fa-times"></i>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="panel-body pull-in b-t b-light">
+                                        回访记录
+                                        <div class="panel panel-default m-t-md m-b-n-sm pos-rlt">
+                                            <span class="arrow top pull-left"></span>
+                                            <form>
+                                                <textarea class="form-control no-border" rows="3" ng-model="x.detail"
+                                                          placeholder="添加回访记录将标记为已回访">
+                                                </textarea>
+                                                <div class="panel-footer bg-light lter">
+                                                    <button class="btn btn-info pull-right btn-sm"
+                                                            ng-click="updateVisit(x)">添加回访记录
+                                                    </button>
+                                                    <ul class="nav nav-pills nav-sm">
+                                                    </ul>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="tl-header" style="margin-left: 4em">
+                            <div class="btn btn-sm btn-default btn-rounded">start</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+    </tab>
+</tabset>

@@ -9,6 +9,39 @@ define(function (require, exports, module) {
         app.register.controller('OrderCtrl', ['$scope', '$location', 'CreateOrder', 'OrderInfoForEnsure',
             function ($scope, $location, CreateOrder, OrderInfoForEnsure) {
 
+                $scope.appToken = encodeURI();
+                $scope.info = $location.search();
+                console.log($scope.info);
+                $scope.orderInfo = CreateOrder.get(
+                    {
+                        goodsId: $scope.info.goodsId,
+                        appToken: $scope.appToken,
+                        storeGoodsCombinationId: $scope.info.storeGoodsCombinationId
+                    }
+                );
+                console.log($scope.orderInfo);
+                $scope.orderInfo.$promise.then(function (res) {
+                    if (res.result != 0){
+                        Toast(res.msg,3000);
+                        $scope.loadError = true;
+                    } else {
+                        $scope.firstRatio = res.data.goodsStagingInfoResponse.fenqiShowfuInfoList;
+                        $scope.stages = res.data.goodsStagingInfoResponse.fenqiConfigList;
+                        $scope.mmfenqiMode = res.data.goodsStagingInfoResponse.fenqiObj;
+                        $scope.insuranceAmount = res.data.goodsStagingInfoResponse.insuranceAmountList;
+                        $scope.selectedFirstRatio = $scope.firstRatio[0];
+                        $scope.stages[0].isSelectedStage = true;
+                        $scope.insuranceAmount[0].isSelectedInsurance = true;
+                        $scope.selectedConfigId = $scope.stages[0].configId;
+                        $scope.selectedStage = ($scope.selectedFirstRatio.shoufuId == 100) ? 0 : $scope.stages[0].staging;
+                        $scope.selectedInsurance = $scope.insuranceAmount[0].price;
+                        $scope.isInsuranceBuy = false;
+                        $scope.getFenqiMode();
+                    }
+                }).catch(function (error) {
+                    Toast('服务器返回错误', 2000);
+                    $scope.loadError = true;
+                });
 
                 if (myBridge) {
                     myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
@@ -36,8 +69,8 @@ define(function (require, exports, module) {
                                     $scope.selectedFirstRatio = $scope.firstRatio[0];
                                     $scope.stages[0].isSelectedStage = true;
                                     $scope.insuranceAmount[0].isSelectedInsurance = true;
-                                    $scope.selectedStage = $scope.stages[0].staging;
                                     $scope.selectedConfigId = $scope.stages[0].configId;
+                                    $scope.selectedStage = ($scope.selectedFirstRatio.shoufuId == 100) ? 0 : $scope.stages[0].staging;
                                     $scope.selectedInsurance = $scope.insuranceAmount[0].price;
                                     $scope.isInsuranceBuy = false;
                                     $scope.getFenqiMode();
@@ -50,12 +83,20 @@ define(function (require, exports, module) {
                     })
                 }
 
-                $scope.total = $location.search().orderAmount;
+                $scope.total = Number($scope.isInsuranceBuy?$scope.selectedInsurance:0) + Number($location.search().orderAmount);
 
                 $scope.getFenqiMode = function () {
                     angular.forEach($scope.mmfenqiMode, function (each) {
+                        if ($scope.selectedStage == 0 && $scope.selectedFirstRatio.ratio != 100){
+                            $scope.selectedStage = $scope.stages[0].staging;
+                        }
                         if (each.paymentId == $scope.selectedStage && each.shoufuId == $scope.selectedFirstRatio.ratio) {
                             $scope.selectedMode = each;
+                            if ($scope.selectedMode.shoufuId == 100){
+                                $scope.selectedStage = 0;
+                            }
+                            console.log($scope.selectedMode);
+                            console.log(($scope.selectedMode.shoufuId==100));
                         }
                     })
                 };
@@ -178,8 +219,8 @@ define(function (require, exports, module) {
                     angular.forEach($scope.stages, function (each) {
                         if (x.staging == each.staging) {
                             each.isSelectedStage = true;
-                            $scope.selectedStage = each.staging;
                             $scope.selectedConfigId = each.configId;
+                            $scope.selectedStage = each.staging;
                             $scope.getFenqiMode();
                         } else {
                             each.isSelectedStage = false;
@@ -192,10 +233,15 @@ define(function (require, exports, module) {
                         if (x.price == each.price) {
                             each.isSelectedInsurance = true;
                             $scope.selectedInsurance = each.price;
+                            $scope.total = Number($scope.isInsuranceBuy?$scope.selectedInsurance:0) + Number($location.search().orderAmount);
                         } else {
                             each.isSelectedInsurance = false;
                         }
                     });
+                };
+
+                $scope.updateTotal = function () {
+                    $scope.total = Number($scope.isInsuranceBuy?$scope.selectedInsurance:0) + Number($location.search().orderAmount);
                 };
 
                 ////与优惠券选择页面交互

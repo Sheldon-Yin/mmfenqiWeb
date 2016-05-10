@@ -147,7 +147,7 @@
 
 <div class="container text-center"  style="margin-bottom: 6rem;margin-top: 1rem">
 
-    <img style="width: 1rem;margin-right: 0.5rem" src="modules/pay/img/contact-checked.png">我已同意并授权<a class="app-blue-text">《分期服务协议》、</a><a class="app-blue-text">《借款协议》</a>
+    <img style="width: 1rem;margin-right: 0.5rem" src="modules/pay/img/contact-checked.png">我已同意并授权<a class="app-blue-text" ng-click="goToServiceContact()">《分期服务协议》、</a><a class="app-blue-text" ng-click="goToLoanContact()">《借款协议》</a>
 
 </div>
 
@@ -216,7 +216,7 @@
             立即支付
         </div>
         <div style="width: 100%;float: left;background-color: #fb1787;color: #FFFFFF;height: 1.2rem;line-height:0;text-align: center;font-size: 0.7rem">
-            （支付：￥{{order.shoufuAmt}}）
+            （支付：￥{{order.shoufuAmt+order.insuranceAmount}}）
         </div>
     </div>
 </div>

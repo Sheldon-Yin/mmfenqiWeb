@@ -21,6 +21,7 @@
         <!--<img src="img/topbar/message-icon.png" style="width: 1.8rem;padding: 0.4rem 0">-->
     <!--</div>-->
 <!--</div>-->
+
 <div style="width: 100%;position: fixed;height:100%;left: 0;z-index:999" ng-if="!index.data  && !loadError">
     <div style="top: 45%;position: absolute;width: 100%;left: 45%">
         <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 10%">
@@ -30,11 +31,9 @@
     </div>
 </div>
 
-
 <!--PullToRefreshArea-->
 <div>
     <div id="content" style="height: 100%;width: 100%">
-
         <div class="container">
             <div class="row">
                 <!-- Swiper -->
@@ -44,7 +43,7 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" ng-repeat="x in index.data.showIndexResponse.advertisingLinkList"
                              on-finish-render-filters>
-                            <img ng-src="{{x.linkHerPic}}" width="100%" height="20%" ng-click="jumpToActivity(x)">
+                            <img ng-src="{{x.linkHerPic}}" width="100%" ng-click="jumpToActivity(x.linkHerf)">
                         </div>
                     </div>
                     <!-- Add Pagination -->
@@ -88,48 +87,27 @@
             </div>
 
             <!--best recommend-->
-            <div class="row" ng-click="jumpToRecommend()">
+            <div class="row">
                 <div class="container index-recommend-container">
-                    <div class="row" style="background-color: #FFFFFF;padding: 1rem">
+                    <div class="row" style="background-color: #FFFFFF;padding: 1rem"  ng-click="jumpToRecommend()">
                         <div class="col-xs-6 text-left">精品推荐</div>
                         <div class="col-xs-6 text-right">
                             <i class="fa fa-lg fa-angle-right"></i>
                         </div>
                     </div>
                     <hr class="app-bootstrap-hr">
-
-
                     <div class="row index-white-background">
-                        <div class="col-xs-6 index-recommend-left-area">
-                            <div class="col-xs-12 index-white-background" style="padding: 1rem 1.5rem">
-                                <img src="modules/index/img/temp-set.png" width="100%">
-                                <div class="single-line grey-text index-grey-middle-text">
-                                    海薇玻尿酸 限时不限价
-                                </div>
-                                <div class="index-pink-background-white-label">
-                                    月供最低只要456.00
-                                </div>
-                            </div>
+                        <div class="col-xs-6 index-recommend-left-area" ng-click="jumpToActivity(index.data.showIndexResponse.boutiqueList[0].boutiqueHerf)">
+                            <img ng-src="{{index.data.showIndexResponse.boutiqueList[0].boutiqueHerPic}}" style="width: 100%">
                         </div>
                         <div class="col-xs-6 index-recommend-right-area">
-                            <div class="col-xs-12 index-white-background"
+                            <div class="col-xs-12 index-white-background" ng-click="jumpToActivity(index.data.showIndexResponse.boutiqueList[1].boutiqueHerf)"
                                  style="padding: 1.25rem 1rem;margin-bottom: 1px">
-                                <div class="col-xs-5 index-recommend-img">
-                                    <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
-                                </div>
-                                <div class="col-xs-7 index-recommend-text">
-                                    <div class="double-line grey-text" style="height: 3rem">网红套餐玻尿酸</div>
-                                    <div class="pink-text single-line">月供最低234起</div>
-                                </div>
+                                <img ng-src="{{index.data.showIndexResponse.boutiqueList[1].boutiqueHerPic}}" style="width: 100%">
                             </div>
-                            <div class="col-xs-12 index-white-background" style="padding: 1.25rem 1rem;margin-top: 1px">
-                                <div class="col-xs-5 index-recommend-img">
-                                    <img src="modules/index/img/temp-thumbnail.jpg" width="100%">
-                                </div>
-                                <div class="col-xs-7 index-recommend-text">
-                                    <p class="double-line grey-text" style="height: 3rem">网红套餐玻尿酸</p>
-                                    <p class="pink-text single-line">月供最低234起</p>
-                                </div>
+                            <div class="col-xs-12 index-white-background" ng-click="jumpToActivity(index.data.showIndexResponse.boutiqueList[2].boutiqueHerf)"
+                                 style="padding: 1.25rem 1rem;margin-top: 1px">
+                                <img ng-src="{{index.data.showIndexResponse.boutiqueList[2].boutiqueHerPic}}" style="width: 100%">
                             </div>
                         </div>
                     </div>

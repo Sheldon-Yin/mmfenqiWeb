@@ -7,7 +7,7 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('Index', ['$resource',
             function ($resource) {
-                return $resource('/api/appinterface/query_index_app',{cityId:'@cityId'},{
+                return $resource('/appinterface/query_index_app',{cityId:'@cityId'},{
                     get: {method:'GET'}
                 })
             }]);

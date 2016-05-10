@@ -13,7 +13,6 @@ define(function (require, exports, module) {
                     myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
                             $scope.appToken = encodeURI(response);
-
                             if (!!$location.search().orderStatus){
                                 $scope.data = QueryMyOrder.query({
                                     appToken: $scope.appToken,
@@ -31,7 +30,7 @@ define(function (require, exports, module) {
                                     Toast(res.msg,3000);
                                     $scope.loadError = true;
                                 }else {
-                                    Toast('获取成功',2020);
+                                    Toast('获取订单成功',2020);
                                 }
                             }).catch(function (error) {
                                 Toast('服务器错误'+error,2000);
@@ -76,7 +75,6 @@ define(function (require, exports, module) {
                 //TODO
 
                 //$scope.appToken = 'MMFQ:hfB4RC9zM80v4ZI5ANbXiVVKyivU3TTJIZnhZfqx5btQzwgzDUxlgdnqjQDPw85z';
-
 
                 $scope.projects = [
                     {

@@ -7,7 +7,7 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('IsRealName', ['$resource',
             function ($resource) {
-                return $resource('/api/appinterface/user_real_name_auth_flag', {}, {
+                return $resource('/appinterface/user_real_name_auth_flag', {}, {
                     get:{
                     }
                 });

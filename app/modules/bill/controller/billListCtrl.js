@@ -20,7 +20,7 @@ define(function (require, exports, module) {
 
                             $scope.bill.$promise.then(function (res) {
                                 if (res.result == 0) {
-                                    Toast('获取账单成功', 3000);
+                                    Toast('获取成功', 3000);
                                     $scope.isSelectAll = false;
                                     $scope.couldSelect = 0;
                                     $scope.hasSelect = 0;
@@ -36,7 +36,6 @@ define(function (require, exports, module) {
 
                                     $scope.refreshRepaymentPlanId = function () {
                                         $scope.repaymentPlanIds = [];
-
                                         angular.forEach(res.data.myBillResponse, function (each) {
                                             if (each.repayment_status != 1 && each.isChecked == true) {
                                                 $scope.repaymentPlanIds.push(each.repaymentPlanId)
@@ -67,13 +66,16 @@ define(function (require, exports, module) {
 
                                     $scope.countPrice = function (x) {
                                         if (x.repayment_status != 1) {
-                                            console.log(x);
+                                            Toast('2');
                                             if (x.isChecked) {
                                                 $scope.selectedPrice += x.payAmount;
+                                                Toast($scope.selectedPrice, 3000);
+                                                Toast($scope.selectedPrice,3000);
                                                 $scope.hasSelect += 1;
                                                 $scope.isSelectAll = ($scope.hasSelect == $scope.couldSelect);
                                             } else if (!x.isChecked) {
                                                 $scope.selectedPrice -= x.payAmount;
+                                                Toast($scope.selectedPrice, 3000);
                                                 $scope.hasSelect -= 1;
                                                 $scope.isSelectAll = ($scope.hasSelect == $scope.couldSelect);
                                             }
@@ -157,13 +159,13 @@ define(function (require, exports, module) {
 
                 if (myBridge) {
                     myBridge.registerHandler('sendMessageToHTML', function (message, callback) {
-                        if (message.type == 10002) {
+                        if (message == 10002) {
                             var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/bill/record');
                             myBridge.callHandler('sendMessageToApp', {
                                 type: 2, data: {
                                     url: jumpUrl,
                                     leftNavItems: [1],
-                                    title: '订单记录'
+                                    title: '还款记录'
                                 }
                             }, function (response) {
                                 //todo custom

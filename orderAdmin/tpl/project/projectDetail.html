@@ -1,0 +1,112 @@
+<style>
+    .project-selected {
+        background-color: #E2E6E7;
+    }
+</style>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->
+<div class="bg-light lter b-b wrapper-md">
+    <div class="row">
+        <div class="col-xs-11">
+            <h1 class="m-n font-thin h3">客户详情</h1>
+        </div>
+
+        <!-- modal -->
+        <div class="col-xs-1">
+            <script type="text/ng-template" id="myModalContent.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">确认删除？</h3>
+                </div>
+                <div class="modal-body">
+                    <div>删除的数据将无法还原，请谨慎操作</div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" ng-click="$root.cancelDelete()">取消</button>
+                    <button class="btn btn-primary" ng-click="$root.okDelete()">确认</button>
+                </div>
+            </script>
+            <i class="fa fa-times fa-2x" ng-click="openDelete()"></i>
+        </div>
+        <!-- /modal -->
+
+    </div>
+</div>
+<div class="wrapper-md">
+    <div>
+        <div class="row">
+            <div class="col-sm-12">
+                <form name="coustomForm" class="form-horizontal form-validation" ng-submit="updateCustomer()">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>客户详情</strong>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">姓名</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="姓名"
+                                           ng-model="customer.name"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">手机号</label>
+                                <div class="col-sm-9">
+                                    <input type="tel" class="form-control" placeholder="手机号"
+                                           ng-model="customer.telephone" ng-pattern="/1[0-9]{10}$/"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">年龄</label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control" placeholder="年龄"
+                                           ng-model="customer.age"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">学校</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="学校"
+                                           ng-model="customer.school" required>
+                                </div>
+                            </div>
+                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">地推</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="地推人员"
+                                           ng-model="customer.push" required>
+                                </div>
+                            </div>
+                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">签单时间</label>
+                                <div class="col-sm-9" ng-controller="DatepickerDemoCtrl">
+                                    <div class="input-group w-md">
+                                        <input type="text" class="form-control" datepicker-popup="{{format}}"
+                                               ng-model="customer.sign_date" placeholder="时间" is-open="opened"
+                                               datepicker-options="dateOptions"
+                                               ng-required="true" close-text="Close"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="panel-footer text-right bg-light lter">
+                            <button type="submit" class="btn btn-success">保存修改</button>
+                        </footer>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

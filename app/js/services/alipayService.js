@@ -8,7 +8,7 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('Alipay', ['$resource',
             function ($resource) {
-                return $resource('/api/appinterface/appinterface_alipayWapPay', {cityId:'@cityId'}, {
+                return $resource('/appinterface/appinterface_alipayWapPay', {cityId:'@cityId'}, {
                     query: {method: 'GET', params: {
                         orderName: 'mmfq',
                         type: 0

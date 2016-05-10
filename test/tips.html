@@ -1,0 +1,147 @@
+<!DOCTYPE html >
+<html lang="en" style="height: 100%">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0,minimal-ui">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="keywords" content="美眉分期">
+    <base href="../app/">
+    <meta name="description"
+          content="美眉分期:全国首家女大学生微整形分期服务平台,服务特色:0首付分期付款、大型专业医院合作、多年经验专家服务、高性价比项目、所有药品100%正品、医美专家全程陪同、7*24售后无忧,美眉分期,为美而生！">
+    <meta name="renderer" content="webkit">
+    <title>美眉分期</title>
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css">
+    <script src="../app/js/common/auto-set-rem.js"></script>
+    <title>Title</title>
+    <style>
+        html body {
+            height: 100%;
+            position: relative;
+        }
+
+        body {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            font-size: 1rem;
+        }
+
+        html,
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        header,
+        p,
+        blockquote,
+        pre,
+        address,
+        img,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        input,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-weight: normal;
+            font-variant: normal;
+            font-style: normal;
+        }
+
+        .app-grey-dialog-container {
+            height: 100%;
+            width: 100%;
+            z-index: 101;
+            position: fixed;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+
+        .order-confirm-dialog-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            padding-top: 1rem;
+            text-align: center;
+        }
+
+        .order-confirm-dialog {
+            position: absolute;
+            top: 30%;
+            background-color: #FFFFFF;
+            width: 80%;
+            right: 10%;
+            height: auto;
+            border-radius: 1rem;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body style="height: 100%">
+<div style="font-size: 3rem"  onclick="showConfirm()">
+    展示=
+</div>
+<div class="container">
+    <div id="confirmDialogContainer" class="app-grey-dialog-container">
+        <div class="order-confirm-dialog">
+            <div class="container">
+                <div class="order-confirm-dialog-title text-center">
+                    提示
+                </div>
+                <p style="padding-top:1rem">
+                    1、一般商品，计息规则为医院收费票据提交美眉分期平台审核通过后的当日开始计息，10个自然日无法退款。
+                </p>
+                <p style="padding-top: 1rem">
+                    2、特价商品，计费规则为下单支付后开始计息，下单支付成功后无法退款
+                </p>
+
+                <div class="row text-center" style="font-size: 1.8rem;padding: 1rem;color: #FB1788"
+                     onclick="goToPay()">
+                    确定
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function showConfirm() {
+        document.getElementById('confirmDialogContainer').style.display = 'block';
+    }
+
+    function goToPay(){
+        document.getElementById('confirmDialogContainer').style.display = 'none';
+    }
+</script>
+</body>
+</html>

@@ -52,6 +52,13 @@ define(function (require, exports, module) {
                     controllerUrl: './modules/orderList/controller/orderDetailCtrl.js'
                 }).
 
+                //知情同意书
+                when('/order/inform', {
+                    templateUrl: 'modules/orderList/orderDetailInform.html',
+                    controller: 'OrderDetailInformCtrl',
+                    controllerUrl: './modules/orderList/controller/orderDetailInformCtrl.js'
+                }).
+
                 //保险详情
                 when('/insurance/details', {
                     templateUrl: 'modules/insurance/insurance.html',
@@ -97,7 +104,7 @@ define(function (require, exports, module) {
                     controllerUrl: './modules/list/controller/listCtrl.js'
                 }).
 
-                //商品详情
+                //产品详情
                 when('/goods', {
                     templateUrl: './modules/goods/goods.html',
                     controller: 'GoodsCtrl',
@@ -146,7 +153,14 @@ define(function (require, exports, module) {
                 when('/insurance/introduce', {
                     templateUrl: 'modules/static/insuranceIntroduce.html'
                 }).
-
+                //服务合同静态页
+                when('/contact/service', {
+                    templateUrl: 'modules/static/serviceContact.html'
+                }).
+                //借款合同静态页
+                when('/contact/loan', {
+                    templateUrl: 'modules/static/loanContact.html'
+                }).
                 //优惠券
                 when('/coupon', {
                     templateUrl: 'modules/coupon/coupon.html',

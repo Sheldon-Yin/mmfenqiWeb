@@ -7,7 +7,7 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('hotGoodsSearch', ['$resource',
             function ($resource) {
-                return $resource('/api/appinterface/query_hotGoodsList_app',
+                return $resource('/appinterface/query_hotGoodsList_app',
                     {
                         cityId: '@cityId',
                         index: '@index',

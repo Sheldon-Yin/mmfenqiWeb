@@ -3,6 +3,7 @@
 html body {
     height: 100%;
     position: relative;
+    font-family: "Microsoft JhengHei","Adobe Fan Heiti Std B";
 }
 
 body {
@@ -232,17 +233,10 @@ td {
     /*position: relative!important;*/
 /*}*/
 
-.swiper-slide {
-    height: 20% !important;
-    min-height: 50%;
-}
-
 .swiper-pagination-bullet-active {
     opacity: 1;
     background: #fb1787 !important;
 }
-
-
 
 /*bootstrap 补充*/
 

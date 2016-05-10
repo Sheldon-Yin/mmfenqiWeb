@@ -16,6 +16,8 @@ define(function (require, exports, module) {
                 };
 
                 $scope.order = $location.search();
+                $scope.order.shoufuAmt = Number($scope.order.shoufuAmt);
+                $scope.order.insuranceAmount = Number($scope.order.insuranceAmount);
                 console.log($scope.order);
 
                 $scope.goToPay = function () {
@@ -89,6 +91,36 @@ define(function (require, exports, module) {
 
                 $scope.closeChoosePayWayDialog = function () {
                     document.getElementById('choosePayWayDialogContainer').style.display = 'none';
+                };
+
+                $scope.goToServiceContact = function () {
+                    if (myBridge) {
+                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/contact/service');
+                        myBridge.callHandler('sendMessageToApp', {
+                            type: 2, data: {
+                                url: jumpUrl,
+                                leftNavItems: [1],
+                                title: '服务合同'
+                            }
+                        }, function (response) {
+                            //todo custom
+                        });
+                    }
+                };
+
+                $scope.goToLoanContact = function () {
+                    if (myBridge) {
+                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/contact/loan');
+                        myBridge.callHandler('sendMessageToApp', {
+                            type: 2, data: {
+                                url: jumpUrl,
+                                leftNavItems: [1],
+                                title: '借款合同'
+                            }
+                        }, function (response) {
+                            //todo custom
+                        });
+                    }
                 };
 
                 $scope.setAliPay = function () {

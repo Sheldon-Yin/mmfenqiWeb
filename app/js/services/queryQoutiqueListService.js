@@ -7,7 +7,7 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('Qoutique', ['$resource',
             function ($resource) {
-                return $resource('/api/appinterface/query_qoutiqueList_app',{},{
+                return $resource('/appinterface/query_qoutiqueList_app',{},{
                     query: {method:'GET', params:{cityId:2}}
                 })
             }]);
