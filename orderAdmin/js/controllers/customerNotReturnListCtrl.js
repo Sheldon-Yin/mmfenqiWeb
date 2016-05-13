@@ -3,7 +3,7 @@
  */
 
 app.controller('CustomerNotReturnListCtrl', ['$scope','$state', function ($scope,$state) {
-    $.get('/mmfq/api/customers/get_customers_of_no_return_visit',{
+    $.get('/html/mmfq/api/customers/get_customers_of_no_return_visit',{
         until_date: (Date.parse(new Date())/1000 + 43200)
     }).then(function (res) {
         $scope.$apply(function () {
@@ -14,7 +14,7 @@ app.controller('CustomerNotReturnListCtrl', ['$scope','$state', function ($scope
         $scope.customerStar = function (x) {
             x.waitingForStar = true;
             console.log(x.id);
-            $.post('/mmfq/api/customers/toggle_star',{
+            $.post('/html/mmfq/api/customers/toggle_star',{
                 customer_id: x.id
             }).then(function (res) {
                 if (res.code == 0){
@@ -42,7 +42,7 @@ app.controller('CustomerNotReturnListCtrl', ['$scope','$state', function ($scope
 
     });
 
-    $.get('/mmfq/api/users/get_users').then(function (res) {
+    $.get('/html/mmfq/api/users/get_users').then(function (res) {
         $scope.$apply(function () {
             console.log(res);
             $scope.options = res.data;

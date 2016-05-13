@@ -1,56 +1,38 @@
 /**
  * Created by sheldon on 2016/5/9.
  */
-app.controller('OrderListCtrl', function ($scope) {
+app.controller('OrderListCtrl',['$scope','ConsultantInfo','QueryOrderList', function ($scope,ConsultantInfo,QueryOrderList) {
 
-    $scope.getOrderList = function () {
+    $scope.initConsultantInfo = function () {
+        $scope.consultantInfo = ConsultantInfo.query({
+            channel:1
+        });
+        $scope.consultantInfo.$promise.then(function (res) {
+            if (res.result == 0){
+                console.log(res);
+                $scope.consultantData = res.data.consultantResponse;
+            }else {
+                console.log(res)
+            }
+        }).catch(function (error) {
+            console.log(error)
+        });
 
+        $scope.queryOrderList = QueryOrderList.query({
+            channel:1
+        });
+        $scope.queryOrderList.$promise.then(function (res) {
+            if (res.result == 0){
+                console.log(res);
+                $scope.data = res.data.orderList;
+            }else {
+                console.log(res)
+            }
+        }).catch(function (error) {
+            console.log(error)
+        })
     };
 
-    $scope.data = [
-        {
-            id: '谢东',
-            name: 3,
-            telephone: 3,
-            one: 15850690558,
-            two: 2,
-            three: 3,
-            four: 4,
-            five: 5,
-            six: 6
-        },
-        {
-            id: '黄瑜',
-            name: '1993-07-16',
-            telephone: 3,
-            one: 1,
-            two: 2,
-            three: '哈哈哈',
-            four: 4,
-            five: 5,
-            six: 6
-        },
-        {
-            id: '兰思思',
-            name: 3,
-            telephone: 3,
-            one: 1,
-            two: 2,
-            three: 3,
-            four: 4,
-            five: 5,
-            six: 6
-        },
-        {
-            id: '来月昂',
-            name: 3,
-            telephone: 3,
-            one: 1,
-            two: 2,
-            three: 3,
-            four: 4,
-            five: 5,
-            six: 6
-        }
-    ]
-});
+    $scope.initConsultantInfo();
+
+}]);

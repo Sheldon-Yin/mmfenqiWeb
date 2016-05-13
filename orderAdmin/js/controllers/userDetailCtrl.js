@@ -4,7 +4,7 @@
 
 app.controller('UserDetailCtrl', ['$scope', '$state', '$stateParams', '$modal', 'toaster', function ($scope, $state, $stateParams, $modal, toaster) {
 
-    $.get('/mmfq/api/users/get_user_info', {}).then(function (res) {
+    $.get('/html/mmfq/api/users/get_user_info', {}).then(function (res) {
         if (res.code == 0) {
             $scope.$apply(function () {
                 console.log(res.data);
@@ -18,7 +18,7 @@ app.controller('UserDetailCtrl', ['$scope', '$state', '$stateParams', '$modal', 
     });
 
     $scope.updatePassword = function () {
-        $.post('/mmfq/api/users/update_user_info', {
+        $.post('/html/mmfq/api/users/update_user_info', {
             password: $scope.user.newPassword
         }).then(function (res) {
             if (res.code == 0) {

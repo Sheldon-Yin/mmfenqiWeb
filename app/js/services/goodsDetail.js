@@ -10,7 +10,6 @@ define(function (require, exports, module) {
                 return $resource('/appinterface/query_goodsDetails_app', {}, {
                     get:{
                         params:{
-                            goodsId: 344
                         }
                     }
                 });

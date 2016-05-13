@@ -34,7 +34,6 @@ define(function (require, exports, module) {
 
                 $scope.goods = GoodsDetail.get(goodsId);
 
-
                 $scope.skuData = $scope.goods;
 
                 $scope.goods.$promise.then(function (response) {
@@ -168,6 +167,7 @@ define(function (require, exports, module) {
                 if (myBridge) {
                     myBridge.registerHandler('sendMessageToHTML', function (message, callback) {
                         if (message == 0) {
+                            Toast('Message='+message);
                             myBridge.callHandler('sendMessageToApp', {
                                 type: message, data: {
                                     description: '美眉分期精品推荐~',

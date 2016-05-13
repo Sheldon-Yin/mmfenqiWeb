@@ -5,7 +5,7 @@
 app.controller('ProjectList', ['$scope', '$state', 'toaster', function ($scope, $state, toaster) {
 
     $scope.initData = function () {
-        $.get('/mmfq/api/customers/get_customers').then(function (res) {
+        $.get('/html/mmfq/api/customers/get_customers').then(function (res) {
             $scope.$apply(function () {
                 console.log(res);
                 $scope.customerListData = res.data;
@@ -13,7 +13,7 @@ app.controller('ProjectList', ['$scope', '$state', 'toaster', function ($scope, 
         });
     };
 
-    $.get('/mmfq/api/users/get_users').then(function (res) {
+    $.get('/html/mmfq/api/users/get_users').then(function (res) {
         $scope.$apply(function () {
             console.log(res);
             $scope.options = res.data;
@@ -28,7 +28,7 @@ app.controller('ProjectList', ['$scope', '$state', 'toaster', function ($scope, 
     $scope.customerStar = function (x) {
         x.waitingForStar = true;
         console.log(x.id);
-        $.post('/mmfq/api/customers/toggle_star', {
+        $.post('/html/mmfq/api/customers/toggle_star', {
             customer_id: x.id
         }).then(function (res) {
             if (res.code == 0) {
@@ -55,7 +55,7 @@ app.controller('ProjectList', ['$scope', '$state', 'toaster', function ($scope, 
     };
 
     $scope.changeCustomerUser = function (x) {
-        $.post('/mmfq/api/customers/change_customer_user_id', {
+        $.post('/html/mmfq/api/customers/change_customer_user_id', {
             customer_id: x.id,
             user_id: x.user_real_name
         }).then(function (res) {

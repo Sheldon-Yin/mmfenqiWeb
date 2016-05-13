@@ -3,8 +3,8 @@
 /* Controllers */
 
 angular.module('app')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 
-    function(              $scope,   $translate,   $localStorage,   $window ) {
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'IsLogin','$rootScope','$state',
+    function(              $scope,   $translate,   $localStorage,   $window,IsLogin,$rootScope,$state) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
@@ -35,8 +35,34 @@ angular.module('app')
           asideFolded: false,
           asideDock: false,
           container: false
+        },
+        user:{
+          name: '未登录',
+          role: '请登录'
         }
-      }
+      };
+
+      $rootScope.checkLogin = function () {
+        $scope.userInfo = IsLogin.query({
+            channel: 1
+        });
+        $scope.userInfo.$promise.then(function (res) {
+          console.log(res);
+          if (res.result == 0) {
+            $scope.app.user.name = res.data.tenantInfo.userName;
+            $scope.app.user.role = res.data.tenantInfo.adminType;
+          } else {
+            $state.go('access.signin')
+          }
+        }).catch(function (error) {
+          console.log('服务器无响应');
+          $state.go('access.signin')
+        });
+      };
+
+      setInterval(function () {
+        $rootScope.checkLogin()
+      },18000000);
 
       // save settings to local storage
       if ( angular.isDefined($localStorage.settings) ) {

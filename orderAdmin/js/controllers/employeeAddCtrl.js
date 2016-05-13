@@ -11,7 +11,7 @@ app.controller('EmployeeAddCtrl', ['$scope', '$state','toaster',function ($scope
             console.log(signDate / 1000);
         }
 
-        $.post('/mmfq/api/users/add_user', {
+        $.post('/html/mmfq/api/users/add_user', {
             username: $scope.employee.name,
             password: $scope.employee.password,
             real_name:$scope.employee.real_name,

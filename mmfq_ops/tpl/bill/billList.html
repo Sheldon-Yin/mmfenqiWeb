@@ -3,11 +3,11 @@
     <div class="bg-light lter b-b wrapper-md">
         <div class="row">
             <div class="col-xs-9">
-                <h1 class="m-n font-thin h3" style="font-size: 28px">总收入： 233333</h1>
+                <h1 class="m-n font-thin h3" style="font-size: 28px">总收入： {{financeInfo.total_amount | number:2}}</h1>
             </div>
 
             <div class="col-xs-3 text-right">
-                <button class="btn btn-info">
+                <button class="btn btn-info" ng-click="getCash()">
                     提现
                 </button>
             </div>
@@ -16,26 +16,27 @@
     <div class="wrapper-md b-b">
         <div class="row text-center">
             <div class="col-sm-3 col-xs-6" style="border-right: 1px solid #333;">
-                <div>今日订单金额</div>
-                <div class="h2 m-b-sm">20000.00</div>
+                <div>账户余额</div>
+                <div class="h2 m-b-sm">{{financeInfo.account_balance | number:2}}</div>
             </div>
             <div class="col-sm-6 col-xs-12">
-                <div class="col-sm-4 col-xs-6">
+                <div class="col-sm-6 col-xs-12">
                     <div>可提现</div>
-                    <div class="h2 m-b-sm">10000.00</div>
+                    <div class="h2 m-b-sm">{{financeInfo.withdraw_amount | number:2}}</div>
                 </div>
-                <div class="col-sm-4 col-xs-6"   popover="咨询师未验证的收入" popover-trigger="mouseenter" >
-                    <div >待结算<i class="fa fa-question-circle"></i></div>
-                    <div class="h2 m-b-sm">10000.00</div>
-                </div>
-                <div class="col-sm-4 col-xs-6"  style="border-right: 1px solid #333;"  popover="上传收据，审核通过后可提现" popover-trigger="mouseenter" >
+                <!--<div class="col-sm-4 col-xs-6" popover="咨询师未验证的收入" popover-trigger="mouseenter">-->
+                    <!--<div>待结算<i class="fa fa-question-circle"></i></div>-->
+                    <!--<div class="h2 m-b-sm">10000.00</div>-->
+                <!--</div>-->
+                <div class="col-sm-6 col-xs-12" style="border-right: 1px solid #333;" popover="上传收据，审核通过后可提现"
+                     popover-trigger="mouseenter">
                     <div>未结算 <i class="fa fa-question-circle"></i></div>
-                    <div class="h2 m-b-sm">10000.00</div>
+                    <div class="h2 m-b-sm">{{financeInfo.not_settled_amount | number:2}}</div>
                 </div>
             </div>
             <div class="col-sm-3 col-xs-6">
                 <div>提现中</div>
-                <div class="h2 m-b-sm">10000.00</div>
+                <div class="h2 m-b-sm">{{financeInfo.withdrawing_amount | number:2}}</div>
             </div>
         </div>
     </div>
@@ -54,7 +55,7 @@
                         <th data-toggle="true">
                             姓名
                         </th>
-                        <th>
+                        <th data-hide="phone,tablet">
                             手机号
                         </th>
                         <th>
@@ -63,34 +64,38 @@
                         <th>
                             咨询师
                         </th>
-                        <th>
+                        <th data-hide="phone,tablet">
                             订单金额
                         </th>
                         <th data-hide="phone,tablet">
                             订单号
                         </th>
                         <th data-hide="phone,tablet">
-                            订单状态
+                            <span popover="已完成&nbsp未完成&nbsp待完成&nbsp已取消" popover-trigger="mouseenter">订单状态</span>
                         </th>
                         <th data-hide="phone,tablet">
-                            项目审核
+                            收据审核状态
                         </th>
-                        <th data-hide="phone,tablet">
+                        <th>
                             操作
                         </th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="x in data">
-                        <td>{{x.id}}</td>
-                        <td><a href>{{x.one}}</a></td>
-                        <td>{{x.two}}</td>
-                        <td data-value="78025368997">{{x.three}}</td>
-                        <td data-value="1">{{x.four}}</td>
-                        <td>{{x.five}}</td>
-                        <td><a href>{{x.telephone}}</a></td>
                         <td>{{x.name}}</td>
-                        <td data-value="78025368997">{{x.six}}</td>
+                        <td><a href>{{x.telphone}}</a></td>
+                        <td>{{x.goodsName}}</td>
+                        <td>{{x.userName}}</td>
+                        <td>{{x.orderPrice}}</td>
+                        <td>{{x.orderSn}}</td>
+                        <td>{{x.orderstat | orderStatus}}</td>
+                        <td>{{x.receiptAudit  | receiptAudit}}</td>
+                        <td>
+                            <div class="row">
+                                <button class="btn btn-info" ng-click="goToBillDetail(x)">上传收据</button>
+                            </div>
+                        </td>
                     </tr>
                     </tbody>
                     <tfoot class="hide-if-no-paging">

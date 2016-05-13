@@ -22,20 +22,54 @@
                 </div>
             </div>
         </div>
+        <div class="panel-body b-b b-light">
+            <div class="col-sm-4">
+                搜索:
+                <div class="input-group">
+                    <input id="filter" type="text" class="form-control" style="min-width: 250px;height:34px"/>
+                </div>
+            </div>
+            <div class="col-sm-4" ng-controller="DatepickerDemoCtrl">
+                开始时间(00:00:01起算,默认1月前)
+                <div class="input-group">
+                    <input type="text" class="form-control" datepicker-popup="{{format}}"
+                           ng-model="$parent.start_time" placeholder="时间" is-open="opened"
+                           datepicker-options="dateOptions" ng-change="updateData()"
+                           ng-required="true" close-text="关闭"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                </div>
+            </div>
+            <div class="col-sm-4" ng-controller="DatepickerDemoCtrl">
+                结束时间(23:23:59为止，默认今天)
+                <div class="input-group">
+                    <input type="text" class="form-control" datepicker-popup="{{format}}"
+                           ng-model="$parent.end_time" placeholder="时间" is-open="opened"
+                           datepicker-options="dateOptions" ng-change="updateData()"
+                           ng-required="true" close-text="Close"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                </div>
+            </div>
+        </div>
+
         <div class="table-responsive">
-
-            <table class="table table-striped table-hover m-b-none">
-
+            <table class="table table-striped table-hover m-b-none" ui-jq="footable"  data-filter="#filter" data-page-size="10">
                 <thead>
                 <tr>
                     <th style="width: 5%"></th>
                     <th style="width:10%">客户姓名</th>
+                    <th style="width:15%">创建时间</th>
                     <!--<th style="width:20%">签单时间</th>-->
                     <th style="width:15%">手机号</th>
-                    <th style="width:15%">学校</th>
-                    <th style="width:15%">年龄</th>
-                    <th style="width:15%">地推</th>
-                    <th style="width:10%" ng-show="app.user.role == 'admin'">医美</th>
+                    <th style="width:10%">学校</th>
+                    <th style="width:10%">年龄</th>
+                    <th style="width:10%">地推</th>
+                    <th style="width:10%" ng-show="app.user.role == 'admin' || app.user.role == 'manager'">医美</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,21 +82,28 @@
                                    ng-change="customerStar(x)" ng-disabled="x.waitingForStar">
                         </label>
                     </td>
-
                     <td ng-click="jumpToDetail(x)" class="can-click">{{x.name}}</td>
+                    <td ng-click="jumpToDetail(x)" class="can-click">{{x.create_date | date}}</td>
                     <!--<td>{{x.sign_date}}</td>-->
                     <td ng-click="jumpToDetail(x)" class="can-click">{{x.telephone}}</td>
                     <td ng-click="jumpToDetail(x)" class="can-click">{{x.school}}</td>
                     <td ng-click="jumpToDetail(x)" class="can-click">{{x.age}}</td>
                     <td ng-click="jumpToDetail(x)" class="can-click">{{x.push}}</td>
 
-                    <td ng-show="app.user.role == 'admin'">
+                    <td ng-show="app.user.role == 'admin' || app.user.role == 'manager'">
                         <select ng-model="x.user_real_name" ng-change="changeCustomerUser(x)">
                             <option ng-repeat="y in options" ng-selected="y.id==x.user_id" value="{{y.id}}">{{y.real_name}}</option>
                         </select>
                     </td>
                 </tr>
                 </tbody>
+                <tfoot class="hide-if-no-paging">
+                <tr>
+                    <td colspan="10" class="text-center">
+                        <ul class="pagination"></ul>
+                    </td>
+                </tr>
+                </tfoot>
             </table>
         </div>
     </div>

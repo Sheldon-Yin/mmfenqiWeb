@@ -1,58 +1,59 @@
 /**
  * Created by sheldon on 2016/5/9.
  */
-app.controller('BillListCtrl', function($scope) {
+app.controller('BillListCtrl', ['$scope','$state','FinanceInfo','QueryOrderList','GetCash','toaster',function($scope,$state,FinanceInfo,QueryOrderList,GetCash,toaster) {
 
     $scope.initBillList = function () {
+        $scope.financeInfoReq = FinanceInfo.query({
+            channel:1
+        });
+        $scope.financeInfoReq.$promise.then(function (res) {
+            if (res.result == 0){
+                $scope.financeInfo = res.data.financeResponse;
+            }else {
+                console.log(res)
+            }
+        }).catch(function (error) {
+            console.log(error)
+        });
 
+        $scope.queryOrderList = QueryOrderList.query({
+            channel:1
+        });
+        $scope.queryOrderList.$promise.then(function (res) {
+            if (res.result == 0){
+                console.log(res);
+                $scope.data = res.data.orderList;
+            }else {
+                console.log(res)
+            }
+        }).catch(function (error) {
+            console.log(error)
+        })
     };
 
     $scope.initBillList();
 
-    $scope.data = [
-        {
-            id: '谢东',
-            name: 3,
-            telephone: 3,
-            one: 1,
-            two: 2,
-            three: 3,
-            four: 4,
-            five: 5,
-            six: 6
-        },
-        {
-            id: '黄瑜',
-            name: 3,
-            telephone: 3,
-            one: 1,
-            two: 2,
-            three: 3,
-            four: 4,
-            five: 5,
-            six: 6
-        },
-        {
-            id: '兰思思',
-            name: 3,
-            telephone: 3,
-            one: 1,
-            two: 2,
-            three: 3,
-            four: 4,
-            five: 5,
-            six: 6
-        },
-        {
-            id: '来月昂',
-            name: 3,
-            telephone: 3,
-            one: 1,
-            two: 2,
-            three: 3,
-            four: 4,
-            five: 5,
-            six: 6
-        }
-    ]
-});
+    $scope.goToBillDetail = function (x) {
+        $state.go('app.bill.detail',{id: x.orderId,orderSn: x.orderSn})
+    };
+    
+    $scope.getCash = function () {
+        $scope.getCashReq = GetCash.save();
+        $scope.getCashReq.$promise.then(function (res) {
+            if (res.result == 0){
+                toaster.pop('success','提现成功',res.msg);
+            }else {
+                toaster.pop('error','提现失败',res.msg);
+                console.log(res)
+            }
+        }).catch(function (error) {
+            toaster.pop('error','提现失败',error);
+            console.log(error)
+        });
+        $scope.initBillList()
+    }
+
+    
+
+}]);

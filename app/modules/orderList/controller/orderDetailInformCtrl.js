@@ -16,31 +16,6 @@ define(function (require, exports, module) {
                 $scope.uploading = false;
                 $scope.loadError = false;
 
-                $scope.base64ToFile = function (base64String) {
-
-                    var buffer = new Uint8Array(base64String.length);
-
-                    for (var i = 0; i < base64String.length; i++) {
-                        buffer[i] = base64String.charCodeAt(i);
-                    }
-
-                    $scope.uploadInformFile = $scope.getBlob([buffer], 'image/jpeg');
-
-                    Toast('结束转换')
-                };
-
-                $scope.getBlob = function (buffer, format) {
-                    try {
-                        return new Blob(buffer, {type: format});
-                    } catch (e) {
-                        var bb = new (window.BlobBuilder || window.WebKitBlobBuilder || window.MSBlobBuilder);
-                        buffer.forEach(function (buf) {
-                            bb.append(buf);
-                        });
-                        return bb.getBlob(format);
-                    }
-                };
-
                 $scope.getPicNumber = function (informedConsentResponse) {
                     $scope.picNumber = 1;
                     if (informedConsentResponse.informedConsentPic1 != null && informedConsentResponse.informedConsentPic1 != '') {

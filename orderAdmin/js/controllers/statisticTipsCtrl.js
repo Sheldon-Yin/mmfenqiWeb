@@ -4,7 +4,7 @@
 app.controller('StatisticTipsCtrl', ['$scope', '$state', function ($scope, $state) {
 
 
-    $.get('/mmfq/api/project_kinds/get_project_kinds').then(function (res) {
+    $.get('/html/mmfq/api/project_kinds/get_project_kinds').then(function (res) {
         if (res.code == 0) {
             console.log(res);
             $scope.$apply(function () {
@@ -18,7 +18,7 @@ app.controller('StatisticTipsCtrl', ['$scope', '$state', function ($scope, $stat
     });
 
     $scope.addTips = function () {
-        $.post('/mmfq/api/project_kinds/add_project_kind', {
+        $.post('/html/mmfq/api/project_kinds/add_project_kind', {
             label: $scope.tipsForAdd
         }).then(function (res) {
             if (res.code == 0) {
@@ -33,7 +33,7 @@ app.controller('StatisticTipsCtrl', ['$scope', '$state', function ($scope, $stat
     };
 
     $scope.deleteTips = function (x) {
-        $.post('/mmfq/api/project_kinds/delete_project_kind', {
+        $.post('/html/mmfq/api/project_kinds/delete_project_kind', {
             project_kind_id: x.id
         }).then(function (res) {
             if (res.code == 0) {

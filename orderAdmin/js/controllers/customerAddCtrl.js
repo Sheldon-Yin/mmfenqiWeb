@@ -11,7 +11,7 @@ app.controller('CustomerAddCtrl', ['$scope', '$state', 'toaster', function ($sco
             console.log(signDate / 1000);
         }
 
-        $.post('/mmfq/api/customers/add_customer', {
+        $.post('/html/mmfq/api/customers/add_customer', {
             name: $scope.customer.name,
             telephone: $scope.customer.telephone,
             school: $scope.customer.school,

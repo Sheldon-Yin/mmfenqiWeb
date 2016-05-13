@@ -7,7 +7,7 @@
 app.controller('ProjectDetailCtrl', ['$scope', '$stateParams', '$state', '$modal', 'toaster', function ($scope, $stateParams, $state, $modal, toaster) {
     $scope.customerId = $stateParams.id;
     $scope.$parent.isCreate = true;
-    $.get('/mmfq/api/customers/get_customer', {
+    $.get('/html/mmfq/api/customers/get_customer', {
         customer_id: $scope.customerId
     }).then(function (res) {
         if (res.code == 0) {
@@ -30,7 +30,7 @@ app.controller('ProjectDetailCtrl', ['$scope', '$stateParams', '$state', '$modal
     });
 
     $scope.$parent.updateCustomer = function () {
-        $.post('/mmfq/api/customers/update_customer_info', {
+        $.post('/html/mmfq/api/customers/update_customer_info', {
             customer_id: $scope.customerId,
             name: $scope.$parent.customer.name,
             telephone: $scope.$parent.customer.telephone,
@@ -58,7 +58,7 @@ app.controller('ProjectDetailCtrl', ['$scope', '$stateParams', '$state', '$modal
 
         $scope.$root.okDelete = function () {
             $scope.modalInstance.close();
-            $.post('/mmfq/api/customers/delete_customer', {
+            $.post('/html/mmfq/api/customers/delete_customer', {
                 customer_id: $scope.customerId
             }).then(function (res) {
                 if (res.code == 0) {

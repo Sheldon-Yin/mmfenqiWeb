@@ -3,7 +3,7 @@
 // signin controller
 app.controller('SigninFormController', ['$scope', '$http', '$state', function ($scope, $http, $state) {
 
-    $.post('/mmfq/api/users/logout').then(function (res) {
+    $.post('/html/mmfq/api/users/logout').then(function (res) {
         console.log(res);
     }, function (error) {
         console.log(error)
@@ -14,7 +14,7 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function ($
     $scope.login = function () {
         $scope.authError = null;
         // Try to login
-        $.post('/mmfq/api/users/login',
+        $.post('/html/mmfq/api/users/login',
             {username: $scope.user.name, password: $scope.user.password}
             )
             .then(function (response) {

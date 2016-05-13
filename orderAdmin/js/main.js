@@ -43,8 +43,8 @@ angular.module('app')
             };
 
             $rootScope.checkLogin = function () {
-                $.get('/mmfq/api/customers/get_customers_of_no_return_visit',{
-                    until_date: (Date.parse(new Date())/1000 + 43200)
+                $.get('/html/mmfq/api/customers/get_customers_of_no_return_visit',{
+                    until_date: (Date.parse(new Date())/1000 + 28800)
                 }).then(function (res) {
                     if (res.code == 0){
                         console.log(res);
@@ -55,7 +55,7 @@ angular.module('app')
                 }, function (error) {
                     console.log(error)
                 });
-                $scope.userInfo = $http.get('/mmfq/api/users/get_user_info');
+                $scope.userInfo = $http.get('/html/mmfq/api/users/get_user_info');
                 $scope.userInfo.then(function (res) {
                     console.log(res);
                     if (res.data.code == 0) {

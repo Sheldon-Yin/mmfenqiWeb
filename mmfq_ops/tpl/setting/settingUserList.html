@@ -30,10 +30,13 @@
                     </thead>
                     <tbody>
                     <tr ng-repeat="x in data">
-                        <td>{{x.id}}</td>
-                        <td><a href>{{x.one}}</a></td>
-                        <td>{{x.two}}</td>
-                        <td><button class="btn btn-info">重置密码</button><button class="btn-danger btn" style="margin-left: 1em">删除</button></td>
+                        <td>{{x.userName}}</td>
+                        <td><a href>{{x.telphone}}</a></td>
+                        <td>{{x.adminType  | adminType}}</td>
+                        <td>
+                            <button class="btn btn-info" ng-click="resetPassword(x)"  popover="默认密码：666888" popover-trigger="mouseenter">重置密码</button>
+                            <button class="btn-danger btn" ng-click="deleteUser(x)" style="margin-left: 1em">删除</button>
+                        </td>
                     </tr>
                     </tbody>
                     <tfoot class="hide-if-no-paging">

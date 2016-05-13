@@ -6,7 +6,7 @@ app
 // Flot Chart controller
     .controller('StatisticOrderCtrl', ['$scope', function ($scope) {
         $scope.updateData = function (x) {
-            $.get('/mmfq/api/statistics/get_statistics', {
+            $.get('/html/mmfq/api/statistics/get_statistics', {
                 user_id: $scope.user_id,
                 start_time: Date.parse($scope.start_time) / 1000 ? Date.parse($scope.start_time) / 1000 : Date.parse($scope.last_month) / 1000,//30天前
                 end_time: Date.parse($scope.end_time) / 1000 ? Date.parse($scope.end_time) / 1000 : Date.parse($scope.today) / 1000
@@ -47,7 +47,7 @@ app
             $scope.end_time = Date.parse($scope.today);
             $scope.user_id = -1;
             $scope.complete = {};
-            $.get('/mmfq/api/users/get_users').then(function (res) {
+            $.get('/html/mmfq/api/users/get_users').then(function (res) {
                 $scope.$apply(function () {
                     console.log(res);
                     $scope.options = res.data;

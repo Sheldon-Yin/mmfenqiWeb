@@ -250,9 +250,10 @@
                                     <div class="col-sm-9">
                                         <select class="form-control" ng-model="project.stat" required>
                                             <option value=""></option>
-                                            <option value="complete">完成</option>
+                                            <option value="treat">成单已治疗</option>
+                                            <option value="not_treat">成单未治疗</option>
+                                            <option value="not_deal">未成交</option>
                                             <option value="cancel">取消</option>
-                                            <option value="want">有意向</option>
                                         </select>
                                     </div>
                                 </div>
@@ -325,6 +326,14 @@
                             <!-- / tiempicker -->
                         </div>
 
+                        <div class="form-group">
+                            <label class="control-label">备注</label>
+                            <div>
+                                <input type="text" class="form-control" placeholder="备注记录" ng-model="$root.visitComments"
+                                       required>
+                            </div>
+                        </div>
+
                         <div class="m-t-md m-b-md">
                             <button class="btn btn-sm btn-primary">添加一条计划</button>
                         </div>
@@ -359,7 +368,7 @@
 
                                     </div>
                                     <div class="panel-body pull-in b-t b-light">
-                                        回访记录
+                                        备注：{{x.comments}}
                                         <div class="panel panel-default m-t-md m-b-n-sm pos-rlt">
                                             <span class="arrow top pull-left"></span>
                                             <form>

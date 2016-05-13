@@ -6,7 +6,7 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
     $scope.$parent.isCreate = true;
 
     //第一板块
-    $.get('/mmfq/api/customers/get_customer', {
+    $.get('/html/mmfq/api/customers/get_customer', {
         customer_id: $scope.customerId
     }).then(function (res) {
         if (res.code == 0) {
@@ -22,14 +22,14 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
                 };
             })
         } else {
-            toaster.pop('error', '获取信息失败', res.message);
+            toaster.pop('error', '获取用户信息', res.message);
         }
     }, function (error) {
-        toaster.pop('error', '获取信息失败', error);
+        toaster.pop('error', '获取用户信息', error);
     });
 
     $scope.$parent.updateCustomer = function () {
-        $.post('/mmfq/api/customers/update_customer_info', {
+        $.post('/html/mmfq/api/customers/update_customer_info', {
             customer_id: $scope.customerId,
             name: $scope.$parent.customer.name,
             telephone: $scope.$parent.customer.telephone,
@@ -57,7 +57,7 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
 
         $scope.$root.okDelete = function () {
             $scope.modalInstance.close();
-            $.post('/mmfq/api/customers/delete_customer', {
+            $.post('/html/mmfq/api/customers/delete_customer', {
                 customer_id: $scope.customerId
             }).then(function (res) {
                 if (res.code == 0) {
@@ -96,7 +96,7 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
     $scope.$parent.project = {};
 
     $scope.initProjectData = function () {
-        $.get('/mmfq/api/projects/get_projects', {
+        $.get('/html/mmfq/api/projects/get_projects', {
             customer_id: $scope.customerId
         }).then(function (res) {
             if (res.code == 0) {
@@ -106,19 +106,19 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
                 })
             } else {
                 $scope.$apply(function () {
-                    toaster.pop('error', '获取信息失败', res.message);
+                    toaster.pop('error', '获取项目分类失败', res.message);
                 })
             }
         }, function (error) {
             $scope.$apply(function () {
-                toaster.pop('error', '获取信息失败', error);
+                toaster.pop('error', '获取项目分类失败', error);
             })
         });
     };
 
     $scope.initProjectData();
 
-    $.get('/mmfq/api/project_kinds/get_project_kinds').then(function (res) {
+    $.get('/html/mmfq/api/project_kinds/get_project_kinds').then(function (res) {
         if (res.code == 0) {
             $scope.$apply(function () {
                 console.log(res);
@@ -136,7 +136,7 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
 
     $scope.$parent.changeProject = function () {
         if ($scope.$parent.isCreate == true) {
-            $.post('/mmfq/api/projects/add_project', {
+            $.post('/html/mmfq/api/projects/add_project', {
                 customer_id: $scope.customerId,
                 advance_payment: $scope.$parent.project.advance_payment,
                 by_stages: $scope.$parent.project.by_stages,
@@ -162,7 +162,7 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
                 toaster.pop('error', '操作失败', error);
             })
         } else if ($scope.$parent.isCreate == false) {
-            $.post('/mmfq/api/projects/update_project_info', {
+            $.post('/html/mmfq/api/projects/update_project_info', {
                 project_id: $scope.selectProjectId,
                 customer_id: $scope.customerId,
                 advance_payment: $scope.$parent.project.advance_payment,
@@ -229,7 +229,7 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
     };
 
     $scope.$parent.deleteProject = function (x) {
-        $.post('/mmfq/api/projects/delete_project', {
+        $.post('/html/mmfq/api/projects/delete_project', {
             project_id: x.id
         }).then(function (res) {
             if (res.code == 0) {
@@ -248,7 +248,7 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
 
     //第三板块
     $scope.initVisitData = function () {
-        $.get('/mmfq/api/return_visit_records/get_return_visit_records', {
+        $.get('/html/mmfq/api/return_visit_records/get_return_visit_records', {
             customer_id: $scope.customerId
         }).then(function (res) {
             if (res.code == 0) {
@@ -258,12 +258,12 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
                 })
             } else {
                 $scope.$apply(function () {
-                    toaster.pop('error', '获取项目分类失败', res.message);
+                    toaster.pop('error', '获取回访记录失败', res.message);
                 })
             }
         }, function (error) {
             $scope.$apply(function () {
-                toaster.pop('error', '获取项目分类失败', error);
+                toaster.pop('error', '获取回访记录失败', error);
             })
         });
     };
@@ -273,9 +273,10 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
         console.log($scope);
         $scope.$parent.getDateTime($scope.$parent.visitCreateDate, $scope.$parent.visitCreateTime);
         console.log($scope.$parent.visitCreateDate);
-        $.post('/mmfq/api/return_visit_records/add_return_visit_record', {
+        $.post('/html/mmfq/api/return_visit_records/add_return_visit_record', {
             customer_id: $scope.customerId,
-            return_date: (Date.parse($scope.$parent.visitCreateDate) / 1000)
+            return_date: (Date.parse($scope.$parent.visitCreateDate) / 1000),
+            comments: $scope.$parent.visitComments
         }).then(function (res) {
             if (res.code == 0) {
                 $scope.initVisitData();
@@ -298,7 +299,7 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
     };
 
     $scope.$parent.updateVisit = function (x) {
-        $.post('/mmfq/api/return_visit_records/update_return_visit_record', {
+        $.post('/html/mmfq/api/return_visit_records/update_return_visit_record', {
             return_visit_record_id: x.id,
             detail: x.detail
         }).then(function (res) {
@@ -320,7 +321,7 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
     };
 
     $scope.$parent.deleteVisit = function (x) {
-        $.post('/mmfq/api/return_visit_records/delete_return_visit_record', {
+        $.post('/html/mmfq/api/return_visit_records/delete_return_visit_record', {
             return_visit_record_id: x.id
         }).then(function (res) {
             if (res.code == 0) {
