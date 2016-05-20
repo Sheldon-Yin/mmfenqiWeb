@@ -5,6 +5,19 @@ app.controller('CustomerAddCtrl', ['$scope', '$state', 'toaster', function ($sco
 
     $scope.customer = {};
 
+    $.get('/html/mmfq/api/schools/get_schools').then(function (res) {
+        if (res.code == 0) {
+            console.log(res);
+            $scope.$apply(function () {
+                $scope.schoolKinds = res.data;
+            });
+        } else {
+            console.log(res.message)
+        }
+    }, function (error) {
+        console.log(error)
+    });
+
     $scope.addCustomer = function () {
         if (!!$scope.customer.sign_date) {
             var signDate = Date.parse($scope.customer.sign_date);
@@ -29,11 +42,11 @@ app.controller('CustomerAddCtrl', ['$scope', '$state', 'toaster', function ($sco
                     });
                 }
             } else {
-                console.log(res);
+                toaster.pop('error', '添加失败',res.msg);
             }
 
         }, function (error) {
-            console.log(error)
+            toaster.pop('error', '添加失败',error);
         })
 
     };

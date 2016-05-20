@@ -1,0 +1,9 @@
+.insurance-details-title-bar{
+    background-image: url('../img/title.png');
+    height: 6rem;
+    background-size: 100% 6rem;
+    line-height: 6rem;
+    font-size: 2rem;
+    color: #fff;
+    padding: 0 1rem;
+}

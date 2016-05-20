@@ -1,0 +1,25 @@
+<div class="container" style="background-color: #ececec;min-height: 100%;padding-bottom: 1rem">
+    <hr class="app-bootstrap-hr">
+    <label style="display: block" ng-repeat="x in coupons">
+        <div style="height: 10rem;padding-top: 1rem;">
+            <div style="width: 90%;position: absolute;height: 10rem;left: 5%">
+                <img src="modules/coupon/img/blueBG.png" style="width: 100%">
+            </div>
+            <div style="width: 2rem;position: absolute;right: 6%;margin-top: 4rem">
+                <img src="modules/coupon/img/unchecked.png" style="width: 100%;" ng-hide="x.price == couponInput">
+                <img src="modules/coupon/img/checked.png" style="width: 100%;" ng-show="x.price == couponInput">
+            </div>
+            <div class="col-xs-5 text-center app-padding-one">
+                <div class="app-blue-text">
+                    <span style="font-size: 1rem">￥</span>
+                    <span style="font-size: 2.75rem">60元</span></div>
+                <div class="app-padding-one">满200元可使用</div>
+            </div>
+            <div class="col-xs-7 text-center app-padding-one">
+                <div style="font-size: 1.4rem;font-weight: bold" class="double-line">美人~快来适用的优惠券吧</div>
+                <div class="app-padding-one" style="color: #999;">有效期至2016/4/8</div>
+            </div>
+        </div>
+        <input type="radio" ng-model="$parent.couponInput" ng-value="x.price" style="display: none">
+    </label>
+</div>

@@ -16,6 +16,8 @@ app.controller('CustomerListCtrl', ['$scope', '$state', 'toaster', function ($sc
         $scope.last_month.setSeconds(1);
     };
 
+    $scope.myFilter = 150;
+
     $scope.getDefaultTime();
 
     $scope.initData = function () {
@@ -120,5 +122,22 @@ app.controller('CustomerListCtrl', ['$scope', '$state', 'toaster', function ($sc
                 toaster.pop('info', error, '');
             })
         })
-    }
+    };
+
+    $.get('/html/mmfq/api/intention_kinds/get_intention_kinds').then(function (res) {
+        if (res.code == 0) {
+            $scope.$apply(function () {
+                $scope.intentionKinds = res.data;
+            })
+        } else {
+            $scope.$apply(function () {
+                toaster.pop('error', '获取意向分类失败', res.message);
+            })
+        }
+    }, function (error) {
+        $scope.$apply(function () {
+            toaster.pop('error', '获取意向分类失败', error);
+        })
+    });
+
 }]);

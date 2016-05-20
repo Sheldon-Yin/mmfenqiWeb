@@ -1,0 +1,43 @@
+.order-pink-radius-button {
+    background-color: #FB1788;
+    color: #FFFFFF;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+}
+
+.order-pay-white-radius-input {
+    background-color: #FFFFFF;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+}
+
+.order-pay-choose-pay-way-radio-area {
+    bottom: 0;
+    position: fixed;
+    background-color: #FFFFFF;
+    width: 100%
+}
+
+.order-pay-choose-pay-way-dialog-row {
+    padding: 2rem;
+}
+
+.order-pay-choose-pay-way-dialog-row > div > img {
+    width: 2rem;
+}
+
+.order-confirm-dialog-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding-top: 1rem
+}
+
+.order-confirm-dialog {
+    position: absolute;
+    top: 30%;
+    background-color: #FFFFFF;
+    width: 80%;
+    right: 10%;
+    height: auto;
+    border-radius: 1rem
+}

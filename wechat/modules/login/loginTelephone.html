@@ -1,0 +1,23 @@
+<div class="container app-grey-background-container">
+
+    <form ng-submit="goToPasswordOrRegister()">
+        <div class="row text-center" style="font-size: 1.4rem;padding: 1.7rem">
+            请输入手机号注册、登录
+        </div>
+        <div class="app-white-input row">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">手机号</label>
+            <input type="number" ng-pattern="/^[1]\d{10}$/" class="app-white-input-text" placeholder="请输入手机号" ng-model="telephone" required>
+        </div>
+        <label style="display: block">
+            <div class="app-little-pink-radius-button app-padding-one text-center">
+                下一步
+            </div>
+            <button type="submit" style="display: none"></button>
+        </label>
+        <div class="row text-center app-very-blue-text" style="margin-top: 50px;font-size: 1.4rem"
+             ng-click="goToFastLogin()">
+            快捷登录
+        </div>
+    </form>
+
+</div>

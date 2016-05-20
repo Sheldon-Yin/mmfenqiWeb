@@ -1,0 +1,43 @@
+<div style="width: 100%;position: fixed;height:100%;left: 0;z-index:999" ng-if="!billRecord.data  && !loadError">
+    <div style="top: 45%;position: absolute;width: 100%;left: 45%">
+        <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 10%">
+    </div>
+    <div style="top: 45%;position: absolute;width: 100%;left: 45%">
+        <img src="img/loading/loadingInner.png" style="width: 10%">
+    </div>
+</div>
+
+<div style="background-color: #ECECEC;min-height: 100%;padding-bottom: 4.8rem">
+
+    <!--<div class="container">-->
+        <!--&lt;!&ndash;App bar For bill list&ndash;&gt;-->
+        <!--<div class="row app-bar text-center">-->
+            <!--<div class="col-xs-2" style="width: 15%" ng-click="goBack()"><i class="fa fa-angle-left fa-2x"></i></div>-->
+            <!--<div class="col-xs-8 app-title-bar">还款记录</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="app-bootstrap-grey-bold-hr"></div>
+
+    <!--for one-->
+    <div style="background-color: #FFFFFF;">
+        <div class="container" style="background-color: #FCFCFC" ng-repeat="x in billRecord.data.repaymentRecordResponse">
+            <div class="row">
+                <div class="col-xs-8" style="font-size: 1.4rem;line-height: 2.4rem">
+                    （第{{x.repayment_Staging}}/{{x.staging}}期） {{x.goodsName}}
+                </div>
+                <div class="col-xs-4 text-right" style="font-size: 0.8rem">
+                    <div>
+                        ￥{{x.repayment_amount}}
+                    </div>
+                    <div>
+                        {{x.repayment_date}}
+                    </div>
+                </div>
+
+            </div>
+            <hr class="app-bootstrap-hr">
+        </div>
+    </div>
+
+</div>

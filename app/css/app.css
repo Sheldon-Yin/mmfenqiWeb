@@ -111,33 +111,39 @@ td {
 }
 
 .app-project-hospital {
-    color: rgb(102, 102, 102);
+    color: #b1b1b1;
     font-size: 1rem;
-    padding-top: 1rem;
+    padding-top: 0.1rem;
 }
 
 .app-project-title {
     color: rgb(51, 51, 51);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    line-height: 1.5rem;
+    height: 3rem;
 }
 
 .app-project-content {
     padding-left: 0;
     padding-right: 0.5rem;
-
+    position: relative;
 }
 
 .app-project-original-price {
     line-height: 2.9rem;
     text-decoration: line-through;
     font-size: 1.4rem;
-    color: rgb(102,102,102);
+    color: #b1b1b1;
 }
 
 .app-project-price-area {
-    padding-top: 1.5rem;
     padding-left: 0;
     padding-right: 0;
+    position: absolute;
+    right: 0;
+    bottom: 0.4rem;
+    width: 70%;
 }
 
 .app-project-yellow-background-radius {

@@ -1,0 +1,98 @@
+<div ng-include="'/views/partials/navbar.html'"></div>
+
+<div class="new" ng-controller="listCtrl">
+	<div class="list-header">
+		<md-content>
+			<md-list>
+				<md-item>
+					<md-item-content>
+						<div class="md-tile-left">房源类型</div>
+						<div class="md-tile-content">
+							<md-radio-group layout="row" ng-model="houseType">
+								<md-radio-button value="apartment">公寓</md-radio-button>
+								<md-radio-button value="independent">独立屋</md-radio-button>
+							</md-radio-group>
+						</div>
+					</md-item-content>
+				</md-item>
+				<md-item>
+					<md-item-content>
+						<div class="md-tile-left">房间类型</div>
+						<div class="md-tile-content">
+							<md-radio-group layout="row" ng-model="roomType">
+								<md-radio-button value="all">整套房子</md-radio-button>
+								<md-radio-button value="seperate">独立房间</md-radio-button>
+								<md-radio-button value="share">合住房间</md-radio-button>
+							</md-radio-group>
+						</div>
+					</md-item-content>
+				</md-item>
+				<md-item>
+					<md-item-content>
+						<div class="md-tile-left">月租金(￥)</div>
+						<div class="md-tile-content">
+							<md-radio-group layout="row" ng-model="moneyRange">
+								<md-radio-button value="1">0~1000</md-radio-button>
+								<md-radio-button value="2">1000~2000</md-radio-button>
+								<md-radio-button value="3">2000~3000</md-radio-button>
+								<md-radio-button value="4">3000以上</md-radio-button>
+							</md-radio-group>
+						</div>
+					</md-item-content>
+				</md-item>
+				<div ng-show="more" class="list-more">
+					<md-item>
+						<md-item-content>
+							<div class="md-tile-left">可住人数</div>
+							<div class="md-tile-content">
+								<div layout="row" layout-margin>
+									<md-slider step="1" flex="80" min="1" max="5" ng-model="peopleNum" class="md-warn" md-discrete>
+									</md-slider>
+									<input flex="20" type="number" ng-model="peopleNum" class="new-slider">
+								</div>
+							</div>
+						</md-item-content>
+					</md-item>
+					<md-item>
+						<md-item-content>
+							<div class="md-tile-left">面积大小</div>
+							<div class="md-tile-content">
+								<md-radio-group layout="row" ng-model="areaRange">
+									<md-radio-button value="1">0~50</md-radio-button>
+									<md-radio-button value="2">50~100</md-radio-button>
+									<md-radio-button value="3">100~150</md-radio-button>
+									<md-radio-button value="4">150以上</md-radio-button>
+								</md-radio-group>
+							</div>
+						</md-item-content>
+					</md-item>
+				</div>
+				<md-item>
+					<md-item-content>
+						<div class="md-tile-content new-publish">
+							<md-button class="md-raised md-primary" ng-click="showMore()">更多筛选条件</md-button>
+							<md-button class="md-raised md-warn resetAll" ng-click="reset()">不限所有</md-button>
+						</div>
+					</md-item-content>
+				</md-item>
+			</md-list>
+		</md-content>
+	</div>
+	<div class="new-container">
+		<div class="list-container" layout-wrap layout>
+			<md-card ng-repeat="house in houseData.slice().reverse()">
+				<a href="" ui-sref="detail({id: house._id})">
+					<img ng-src="{{house.imgUrl[0]}}">
+				</a>
+				<md-card-content>
+					<a href="" ui-sref="detail({id: house._id})">{{house.headline}}</a>
+					<p>{{house.houseType}}</p>
+					<p class="price">￥<span>{{house.money}}</span></p>
+				</md-card-content>
+			</md-card>
+			<h1 ng-show="houseData.length === 0">没有搜索到相关信息~请发布房源~</h1>
+
+		</div>
+
+	</div>
+</div>

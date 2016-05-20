@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0,minimal-ui">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="keywords" content="美眉分期">
+    <base href="../wechat/">
+    <meta name="description"
+          content="美眉分期:全国首家女大学生微整形分期服务平台,服务特色:0首付分期付款、大型专业医院合作、多年经验专家服务、高性价比项目、所有药品100%正品、医美专家全程陪同、7*24售后无忧,美眉分期,为美而生！">
+    <meta name="renderer" content="webkit">
+    <title>{{$root.title}}</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/my.bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <!--<link rel="stylesheet" href="css/build/core.css">-->
+    <!--<link rel="stylesheet" href="css/animations.css">-->
+
+</head>
+
+<body style="height: 100%">
+
+<div class="view-container" style="height: 100%">
+    <div ng-view class="view-frame" style="height: 100%"></div>
+</div>
+<script src="bower_components/seajs/dist/sea.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<!--<script src="bower_components/angular-animate/angular-animate.min.js"></script>-->
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/angular-lazyload/dist/angular-lazyload.min.js"></script>
+<script type="text/javascript" src="js/common/auto-set-rem.js"></script>
+<script src="js/common/toast.js"></script>
+<script src="js/appBrige.js"></script>
+<script src="js/common/angular-sku.js"></script>
+<!--<script src="js/common/build/ga.js"></script>-->
+<script type="application/javascript" src="bower_components/Swiper/dist/js/swiper.min.js"></script>
+<script>
+    seajs.config({
+        base: './js/'
+    });
+    seajs.on('error', function (module) {
+        if (module.status != 5) {
+        }
+    });
+    seajs.use(['app'], function (app) {
+        angular.bootstrap(document, ['app']);
+    });
+</script>
+</body>
+</html>

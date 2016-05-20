@@ -1,0 +1,146 @@
+<div  ng-controller="OrderVerifyCtrl">
+
+
+    <div class="bg-light lter b-b wrapper-md">
+        <div class="row">
+            <div class="col-xs-6">
+                <h1 class="m-n font-thin h3">订单号验证</h1>
+            </div>
+
+            <div class="col-xs-6 text-right hidden-lg hidden-md">
+                <button ng-click="queryQrCodeForWeChat()" class="btn btn-sm btn-info"
+                        style="background-color: #fb1787;border: 0;">扫一扫
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper-md">
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading font-bold">
+                <div class="row">
+                    <div class="col-xs-6">
+                        订单号
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form class="m-b-md ng-pristine ng-valid" ng-submit="getOrderDetail()">
+                    <div class="input-group col-xs-12 col-sm-6">
+                        <input type="text" class="form-control input-lg w-sm" ng-model="orderSn" placeholder="请输入订单号"
+                               required>
+                      <span class="input-group-btn">
+                        <button class="btn btn-lg btn-info" type="submit" style="background-color: #fb1787;border: 0;">
+                            查询
+                        </button>
+                      </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <div class="well m-t bg-light lt">
+                <div class="row">
+                    <div class="col-xs-12 text-right">
+                        <div class="col-xs-6 text-right">
+                            <h4>订单号</h4>
+                        </div>
+                        <div class="col-xs-6 text-left">
+                            <h4><a>{{data.orderSn}}</a></h4>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 text-center">
+                        <div class="row">
+                            <div class="col-xs-6 text-right">
+                                <p>姓名：</p>
+                            </div>
+                            <div class="col-xs-6 text-left">
+                                {{data.username}}
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-6 text-right">
+                                <p>手机号：</p>
+                            </div>
+                            <div class="col-xs-6 text-left">
+                                {{data.telphone}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 text-right">
+                                <p>订单金额：</p>
+                            </div>
+                            <div class="col-xs-6 text-left">
+                                {{data.orderPrice}}元
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 text-right">
+                                <p>项目审核：</p>
+                            </div>
+                            <div class="col-xs-6 text-left">
+                                {{data | billStatus}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 text-center">
+
+                        <div class="row">
+                            <div class="col-xs-6 text-right">
+                                <p>咨询师：</p>
+                            </div>
+                            <div class="col-xs-6 text-left">
+                                {{data.consultantName}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 text-right">
+                                <p>项目：</p>
+                            </div>
+                            <div class="col-xs-6 text-left">
+                                {{data.orderName}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 text-right">
+                                <p>订单状态：</p>
+                            </div>
+                            <div class="col-xs-6 text-left">
+                                {{data | orderStatus}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 text-right">
+                                <p>项目审核备注：</p>
+                            </div>
+                            <div class="col-xs-6 text-left">
+                                {{data.reason}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row text-center">
+            <button class="btn btn-primary" style="padding: 1rem 3rem;background-color: #029cf4;border: 0;"
+                    ng-click="verifyOrder()">验证
+            </button>
+        </div>
+
+
+    </div>
+</div>

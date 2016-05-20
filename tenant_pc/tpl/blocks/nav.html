@@ -1,0 +1,91 @@
+<!-- list -->
+<ul class="nav">
+
+  <li  ng-show="app.user.role == 0 || app.user.role == 1" class="active">
+    <a href class="auto" ui-sref="app.order.list">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-list icon"></i>
+      <span class="">订单管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>订单管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.order.verify">
+          <span>订单验证</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.order.list">
+          <span>全部订单</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.order.diy">
+          <span>自定义项目</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li ng-show="app.user.role == 0 || app.user.role == 2" class="active">
+    <a href class="auto"  ui-sref="app.bill.list">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="fa fa-money icon"></i>
+      <span class="">财务账单</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>财务账单</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.bill.list">
+          <span>全部账单</span>
+        </a>
+      </li>
+      <!--<li ui-sref-active="active">-->
+        <!--<a ui-sref="app.bill.getCash">-->
+          <!--<span>提现</span>-->
+        <!--</a>-->
+      <!--</li>-->
+    </ul>
+  </li>
+  <li ng-show="app.user.role == 0" class="active">
+    <a href class="auto"  ui-sref="app.setting.userList">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="fa fa-group icon"></i>
+      <span class="">账号管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a ui-sref="app.setting.userList">
+          <span>账号管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.setting.userList">
+          <span>用户列表</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.setting.userAdd">
+          <span>添加用户</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>
+<!-- / list -->

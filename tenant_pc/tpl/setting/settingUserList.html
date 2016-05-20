@@ -1,0 +1,53 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">用户列表</h1>
+</div>
+<div class="wrapper-md" ng-controller="SettingUserListCtrl">
+    <div class="wrapper-md bg-light b-b">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                用户列表
+            </div>
+            <div class="panel-body b-b b-light">
+                搜索: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
+            </div>
+            <div>
+                <table class="table m-b-none text-center" ui-jq="footable" data-filter="#filter" data-page-size="5">
+                    <thead>
+                    <tr>
+                        <th  class="text-center">
+                            姓名
+                        </th>
+                        <th  class="text-center">
+                            账号
+                        </th>
+                        <th  class="text-center">
+                            职称
+                        </th>
+                        <th  class="text-center" data-hide="phone,tablet">
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="x in data">
+                        <td>{{x.userName}}</td>
+                        <td><a href>{{x.telphone}}</a></td>
+                        <td>{{x.adminType  | adminType}}</td>
+                        <td>
+                            <button class="btn btn-info" ng-click="resetPassword(x)"  popover="默认密码：666888" popover-trigger="mouseenter">重置密码</button>
+                            <button class="btn-danger btn" ng-click="deleteUser(x)" style="margin-left: 1em">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot class="hide-if-no-paging">
+                    <tr>
+                        <td colspan="5" class="text-center">
+                            <ul class="pagination"></ul>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

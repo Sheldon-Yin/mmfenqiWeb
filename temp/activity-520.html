@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>520快乐</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0,minimal-ui">
+</head>
+<body style="margin: 0;font-family: 'Microsoft JhengHei', 'Adobe Fan Heiti Std B'">
+
+<button onclick="showShareDialog()">
+
+    分享~
+
+</button>
+
+<div style="position: fixed;height: 100%;width: 100%;top: 0;background-color: rgba(0,0,0,0.3);display: none"
+     id="shareDialog">
+    <div style="width: 80%;left: 10%;position: absolute;top: 5%">
+        <img src="img/close.png" style="position: absolute;right: 0;top: 5%;width: 30px;z-index: 100"
+             onclick="closeShareDialog()">
+        <div style="position: relative">
+            <img src="img/dialog-background.png" style="width: 100%;height: 100%;z-index: -1;">
+                <div style="position:absolute;z-index: 99;top: 30%;text-align: center;width: 100%">
+                    <div style="width: 100%">
+                        你获得了<span style="color: rgb(255,74,75);">流量红包</span>，即时到账哦
+                    </div>
+                    <div>
+                        爱她们就给她们送流量吧！
+                    </div>
+                    <div style="padding: 5px 0;margin: 10px 0;text-align: center;clear: both">
+                        <div style="padding: 9px 0;color: #ffffff;background-color: #FE4A4B;font-size: 16px;width: 30%;float: left;margin-left:8%;border-top-left-radius: 4px;border-bottom-left-radius: 4px">
+                            女性好友1
+                        </div>
+                        <input id="friend-first"  style="padding: 10px 3%;margin: 0;float: left;width: 46%;border-top-right-radius: 4px;border-bottom-right-radius: 4px"
+                               type="number" placeholder="手机号">
+                    </div>
+
+                    <div style="padding: 10px 0;margin: 10px 0;text-align: center;clear: both;">
+                        <div style="padding: 9px 0;color: #ffffff;background-color: #FE4A4B;font-size: 16px;width: 30%;float: left;margin-left:8%;border-top-left-radius: 4px;border-bottom-left-radius: 4px">
+                            女性好友2
+                        </div>
+                        <input id="friend-second"  style="padding: 10px 3%;margin: 0;float: left;width: 46%;border-top-right-radius: 4px;border-bottom-right-radius: 4px"
+                               type="number" placeholder="手机号">
+                    </div>
+
+                    <div style="padding: 10px 0;margin: 10px 0;text-align: center;clear: both">
+                        <div style="padding: 9px 0;color: #ffffff;background-color: #FE4A4B;font-size: 16px;width: 30%;float: left;margin-left:8%;border-top-left-radius: 4px;border-bottom-left-radius: 4px">
+                            女性好友3
+                        </div>
+                        <input id="friend-third" style="padding: 10px 3%;margin: 0;float: left;width: 46%;border-top-right-radius: 4px;border-bottom-right-radius: 4px"
+                               type="number" placeholder="手机号">
+                    </div>
+
+                    <div>
+                        <label>
+                            <img src="img/send-button.png" style="width: 80%;padding: 15px">
+                            <input type="submit" style="display: none" onclick="sendMessage()">
+                        </label>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function showShareDialog() {
+        document.getElementById('shareDialog').style.display = 'block';
+    }
+
+    function closeShareDialog() {
+        document.getElementById('shareDialog').style.display = 'none';
+    }
+
+    function sendMessage() {
+        var friendFirst = document.getElementById('friend-first');
+        var friendSecond = document.getElementById('friend-second');
+        var friendThird = document.getElementById('friend-third');
+        var firstNo = isPhoneNumber(friendFirst.value) ? friendFirst.value : '输入格式不正确或未输入';
+        var sencondNo = isPhoneNumber(friendSecond.value) ? friendSecond.value : '输入格式不正确或未输入';
+        var thirdNo = isPhoneNumber(friendThird.value) ? friendThird.value : '输入格式不正确或未输入';
+
+
+        alert('发送成功：'+'手机号1：'+firstNo+'，手机号2：'+sencondNo+'，手机号3：'+thirdNo);
+//        window.location.href = 'localhost:8080/success';
+    }
+
+    function isPhoneNumber(input) {
+        input = Number(input);
+        var phone = /^[1]\d{10}$/;
+        return  phone.test(input);
+    }
+
+</script>
+</body>
+</html>

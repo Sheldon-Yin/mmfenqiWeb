@@ -1,0 +1,42 @@
+.order-stage-choose-input {
+    display: none;
+}
+
+.order-stage-choose > span {
+    background-color: #F8F8F8;
+    padding: 0.5rem;
+    border-top: 1px solid #F8F8F8;
+    border-bottom: 1px solid #F8F8F8;
+}
+
+.order-stage-choose-input:checked + span {
+    background-color: #FFFFFF;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    color: red;
+}
+
+.order-first-pay-select {
+    margin-left: 1rem;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    padding-right: 0.5rem;
+    border: 0;
+}
+
+.order-confirm-dialog-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding-top: 1rem
+}
+
+.order-confirm-dialog {
+    position: absolute;
+    top: 30%;
+    background-color: #FFFFFF;
+    width: 80%;
+    right: 10%;
+    height: auto;
+    border-radius: 1rem
+}

@@ -77,8 +77,12 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">学校</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" placeholder="学校"
-                                                   ng-model="customer.school" required>
+                                            <select class="form-control" ng-model="customer.school" required>
+                                                <option value=""></option>
+                                                <option ng-repeat="x in schoolKinds" value="{{x.school_name}}">
+                                                    {{x.school_name}}
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -125,23 +129,49 @@
                 <div class="wrapper">
                     <div class="row" ng-click="addProject()">
                         <div class="col-xs-12 text-center" style="margin-bottom: 10px">
-                            <button class="btn btn-primary">新建项目<i class="fa fa-plus"></i></button>
+                            <div class="col-xs-6 text-left">
+                                    <div class="col-sm-12" style="padding: 0">
+                                        <select type="text" class="form-control" placeholder="筛选"
+                                                ng-model="projectFilter">
+                                            <option value=""></option>
+                                            <option value="treat">成单已治疗</option>
+                                            <option value="not_treat">成单未治疗</option>
+                                            <option value="not_deal">未成交</option>
+                                            <option value="cancel">取消</option>
+                                        </select>
+                                    </div>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <button class="btn btn-primary">新建项目<i class="fa fa-plus"></i></button>
+                            </div>
                         </div>
                         <div class="line b-b"></div>
                     </div>
-                    <label style="display: block" ng-repeat="x in projects" ng-class="{'project-selected':x.isSelect}">
+                    <div class="row" style="padding: 1rem">
+                        <div class="col-xs-10">
+                            <div class="col-xs-6 text-left">
+                                项目描述
+                            </div>
+                            <div class="col-xs-6">
+                                项目状态
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line b-b" style="margin: 0;"></div>
+                    <label style="display: block" ng-repeat="x in projects | filter:{stat: projectFilter}:$root.projectStatusEquals"
+                           ng-class="{'project-selected':x.isSelect}">
                         <div ng-click="showProject(x)">
-                            <div class="row">
+                            <div class="row" style="padding: 1rem">
                                 <div class="col-xs-10">
-                                    <div class="col-xs-12">
+                                    <div class="col-xs-6">
                                         {{x.description}}
                                     </div>
-                                    <div class="col-xs-12">
-                                        {{x.create_date}}
+                                    <div class="col-xs-6">
+                                        {{x.stat | projectStatus}}
                                     </div>
                                 </div>
                                 <div class="col-xs-2" ng-click="deleteProject(x)">
-                                    <i class="fa fa-times" style="padding-top: 1em;padding-bottom: 1em"></i>
+                                    <i class="fa fa-times"></i>
                                 </div>
                             </div>
 
@@ -174,9 +204,17 @@
                                 </div>
                                 <div class="line line-dashed b-b pull-in"></div>
                                 <div class="form-group">
+                                    <label class="col-sm-3 control-label">项目价格</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" step="0.01" class="form-control" placeholder="首付金额"
+                                               ng-model="project.price">
+                                    </div>
+                                </div>
+                                <div class="line line-dashed b-b pull-in"></div>
+                                <div class="form-group">
                                     <label class="col-sm-3 control-label">首付</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="首付金额"
+                                        <input type="number" step="0.01" class="form-control" placeholder="首付金额"
                                                ng-model="project.advance_payment">
                                     </div>
                                 </div>
@@ -208,25 +246,28 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">每期还款</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="每期还款金额"
+                                        <input type="number" step="0.01" class="form-control" placeholder="每期还款金额"
                                                ng-model="project.per_payment">
                                     </div>
                                 </div>
+                                <!--<div class="line line-dashed b-b pull-in"></div>-->
+                                <!--<div class="form-group">-->
+                                <!--<label class="col-sm-3 control-label">医院地址</label>-->
+                                <!--<div class="col-sm-9">-->
+                                <!--<input type="text" class="form-control" placeholder="医院地址"-->
+                                <!--ng-model="project.hospital_location">-->
+                                <!--</div>-->
+                                <!--</div>-->
                                 <div class="line line-dashed b-b pull-in"></div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label">医院地址</label>
+                                    <label class="col-sm-3 control-label">医院</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="医院地址"
-                                               ng-model="project.hospital_location">
-                                    </div>
-                                </div>
-
-                                <div class="line line-dashed b-b pull-in"></div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">医院名称</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="医院名称"
-                                               ng-model="project.hospital_name">
+                                        <select class="form-control" ng-model="project.hospital_name">
+                                            <option value=""></option>
+                                            <option ng-repeat="x in hospitalKinds" value="{{x.hospital_name}}">
+                                                {{x.hospital_name}}
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -277,8 +318,8 @@
                             </div>
 
                             <footer class="panel-footer text-right bg-light lter">
-                                <button type="submit" class="btn btn-success" ng-hide="isCreate">保存修改</button>
-                                <button type="submit" class="btn btn-primary" ng-show="isCreate">新建项目</button>
+                                <button type="submit" class="btn btn-success" ng-hide="isCreateProject">保存修改</button>
+                                <button type="submit" class="btn btn-primary" ng-show="isCreateProject">新建项目</button>
                             </footer>
                         </div>
                     </form>
@@ -329,7 +370,8 @@
                         <div class="form-group">
                             <label class="control-label">备注</label>
                             <div>
-                                <input type="text" class="form-control" placeholder="备注记录" ng-model="$root.visitComments"
+                                <input type="text" class="form-control" placeholder="备注记录"
+                                       ng-model="$root.visitComments"
                                        required>
                             </div>
                         </div>
@@ -395,6 +437,80 @@
                 </div>
             </div>
             <!-- /.col -->
+        </div>
+    </tab>
+    <tab>
+        <tab-heading>
+            客户意向
+        </tab-heading>
+        <div class="hbox hbox-auto-xs">
+            <div class="col w-auto-xs bg-light lter b-r" style="width: 30%">
+                <div class="wrapper">
+                    <div class="row" ng-click="addIntention()">
+                        <div class="col-xs-12 text-center" style="margin-bottom: 10px">
+                            <button class="btn btn-primary">新建意向<i class="fa fa-plus"></i></button>
+                        </div>
+                        <div class="line b-b"></div>
+                    </div>
+                    <label style="display: block" ng-repeat="x in intentions"
+                           ng-class="{'project-selected':x.isSelect}">
+                        <div ng-click="showIntention(x)">
+                            <div class="row">
+                                <div class="col-xs-10">
+                                    <div class="col-xs-12">
+                                        {{x.label}}
+                                    </div>
+                                    <!--<div class="col-xs-12">-->
+                                    <!--{{x.create_date}}-->
+                                    <!--</div>-->
+                                </div>
+                                <div class="col-xs-2" ng-click="deleteIntention(x)">
+                                    <i class="fa fa-times" style="padding-bottom: 1em"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="line b-b" style="margin: 0;"></div>
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="wrapper" style="padding-top: 0">
+                    <form name="projectForm" class="form-horizontal form-validation" ng-submit="changeIntention()">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"><i class="fa fa-star"
+                                                                             style="color: #F05050"></i>意向分类</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" ng-model="intention.label" required>
+                                            <option value=""></option>
+                                            <option ng-repeat="x in intentionKinds" value="{{x.label}}">{{x.label}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="line line-dashed b-b pull-in"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"><i class="fa fa-star"
+                                                                             style="color: #F05050"></i>详情</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" rows="5" placeholder="有关的详细情况"
+                                                  ng-model="intention.description" required></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="line line-dashed b-b pull-in"></div>
+                            </div>
+
+                            <footer class="panel-footer text-right bg-light lter">
+                                <button type="submit" class="btn btn-success" ng-hide="isCreateIntention">保存修改</button>
+                                <button type="submit" class="btn btn-primary" ng-show="isCreateIntention">新建意向</button>
+                            </footer>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </tab>
 </tabset>

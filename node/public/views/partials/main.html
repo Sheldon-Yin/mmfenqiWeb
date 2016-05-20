@@ -1,0 +1,144 @@
+<div class="head-wrapper" >
+	<div class="how-it-works" ng-show="isShow">
+		<div class="how-it-works-container">
+			<div class="how-it-works-list">
+				<div class="how-it-works-img"></div>
+				<div class="how-it-works-info">
+					<h3>搜索最棒的住宿</h3>
+					<p>无论私人单间，整套公寓，还是城堡，房车，船屋等特色住宿，您都可以在这上找到。</p>
+				</div>
+			</div>
+			<div class="how-it-works-list">
+				<div class="how-it-works-img how-it-works-img2"></div>
+				<div class="how-it-works-info">
+					<h3>预订住宿</h3>
+					<p>联系房东、确认旅行日期 — 一切都能通过这个值得信赖的服务完成。</p>
+				</div>
+			</div>
+			<div class="how-it-works-list">
+				<div class="how-it-works-img how-it-works-img3"></div>
+				<div class="how-it-works-info">
+					<h3>开始旅行</h3>
+					<p>无论您身处世界的哪个角落, 您都可以享受"家"的感觉。</p>
+				</div>
+			</div>
+		</div>
+		<span class="close icon-cancel-1" ng-click="closeHowToUse()"></span>
+	</div>
+	<header>
+		<video loop="loop" preload="auto" autoplay="autoplay">
+		<!-- 	<source src="//a0.muscache.com/airbnb/static/Paris-P1-1.mp4" type="video/mp4"> -->
+		<source src="Paris-P1-1.mp4" type="video/mp4">
+			<source src="//a0.muscache.com/airbnb/static/Paris-P1-0.webm" type="video/webm">
+		</video>
+
+		<nav>
+			<a ui-sref="/" class="nav-logo">LxC</a>
+			<div class="nav-right">
+				<a ui-sref="home({id: id})" class="nav-login" ng-if="isLoggedIn">{{username}}</a>
+				<a ng-click="logOut()" href="" class="nav-login" ng-if="isLoggedIn">退出登录</a>
+
+				<a ui-sref="login" href="" class="nav-login" ng-if="!isLoggedIn">登陆</a>
+				<a ui-sref="signup" href="" class="nav-signup" ng-if="!isLoggedIn">注册</a>
+				<a href="" ui-sref="new">
+					<md-button class="md-raised md-primary">发布房源</md-button>
+				</a>
+			</div>
+		</nav>
+
+		<div class="header-content">
+			<h1>欢迎回家</h1>
+			<p>向你提供一个独一无二的家</p>
+			<md-button class="md-raised" ng-click="showHowToUse()">如何使用</md-button>
+		</div>
+		<div class="header-footer">
+			<md-content md-theme="docs-dark" class="md-padding " layout="row" layout-sm="column" style="font-size:1.2em" layout-margin>
+				<md-input-container>
+					<label>您想住哪里</label>
+					<input ng-model="where">
+				</md-input-container>
+				<md-input-container>
+					<label>几位房客</label>
+					<input ng-model="peopleNumber">
+				</md-input-container>
+				<md-button class="md-raised md-warn" ng-click="search()">搜索</md-button>
+			</md-content>
+		</div>
+	</header>
+</div>
+
+
+<div class="panel">
+	<div class="panel-content">
+		<div class="panel-intro">
+			<h1>上海好去处</h1>
+			<p>发现离家最近的地方</p>
+		</div>
+		<div class="panel-detail" layout="row" layout-margin>
+			<a href="" class="yp" ui-sref="list({state: '杨浦区'})">
+				<img src="imgs/yp.webp" alt="yp">
+				<p>杨浦</p>
+			</a>
+			<a href="" class="hk" ui-sref="list({state: '虹口区'})">
+				<img src="imgs/hk.webp" alt="hk">
+				<p>虹口</p>
+			</a>
+			<a href="" class="hp" ui-sref="list({state: '黄浦区'})">
+				<img src="imgs/hp.webp" alt="hp">
+				<p>黄浦</p>
+			</a>
+		</div>
+		<a ui-sref="list" href="" class="panel-more">
+			<md-button class="md-raised">查看所有目的地</md-button>
+		</a>
+	</div>
+
+	<div class="panel-content">
+		<div class="panel-intro">
+			<h1>探索中国</h1>
+			<p>搜罗全国热门目的地</p>
+		</div>
+		<div class="panel-detail">
+			<a href="" class="bj" ui-sref="list({city: '北京'})">
+				<img src="imgs/bj.webp" alt="bj">
+				<p>北京</p>
+			</a>
+			<a href="" class="sh" ui-sref="list({city: '上海'})">
+				<img src="imgs/sh.webp" alt="sh">
+				<p>上海</p>
+			</a>
+			<a href="" class="gz" ui-sref="list({city: '广州'})">
+				<img src="imgs/gz.webp" alt="gz">
+				<p>广州</p>
+			</a>
+			<a href="" class="sz" ui-sref="list({city: '深圳'})">
+				<img src="imgs/sz.webp" alt="sz">
+				<p>深圳</p>
+			</a>
+			<a href="" class="qd" ui-sref="list({city: '青岛'})">
+				<img src="imgs/qd.webp" alt="qd">
+				<p>青岛</p>
+			</a>
+			<a href="" class="hz" ui-sref="list({city: '杭州'})">
+				<img src="imgs/hz.webp" alt="hz">
+				<p>杭州</p>
+			</a>
+			<a href="" class="dl" ui-sref="list({city: '大连'})">
+				<img src="imgs/dl.webp" alt="dl">
+				<p>大连</p>
+			</a>
+			<a href="" class="cd" ui-sref="list({city: '成都'})">
+				<img src="imgs/cd.webp" alt="cd">
+				<p>成都</p>
+			</a>
+			<a href="" class="gl" ui-sref="list({city: '桂林'})">
+				<img src="imgs/gl.webp" alt="gl">
+				<p>桂林</p>
+			</a>
+			<a href="" class="zh" ui-sref="list({city: '珠海'})">
+				<img src="imgs/zh.webp" alt="zh">
+				<p>珠海</p>
+			</a>
+		</div>
+	</div>
+</div>

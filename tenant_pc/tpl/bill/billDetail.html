@@ -1,0 +1,152 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">账单详情</h1>
+</div>
+<div class="wrapper-md" ng-controller="BillDetailCtrl">
+
+    <div>
+        <div class="well m-t bg-light lt">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="col-xs-6">
+                        <h4>订单号</h4>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <h4><a href="http://www.apple.com">{{data.orderSn}}</a></h4>
+                    </div>
+
+
+                </div>
+
+                <div class="col-xs-6 text-center">
+                    <div class="row">
+                        <div class="col-xs-6 text-right">
+                            <p>姓名：</p>
+                        </div>
+                        <div class="col-xs-6 text-left">
+                            {{orderDetailInfo.username}}
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-xs-6 text-right">
+                            <p>手机号：</p>
+                        </div>
+                        <div class="col-xs-6 text-left">
+                            {{orderDetailInfo.telphone}}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 text-right">
+                            <p>订单金额：</p>
+                        </div>
+                        <div class="col-xs-6 text-left">
+                            {{orderDetailInfo.orderPrice}}元
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 text-right">
+                            <p>实际收入：</p>
+                        </div>
+                        <div class="col-xs-6 text-left">
+                            {{orderDetailInfo.real_amount}}元
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 text-right">
+                            <p>原因：</p>
+                        </div>
+                        <div class="col-xs-6 text-left">
+                            {{orderDetailInfo.real_amount_reason}}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-6 text-center">
+
+                    <div class="row">
+                        <div class="col-xs-6 text-right">
+                            <p>咨询师：</p>
+                        </div>
+                        <div class="col-xs-6 text-left">
+                            {{orderDetailInfo.consultantName}}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 text-right">
+                            <p>项目：</p>
+                        </div>
+                        <div class="col-xs-6 text-left">
+                            {{orderDetailInfo.orderName}}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 text-right">
+                            <p>订单状态：</p>
+                        </div>
+                        <div class="col-xs-6 text-left">
+                            {{orderDetailInfo | orderStatus}}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 text-right">
+                            <p>项目审核：</p>
+                        </div>
+                        <div class="col-xs-6 text-left">
+                            {{orderDetailInfo | billStatus}}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 text-right">
+                            <p>项目审核备注：</p>
+                        </div>
+                        <div class="col-xs-6 text-left">
+                            {{orderDetailInfo.reason}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <div class="col-xs-12 ">
+            <div class="wrapper-sm b-a bg-white m-r-xs m-b-xs text-center"
+                 style="width: 40%;height: 40%;margin-left: 30%">
+                <div class="bg-light">
+                    <div class="form-group">
+                        <label style="display: block">
+                            <img ng-src="{{downloadImgUrl}}" src="img/addImg.png" class="ng-isolate-scope"
+                                 style="width: 100%">
+                            <input type="file" style="display: none" ng-model="uploadImgForInform"
+                                   ng-disabled="orderDetailInfo.receiptAudit == 1||orderDetailInfo.receiptAudit == 2||orderDetailInfo.receiptAudit == 4||orderDetailInfo.receiptAudit == 5"
+                                   onchange="angular.element(this).scope().uploadInform(this.files)"
+                                   required>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <div class="col-xs-12" style="padding: 2rem">
+            收据审核通过后即申请提现，请注意查收。
+        </div>
+
+        <div class="col-xs-12">
+            注：当日16点前申请：当日到账。当日16点后申请：次日到账。法定节假日申请提现：顺延至下一个工作日。
+        </div>
+    </div>
+
+
+
+</div>

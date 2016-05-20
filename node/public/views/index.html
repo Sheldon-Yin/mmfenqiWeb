@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Sheldon</title>
+	<link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+	<link rel="stylesheet" href="bower_components/me-pageloading/me-pageloading.min.css">
+	<link rel="stylesheet" href="build/css/qbt-font.css">
+	<link rel="stylesheet" href="build/css/index.css">
+</head>
+<body>
+	<div ui-view=""></div>
+
+	<footer>
+		<h5>关于作者</h5>
+		<a href="http://weibo.com/u/2190251262" class="weibo">
+			<i class="icon-weibo"></i>
+		</a>
+	</footer>
+
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+	<script src="bower_components/angular-material/angular-material.min.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+	<script src="bower_components/ng-file-upload/angular-file-upload.min.js"></script>
+	<script src="bower_components/Snap.svg/dist/snap.svg-min.js"></script>
+	<script src="bower_components/me-pageloading/me-pageloading.min.js"></script>
+
+	<script src="javascripts/app.js"></script>
+
+	<script src="javascripts/controllers/main.js"></script>
+	<script src="javascripts/controllers/new.js"></script>
+	<script src="javascripts/controllers/list.js"></script>
+	<script src="javascripts/controllers/detail.js"></script>
+	<script src="javascripts/controllers/navbar.js"></script>
+	<script src="javascripts/controllers/login.js"></script>
+	<script src="javascripts/controllers/signup.js"></script>
+	<script src="javascripts/controllers/home.js"></script>
+
+	<script src="javascripts/services/auth.js"></script>
+	<script src="javascripts/services/house.js"></script>
+
+	<script src="javascripts/directives/house_del.js"></script>
+	
+	<script src="http://api.map.baidu.com/api?v=2.0&ak=gosbEGaMXRM74wcMH4lT2bMC" type="text/javascript"></script>
+</body>
+</html>

@@ -17,5 +17,25 @@ angular.module('app')
             }
         }
     })
+    .filter('projectStatus', function () {
+        return function (x) {
+            switch (x) {
+                case 'treat':
+                    return '成单已治疗';
+                    break;
+                case 'not_treat':
+                    return '成单未治疗';
+                    break;
+                case 'not_deal':
+                    return '未成交';
+                    break;
+                case 'cancel':
+                    return '取消';
+                    break;
+                default:
+                    return '未知的项目状态';
+            }
+        }
+    })
 
 ;

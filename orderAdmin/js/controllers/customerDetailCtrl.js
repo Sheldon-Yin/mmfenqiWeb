@@ -6,6 +6,19 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
     $scope.$parent.isCreate = true;
 
     //第一板块
+    $.get('/html/mmfq/api/schools/get_schools').then(function (res) {
+        if (res.code == 0) {
+            console.log(res);
+            $scope.$apply(function () {
+                $scope.$parent.schoolKinds = res.data;
+            });
+        } else {
+            console.log(res.message)
+        }
+    }, function (error) {
+        console.log(error)
+    });
+
     $.get('/html/mmfq/api/customers/get_customer', {
         customer_id: $scope.customerId
     }).then(function (res) {
@@ -94,6 +107,24 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
 
     //第二板块
     $scope.$parent.project = {};
+    $scope.$parent.isCreateProject = true;
+
+    $.get('/html/mmfq/api/hospitals/get_hospitals').then(function (res) {
+        if (res.code == 0) {
+            $scope.$apply(function () {
+                $scope.$parent.hospitalKinds = res.data;
+            })
+        } else {
+            $scope.$apply(function () {
+                toaster.pop('error', '获取医院分类失败', res.message);
+            })
+        }
+    }, function (error) {
+        $scope.$apply(function () {
+            toaster.pop('error', '获取医院分类失败', error);
+        })
+    });
+
 
     $scope.initProjectData = function () {
         $.get('/html/mmfq/api/projects/get_projects', {
@@ -114,6 +145,7 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
                 toaster.pop('error', '获取项目分类失败', error);
             })
         });
+
     };
 
     $scope.initProjectData();
@@ -135,7 +167,7 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
 
 
     $scope.$parent.changeProject = function () {
-        if ($scope.$parent.isCreate == true) {
+        if ($scope.$parent.isCreateProject == true) {
             $.post('/html/mmfq/api/projects/add_project', {
                 customer_id: $scope.customerId,
                 advance_payment: $scope.$parent.project.advance_payment,
@@ -149,7 +181,8 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
                 project_kind: $scope.$parent.project.project_kind,
                 repayment_date: Date.parse($scope.$parent.project.repayment_date) / 1000,
                 stat: $scope.$parent.project.stat,
-                url: $scope.$parent.project.url
+                url: $scope.$parent.project.url,
+                price: $scope.$parent.project.price,
             }).then(function (res) {
                 if (res.code == 0) {
                     $scope.initProjectData();
@@ -161,7 +194,7 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
             }, function (error) {
                 toaster.pop('error', '操作失败', error);
             })
-        } else if ($scope.$parent.isCreate == false) {
+        } else if ($scope.$parent.isCreateProject == false) {
             $.post('/html/mmfq/api/projects/update_project_info', {
                 project_id: $scope.selectProjectId,
                 customer_id: $scope.customerId,
@@ -176,7 +209,8 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
                 project_kind: $scope.$parent.project.project_kind,
                 repayment_date: Date.parse($scope.$parent.project.repayment_date) / 1000,
                 stat: $scope.$parent.project.stat,
-                url: $scope.$parent.project.url
+                url: $scope.$parent.project.url,
+                price: $scope.$parent.project.price
             }).then(function (res) {
                 if (res.code == 0) {
                     $scope.$apply(function () {
@@ -196,7 +230,7 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
     };
 
     $scope.$parent.showProject = function (x) {
-        $scope.$parent.isCreate = false;
+        $scope.$parent.isCreateProject = false;
         angular.forEach($scope.$parent.projects, function (each) {
             if (each == x) {
                 each.isSelect = true;
@@ -219,13 +253,14 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
             project_kind: x.project_kind,
             repayment_date: x.repayment_date,
             stat: x.stat,
-            url: x.url
+            url: x.url,
+            price: x.price
         };
     };
 
     $scope.$parent.addProject = function () {
         $scope.$parent.project = {};
-        $scope.$parent.isCreate = true
+        $scope.$parent.isCreateProject = true
     };
 
     $scope.$parent.deleteProject = function (x) {
@@ -246,6 +281,14 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
         });
     };
 
+    $scope.$root.projectStatusEquals = function (expected, actual) {
+        if (actual == '') {
+            return true;
+        } else {
+            return expected == actual;
+        }
+    };
+    
     //第三板块
     $scope.initVisitData = function () {
         $.get('/html/mmfq/api/return_visit_records/get_return_visit_records', {
@@ -336,6 +379,133 @@ app.controller('CustomerDetailCtrl', ['$scope', '$stateParams', '$state', '$moda
                 toaster.pop('error', '操作失败', error);
             })
         })
-    }
+    };
+
+
+    //第四板块
+    $scope.$parent.intention = {};
+    $scope.$parent.isCreateIntention = true;
+
+    $.get('/html/mmfq/api/intention_kinds/get_intention_kinds').then(function (res) {
+        if (res.code == 0) {
+            $scope.$apply(function () {
+                $scope.$parent.intentionKinds = res.data;
+            })
+        } else {
+            $scope.$apply(function () {
+                toaster.pop('error', '获取意向分类失败', res.message);
+            })
+        }
+    }, function (error) {
+        $scope.$apply(function () {
+            toaster.pop('error', '获取意向分类失败', error);
+        })
+    });
+
+
+    $scope.initIntentionData = function () {
+        $.get('/html/mmfq/api/intentions/get_intentions', {
+            customer_id: $scope.customerId
+        }).then(function (res) {
+            if (res.code == 0) {
+                $scope.$apply(function () {
+                    $scope.$parent.intentions = res.data;
+                    console.log($scope.$parent.intentions);
+                })
+            } else {
+                $scope.$apply(function () {
+                    toaster.pop('error', '获取意向失败', res.message);
+                })
+            }
+        }, function (error) {
+            $scope.$apply(function () {
+                toaster.pop('error', '获取意向失败', error);
+            })
+        });
+    };
+
+    $scope.initIntentionData();
+
+    $scope.$parent.changeIntention = function () {
+        if ($scope.$parent.isCreateIntention == true) {
+            $.post('/html/mmfq/api/intentions/add_intention', {
+                customer_id: $scope.customerId,
+                label: $scope.$parent.intention.label,
+                description: $scope.$parent.intention.description
+            }).then(function (res) {
+                if (res.code == 0) {
+                    $scope.initIntentionData();
+                } else {
+                    $scope.$apply(function () {
+                        toaster.pop('error', '操作失败', res.message);
+                    })
+                }
+            }, function (error) {
+                toaster.pop('error', '操作失败', error);
+            })
+        } else if ($scope.$parent.isCreateIntention == false) {
+            $.post('/html/mmfq/api/intentions/update_intention', {
+                intention_id: $scope.selectIntentionId,
+                customer_id: $scope.customerId,
+                label: $scope.$parent.intention.label,
+                description: $scope.$parent.intention.description
+            }).then(function (res) {
+                if (res.code == 0) {
+                    $scope.$apply(function () {
+                        toaster.pop('success', '修改成功', '');
+                    });
+                    $scope.initIntentionData();
+                } else {
+                    $scope.$apply(function () {
+                        toaster.pop('error', '操作失败', res.message);
+                    });
+                }
+            }, function (error) {
+                toaster.pop('error', '操作失败', error);
+            })
+        }
+
+    };
+
+    $scope.$parent.showIntention = function (x) {
+        $scope.$parent.isCreateIntention = false;
+        angular.forEach($scope.$parent.intentions, function (each) {
+            if (each == x) {
+                each.isSelect = true;
+                $scope.selectIntentionId = each.id;
+            } else {
+                each.isSelect = false
+            }
+        });
+        x.isSelect = true;
+        $scope.$parent.intention = {
+            customer_id: $scope.customerId,
+            label: x.label,
+            description: x.description
+        };
+    };
+
+    $scope.$parent.addIntention = function () {
+        $scope.$parent.project = {};
+        $scope.$parent.isCreateIntention = true
+    };
+
+    $scope.$parent.deleteIntention = function (x) {
+        $.post('/html/mmfq/api/intentions/delete_intention', {
+            intention_id: x.id
+        }).then(function (res) {
+            if (res.code == 0) {
+                $scope.initIntentionData();
+            } else {
+                $scope.$apply(function () {
+                    toaster.pop('error', '操作失败', res.message);
+                })
+            }
+        }, function (error) {
+            $scope.$apply(function () {
+                toaster.pop('error', '操作失败', error);
+            })
+        });
+    };
 
 }]);
