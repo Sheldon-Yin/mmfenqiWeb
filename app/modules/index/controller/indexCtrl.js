@@ -10,7 +10,8 @@ define(function (require, exports, module) {
             function ($scope, Index, $location) {
                 $scope.cityName = '杭州';
                 $scope.cityId = 2;
-                $scope.index = Index.get({cityId: $scope.cityId, index: 1});
+                $scope.cityName = !!$location.search().cityName ? $location.search().cityName : $scope.cityName;
+                $scope.index = Index.get({cityId: $scope.cityId, index: 1,cityName: $scope.cityName});
 
                 $scope.index.$promise.then(function (res) {
                     if (res.result != 0){
@@ -21,7 +22,6 @@ define(function (require, exports, module) {
                     $scope.loadError = true;
                     Toast('服务器返回失败');
                 });
-
 
                 //if (myBridge) {
                 //    alert(myBridge);
@@ -160,9 +160,27 @@ define(function (require, exports, module) {
                             if (response == "") {
                                 $scope.cityId = 2;
                                 $scope.index = Index.get({cityId: $scope.cityId, index: 1});
+                                $scope.index.$promise.then(function (res) {
+                                    if (res.result != 0){
+                                        Toast(res.msg,3000);
+                                        $scope.loadError = true;
+                                    }
+                                }).catch(function (error) {
+                                    $scope.loadError = true;
+                                    Toast('服务器返回失败');
+                                });
                             } else {
                                 $scope.cityName = response;
                                 $scope.index = Index.get({cityName: $scope.cityName, index: 1});
+                                $scope.index.$promise.then(function (res) {
+                                    if (res.result != 0){
+                                        Toast(res.msg,3000);
+                                        $scope.loadError = true;
+                                    }
+                                }).catch(function (error) {
+                                    $scope.loadError = true;
+                                    Toast('服务器返回失败');
+                                });
                             }
                         });
                     });
@@ -265,9 +283,27 @@ define(function (require, exports, module) {
                                 if (response == "") {
                                     $scope.cityId = 2;
                                     $scope.index = Index.get({cityId: $scope.cityId, index: 1});
+                                    $scope.index.$promise.then(function (res) {
+                                        if (res.result != 0){
+                                            Toast(res.msg,3000);
+                                            $scope.loadError = true;
+                                        }
+                                    }).catch(function (error) {
+                                        $scope.loadError = true;
+                                        Toast('服务器返回失败');
+                                    });
                                 } else {
                                     $scope.cityName = response;
                                     $scope.index = Index.get({cityName: $scope.cityName, index: 1});
+                                    $scope.index.$promise.then(function (res) {
+                                        if (res.result != 0){
+                                            Toast(res.msg,3000);
+                                            $scope.loadError = true;
+                                        }
+                                    }).catch(function (error) {
+                                        $scope.loadError = true;
+                                        Toast('服务器返回失败');
+                                    });
                                 }
                             });
                         }else if(message == 5){

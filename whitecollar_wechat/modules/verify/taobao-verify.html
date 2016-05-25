@@ -1,0 +1,27 @@
+<div class="container app-grey-background-container">
+    <form ng-submit="verifyTaobao()">
+        <div class="row text-left" style="font-size: 1.4rem;padding: 1.7rem">
+            请输入您在<span class="app-very-blue-text" style="padding: 0 0.3rem">淘宝</span>的账号和密码
+        </div>
+        <div class="app-white-input row">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">账号</label>
+            <input class="col app-white-input-text" ng-model="account" type="text" placeholder="请输入淘宝账号" required>
+        </div>
+
+        <div class="app-white-input row app-margin-top-two-px">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">密码</label>
+            <input type="password" ng-model="password" class="col app-white-input-text" placeholder="请输入淘宝密码" required>
+        </div>
+
+        <label style="display: block;">
+            <div class="app-pink-radius-button app-padding-one text-center">
+                提交审核
+            </div>
+            <button type="submit" style="display: none"></button>
+        </label>
+
+        <div class="app-padding-one" style="font-size: 1.2rem">
+            验证您电商网站的基本信息、送货地址、订单信息等用于认证服务
+        </div>
+    </form>
+</div>

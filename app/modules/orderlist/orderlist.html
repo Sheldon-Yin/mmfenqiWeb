@@ -61,7 +61,7 @@
             </div>
         </div>
         <hr class="app-bootstrap-hr-no-match">
-        <div class="row app-project-container">
+        <div class="row app-project-container" style="position: relative">
             <div class="col-xs-4">
                 <img ng-src="{{x.goodsPic}}" width="100%">
             </div>
@@ -69,13 +69,13 @@
                 <div class="double-line index-hot-project-title">
                     {{x.goodsDescription}}
                 </div>
-                <div class="col-xs-12 text-left app-project-price-area">
-                    <div class="col-xs-3 app-pink-text" style="padding: 0;text-decoration: line-through">
-                        <span style="font-size: 1.4rem;line-height: 2.6rem;">￥{{x.orderPrice}}</span>
-                    </div>
-                    <div class="col-xs-9 text-right" style="font-size: 1rem;line-height: 2.6rem;">
-                        首付：<span class="app-blue-text">￥{{x.downpayAmount}}</span>
-                    </div>
+            </div>
+            <div class="col-xs-8 text-left app-project-price-area" style="width: 60%">
+                <div class="col-xs-3 app-pink-text" style="padding: 0;text-decoration: line-through">
+                    <span style="font-size: 1.4rem;line-height: 2.6rem;">￥{{x.orderPrice}}</span>
+                </div>
+                <div class="col-xs-9 text-right" style="font-size: 1rem;line-height: 2.6rem;">
+                    首付：<span class="app-blue-text">￥{{x.downpayAmount}}</span>
                 </div>
             </div>
         </div>
