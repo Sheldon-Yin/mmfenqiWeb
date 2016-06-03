@@ -1,0 +1,47 @@
+<link href="modules/insurance/css/insurance.css" rel="stylesheet">
+<div class="container" style="background-color: #ECECEC;min-height: 100%;font-size: 1.2rem">
+    <div class="row insurance-details-title-bar">
+        貌美如花意外险
+    </div>
+    <hr class="app-bootstrap-hr">
+    <div style="background-color: white" class="row">
+        <div class="app-padding-one" style="padding-left: 2rem">
+            被保险人：{{insuranceDetail.data.insuranceInfo.insuredName}}
+        </div>
+    </div>
+    <hr class="app-bootstrap-hr app-padding-one">
+
+    <div style="background-color: white" class="row">
+        <div class="app-padding-one" style="padding-left: 2rem">
+            身份证：{{insuranceDetail.data.insuranceInfo.insuredIdentitycode}}
+        </div>
+    </div>
+    <hr class="app-bootstrap-hr app-padding-one">
+    <div style="background-color: white" class="row">
+        <div class="app-padding-one" style="padding-left: 2rem">
+            保费（元）：{{insuranceDetail.data.insuranceInfo.insuranceOrderAmount}}
+        </div>
+    </div>
+    <hr class="app-bootstrap-hr app-padding-one">
+
+    <div style="background-color: white" class="row">
+        <div class="app-padding-one" style="padding-left: 2rem">
+            保额（元）：{{insuranceDetail.data.insuranceInfo.insuredAmount}}
+        </div>
+    </div>
+    <hr class="app-bootstrap-hr app-padding-one">
+
+    <div style="background-color: white" class="row">
+        <div class="app-padding-one" style="padding-left: 2rem">
+            保单号：{{insuranceDetail.data.insuranceInfo.insuranceNumber}}
+        </div>
+    </div>
+    <hr class="app-bootstrap-hr app-padding-one">
+
+    <div style="background-color: white" class="row">
+        <div class="app-padding-one" style="padding-left: 2rem">
+            保险时间：{{insuranceDetail.data.insuranceInfo.insuranceBeginDate}}-{{insuranceDetail.data.insuranceInfo.insuranceEndDate}}
+        </div>
+    </div>
+    <hr class="app-bootstrap-hr app-padding-one">
+</div>

@@ -1,0 +1,91 @@
+<!--<div class="container">-->
+    <!--&lt;!&ndash;App bar For orderList&ndash;&gt;-->
+    <!--<div class="row app-bar text-center">-->
+        <!--<div class="col-xs-2" style="width: 15%" ng-click="goBack()"><i class="fa fa-angle-left fa-2x"></i></div>-->
+        <!--<div class="col-xs-8 app-title-bar">我的订单</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+<div style="width: 100%;position: fixed;height:100%;left: 0;z-index: 999" ng-if="!data.data  && !loadError">
+    <div style="top: 50%;position: absolute;width: 100%;left: 45%;">
+        <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 10%">
+    </div>
+    <div style="top: 50%;position: absolute;width: 100%;left: 45%;">
+        <img src="img/loading/loadingInner.png" style="width: 10%">
+    </div>
+</div>
+
+<div class="container">
+    <div class="row text-center" style="color: #333333">
+        <!--订单-->
+        <div class="col-xs-12" style="margin: 1rem 0;font-size: 1.2rem"
+             ng-click="(selectState==1) ? (selectState=0) : (selectState=1)">
+            <div ng-show="selectState == 1" style="color: #FC58AE">
+                {{nowType}} <i class="fa fa-angle-up"></i>
+            </div>
+            <div ng-hide="selectState == 1">
+                {{nowType}} <i class="fa fa-angle-down"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="row order-list-sort-bar-list-view" ng-show="selectState == 1">
+        <div style="height: 36%;background-color: white">
+            <div class="col-xs-12 order-list-sort-bar-subject">
+                <div style="padding-top: 1rem;padding-left: 1rem" ng-repeat="x in projects"
+                     ng-click="setItems(x)">
+                    {{x.project}}
+                    <hr class="app-bootstrap-hr-no-match" style="margin-top: 1rem;margin-left: -1rem">
+                </div>
+            </div>
+        </div>
+
+        <div class="order-list-sort-bar-list-view-background" style="z-index: 1" ng-click="selectState=0">
+        </div>
+    </div>
+
+</div>
+
+
+<div ng-click="goToOrderDetail(x)" ng-repeat="x in data.data.myOrderResponse">
+
+    <div class="app-bootstrap-grey-bold-hr"></div>
+    <div class="container">
+        <div class="row app-padding-one">
+            <div class="col-xs-10">
+                <span>订单号:{{x.orderSn}}</span>
+            </div>
+            <div class="col-xs-2 text-right" style="padding-left: 0">
+                {{x.orderStatus | orderStatus}}
+            </div>
+        </div>
+        <hr class="app-bootstrap-hr-no-match">
+        <div class="row app-project-container" style="position: relative">
+            <div class="col-xs-4">
+                <img ng-src="{{x.goodsPic}}" width="100%">
+            </div>
+            <div class="col-xs-8 app-project-content">
+                <div class="double-line index-hot-project-title">
+                    {{x.goodsDescription}}
+                </div>
+            </div>
+            <div class="col-xs-8 text-left app-project-price-area" style="width: 60%">
+                <div class="col-xs-3 app-pink-text" style="padding: 0;text-decoration: line-through">
+                    <span style="font-size: 1.4rem;line-height: 2.6rem;">￥{{x.orderPrice}}</span>
+                </div>
+                <div class="col-xs-9 text-right" style="font-size: 1rem;line-height: 2.6rem;">
+                    首付：<span class="app-blue-text">￥{{x.downpayAmount}}</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="app-bootstrap-hr-no-match">
+
+        <div class="row">
+            <div class="col-xs-12 text-right app-padding-one" style="font-size: 1.4rem">
+                共{{x.staging}}期 每期付款： <span class="app-blue-text">￥{{x.stagingPrice}}</span>
+            </div>
+        </div>
+    </div>
+</div>

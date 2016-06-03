@@ -29,9 +29,9 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', 'Login','Lo
         });
         $scope.loginReq.$promise.then(function (res) {
             if (res.result == 0 && res.data.tenantInfo.adminType == 0){
-                $state.go('app.order.list')
+                $state.go('app.bill.list')
             }else if (res.result == 0 && res.data.tenantInfo.adminType == 1){
-                $state.go('app.order.list')
+                $state.go('app.bill.list')
             }else if (res.result == 0 && res.data.tenantInfo.adminType == 2){
                 $state.go('app.bill.list')
             }else if (res.result != 0){

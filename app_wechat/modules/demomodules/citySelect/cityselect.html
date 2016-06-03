@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="edit-area col-xs-12">
+            <span class="col-xs-4" style="line-height: 34px">现住址</span>
+            <div class="col-xs-4" style="margin: 0;">
+                <select required="" class="form-control" ng-model="address.province"
+                        ng-options="key as key for (key,value) in division"
+                        ng-change="address.city='';address.district='';">
+                    <option value="">省</option>
+                </select>
+            </div>
+            <div class="col-xs-4" style="margin: 0;">
+                <select class="form-control col-xs-4" ng-model="address.city"
+                        ng-options="key as key for (key,value) in division[address.province]"
+                        ng-change="address.district='';">
+                    <option value="">市</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

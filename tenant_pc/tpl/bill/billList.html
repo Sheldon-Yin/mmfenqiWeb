@@ -3,39 +3,24 @@
     <div class="bg-light lter b-b wrapper-md">
         <div class="row">
             <div class="col-xs-9">
-                <h1 class="m-n font-thin h3" style="font-size: 28px">总收入(元)： {{financeInfo.total_amount |
+                <h1 class="m-n font-thin h3"  style="font-size: 28px">总收入(元)： {{financeInfo.total_amount |
                     number:1}}</h1>
-            </div>
-
-            <div class="col-xs-3 text-right">
-                <button class="btn btn-info" ng-click="getCash()">
-                    提现
-                </button>
             </div>
         </div>
     </div>
     <div class="wrapper-md b-b">
         <div class="row text-center">
-            <div class="col-sm-3 col-xs-12" style="border-right: 1px solid #333;font-size: 2rem">
-                <div>账户余额(元)</div>
-                <div class="h2 m-b-sm" style="font-size: 4rem;color: #fb1787;">{{financeInfo.account_balance | number:1}}</div>
-            </div>
-            <div class="col-sm-3 col-xs-4" style="padding-top: 1rem;">
-                <div>可提现(元)</div>
-                <div class="h2 m-b-sm" style="color: #fb1787;">{{financeInfo.withdraw_amount | number:1}}</div>
-            </div>
             <!--<div class="col-sm-4 col-xs-6" popover="咨询师未验证的收入" popover-trigger="mouseenter">-->
             <!--<div>待结算<i class="fa fa-question-circle"></i></div>-->
             <!--<div class="h2 m-b-sm">10000.00</div>-->
             <!--</div>-->
-            <div class="col-sm-3 col-xs-4" style="padding-top: 1rem;" popover="上传收据，审核通过后可提现；订单金额与实际收入根据实际结算方式而定。"
-                 popover-trigger="mouseenter">
-                <div>未结算(元) <i class="fa fa-question-circle"></i></div>
-                <div class="h2 m-b-sm"  style="color: #fb1787;">{{financeInfo.not_settled_amount | number:1}}</div>
+            <div class="col-sm-6 col-xs-6" style="padding-top: 1rem;">
+                <div>已提现(元)</div>
+                <div class="h2 m-b-sm" style="color: #fb1787;">{{financeInfo.use_withdraw_cash | number:1}}</div>
             </div>
-            <div class="col-sm-3 col-xs-4" style="padding-top: 1rem;">
+            <div class="col-sm-6 col-xs-6" style="padding-top: 1rem;">
                 <div>提现中(元)</div>
-                <div class="h2 m-b-sm"  style="color: #fb1787;">{{financeInfo.withdrawing_amount | number:1}}</div>
+                <div class="h2 m-b-sm" style="color: #fb1787;">{{financeInfo.withdrawing_amount | number:1}}</div>
             </div>
         </div>
     </div>
@@ -47,12 +32,14 @@
             <div class="panel-body b-b b-light">
                 <div class="col-xs-12 col-md-6">
                     搜索: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
-                    <span style="color: #888;font-size: 12px">搜索项目类别/项目名称/项目价格/咨询师/状态/订单金额</span>
+                    <span style="color: #888;font-size: 12px">搜索项目类别/项目名称/状态/订单金额/手机号/姓名</span>
                 </div>
                 <div class="col-xs-12 col-md-6">
                     选择完成日期:
-                    <input  type="date" ng-model="start_time" ng-change="updateDate()" class="form-control w-sm inline m-r"/>-
-                    <input  type="date" ng-model="end_time" ng-change="updateDate()" class="form-control w-sm inline m-r"/>
+                    <input type="date" ng-model="start_time" ng-change="updateDate()"
+                           class="form-control w-sm inline m-r"/>-
+                    <input type="date" ng-model="end_time" ng-change="updateDate()"
+                           class="form-control w-sm inline m-r"/>
                 </div>
 
             </div>
@@ -70,9 +57,6 @@
                     <th data-hide="phone,tablet">
                         项目
                     </th>
-                    <th>
-                        咨询师
-                    </th>
                     <th data-hide="phone,tablet">
                         订单金额
                     </th>
@@ -86,7 +70,10 @@
                         <span popover="已完成&nbsp未完成&nbsp待完成&nbsp已取消" popover-trigger="mouseenter">订单状态</span>
                     </th>
                     <th data-hide="phone,tablet">
-                        收据审核状态
+                        <span popover="未上传&nbsp审核中&nbsp审核成功&nbsp审核失败" popover-trigger="mouseenter">知情同意书状态</span>
+                    </th>
+                    <th data-hide="phone,tablet">
+                        <span popover="未审核&nbsp审核中&nbsp审核成功&nbsp审核失败&nbsp提现中&nbsp提现成功" popover-trigger="mouseenter">收据审核状态</span>
                     </th>
                     <th>
                         操作
@@ -98,17 +85,25 @@
                     <td>{{x.name}}</td>
                     <td><a href>{{x.telphone}}</a></td>
                     <td>{{x.goodsName}}</td>
-                    <td>{{x.userName}}</td>
                     <td>{{x.orderPrice}}</td>
                     <td>{{x.realAmount}}</td>
                     <td>{{x.orderSn}}</td>
                     <td>{{x | orderStatus}}</td>
-                    <td>{{x | billStatus}}</td>
+                    <td>{{x | projectStatus}}</td>
+                    <td>{{x | receiptStatus}}</td>
                     <td>
                         <div class="row">
-                            <button class="btn btn-info" ng-click="goToBillDetail(x)" ng-if="x.receiptAudit == 0">上传收据</button>
-                            <button class="btn" ng-click="goToBillDetail(x)" ng-if="x.receiptAudit != 0 && x.receiptAudit !=3">查看详情</button>
-                            <button class="btn btn-danger" ng-click="goToBillDetail(x)" ng-if="x.receiptAudit == 3">审核失败</button>
+                            <button class="btn btn-info" ng-click="goToBillDetail(x)"
+                                    ng-if="x.projectReviewStatus == 2 && x.receiptAudit==0">上传收据
+                            </button>
+                            <button class="btn" ng-click="goToBillDetail(x)"
+                                    ng-if="x.projectReviewStatus != 2 || (x.receiptAudit !=0 && x.receiptAudit != 3)">
+                                查看详情
+                            </button>
+                            <button class="btn btn-danger" ng-click="goToBillDetail(x)"
+                                    ng-if="x.projectReviewStatus == 2 && x.receiptAudit==3">
+                                审核失败
+                            </button>
                         </div>
                     </td>
                 </tr>
@@ -118,4 +113,4 @@
     </div>
 </div>
 
-</div>
+

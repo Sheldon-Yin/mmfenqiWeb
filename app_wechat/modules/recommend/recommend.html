@@ -1,0 +1,56 @@
+<div style="width: 100%;position: fixed;height:100%;left: 0;z-index: 999" ng-if="!data.data  && !loadError">
+    <div style="top: 50%;position: absolute;width: 100%;left: 45%;">
+        <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 10%">
+    </div>
+    <div style="top: 50%;position: absolute;width: 100%;left: 45%;">
+        <img src="img/loading/loadingInner.png" style="width: 10%">
+    </div>
+</div>
+
+<div class="container">
+
+    <!--&lt;!&ndash;App bar For GoodsList&ndash;&gt;-->
+    <!--<div class="row app-bar text-center">-->
+        <!--<div class="col-xs-2" style="width: 15%" ng-click="goBack()"><i class="fa fa-angle-left fa-2x"></i></div>-->
+        <!--<div class="col-xs-8 app-title-bar">精品推荐</div>-->
+    <!--</div>-->
+
+    <div class="row">
+        <img width="100%" src="modules/recommend/img/templete.png">
+        <div class="app-bootstrap-grey-bold-hr"></div>
+    </div>
+
+    <div ng-repeat="x in data.data.qoutiqueListResponse.goodsItemList" ng-click="jumpToGoods('#/goods?goodsId='+x.goodsHerf)" style="position: relative">
+        <div class="row app-project-container">
+            <div class="col-xs-5" style="width:34%;">
+                <img ng-src="{{x.goodsHerPic}}" style="width: 100%;min-height: 5rem">
+            </div>
+            <div class="col-xs-7 app-project-content" style="width: 66%">
+                <div class="double-line app-project-title">
+                    {{x.hotItemName}}
+                </div>
+                <div class="single-line app-project-hospital">
+                    {{x.hospitalName}}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 text-left app-project-price-area">
+            <div class="col-xs-4 app-blue-text" style="padding: 0">
+                <span style="font-size: 1.2rem">￥</span><span
+                    style="font-size: 2rem;line-height: 2.6rem">{{x.presentPrice}}</span>
+            </div>
+            <div class="col-xs-4 text-left" style="padding: 0">
+                <span class="app-project-original-price">￥{{x.marketPrice}}</span>
+            </div>
+            <div class="col-xs-4 text-center" style="padding: 0;font-size: 0.7rem;margin-top:0.5rem">
+                <div class="col-xs-12" style="padding: 0;">
+                    <div class="app-project-yellow-background-radius col-xs-6">已售</div>
+                    <div class="app-project-yellow-text-radius col-xs-6">{{x.soldNumber}}</div>
+                </div>
+            </div>
+        </div>
+        <hr class="app-bootstrap-hr-no-match">
+    </div>
+
+
+</div>

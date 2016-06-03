@@ -1,0 +1,33 @@
+.graduation-background {
+    background-color: #E3D3FF;
+    min-height: 100%;
+}
+
+.graduation-list-title {
+    width: 100%;
+    color: #a169ff;
+    background-color: #FFFFFF;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 0.6rem;
+    margin: 0.5rem 0;
+}
+
+.graduation-red-radius-btn {
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+    background-color: #ff517a;
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    width: auto;
+}
+
+.graduation-red-text-big {
+    color: #ff517a;
+    font-size: 1.3rem;
+}
+
+.graduation-red-text-small {
+    color: #ff517a;
+    font-size: 0.8rem;
+}

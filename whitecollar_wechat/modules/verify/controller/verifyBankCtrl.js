@@ -12,13 +12,6 @@ define(function (require, exports, module) {
 
                 WeChatTitle('银行流水认证');
 
-                setTimeout(function () {
-                    $scope.$apply(function () {
-                        $scope.$root.title = '哈哈哈';
-                        alert($scope.$root.title)
-                    })
-                },2000);
-
                 $scope.imgList = [];
                 $scope.mediaList = [];
 
@@ -27,9 +20,12 @@ define(function (require, exports, module) {
                 $scope.wxConfig = WeChat.save({
                     targetUrl: $scope.targetUrl.split('#')[0]
                 });
+                $scope.$root.loading = true;
 
                 $scope.wxConfig.$promise.then(function (res) {
+                    $scope.$root.loading = false;
                     if (res.result == 0) {
+
                         wx.config({
                             debug: false,
                             appId: res.data.jsSDKConfig.appId,
@@ -48,10 +44,12 @@ define(function (require, exports, module) {
                         wx.error(function (res) {
                             alert(res.errMsg);
                         });
+
                     } else {
                         alert(res);
                     }
                 }).catch(function (error) {
+                    $scope.$root.loading = false;
                     alert(error)
                 });
 
@@ -88,25 +86,46 @@ define(function (require, exports, module) {
                     if($scope.imgList.length == 0){
                         Toast('请添加图片');
                     }else {
-                        alert($scope.mediaList.toString());
                         $scope.toVerifyBankReq = Verify.verifyBankPayment().save({
                             bankBillsFiles: $scope.mediaList.toString()
                         });
+                        $scope.$root.loading = true;
 
                         $scope.toVerifyBankReq.$promise.then(function (res) {
+                            $scope.$root.loading = false;
                             if (res.result == 0){
                                 $location.path('/verify/index')
                             }else if (res.result == 1013){
                                 Toast('请登录');
-                                window.location.href = './#/login/telephone?referer='+ encodeURI('./#/verify/index');
+                                window.location.href = './#/login/telephone';
                             } else {
                                 Toast(res.msg)
                             }
                         }).catch(function (error) {
+                            $scope.$root.loading = false;
                             Toast(error)
                         })
                     }
-                }
+                };
+
+                $scope.findByValueFromArray = function (arr, val) {
+                    var token = 'notFind';
+                    for(var i=0; i<arr.length; i++) {
+                        if(arr[i] == val) {
+                            token = i;
+                        }
+                    }
+                    return token;
+                };
+
+
+                $scope.deleteImg = function (x) {
+                    var index = $scope.findByValueFromArray($scope.imgList,x);
+                    if (index != 'notFind'){
+                        $scope.imgList.splice(index, 1);
+                        $scope.mediaList.splice(index,1)
+                    }
+                };
 
             }])
     }

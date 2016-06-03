@@ -35,7 +35,6 @@ app.controller('CustomerNotReturnListCtrl', ['$scope','$state', function ($scope
             $state.go('app.customer.add')
         };
 
-
         $scope.jumpToDetail = function (x) {
             $state.go('app.customer.detail',{id: x.id})
         }

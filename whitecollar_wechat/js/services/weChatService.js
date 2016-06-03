@@ -8,9 +8,9 @@ define(function (require, exports, module) {
         app.register.factory('WeChat', ['$resource',
             function ($resource) {
                 return $resource('/weixin/getJsSDKConfig', {}, {
-                    save: {method: 'POST', params: {
-
-                    }}
+                    query: {
+                        method: 'GET', params: {}
+                    }
                 });
             }]);
         app.register.factory('WeChatTitle',
@@ -19,11 +19,13 @@ define(function (require, exports, module) {
                     var body = document.getElementsByTagName('body')[0];
                     document.title = title;
                     var iframe = document.createElement("iframe");
-                    iframe.setAttribute("src", "/empty.png");
+                    iframe.setAttribute("src", "img/empty.png");
 
-                    iframe.addEventListener('load', function() {
-                        setTimeout(function() {
-                            iframe.removeEventListener('load');
+                    iframe.addEventListener('load', function () {
+                        setTimeout(function () {
+                            iframe.removeEventListener('load', function () {
+                                console.log('removed')
+                            });
                             document.body.removeChild(iframe);
                         }, 0);
                     });

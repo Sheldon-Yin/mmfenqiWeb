@@ -16,7 +16,9 @@ define(function (require, exports, module) {
                         account: $scope.account,
                         password: $scope.password
                     });
+                    $scope.$root.loading = true;
                     $scope.verifyTaobaoReq.$promise.then(function (res) {
+                        $scope.$root.loading = false;
                         if (res.result == 0){
                                 $location.path('/verify/index')
                         }else if (res.result == 1013){
@@ -26,6 +28,7 @@ define(function (require, exports, module) {
                         }
                         console.log(res)
                     }).catch(function (error) {
+                        $scope.$root.loading = false;
                         console.log(error)
                     });
                 }

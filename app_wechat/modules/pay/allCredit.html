@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="modules/pay/css/pay.css">
+
+<!--<div class="container">-->
+    <!--&lt;!&ndash;App bar For goods details&ndash;&gt;-->
+    <!--<div class="row app-bar text-center">-->
+        <!--<div class="col-xs-2" style="width: 15%" ng-click="goBack()"><img src="modules/order/img/cancel.png"-->
+                                                                          <!--style="width:1.6rem;padding-top: 0.5rem">-->
+        <!--</div>-->
+        <!--<div class="col-xs-8 app-title-bar">支付确认</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="container" style="background-color: #f7f7f7;min-height: 100%">
+
+    <div class="row text-center" style="padding-top: 3rem">
+
+        <div class="col-xs-12">
+            已发送验证码（免费）到号码
+        </div>
+
+        <div class="col-xs-12 app-blue-text" style="font-size: 3rem">
+            {{telephone}}
+        </div>
+
+        <div class="col-xs-12" style="padding-top: 3rem">
+            为保障您的账户安全，请输入短信验证码完成信用支付
+        </div>
+
+    </div>
+
+    <form class="verifyCodeForm">
+        <div class="pay-white-radius-input app-padding-one container" style="margin-top: 3rem">
+
+            <div class="row text-center">
+
+                <div style="font-size: 1.6rem;width: 25%;float: left">
+                    验证码
+                </div>
+
+                <input type="number" placeholder="输入验证码" style="width: 40%;float: left;margin-top: 0.3rem" ng-model="inputCode">
+
+                <div class="app-blue-text" id="getVerifyCodeBtn" style="width: 35%;float: left;margin-top: 0.3rem"
+                     ng-click="getVerifyCode()">
+                    获取验证码
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="container text-center"  style="margin-bottom: 1rem;margin-top: 1rem">
+
+            <img style="width: 1rem;margin-right: 0.5rem" src="modules/pay/img/contact-checked.png">我已同意并授权<a  ng-click="goToServiceContact()" class="app-blue-text">《分期服务协议》、</a><a class="app-blue-text" ng-click="goToLoanContact()" >《借款协议》</a>
+
+        </div>
+
+        <div class="app-pink-radius-button app-padding-one container" style="margin-top: 2rem" ng-click="ensurePay()">
+
+            <div class="row text-center">
+                确认支付
+            </div>
+
+        </div>
+    </form>
+
+</div>
+

@@ -1,0 +1,120 @@
+<link rel="stylesheet" href="modules/treasure/css/treasure.css">
+<div class="container app-grey-background-container">
+    <div class="row app-padding-one">
+        <div class="col-xs-12" style="font-size: 1.2rem;color: #333;">
+            选择充值金额（元）
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12" style="background-color: white;padding-bottom: 1.5rem">
+
+            <div class="text-center" style="margin-top: 1.5rem">
+                <label>
+                    <div class="col-xs-4">
+                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[$parent.money==10]">
+
+                            <span>10</span>
+                            <input type="radio" name="money" ng-model="$parent.money" value="10" style="display: none" required>
+
+                        </div>
+                    </div>
+                </label>
+                <label>
+                    <div class="col-xs-4">
+                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[$parent.money==20]">
+
+                            <span>20</span>
+                            <input type="radio" name="money" ng-model="$parent.money" value="20" style="display: none" required>
+
+                        </div>
+                    </div>
+                </label>
+                <label>
+                    <div class="col-xs-4">
+                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[$parent.money==50]">
+
+                            <span>50</span>
+                            <input type="radio" name="money" ng-model="$parent.money" value="50" style="display: none" required>
+
+                        </div>
+                    </div>
+                </label>
+            </div>
+
+            <div class="text-center" style="margin-top: 4.5rem;margin-bottom: 1rem">
+                <label>
+                    <div class="col-xs-4">
+                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[$parent.money==100]">
+
+                            <span>100</span>
+                            <input type="radio" name="money" ng-model="$parent.money" value="100" style="display: none"
+                                   required>
+
+                        </div>
+                    </div>
+                </label>
+                <label>
+                    <div class="col-xs-4">
+                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[$parent.money==200]">
+
+                            <span>200</span>
+                            <input type="radio" name="money" ng-model="$parent.money" value="200" style="display: none"
+                                   required>
+
+                        </div>
+                    </div>
+                </label>
+                <label>
+                    <div class="col-xs-4" >
+                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[$parent.money==-1]">
+
+                            <input type="text" ng-model="$parent.otherPrice" placeholder="其他金额"
+                                   style="width: 4rem;text-align: center" ng-click="setMoneyDiy()">
+
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row app-padding-one">
+        <div class="col-xs-12" style="font-size: 1.2rem;color: #333;">
+            选择充值方式
+        </div>
+    </div>
+
+    <div class="row app-padding-one" style="background-color: white">
+        <div class="col-xs-2">
+            <img src="modules/treasure/img/recharge/wechat.png" style="width: 3rem">
+        </div>
+        <div class="col-xs-8">
+            <div style="font-size: 1.2rem;color: #333;">
+                微信钱包支付
+            </div>
+            <div style="font-size: 0.8rem;color: #c9c9c9;">
+                银行卡、信用卡都可以使用哦！
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <img src="modules/treasure/img/recharge/checked.png" style="width: 1.5rem;margin-top: 0.7rem">
+        </div>
+
+    </div>
+
+    <div class="row app-padding-one">
+        <div class="col-xs-12">
+            <img src="modules/treasure/img/recharge/insurance.png" style="width: 1.2rem;margin-right: .5rem;color: #8a8a8a;font-size: .8rem">该服务资金安全由<span class="app-pink-text">美眉分期</span>全程担保
+        </div>
+    </div>
+
+    <div class="row app-padding-one">
+        <div class="col-xs-12 text-center">
+            <div class="app-pink-radius-button app-padding-one" ng-click="goToRecharge()">
+                立即充值
+            </div>
+        </div>
+    </div>
+
+</div>

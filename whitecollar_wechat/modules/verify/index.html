@@ -2,7 +2,7 @@
 
 <div class="verify-index-background container">
 
-    <div class="row text-center" style="height: 20%">
+    <div class="row text-center" style="height: 15%">
         <div class="col-xs-6" style="border-right: rgba(255,255,255,0.2) solid 2px">
             <div class="verify-index-title">
                 信用额度(元)
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="row text-center" style="height: 80%">
+    <div class="row text-center" style="height: 85%">
         <div class="verify-index-modules-background" style="position:relative">
             <div class="col-xs-3 verify-index-modules-img">
                 <img src="./modules/verify/img/fast-verify.png">
@@ -32,7 +32,7 @@
                     极速认证<span class="verify-index-modules-pink-text">+100000元</span>(最高)
                 </div>
                 <div style="padding-left: 1rem" class="verify-index-modules-describe">
-                    信用信息审核
+                    {{fastRemark}}
                 </div>
                 <div class="verify-index-modules-get-cash" ng-class="{'1':'verify-color-little-pink','3':'verify-color-yellow'}[fastStatus]" ng-click="goToFastVerify(fastStatus)">
                     {{fastStatus | verifyStatus}}
@@ -68,7 +68,7 @@
                     快速提额<span class="verify-index-modules-pink-text">+100000元</span>(最高)
                 </div>
                 <div style="padding-left: 1rem" class="verify-index-modules-describe">
-                    电商信用授权
+                    {{businessRemark}}
                 </div>
                 <div class="verify-index-modules-get-cash" ng-class="{'1':'verify-color-little-pink','3':'verify-color-yellow'}[businessStatus]" ng-click="goToTaobaoVerify(businessStatus)">
                     {{businessStatus | verifyStatus}}
@@ -86,7 +86,7 @@
                     快速提额<span class="verify-index-modules-pink-text">+100000元</span>(最高)
                 </div>
                 <div style="padding-left: 1rem" class="verify-index-modules-describe">
-                    银行流水认证
+                    {{bankRemark}}
                 </div>
                 <div class="verify-index-modules-get-cash" ng-class="{'1':'verify-color-little-pink','3':'verify-color-yellow'}[bankStatus]" ng-click="goToBankVerify(bankStatus)">
                     {{bankStatus | verifyStatus}}

@@ -25,7 +25,9 @@ define(function (require, exports, module) {
                         telephone: $scope.telephone,
                         smsFmtId: 'resetPwd'
                     });
+                    $scope.$root.loading = true;
                     $scope.getVerifyCodeReq.$promise.then(function (res) {
+                        $scope.$root.loading = false;
                         if (res.result == 0) {
                             Toast('发送成功');
                             $scope.counter = 60;
@@ -45,6 +47,7 @@ define(function (require, exports, module) {
                         }
                         console.log(res);
                     }).catch(function (error) {
+                        $scope.$root.loading = false;
                         Toast('服务器开小差了~');
                         console.log(error);
                         $scope.verifyStatus = true;
@@ -60,8 +63,9 @@ define(function (require, exports, module) {
                         password: MD5($scope.password),
                         verifyCode: $scope.verifyCode
                     });
-
+                    $scope.$root.loading = true;
                     $scope.resetPasswordReq.$promise.then(function (res) {
+                        $scope.$root.loading = false;
                         if (res.result == 0) {
                             alert('重置成功');
                             $location.path('/login/telephone')
@@ -70,6 +74,7 @@ define(function (require, exports, module) {
                         }
                         console.log(res)
                     }).catch(function (error) {
+                        $scope.$root.loading = false;
                         Toast('服务器开小差了~');
                         console.log(error)
                     })

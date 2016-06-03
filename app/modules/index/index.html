@@ -22,6 +22,15 @@
 <!--</div>-->
 <!--</div>-->
 
+<div class="container" style="position: fixed;height: 100%;background-color: #fff;width: 100%;z-index: 1000;display: none" id="notOpenTips">
+    <div class="row" style="position: relative">
+        <img src="modules/index/img/noOpen.png" style="width: 40%;position: fixed;left: 30%;top: 20%">
+        <div style="width: 100%;text-align: center;top: 60%;position: fixed;color: #999;font-size: 1.2rem">
+            没有找到该城市的项目...更多城市正在开通中
+        </div>
+    </div>
+</div>
+
 <div style="width: 100%;position: fixed;height:100%;left: 0;z-index:999" ng-if="!index.data  && !loadError">
     <div style="top: 45%;position: absolute;width: 100%;left: 45%">
         <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 10%">
@@ -131,7 +140,8 @@
                     <hr class="app-bootstrap-hr">
 
                     <div ng-click="jumpToGoods('#/goods?goodsId='+x.goodsHerf)"
-                         ng-repeat="x in index.data.showIndexResponse.goodsItemList" style="position: relative;" on-finish-render-filters-copy>
+                         ng-repeat="x in index.data.showIndexResponse.goodsItemList" style="position: relative;"
+                         on-finish-render-filters-copy>
                         <div class="row app-project-container">
                             <div class="col-xs-5" style="width: 34%">
                                 <img ng-src="{{x.goodsHerPic}}" width="100%">

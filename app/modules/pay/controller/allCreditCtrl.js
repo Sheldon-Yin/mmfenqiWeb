@@ -109,6 +109,8 @@ define(function (require, exports, module) {
 
                 };
 
+                $scope.getVerifyCode();
+
                 $scope.goToServiceContact = function () {
                     if (myBridge) {
                         var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/contact/service');

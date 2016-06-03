@@ -11,20 +11,25 @@ define(function (require, exports, module) {
             function ($scope, Login, $location,WeChatTitle) {
 
                 WeChatTitle('手机号');
+
+                $scope.$root.loading = false;
+
                 $scope.telephone = Number($location.search().telephone);
 
                 $scope.goToPasswordOrRegister = function () {
 
                     if ($scope.telephone == undefined) {
-                        alert('请输入正确的手机号');
+                        Toast('请输入正确的手机号');
                         return
                     }
 
                     $scope.userIsExist = Login.isExist().save({
                         telephone: $scope.telephone
                     });
+                    $scope.$root.loading = true;
 
                     $scope.userIsExist.$promise.then(function (res) {
+                        $scope.$root.loading = false;
                         console.log(res);
                         if (res.result == 0) {
                             switch (res.data.telephone_exist) {
@@ -42,7 +47,8 @@ define(function (require, exports, module) {
                         }
                     }).catch(function (error) {
                         console.log(error);
-                        Toast('服务器开小差了~')
+                        Toast('服务器开小差了~');
+                        $scope.$root.loading = false;
                     });
                 };
 

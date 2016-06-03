@@ -1,0 +1,109 @@
+<div class="container" style="background-color: #F8F8F8;min-height: 100%">
+
+    <div class="row" style="position: relative">
+
+        <img src="modules/treasure/img/mine/background.png" style="width: 100%">
+
+        <img src="modules/treasure/img/head1.jpg" style="width: 20%;position: absolute;left: 40%;border-radius: 50%;top: 25%;border: 3px solid #F0EC4B" ng-src="{{userInfo.sculptureUrl}}">
+        <div style="position: absolute;top: 58%;text-align: center;width: 100%;">
+
+            <div style="font-size: 1.5rem" ng-if="!!userInfo.telphone">
+                {{userInfo.telphone}}
+            </div>
+            <div style="font-size: 1.5rem" ng-if="!userInfo.telphone" onclick="window.location.href='/user/tologin'">
+                未登录，点击登录
+            </div>
+
+            <div style="font-size: 1.15rem;margin-top: .5rem;color: #666">
+                <img src="modules/treasure/img/mine/you.png" style="width: 1.4rem;margin-right: .5rem;margin-bottom: .2rem">
+                优呗： <span class="app-pink-text" style="font-family: Arial">{{userInfo.userAccount.accountTotal}}</span>
+            </div>
+
+        </div>
+
+        <div style="position: absolute;width: 100%;text-align: center;bottom: 1rem">
+
+            <div class="col-xs-6">
+                实名认证：<span class="app-pink-text">{{userInfo.isRealNameAuth | isRealName}}</span>
+            </div>
+
+            <div class="col-xs-6" ng-click="goToRealName()" ng-class="{'true':'app-grey-text','false':'app-yellow-text'}[userInfo.isRealNameAuth]">
+                点击实名认证<span class="fa fa-lg fa-angle-right" style="margin-left: 1rem"></span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="app-bootstrap-grey-bold-hr"></div>
+    </div>
+
+
+    <div class="row text-center" style="color: #333;background-color: #fff">
+        <div class="col-xs-4 app-padding-one" style="border-right: 1px solid #F8F8F8;border-bottom: 1px solid #F8F8F8" onclick="window.location.href='?#/treasure/recharge'">
+            <div class="app-padding-one">
+                <img src="modules/treasure/img/mine/money.png" style="height: 2rem;width: auto">
+            </div>
+            <div style="padding-bottom: 1rem">
+                <span>优呗充值</span>
+            </div>
+        </div>
+        <div class="col-xs-4 app-padding-one" style="border-right: 1px solid #F8F8F8;border-bottom: 1px solid #F8F8F8" onclick="window.location.href='/duobao/myIndex'">
+            <div class="app-padding-one">
+                <img src="modules/treasure/img/mine/note.png" style="height: 2rem;width: auto">
+            </div>
+            <div style="padding-bottom: 1rem">
+                <span>抢宝记录</span>
+            </div>
+        </div>
+        <div class="col-xs-4 app-padding-one" style="border-bottom: 1px solid #F8F8F8" onclick="window.location.href='/duobao/myWinning'">
+            <div class="app-padding-one">
+                <img src="modules/treasure/img/mine/record.png" style="height: 2rem;width: auto">
+            </div>
+            <div style="padding-bottom: 1rem">
+                <span>中奖记录</span>
+            </div>
+        </div>
+        <div class="col-xs-4 app-padding-one" style="border-right: 1px solid #F8F8F8;border-bottom: 1px solid #F8F8F8" onclick="window.location.href='/user/torecommend'">
+            <div class="app-padding-one">
+                <img src="modules/treasure/img/mine/angpao.png" style="height: 2rem;width: auto">
+            </div>
+            <div style="padding-bottom: 1rem">
+                <span>分享赢优呗</span>
+            </div>
+        </div>
+        <div class="col-xs-4 app-padding-one" style="border-right: 1px solid #F8F8F8;border-bottom: 1px solid #F8F8F8" onclick="window.location.href='/duobao/toMyShow'">
+            <div class="app-padding-one">
+                <img src="modules/treasure/img/mine/share.png" style="height: 2rem;width: auto">
+            </div>
+            <div style="padding-bottom: 1rem">
+                <span>我的晒单</span>
+            </div>
+        </div>
+        <div class="col-xs-4 app-padding-one" style="border-bottom: 1px solid #F8F8F8" onclick="window.location.href='/duobao/toUpdateAddress'">
+            <div class="app-padding-one">
+                <img src="modules/treasure/img/mine/location.png" style="height: 2rem;width: auto">
+            </div>
+            <div style="padding-bottom: 1rem">
+                <span>收货地址</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="color: #bababa;margin-top: 1rem;margin-bottom: 1rem;padding-bottom: 4.8rem">
+        <div class="col-xs-4 text-right" style="width: 28%">
+            <img src="modules/treasure/img/mine/call.png" style="width: 3rem;height: 3rem;margin-top: .5rem;padding-right: 0">
+        </div>
+        <div class="col-xs-8 text-left" style="padding-left: 0;width: 72%">
+            <div style="line-height: 2.4rem;font-family: Arial;font-size: 1.2rem">
+                联系客服：400-711-8898
+            </div>
+            <div style="line-height: 1.6rem;font-size: .9rem">
+                工作日：9:00-21:00 周末：10:00-17:00
+            </div>
+        </div>
+    </div>
+
+</div>

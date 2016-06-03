@@ -25,18 +25,21 @@ define(function (require, exports, module) {
                         userName: $scope.telephone,
                         password: MD5($scope.password)
                     });
+                    $scope.$root.loading = true;
                     $scope.login.$promise.then(function (res) {
                         if(res.result == 0){
                             $scope.referer = res.data.referer;
-                            alert('登录成功');
+                            Toast('登录成功');
                             window.location.href = (!!$scope.referer && $scope.referer != undefined && $scope.referer != 'undefined' && $scope.referer != null) ? decodeURI($scope.referer) : '/index';
                         }else {
                             Toast(res.msg);
                         }
-                        console.log(res)
+                        console.log(res);
+                        $scope.$root.loading = false;
                     }).catch(function (error) {
                         Toast('服务器开小差了~');
-                        console.log(error)
+                        console.log(error);
+                        $scope.$root.loading = false;
                     })
                 }
 

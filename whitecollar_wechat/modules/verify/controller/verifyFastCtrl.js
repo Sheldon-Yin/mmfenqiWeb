@@ -12,12 +12,11 @@ define(function (require, exports, module) {
 
                 WeChatTitle('极速认证申请额度');
 
-
-                //$scope.status = 3;
-
                 $scope.initFastStatus = function () {
                     $scope.getFastStatus = Verify.resultForVerifyBaseInfo().query();
+                    $scope.$root.loading = true;
                     $scope.getFastStatus.$promise.then(function (res) {
+                        $scope.$root.loading = false;
                         if (res.result == 0) {
                             $scope.status = Number(res.data.firstStepFlag);
 
@@ -47,12 +46,13 @@ define(function (require, exports, module) {
                             }
 
                         } else if (res.result == 1013) {
-                            window.location.href = './#/login/telephone?referer='+ encodeURI('./#/verify/index');
+                            window.location.href = './#/login/telephone';
                         } else {
                             Toast(res.msg)
                         }
                         console.log(res)
                     }).catch(function (error) {
+                        $scope.$root.loading = false;
                         Toast(error)
                     })
                 };
@@ -60,8 +60,18 @@ define(function (require, exports, module) {
 
                 //first
                 $scope.submitFirstInfo = function () {
+
+                    if ($scope.telphone == undefined) {
+                        Toast('请输入正确的手机号');
+                        return
+                    }
+
+                    if ($scope.company_telphone == undefined) {
+                        Toast('请输入正确的公司电话');
+                        return
+                    }
+
                     console.log(1);
-                    $scope.loading = true;
                     $scope.firstInfoReq = Verify.verifyBaseInfoFirst().save({
                         company_name: $scope.company_name,
                         company_telphone: $scope.company_telphone,
@@ -73,8 +83,10 @@ define(function (require, exports, module) {
                         relation: $scope.relation,
                         telphone: $scope.telphone
                     });
+                    $scope.$root.loading = true;
 
                     $scope.firstInfoReq.$promise.then(function (res) {
+                        $scope.$root.loading = false;
                         console.log(res);
                         $scope.loading = false;
                         if (res.result == 0) {
@@ -86,7 +98,7 @@ define(function (require, exports, module) {
 
                     }).catch(function (error) {
                         Toast(error);
-                        $scope.loading = false;
+                        $scope.$root.loading = false;
                     })
                 };
 
@@ -96,7 +108,9 @@ define(function (require, exports, module) {
                 $scope.wxConfig = WeChat.save({
                     targetUrl: $scope.targetUrl.split('#')[0]
                 });
+                $scope.$root.loading = true;
                 $scope.wxConfig.$promise.then(function (res) {
+                    $scope.$root.loading = false;
                     if (res.result == 0) {
                         wx.config({
                             debug: false,
@@ -120,6 +134,7 @@ define(function (require, exports, module) {
                         alert(res);
                     }
                 }).catch(function (error) {
+                    $scope.$root.loading = false;
                     alert(error)
                 });
 
@@ -150,6 +165,11 @@ define(function (require, exports, module) {
                     });
                 };
 
+                $scope.deleteImgFront = function () {
+                    document.getElementById('frontIdentityPic').src = 'modules/verify/img/fast-second-add.png';
+                    delete $scope.frontIdentityMediaId;
+                };
+
                 $scope.uploadBackIdentityPic = function () {
                     wx.chooseImage({
                         count: 1, // 默认9
@@ -175,6 +195,11 @@ define(function (require, exports, module) {
                             alert(JSON.stringify(res));
                         }
                     });
+                };
+
+                $scope.deleteImgBack = function () {
+                    document.getElementById('backIdentityPic').src = 'modules/verify/img/fast-second-add.png';
+                    delete $scope.backIdentityMediaId;
                 };
 
                 $scope.uploadWorkProvePic = function () {
@@ -204,6 +229,11 @@ define(function (require, exports, module) {
                     });
                 };
 
+                $scope.deleteImgWork = function () {
+                    document.getElementById('workProvePic').src = 'modules/verify/img/fast-second-add.png';
+                    delete $scope.workProveMediaId;
+                };
+
                 $scope.submitSecondInfo = function () {
                     console.log(2);
                     if (!$scope.frontIdentityPic || !$scope.backIdentityPic || !$scope.workProvePic) {
@@ -216,21 +246,26 @@ define(function (require, exports, module) {
                         backIdentityPic: $scope.backIdentityMediaId,
                         workProve: $scope.workProveMediaId
                     });
+                    $scope.$root.loading = true;
 
                     $scope.secondInfoReq.$promise.then(function (res) {
                         console.log(res);
+                        $scope.$root.loading = false;
 
                         if (res.result == 0) {
                             $scope.initFastStatus();
                             Toast('提交成功');
                         } else {
-                            Toast(res.msg)
+                            Toast(res.msg + '提交不成功')
                         }
 
                     }).catch(function (error) {
-                        Toast(error)
+                        $scope.$root.loading = false;
+                        Toast(error + '服务器开小差~')
                     })
                 };
+                
+
 
 
                 //third
@@ -249,9 +284,11 @@ define(function (require, exports, module) {
 
                     });
 
+                    $scope.$root.loading = true;
+
                     $scope.thirdInfoReq.$promise.then(function (res) {
                         console.log(res);
-
+                        $scope.$root.loading = false;
                         if (res.result == 0) {
                             $location.path('/verify/index');
                         } else {
@@ -259,6 +296,7 @@ define(function (require, exports, module) {
                         }
 
                     }).catch(function (error) {
+                        $scope.$root.loading = false;
                         Toast(error)
                     })
 

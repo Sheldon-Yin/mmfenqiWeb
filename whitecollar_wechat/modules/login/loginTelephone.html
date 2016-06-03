@@ -1,6 +1,6 @@
 <div class="container app-grey-background-container">
 
-    <form ng-submit="goToPasswordOrRegister()">
+    <form ng-submit="goToPasswordOrRegister()" name="myForm">
         <div class="row text-center" style="font-size: 1.4rem;padding: 1.7rem">
             请输入手机号注册、登录
         </div>
@@ -9,7 +9,8 @@
             <input type="number" ng-pattern="/^[1]\d{10}$/" class="app-white-input-text" placeholder="请输入手机号" ng-model="telephone" required>
         </div>
         <label style="display: block">
-            <div class="app-little-pink-radius-button app-padding-one text-center">
+
+            <div class="app-padding-one text-center" ng-class="{true:'app-little-pink-radius-button',false:'app-pink-radius-button'}[!telephone]">
                 下一步
             </div>
             <button type="submit" style="display: none"></button>

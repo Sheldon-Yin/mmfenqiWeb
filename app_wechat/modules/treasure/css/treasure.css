@@ -1,0 +1,145 @@
+.treasure-tab-bar {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 4.8rem;
+    border-top: 1px solid #f8f8f8;
+    background-color: #fff;
+    z-index: 999;
+}
+
+.treasure-tab-bar-button {
+    padding: 0;
+    color: #333;
+}
+
+.treasure-tab-bar-button > label {
+    display: block;
+    margin-top: .6rem;
+}
+
+.treasure-tab-bar-button > label > input {
+    display: none;
+}
+
+.treasure-tab-bar-button > label > span {
+    margin-top: .8rem;
+}
+
+.treasure-pink-text {
+    color: #FA1685;
+}
+
+img {
+    width: 100%;
+}
+
+.treasure-progress {
+    margin-top: .3rem;
+    height: 10px;
+    background: #ebebeb;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.treasure-progress > span {
+    position: relative;
+    float: left;
+    margin: 0 0;
+    height: 10px;
+    line-height: 10px;
+    text-align: right;
+    background: #F1EDEE;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-image: -webkit-linear-gradient(top, #FB1787 0%, #FB1787 70%, #FB1787 100%);
+    background-image: -moz-linear-gradient(top, #FB1787 0%, #FB1787 70%, #FB1787 100%);
+    background-image: -o-linear-gradient(top, #FB1787 0%, #FB1787 70%, #FB1787 100%);
+    background-image: linear-gradient(to bottom, #FB1787 0%, #FB1787 70%, #FB1787 100%);
+}
+
+.treasure-progress-small {
+    margin-top: .3rem;
+    height: 6px;
+    background: #ebebeb;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.treasure-progress-small > span {
+    position: relative;
+    float: left;
+    margin: 0 0;
+    height: 6px;
+    line-height: 6px;
+    text-align: right;
+    background: #F1EDEE;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-image: -webkit-linear-gradient(top, #FB1787 0%, #FB1787 70%, #FB1787 100%);
+    background-image: -moz-linear-gradient(top, #FB1787 0%, #FB1787 70%, #FB1787 100%);
+    background-image: -o-linear-gradient(top, #FB1787 0%, #FB1787 70%, #FB1787 100%);
+    background-image: linear-gradient(to bottom, #FB1787 0%, #FB1787 70%, #FB1787 100%);
+}
+
+.treasure-goods-block:nth-child(odd) {
+    border-right: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+}
+
+.treasure-goods-block:nth-child(even) {
+    border-bottom: 1px solid #EEE;
+    border-left: 1px solid #fff;
+}
+
+.treasure-title-fixed {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    background-color: #fff;
+    top: 0;
+    _position: absolute;
+    _bottom: auto;
+    _top: expression(eval(document.documentElement.scrollTop));
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    left: 0;
+}
+
+.treasure-detail-choose-number {
+    background: #FFF;
+    border: 1px solid #c9c9c9;
+    width: 20%;
+    padding-top: .5rem;
+    padding-bottom: .5rem
+}
+
+.treasure-selected {
+    border: #fb1787 solid 1px;
+    border-radius: 0.1rem;
+    -webkit-border-radius: 0.3rem;
+    padding: 0.3rem .5rem;
+    color: #fb1787;
+    background: url("../img/recharge/moneyChecked.png") bottom right no-repeat;
+    background-size: 1rem 1rem;
+    font-weight: bold;
+}
+
+.treasure-unselected{
+    border: #cccccc solid 1px;
+    border-radius: 0.1rem;
+    -webkit-border-radius: 0.3rem;
+    padding: 0.3rem .5rem;
+    color: #d2d2d2;
+    font-weight: bold;
+}

@@ -3,7 +3,7 @@
 html body {
     height: 100%;
     position: relative;
-    font-family: "Microsoft JhengHei", "Adobe Fan Heiti Std B";
+    font-family: "Microsoft JhengHei","Arial";
 }
 
 body {
@@ -260,7 +260,7 @@ td {
 .app-pink-radius-button {
     background-color: #FB1788;
     color: #FFFFFF;
-    margin-top: 1rem;
+    margin-top: 1.7rem;
     border-radius: 0.5rem;
     font-size: 1.4rem;
 }

@@ -1,0 +1,263 @@
+<link rel="stylesheet" href="modules/treasure/css/treasure.css">
+
+<!--夺宝浮层弹出窗口-->
+<div class="app-grey-dialog-container" ng-show="isDialogShow" style="display: block;z-index: 1000">
+
+    <div class="container">
+        <div style="position: fixed;bottom: 0;width: 100%;background-color: #eaeaea;border-top: 1px solid #eee"
+             class="row">
+
+            <div class="col-xs-12 app-padding-one text-center" style="font-size: 1.2rem">
+                参与人次
+                <span class="fa fa-times fa-lg" style="position:absolute;right: 1.3rem;line-height: 1.8rem;" ng-click="closeDialog()"></span>
+            </div>
+
+            <hr class="app-bootstrap-hr" style="border-top: 1px #c9c9c9 solid;width: 100%;padding:0 15px;">
+
+            <div class="col-xs-12 text-center app-padding-one">
+                <input type="range" min="1" max="{{treasureDetail.lastVisitors}}" ng-model="buyNumber">
+            </div>
+
+            <div class="col-xs-12 text-center">
+               购买<span class="app-pink-text">{{buyNumber}}</span>人次
+            </div>
+
+            <div class="col-xs-12 app-padding-one text-center">
+                <div class="col-xs-3 treasure-detail-choose-number" style="margin-right: 5%;margin-left: 2.5%" ng-click="buyNumberChoose(5)">
+                    5
+                </div>
+                <div class="col-xs-3 treasure-detail-choose-number" style="margin-right: 5%" ng-click="buyNumberChoose(10)">
+                    10
+                </div>
+                <div class="col-xs-3 treasure-detail-choose-number" style="margin-right: 5%" ng-click="buyNumberChoose(20)">
+                    20
+                </div>
+                <div class="col-xs-3 treasure-detail-choose-number" ng-click="buyNumberChoose(-1)">
+                    包尾
+                </div>
+            </div>
+
+            <div class="col-xs-12" style="border-top: 1px solid #c9c9c9">
+                <div class="app-pink-radius-button app-padding-one text-center" ng-click="goToBuy()"
+                     style="margin-bottom: 1rem;">
+                    立即夺宝
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+<div style="position: fixed;right: 1.2rem;bottom: 7.6rem;z-index: 999">
+    <div>
+        <img src="modules/treasure/img/back-to-top.png" style="width: 2.5rem" ng-click="backTop()">
+    </div>
+    <div>
+        <img src="modules/treasure/img/home.png" style="width: 2.5rem;margin-top: 1.2rem" ng-click="backHome()">
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <img src="modules/treasure/img/detail-poster.png" ng-src="{{treasureDetail.luckyGood.goodsPic}}"
+             style="width: 100%">
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12" style="margin-top: .4rem">
+            <img src="modules/treasure/img/doing.png" style="width: 3rem;margin-bottom: .4rem">
+            <span style="margin-left: .5rem;font-size: 1.2rem">{{treasureDetail.luckyGood.goodsName}}</span>
+        </div>
+    </div>
+
+    <div class="row app-padding-one">
+        <div class="col-xs-12">
+            开奖进度<span>{{treasureDetail.progress}}</span>
+            <div class="treasure-progress">
+                <span style="width: {{treasureDetail.progress}}"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="color: #666">
+        <div class="col-xs-6">
+            满<span class="app-pink-text">{{treasureDetail.validVisitors}}</span>人次开奖
+        </div>
+        <div class="col-xs-6 text-right">
+            剩余<span class="app-pink-text">{{treasureDetail.lastVisitors}}</span>人次
+        </div>
+    </div>
+
+    <div class="app-padding-one">
+        <hr class="app-bootstrap-hr-no-match" style="border-top:1px dashed #e6e6e6">
+    </div>
+
+    <div class="row" ng-if="isWinnerExist">
+        <div class="col-xs-12" style="position: relative;color:#fff;">
+            <div class="col-xs-12" style="position: relative;">
+                <div class="col-xs-12" style="position: absolute;padding-top: 1.2rem;padding-left: 0;">
+                    <div class="col-xs-3" style="padding-left: .3rem;position: relative">
+                        <img src="modules/treasure/img/head1.jpg" ng-src="{{lastWinner.sculptureUrl}}"
+                             style="width: 100%;border-radius: 50%;border: 3px solid #F0EC4B;">
+                        <img src="modules/treasure/img/champion.png"
+                             style="position: absolute;width: 35%;top: -1rem;left: 0">
+                    </div>
+                    <div class="col-xs-9" style="line-height: 1.5rem">
+                        <div>
+                            获奖者： {{lastWinner.nickname}}
+                        </div>
+                        <div>
+                            本期参与： {{lastWinner.buyCount}}次
+                        </div>
+                        <div>
+                            揭晓时间：{{lastWinner.lotteryTime}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="modules/treasure/img/prize-background.png" style="width: 100%;">
+            <div class="col-xs-11" style="position: absolute;bottom: .5rem">
+                <div class="col-xs-6" style="padding-left: 5px">
+                    <img src="modules/treasure/img/finger-up.png"
+                         style="width: 1rem;margin-right: .5rem;margin-bottom: .3rem">恭喜上期获奖者
+                </div>
+                <!--<div class="col-xs-6 text-right" style="padding-right: 0">-->
+                <!--查看详情<span class="fa fa-angle-right fa-lg" style="padding-left: .5rem;"></span>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="row app-padding-one">
+        <div class="app-bootstrap-grey-bold-hr"></div>
+    </div>
+
+    <div class="row">
+        <div class="app-white-input" ng-click="goToPicDetail()">
+            <div class="col-xs-6" style="color: #333;font-size: 1.2rem;margin-bottom: 1rem">
+                <img src="modules/treasure/img/picture.png"
+                     style="height: 1.3rem;width: 1.6rem;margin-bottom: 0.25rem;margin-right: .3rem">
+                图文详情
+            </div>
+            <div class="col-xs-6 text-right" style="color: #666;line-height: 1.75rem">
+                建议在wifi下查看 <span class="fa fa-angle-right fa-lg" style="padding-left: .5rem"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="app-bootstrap-grey-bold-hr"></div>
+    </div>
+
+    <div class="row app-padding-one">
+        <div class="app-white-input">
+            <div class="col-xs-8" style="width: 60%">
+                <img src="modules/treasure/img/cup.png"
+                     style="height: 1.3rem;width: 1.6rem;margin-bottom: 0.25rem;margin-right: .3rem">
+                <span style="font-size: 1.2rem;color: #333;">荣誉榜</span><span style="color: #666;line-height: 1.75rem">(上榜享免单机会)</span>
+            </div>
+            <!--<div class="col-xs-4 text-right" style="color: #666;line-height: 1.75rem;width: 40%">-->
+                <!--上榜特权说明 <span class="fa fa-angle-right fa-lg" style="padding-left: .5rem"></span>-->
+            <!--</div>-->
+        </div>
+    </div>
+
+    <hr class="app-bootstrap-hr-no-match">
+
+    <div class="row text-center" style="padding: 1rem 1rem">
+
+        <div class="col-xs-4" style="line-height: 1.6rem">
+            <img src="modules/treasure/img/head1.jpg" ng-src="{{honorRoll.honorRollFirstBuyer.sculptureUrl}}" style="border-radius: 50%;width: 75%;margin-bottom: .75rem">
+            <img src="modules/treasure/img/sofa.png">
+            <div style="color: #03abf2;" ng-if="!!honorRoll.honorRollFirstBuyer.nickname">
+                {{honorRoll.honorRollFirstBuyer.nickname}}
+            </div>
+            <div style="color: #fb1787;" ng-if="!honorRoll.honorRollFirstBuyer.nickname">
+                虚位以待
+            </div>
+            <div>
+                第一个参与
+            </div>
+        </div>
+
+        <div class="col-xs-4" style="line-height: 1.6rem">
+            <img src="modules/treasure/img/head1.jpg" ng-src="{{honorRoll.honorRollMostBuyer.sculptureUrl}}" style="border-radius: 50%;width: 75%;margin-bottom: .75rem">
+            <img src="modules/treasure/img/richer.png">
+            <div style="color: #03abf2;" ng-if="!!honorRoll.honorRollMostBuyer.nickname">
+                {{honorRoll.honorRollMostBuyer.nickname}}
+            </div>
+            <div style="color: #fb1787;" ng-if="!honorRoll.honorRollMostBuyer.nickname">
+                虚位以待
+            </div>
+            <div>
+                参与<span style="color: #fb1787">{{honorRoll.honorRollMostBuyer.buyCount}}</span>次
+            </div>
+        </div>
+
+        <div class="col-xs-4" style="line-height: 1.6rem">
+            <img src="modules/treasure/img/head1.jpg" ng-src="{{honorRoll.honorRollLastBuyer.sculptureUrl}}" style="border-radius: 50%;width: 75%;margin-bottom: .75rem">
+            <img src="modules/treasure/img/get-tail.png">
+            <div style="color: #03abf2;" ng-if="!!honorRoll.honorRollLastBuyer.nickname">
+                {{honorRoll.honorRollLastBuyer.nickname}}
+            </div>
+            <div style="color: #fb1787;" ng-if="!honorRoll.honorRollLastBuyer.nickname">
+                虚位以待
+            </div>
+            <div>
+                最后一个参与
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="app-bootstrap-grey-bold-hr"></div>
+    </div>
+
+    <div class="row app-padding-one">
+        <div class="app-white-input">
+            <div class="col-xs-6" style="color: #333;font-size: 1.2rem">
+                <img src="modules/treasure/img/list.png"
+                     style="height: 1.3rem;width: 1.6rem;margin-bottom: 0.25rem;margin-right: .3rem">
+                参与记录
+            </div>
+        </div>
+    </div>
+
+    <hr class="app-bootstrap-hr">
+
+    <div ng-repeat="x in recordList">
+        <div class="row" style="padding: .5rem 0">
+            <div class="col-xs-2">
+                <img ng-src="{{x.userPic}}" src="modules/treasure/img/head1.jpg"
+                     style="border-radius: 50%;height: 4rem;width: 4rem">
+            </div>
+            <div class="col-xs-10">
+                <div style="height: 2rem;line-height: 2rem;color: #03abf2">
+                    {{x.nickname}}
+                </div>
+                <div style="height: 2rem;line-height: 2rem">
+                    参与了<span style="color: #fb1787">{{x.allCount}}</span>人次 <span
+                        style="font-size: 0.95rem;color: #999;">{{x.updateTimeStr}}</span>
+                </div>
+            </div>
+        </div>
+        <hr class="app-bootstrap-hr-no-match" ng-if="($index!=(recordList.length-1))">
+    </div>
+
+
+    <hr class="app-bootstrap-hr" style="margin-bottom: 5.6rem">
+
+    <div style="position: fixed;bottom: 0;width: 100%;background-color: #fff;border-top: 1px solid #eee" class="row">
+        <div class="col-xs-12">
+            <div class="app-pink-radius-button app-padding-one text-center" ng-click="showDialog()"
+                 style="margin-bottom: 1rem;">
+                立即夺宝
+            </div>
+        </div>
+    </div>
+
+
+</div>

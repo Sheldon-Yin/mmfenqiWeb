@@ -11,12 +11,18 @@ define(function (require, exports, module) {
                 $scope.cityName = '杭州';
                 $scope.cityId = 2;
                 $scope.cityName = !!$location.search().cityName ? $location.search().cityName : $scope.cityName;
-                $scope.index = Index.get({cityId: $scope.cityId, index: 1,cityName: $scope.cityName});
+                $scope.index = Index.get({cityId: $scope.cityId, index: 1, cityName: $scope.cityName});
 
                 $scope.index.$promise.then(function (res) {
-                    if (res.result != 0){
-                        Toast(res.msg,3000);
+                    if (res.result != 0) {
+                        Toast(res.msg, 3000);
                         $scope.loadError = true;
+                    }else {
+                        if (res.data.isCityOpen == false){
+                            document.getElementById('notOpenTips').style.display = 'block';
+                        }else if(res.data.isCityOpoen == true) {
+                            document.getElementById('notOpenTips').style.display = 'none';
+                        }
                     }
                 }).catch(function (error) {
                     $scope.loadError = true;
@@ -161,9 +167,15 @@ define(function (require, exports, module) {
                                 $scope.cityId = 2;
                                 $scope.index = Index.get({cityId: $scope.cityId, index: 1});
                                 $scope.index.$promise.then(function (res) {
-                                    if (res.result != 0){
-                                        Toast(res.msg,3000);
+                                    if (res.result != 0) {
+                                        Toast(res.msg, 3000);
                                         $scope.loadError = true;
+                                    }else {
+                                        if (res.data.isCityOpen == false){
+                                            document.getElementById('notOpenTips').style.display = 'block';
+                                        }else if(res.data.isCityOpoen == true) {
+                                            document.getElementById('notOpenTips').style.display = 'none';
+                                        }
                                     }
                                 }).catch(function (error) {
                                     $scope.loadError = true;
@@ -173,8 +185,8 @@ define(function (require, exports, module) {
                                 $scope.cityName = response;
                                 $scope.index = Index.get({cityName: $scope.cityName, index: 1});
                                 $scope.index.$promise.then(function (res) {
-                                    if (res.result != 0){
-                                        Toast(res.msg,3000);
+                                    if (res.result != 0) {
+                                        Toast(res.msg, 3000);
                                         $scope.loadError = true;
                                     }
                                 }).catch(function (error) {
@@ -221,7 +233,7 @@ define(function (require, exports, module) {
                 $scope.jumpToRecommend = function () {
                     //window.location.href = encodeURI($location.absUrl().split('#')[0] + '#/recommend'+'?cityName='+$scope.cityName);
                     if (myBridge) {
-                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/recommend'+'?cityName='+$scope.cityName);
+                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/recommend' + '?cityName=' + $scope.cityName);
                         myBridge.callHandler('sendMessageToApp', {
                             type: 2, data: {
                                 url: jumpUrl,
@@ -250,7 +262,7 @@ define(function (require, exports, module) {
                 };
 
                 $scope.jumpToActivity = function (x) {
-                    if (myBridge){
+                    if (myBridge) {
                         myBridge.callHandler('sendMessageToApp', {
                             type: 2, data: {
                                 url: x,
@@ -284,9 +296,15 @@ define(function (require, exports, module) {
                                     $scope.cityId = 2;
                                     $scope.index = Index.get({cityId: $scope.cityId, index: 1});
                                     $scope.index.$promise.then(function (res) {
-                                        if (res.result != 0){
-                                            Toast(res.msg,3000);
+                                        if (res.result != 0) {
+                                            Toast(res.msg, 3000);
                                             $scope.loadError = true;
+                                        }else {
+                                            if (res.data.isCityOpen == false){
+                                                document.getElementById('notOpenTips').style.display = 'block';
+                                            }else if(res.data.isCityOpoen == true) {
+                                                document.getElementById('notOpenTips').style.display = 'none';
+                                            }
                                         }
                                     }).catch(function (error) {
                                         $scope.loadError = true;
@@ -296,9 +314,15 @@ define(function (require, exports, module) {
                                     $scope.cityName = response;
                                     $scope.index = Index.get({cityName: $scope.cityName, index: 1});
                                     $scope.index.$promise.then(function (res) {
-                                        if (res.result != 0){
-                                            Toast(res.msg,3000);
+                                        if (res.result != 0) {
+                                            Toast(res.msg, 3000);
                                             $scope.loadError = true;
+                                        } else {
+                                            if (res.data.isCityOpen == false){
+                                                document.getElementById('notOpenTips').style.display = 'block';
+                                            }else if(res.data.isCityOpoen == true) {
+                                                document.getElementById('notOpenTips').style.display = 'none';
+                                            }
                                         }
                                     }).catch(function (error) {
                                         $scope.loadError = true;
@@ -306,8 +330,8 @@ define(function (require, exports, module) {
                                     });
                                 }
                             });
-                        }else if(message == 5){
-                            myBridge.callHandler('sendMessageToApp',{type:5,data:{}}, function (response) {
+                        } else if (message == 5) {
+                            myBridge.callHandler('sendMessageToApp', {type: 5, data: {}}, function (response) {
                                 //document.getElementById('ok').src = 'data:image/png;base64,'+response;
                                 var url = response;
                                 var parameters = url.split('?')[1];
@@ -316,11 +340,11 @@ define(function (require, exports, module) {
                                 angular.forEach(parametersArray, function (each) {
                                     var key = each.split('=')[0];
                                     var value = each.split('=')[1];
-                                    jsonArray.push('"'+key+'":'+value);
+                                    jsonArray.push('"' + key + '":' + value);
                                 });
-                                var string = '{'+jsonArray.join(',')+'}';
-                                var jsonParameters =  JSON.parse(string);
-                                if (jsonParameters.type==1){//type=1代表为自定义商品详情
+                                var string = '{' + jsonArray.join(',') + '}';
+                                var jsonParameters = JSON.parse(string);
+                                if (jsonParameters.type == 1) {//type=1代表为自定义商品详情
                                     myBridge.callHandler('sendMessageToApp', {
                                         type: 2, data: {
                                             url: url,
@@ -333,7 +357,7 @@ define(function (require, exports, module) {
                                     });
                                 }
                             })
-                        } else{
+                        } else {
                             myBridge.callHandler('sendMessageToApp', {type: message, data: {}}, function (response) {
                                 //todo custom
                             });

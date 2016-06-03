@@ -1,15 +1,6 @@
 <link href="modules/verify/css/verify.css" rel="stylesheet">
 
 
-<div style="width: 100%;position: fixed;height:100%;left: 0;z-index:999" ng-if="loading">
-    <div style="top: 45%;position: absolute;width: 100%;left: 45%">
-        <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 10%">
-    </div>
-    <div style="top: 45%;position: absolute;width: 100%;left: 45%">
-        <img src="img/loading/loadingInner.png" style="width: 10%">
-    </div>
-</div>
-
 <!--步骤一：联系方式-->
 <div class="app-grey-background-container container" ng-if="status==1">
 
@@ -19,55 +10,52 @@
 
     <form ng-submit="submitFirstInfo()">
 
-        <div class="row verify-fast-title">
-            <div class="col-xs-12">
+        <div class="row verify-fast-title" style="font-weight: bold">
                 公司信息
-            </div>
         </div>
 
         <div class="app-white-input row app-margin-top-two-px">
             <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">公司名称</label>
-            <input type="text" ng-model="$parent.company_name" class="col app-white-input-text" placeholder="如：杭州优呗网络科技有限公司"
+            <input type="text" ng-model="$parent.company_name" class="col app-white-input-text"
+                   placeholder="如:杭州优呗网络科技有限公司"
                    required>
         </div>
         <div class="app-white-input row app-margin-top-two-px">
             <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">公司电话</label>
             <input type="text" ng-model="$parent.company_telphone" class="col app-white-input-text"
-                   placeholder="如：0571-56887778"
+                   placeholder="如:0571-56887778" ng-maxlength="15" ng-minlength="7"
                    required>
         </div>
         <div class="app-white-input row app-margin-top-two-px">
             <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">职务</label>
-            <input type="text" ng-model="$parent.company_position" class="col app-white-input-text" placeholder="如：销售主管"
+            <input type="text" ng-model="$parent.company_position" class="col app-white-input-text" placeholder="如:销售主管"
                    required>
         </div>
         <div class="app-white-input row app-margin-top-two-px">
             <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">公司地址</label>
             <input type="text" ng-model="$parent.company_addr" class="col app-white-input-text"
-                   placeholder="如：杭州市西湖区华星时代广场B座403室" required>
+                   placeholder="如:杭州市西湖区华星时代广场B座403室" required>
         </div>
         <div class="app-white-input row app-margin-top-two-px">
             <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">本人住址</label>
             <input type="text" ng-model="$parent.address" class="col app-white-input-text"
-                   placeholder="如：杭州市西湖区X路X号X小区X幢X单元X号" required>
+                   placeholder="如:杭州市西湖区X小区X幢X单元X号" required>
         </div>
 
-        <div class="row verify-fast-title">
-            <div class="col-xs-12">
+        <div class="row verify-fast-title" style="font-weight: bold">
                 个人关系
-            </div>
         </div>
 
         <div class="row">
             <div class="app-white-input app-margin-top-two-px col-xs-6" style="padding: 1rem 0;padding-left: 1rem">
                 <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">姓名</label>
-                <input type="text" ng-model="$parent.name" class="col app-white-input-text" placeholder="如：父/母姓名"
+                <input type="text" ng-model="$parent.name" class="col app-white-input-text" placeholder="如:父/母姓名"
                        required>
             </div>
 
             <div class="app-white-input app-margin-top-two-px col-xs-6" style="padding: 1rem 0">
                 <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">关系</label>
-                <input type="text" ng-model="$parent.relation" class="col app-white-input-text" placeholder="如：父子"
+                <input type="text" ng-model="$parent.relation" class="col app-white-input-text" placeholder="如:母子"
                        required>
             </div>
         </div>
@@ -75,22 +63,30 @@
 
         <div class="app-white-input row app-margin-top-two-px">
             <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">手机号</label>
-            <input type="text" ng-model="$parent.telphone" class="col app-white-input-text" placeholder="如：157****7596"
+            <input type="text" ng-model="$parent.telphone" ng-pattern="/^[1]\d{10}$/" class="col app-white-input-text" placeholder="如:157****7596"
                    required>
         </div>
 
-        <div class="app-white-input row app-margin-top-two-px">
-            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">信用卡/储蓄卡</label>
-            <input type="text" ng-model="$parent.bankcardcode" class="col app-white-input-text"
-                   placeholder="如：6221 5555 8888 9999" required>
+        <div class="row verify-fast-title" style="font-weight: bold">
+                您的信用卡/储蓄卡
         </div>
 
+
+        <div class="app-white-input row app-margin-top-two-px">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">卡号</label>
+            <input type="text" ng-model="$parent.bankcardcode" class="col app-white-input-text"
+                   placeholder="如:6221 5555 8888 9999" required>
+        </div>
+
+
         <label style="display: block;padding-bottom: 2rem">
-            <div class="app-little-pink-radius-button app-padding-one text-center">
+            <div class="app-padding-one text-center"
+                 ng-class="{true:'app-little-pink-radius-button',false:'app-pink-radius-button'}[!$parent.company_name || !$parent.company_telphone|| !$parent.company_position|| !$parent.company_addr|| !$parent.address|| !$parent.name|| !$parent.relation|| !$parent.telphone|| !$parent.bankcardcode]">
                 下一步
             </div>
             <button type="submit" style="display: none"></button>
         </label>
+
     </form>
 
 </div>
@@ -105,30 +101,37 @@
 
     <div class="app-white-input row app-margin-top-two-px">
         <label class="col-xs-12 app-bootstrap-padding-zero">上传身份证正反面（清晰可见）</label>
-        <div class="col-xs-6 app-padding-one" ng-click="uploadFrontIdentityPic()">
+        <div class="col-xs-6 app-padding-one" ng-click="uploadFrontIdentityPic()" style="position: relative">
             <img src="modules/verify/img/fast-second-add.png" id="frontIdentityPic" style="width: 100%">
+            <img src="modules/verify/img/bank-delete.png" ng-if="!!$parent.frontIdentityMediaId"
+                 style="position: absolute;top: 2rem;right: 2rem" ng-click="deleteImgFront()">
         </div>
-        <div class="col-xs-6 app-padding-one" ng-click="uploadBackIdentityPic()">
+        <div class="col-xs-6 app-padding-one" ng-click="uploadBackIdentityPic()" style="position: relative">
             <img src="modules/verify/img/fast-second-add.png" id="backIdentityPic" style="width: 100%">
+            <img src="modules/verify/img/bank-delete.png" ng-if="!!$parent.backIdentityMediaId"
+                 style="position: absolute;top: 2rem;right: 2rem" ng-click="deleteImgBack()">
         </div>
     </div>
 
     <div class="app-white-input row" style="margin-top: 10px">
-        <label class="col-xs-12 app-bootstrap-padding-zero">上传银行卡正面（清晰可见）</label>
-        <div class="col-xs-6 app-padding-one" ng-click="uploadWorkProvePic()">
+        <label class="col-xs-12 app-bootstrap-padding-zero">上传信用卡正面（清晰可见）</label>
+        <div class="col-xs-6 app-padding-one" ng-click="uploadWorkProvePic()" style="position: relative">
             <img src="modules/verify/img/fast-second-add.png" id="workProvePic" style="width: 100%">
+            <img src="modules/verify/img/bank-delete.png" ng-if="!!$parent.workProveMediaId"
+                 style="position: absolute;top: 2rem;right: 2rem" ng-click="deleteImgWork()">
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-12 app-padding-one" style="color: #fb2282;">
             <img src="modules/verify/img/fast-second-tips.png" style="width: 1rem;padding-bottom: 0.25rem">
-            提醒：也可以上传名片/工牌，信用卡额度更高哦
+            提醒:也可以上传名片/工牌，信用卡额度更高哦
         </div>
     </div>
 
     <label style="display: block;padding-bottom: 2rem">
-        <div class="app-little-pink-radius-button app-padding-one text-center" ng-click="submitSecondInfo()">
+        <div class="app-padding-one text-center" ng-click="submitSecondInfo()"
+             ng-class="{true:'app-little-pink-radius-button',false:'app-pink-radius-button'}[!$parent.workProveMediaId ||!$parent.frontIdentityMediaId||!$parent.backIdentityMediaId ]">
             下一步
         </div>
     </label>
@@ -147,11 +150,11 @@
         <div class="app-white-input row app-margin-top-two-px">
             <label class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-label">1.是否办过银行信用卡</label>
             <div class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-check-area">
-                <label ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isCreditCard]">
+                <label class="verify-fast-unchecked" ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isCreditCard]">
                     <span>是</span>
                     <input type="radio" name="is_credit_card" ng-model="$parent.isCreditCard" value="true" required>
                 </label>
-                <label ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isCreditCard]"
+                <label class="verify-fast-unchecked" ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isCreditCard]"
                        style="padding-left: 1rem">
                     <span>否</span>
                     <input type="radio" name="is_credit_card" ng-model="$parent.isCreditCard" value="false" required>
@@ -162,11 +165,11 @@
         <div class="app-white-input row app-margin-top-two-px">
             <label class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-label">2.是否办过贷款</label>
             <div class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-check-area">
-                <label ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isLoan]">
+                <label class="verify-fast-unchecked" ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isLoan]">
                     <span>是</span>
                     <input type="radio" name="is_loan" ng-model="$parent.isLoan" value="true" required>
                 </label>
-                <label ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isLoan]"
+                <label class="verify-fast-unchecked" ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isLoan]"
                        style="padding-left: 1rem">
                     <span>否</span>
                     <input type="radio" name="is_loan" ng-model="$parent.isLoan" value="false" required>
@@ -176,11 +179,11 @@
         <div class="app-white-input row app-margin-top-two-px">
             <label class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-label">3.是否有过股票、基金等投资</label>
             <div class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-check-area">
-                <label ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isInvestment]">
+                <label class="verify-fast-unchecked" ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isInvestment]">
                     <span>是</span>
                     <input type="radio" name="is_investment" ng-model="$parent.isInvestment" value="true" required>
                 </label>
-                <label ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isInvestment]"
+                <label class="verify-fast-unchecked" ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isInvestment]"
                        style="padding-left: 1rem">
                     <span>否</span>
                     <input type="radio" name="is_investment" ng-model="$parent.isInvestment" value="false" required>
@@ -190,11 +193,11 @@
         <div class="app-white-input row app-margin-top-two-px">
             <label class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-label">4.是否有车辆行驶证</label>
             <div class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-check-area">
-                <label ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isDriving]">
+                <label class="verify-fast-unchecked" ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isDriving]">
                     <span>是</span>
                     <input type="radio" name="is_driving" ng-model="$parent.isDriving" value="true" required>
                 </label>
-                <label ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isDriving]"
+                <label class="verify-fast-unchecked" ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isDriving]"
                        style="padding-left: 1rem">
                     <span>否</span>
                     <input type="radio" name="is_driving" ng-model="$parent.isDriving" value="false" required>
@@ -204,11 +207,11 @@
         <div class="app-white-input row app-margin-top-two-px">
             <label class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-label">5.是否有个人房产</label>
             <div class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-check-area">
-                <label ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isHouse]">
+                <label class="verify-fast-unchecked" ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isHouse]">
                     <span>是</span>
                     <input type="radio" name="is_house" ng-model="$parent.isHouse" value="true" required>
                 </label>
-                <label ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isHouse]"
+                <label class="verify-fast-unchecked" ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isHouse]"
                        style="padding-left: 1rem">
                     <span>否</span>
                     <input type="radio" name="is_house" ng-model="$parent.isHouse" value="false" required>
@@ -219,16 +222,11 @@
             <label class="col-xs-12 app-bootstrap-padding-zero">6.每月收入</label>
         </div>
 
-        <div class="row" style="background-color: #fff">
-            <div class="col-xs-12">
-                <hr style="border-top:1px dashed #ccc;margin: 0;background-color: #fff">
-            </div>
-        </div>
 
         <div class="app-white-input row">
             <div class="col-xs-12 app-bootstrap-padding-zero" style="font-size: 1.2rem;margin-top: 0.5rem">
                 <div class="col-xs-12">
-                    <label ng-class="{true: 'verify-fast-radio-checked', false: 'verify-fast-radio-unchecked'}[$parent.monthlyIncome==0]">
+                    <label  ng-class="{true: 'verify-fast-radio-checked', false: 'verify-fast-radio-unchecked'}[$parent.monthlyIncome==0]">
                         <span>3千以下</span>
                         <input type="radio" name="monthly_income" ng-model="$parent.monthlyIncome" value="0" required>
                     </label>
@@ -263,9 +261,9 @@
 
         </div>
 
-
         <label style="display: block;padding-bottom:  2rem">
-            <div class="app-little-pink-radius-button app-padding-one text-center">
+            <div class="app-padding-one text-center"
+                 ng-class="{true:'app-little-pink-radius-button',false:'app-pink-radius-button'}[!$parent.isCreditCard ||!$parent.isLoan ||!$parent.isInvestment || !$parent.isDriving ||!$parent.isHouse ||!$parent.monthlyIncome]">
                 提交
             </div>
             <button type="submit" style="display: none"></button>

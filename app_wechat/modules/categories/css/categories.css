@@ -1,0 +1,43 @@
+.categories-sort-bar-list-view {
+    position: fixed;
+    z-index: 666;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    margin: 0;
+}
+.categories-sort-bar-list-view-background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.categories-project-projects{
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+.categories-project-projects>div{
+    padding: 1rem;
+    border: 1px solid #F8F8F8;
+}
+
+.categories-project-container{
+    background-color: #F8F8F8;
+}
+
+.categories-project-title{
+    padding: 1rem 1rem;
+    font-size: 1.2rem;
+}
+
+.categories-sort-bar-subject {
+    background-color: #FFFFFF;
+    height: 100%;
+    text-align: left;
+    overflow: scroll;
+    padding: 0;
+}

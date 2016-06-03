@@ -40,7 +40,7 @@ define(function (require, exports, module) {
                                     $scope.selectedConfigId = $scope.stages[0].configId;
                                     $scope.selectedStage = ($scope.selectedFirstRatio.shoufuId == 100) ? 0 : $scope.stages[0].staging;
                                     $scope.selectedInsurance = $scope.insuranceAmount[0].price;
-                                    $scope.isInsuranceBuy = false;
+                                    $scope.isInsuranceBuy = true;
                                     $scope.getFenqiMode();
                                 }
                             }).catch(function (error) {

@@ -16,7 +16,7 @@
     <meta name="description"
           content="美眉分期:全国首家女大学生微整形分期服务平台,服务特色:0首付分期付款、大型专业医院合作、多年经验专家服务、高性价比项目、所有药品100%正品、医美专家全程陪同、7*24售后无忧,美眉分期,为美而生！">
     <meta name="renderer" content="webkit">
-    <title>{{$root.title}}</title>
+    <title></title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/my.bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/app.css">
@@ -24,10 +24,16 @@
     <!--<link rel="stylesheet" href="css/animations.css">-->
 
 </head>
-
 <body style="height: 100%">
-
 <div class="view-container" style="height: 100%">
+    <div style="width: 100%;position: fixed;height:100%;left: 0;z-index:999" ng-if="$root.loading">
+        <div style="top: 45%;position: absolute;width: 100%;left: 45%">
+            <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 10%">
+        </div>
+        <div style="top: 45%;position: absolute;width: 100%;left: 45%">
+            <img src="img/loading/loadingInner.png" style="width: 10%">
+        </div>
+    </div>
     <div ng-view class="view-frame" style="height: 100%"></div>
 </div>
 <script src="bower_components/seajs/dist/sea.js"></script>

@@ -9,7 +9,6 @@ define(function (require, exports, module) {
         app.config(['$routeProvider', '$httpProvider',
             function ($routeProvider, $httpProvider) {
 
-
                 $routeProvider.
                 //Demo
                 when('/phones/list', {
@@ -41,30 +40,24 @@ define(function (require, exports, module) {
                     controllerUrl: './modules/login/controller/signUpCtrl.js'
                 }).
 
-
                 //实名认证
-
                 when('/verify/index', {
                     templateUrl: 'modules/verify/index.html',
                     controller: 'VerifyIndexCtrl',
                     controllerUrl: './modules/verify/controller/verifyIndexCtrl.js'
-                }).
-                when('/verify/bank', {
+                }).when('/verify/bank', {
                     templateUrl: 'modules/verify/bank-verify.html',
                     controller: 'VerifyBankCtrl',
                     controllerUrl: './modules/verify/controller/verifyBankCtrl.js'
-                }).
-                when('/verify/real-name', {
+                }).when('/verify/real-name', {
                     templateUrl: 'modules/verify/real-name.html',
                     controller: 'VerifyRealNameCtrl',
                     controllerUrl: './modules/verify/controller/verifyRealNameCtrl.js'
-                }).
-                when('/verify/taobao', {
+                }).when('/verify/taobao', {
                     templateUrl: 'modules/verify/taobao-verify.html',
                     controller: 'VerifyTaobaoCtrl',
                     controllerUrl: './modules/verify/controller/verifyTaobaoCtrl.js'
-                }).
-                when('/verify/fast', {
+                }).when('/verify/fast', {
                     templateUrl: 'modules/verify/fast-verify.html',
                     controller: 'VerifyFastCtrl',
                     controllerUrl: './modules/verify/controller/verifyFastCtrl.js'
@@ -179,14 +172,12 @@ define(function (require, exports, module) {
                     controllerUrl: './modules/order/controller/orderCtrl.js'
                 }).
 
-
                 //精品推荐
                 when('/recommend', {
                     templateUrl: 'modules/recommend/recommend.html',
                     controller: 'RecommendCtrl',
                     controllerUrl: './modules/recommend/controller/recommendCtrl.js'
                 }).
-
 
                 //0首付验证码
                 when('/pay/allCredit', {
@@ -201,7 +192,6 @@ define(function (require, exports, module) {
                     controller: 'FirstPayCtrl',
                     controllerUrl: './modules/pay/controller/firstPayCtrl.js'
                 }).
-
 
                 //保险说明静态页
                 when('/insurance/introduce', {
@@ -221,7 +211,6 @@ define(function (require, exports, module) {
                     controller: 'CouponCtrl',
                     controllerUrl: './modules/coupon/controller/couponCtrl.js'
                 }).
-
 
                 //默认首页
                 otherwise({

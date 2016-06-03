@@ -26,7 +26,9 @@ define(function (require, exports, module) {
                         telephone: $scope.telephone,
                         smsFmtId: 'register'
                     });
+                    $scope.$root.loading = true;
                     $scope.getVerifyCodeReq.$promise.then(function (res) {
+                        $scope.$root.loading = false;
                         if (res.result == 0) {
                             Toast('发送成功');
                             $scope.counter = 60;
@@ -46,6 +48,7 @@ define(function (require, exports, module) {
                         }
                         console.log(res);
                     }).catch(function (error) {
+                        $scope.$root.loading = false;
                         Toast('服务器开小差了~');
                         console.log(error);
                         $scope.verifyStatus = true;
@@ -61,8 +64,10 @@ define(function (require, exports, module) {
                         recommendedCode: $scope.recommendedCode,
                         userType: 1
                     });
+                    $scope.$root.loading = true;
 
                     $scope.regiterReq.$promise.then(function (res) {
+                        $scope.$root.loading = false;
                         if(res.result == 0){
                             alert('注册成功');
                             $location.path('login/telephone')
@@ -71,6 +76,7 @@ define(function (require, exports, module) {
                         }
                         console.log(res)
                     }).catch(function (error) {
+                        $scope.$root.loading = false;
                         Toast('服务器开小差了~');
                         console.log(error)
                     })

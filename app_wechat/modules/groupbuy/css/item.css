@@ -1,0 +1,363 @@
+/*
+* @description:项目的样式
+* @author: 周日恒
+* @update: 周日恒 (2015-10-20 18:32)
+*/
+.z-index-702 {
+    z-index: 702;
+}
+.header-left-doctor {
+    float: left;
+    width: 6.604166666666rem;
+    height: 3.3333333333rem;
+    line-height: 3.3333333333rem;
+    text-align: center;
+    color: #404040;
+    position: relative;
+}
+
+.header-divide-line-doctor {
+    float: left;
+    height: 1.25rem;
+    margin-top: 1.04166666666rem;
+    width: 0.0833333333rem;
+    background-color: #e5e5e5;
+}
+
+.header-left-doctor-select {
+    float: left;
+    width: 6.604166666666rem;
+    height: 3.3333333333rem;
+    line-height: 3.3333333333rem;
+    text-align: center;
+    color: #ff517a;
+    position: relative;
+}
+.right-two{
+    right: 0.5rem;
+}
+.right-one{
+    right: 1.5rem;
+}
+.header-left-doctor a span{
+    position: absolute;
+    display: block;
+    width: 0.5rem;
+    height: 0.5rem;
+    top: 1.35rem;
+    border-style: solid;
+    border-color: #e5e5e5;
+    border-width: 2px 0 0 2px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+
+.header-left-doctor-select a span {
+    position: absolute;
+    display: block;
+    width: 0.5rem;
+    height: 0.5rem;
+    top: 1.35rem;
+    border-style: solid;
+    border-color: #ff517a;
+    border-width: 2px 0 0 2px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.select {
+    position: absolute;
+    background-color: #FFFFFF;
+    z-index: 702;
+}
+
+.select-item {
+    overflow-y: auto;
+    height: 10rem;
+    width: 26.6666666666rem;
+}
+
+.select-item a:hover > p {
+    background-color: #e5e5e5;
+}
+
+.select-item p {
+    padding-left: 1.0833333333rem;
+    height: 3.3333333333rem;
+    line-height: 3.3333333333rem;
+}
+.select-item p>img {
+    margin: -0.2rem 0.8333333333rem;
+    width:2.5rem;
+}
+
+.item-box{
+    height: 8.3333333333rem;
+    margin: 0.8333333333rem 0 0.8333333333rem 0.8333333333rem;
+}
+.item-box>img {
+    float: left;
+    width: 8.3333333333rem;
+    height: 8.3333333333rem;
+    margin-right: 0.83333333333rem;
+}
+.item-text-president,
+.item-text-hot {
+    width:16.6666666666rem ;
+    float: left;
+}
+.item-text-president  p:nth-child(1),
+.item-text-hot p:nth-child(1)
+{
+    font-size: 1.25rem;
+    margin-bottom: 0.8333333333rem;
+    color: #666666;
+}
+.item-text-president p:nth-child(2),
+.item-text-hot p:nth-child(2)
+{
+    font-size: 1.0833333333rem;
+    margin-bottom: 0.6666666666rem;
+    color: #999999;
+}
+.item-text-president div:nth-child(3)
+{
+    width:100%;
+    margin-bottom: 1.5rem;
+}
+.item-text-hot div:nth-child(3){
+    width:100%;
+    margin-bottom: 0.33333333333rem;
+}
+.item-text-president div:nth-child(3) img,
+.item-text-hot div:nth-child(3) img
+{
+    margin-right: 0.83333333333rem;
+}
+
+.hot{
+    width:1.16666666666rem;
+    height:1.16666666666rem;
+}
+.president{
+    width:2.5rem;
+    height:1.16666666666rem;
+}
+.buy—it-now{
+    width:3rem;
+    height: 1rem;
+}
+.item-text-president div:nth-child(4){
+    color:#ff517a;
+    float: left;
+}
+.item-text-hot div:nth-child(4){
+    color:#ff517a;
+    margin-bottom: 0.333333333rem;
+}
+.item-text-hot div:nth-child(4) span:nth-child(2){
+    font-size: 1.66666666rem;
+}
+.item-text-hot div:nth-child(4) span:nth-child(3){
+    font-size: 1.166666666rem;
+}
+.item-text-president div:nth-child(4) span:nth-child(2){
+    font-size: 1.66666666rem;
+}
+.item-text-president div:nth-child(5){
+    height:1.66666666rem;
+    line-height: 1.66666666rem;
+    color:#999;
+    float: right;
+    margin-right: 0.833333333rem;
+}
+.item-text-hot div:nth-child(5){
+    color: #999999;
+    float: left;
+}
+.item-text-hot div:nth-child(6){
+    color: #999999;
+    float: right;
+    margin-right: 0.833333333rem;
+}
+.shadow{
+    z-index:1;
+    position: absolute;
+    background-color: rgba(0,0,0,.7);
+    width: 100%;
+    height:100%;
+
+}
+.left-box{
+    float: left;
+    /*width: 12rem;*/
+    height: 23.125rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.left-box>.Selected{
+    border-left: solid 0.16666666666rem #ffb070;
+    background-color:#fff;
+}
+.left-box>.not-Selected{
+    background-color:#f2f2f2;
+    border-left: solid 0.16666666666rem #f2f2f2;
+}
+.left-box>div{
+    width: 8.75rem;
+    height:4.5833333333rem;
+    text-align: center;
+    line-height: 4.5833333333rem;
+    color: #666;
+}
+.right-box{
+    float: left;
+    width: 16.083333333333rem;
+    margin-right: 0.8333333333rem;
+}
+.right-box>div:nth-child(2n-1){
+    color: #666;
+    font-size: 1rem;
+    width: 16.083333333333rem;
+    height:4.5833333333rem;
+    text-align: center;
+    line-height: 4.5833333333rem;
+}
+/*.item-text  div{*/
+    /*float: right;*/
+    /*margin-right:1.2rem;*/
+    /*width: 2.1666666666rem;*/
+    /*height: 1.25rem;*/
+    /*line-height: 1.25rem;*/
+    /*text-align: center;*/
+    /*color: #FFFFFF;*/
+    /*background-color: #ffcb88;*/
+    /*font-size: 0.8333333333rem;*/
+    /*border-radius: 4px;*/
+/*}*/
+/*.item-text  div span{*/
+    /*position: relative;*/
+    /*top: 0.05rem;*/
+/*}*/
+/*.item-text ~ div{*/
+    /*position: absolute;*/
+    /*float: right;*/
+    /*width:5rem;*/
+    /*height: 2.3333333333rem;*/
+    /*background-color: #ff517a;*/
+    /*border-radius:4px;*/
+    /*line-height: 2.3333333333rem;*/
+    /*color: #fff;*/
+    /*margin:3.8333333333rem  0.8333333333rem 0 0 ;*/
+    /*text-align: center;*/
+    /*left: 20.8333333333rem;*/
+/*}*/
+
+
+.position—box{
+    background-color: #fff;
+    width:100%;
+    margin:0 0 0.666666666666rem 0;
+}
+.position—box .position—city{
+    line-height: 3.33333333333rem;
+    height: 3.33333333333rem;
+}
+.position—box .position—city span{
+    margin-left: 0.8333333333rem;
+    color: #ff517a;
+}
+.line-1px-e5e5e5{
+    background-color: #e5e5e5;
+    width:100%;
+    height:1px;
+    clear: both;
+}
+.front-color-999{
+    color: #999;
+}
+.front-color-666{
+     font-size: 1.0833333333rem;
+     color: #666;
+ }
+.box-title-mar{
+    margin: 0.66666666666666rem 0 0.66666666666666rem 0.66666666666666rem;
+}
+.select-title{
+    line-height: 1rem;
+    margin: 0 0 0.66666666666666rem 0;
+}
+/*没有数字的单选框样式*/
+.radio-select-money{
+    -webkit-border-radius: 0.83333333333rem;
+    -moz-border-radius: 0.83333333333rem;
+    border-radius: 0.83333333333rem;
+    margin-right: 1.6rem;
+    float: left;
+    width: 4.91666666666rem;
+    height: 3.25rem;
+    background: #FFFFFF;
+    margin-bottom:0.8333333333rem;
+    position: relative;
+}
+.radio-select-money label {
+    -webkit-border-radius: 0.83333333333rem;
+    -moz-border-radius: 0.83333333333rem;
+    border-radius: 0.83333333333rem;
+    display: block;
+    width: 4.91666666666rem;
+    text-align: center;
+    height: 3.25rem;
+    line-height:3.25rem;
+    cursor: pointer;
+    position: absolute;
+    top: 0; /*记录一下因为在radio下有一个边框为2px的div所以上定位radio距离top和left的时候要加上这2px*/
+    left: 0;
+    z-index: 1;
+}
+.radio-select-money input{
+    color:#999;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0.08333333333rem 0 0  0.08333333333rem;;
+    width: 100%;
+    height: 100%;
+}
+.radio-select-money input:nth-last-child(1){
+    color: #666;
+    position: absolute;
+    width: 100%;
+    height:100%;
+    line-height: 1rem;
+    z-index: 2;
+    top:0;
+}
+.radio-select-money input[type="radio"]{
+    visibility: hidden;
+}
+.radio-select-money .radio-box-style{
+    -webkit-border-radius: 0.83333333333rem;
+    -moz-border-radius: 0.83333333333rem;
+    border-radius: 0.83333333333rem;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    border:0.08333333333rem solid #cccccc;
+}
+/*没有数字的单选框样式-end*/
+.back-f2f2f2{
+    float: left;
+    background-color: #f2f2f2;
+}
+.default{
+    background-color: #e5e5e5;
+}
