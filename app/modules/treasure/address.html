@@ -1,0 +1,41 @@
+<div class="app-grey-background-container container">
+
+    <div class="row">
+        <div class="app-bootstrap-grey-bold-hr" style="background-color: #ECECEC">
+        </div>
+    </div>
+
+
+    <div class="app-white-input row app-margin-top-two-px">
+        <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">姓名</label>
+        <input type="text" ng-model="location.name" class="col app-white-input-text" disabled="disabled" style="background-color: white"
+               placeholder="姓名"
+               required>
+    </div>
+
+    <hr class="app-bootstrap-hr">
+
+    <div class="app-white-input row app-margin-top-two-px">
+        <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">手机号</label>
+        <input type="text" ng-model="location.telphone" class="col app-white-input-text"  disabled="disabled" style="background-color: white"
+               placeholder="收货地址"
+               required>
+    </div>
+    <hr class="app-bootstrap-hr">
+    <div class="app-white-input row app-margin-top-two-px">
+        <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">收货地址</label>
+        <input type="text" ng-model="location.address" class="col app-white-input-text"
+               placeholder="如:杭州市西湖区文三路336号"
+               required>
+    </div>
+
+    <div style="position: fixed;bottom: 0;width: 100%;background-color: #fff;border-top: 1px solid #eee" class="row">
+        <div class="col-xs-12">
+            <div class="app-pink-radius-button app-padding-one text-center" ng-click="saveLocation()"
+                 style="margin-bottom: 1rem;">
+                保存地址
+            </div>
+        </div>
+    </div>
+
+</div>

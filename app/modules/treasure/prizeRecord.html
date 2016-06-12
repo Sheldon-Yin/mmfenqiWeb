@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="app-bootstrap-grey-bold-hr">
+        </div>
+    </div>
+
+    <div class="row" ng-click="goToDetail(x)" ng-repeat="x in prizeRecordList" style="border-bottom: 1px solid #ECECEC">
+
+        <div class="col-xs-4 app-padding-one">
+            <img src="modules/treasure/img/loading.png" ng-src="{{x.stagingPic}}" style="height: 8rem;width: 8rem">
+        </div>
+
+        <div class="col-xs-8 app-padding-one">
+
+            <div style="height: 4rem;font-size: 1.4rem;line-height: 2rem">
+                （{{x.staging}}期）{{x.stagingTitle}}
+            </div>
+
+            <div style="height: 2rem;line-height: 2rem;font-size: 1.2rem;" class="app-grey-text">
+            </div>
+
+            <div style="height: 2rem;line-height: 2rem;font-size: 1.2rem" class="app-grey-text">
+                <div class="col-xs-8" style="padding: 0">
+                    中奖号码：<span class="app-blue-text">{{x.luckyNumber}}</span>
+                </div>
+                <div class="col-xs-4" style="padding: 0" ng-if="!x.showAward" ng-click="goToShare(x.id)">
+                    <div class="app-pink-radius-button text-center" style="margin-top: 0">
+                        晒图
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="col-xs-12 text-center" ng-if="!prizeRecordList">
+    <img src="modules/treasure/img/not.png" style="width: 20%;margin-top: 2rem">
+    <div style="font-size: 1.4rem;margin-top: 2rem">暂无记录~赶紧夺宝吧！</div>
+</div>

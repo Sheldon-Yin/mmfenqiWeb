@@ -41,13 +41,12 @@
                             <div class="line line-dashed b-b line-lg pull-in"></div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">学校</label>
+
                                 <div class="col-sm-9">
-                                    <select class="form-control" ng-model="customer.school" required>
-                                        <option value=""></option>
-                                        <option ng-repeat="x in schoolKinds" value="{{x.school_name}}">{{x.school_name}}
-                                        </option>
-                                    </select>
+                                    <input type="text" class="form-control" placeholder="学校"
+                                           ng-model="customer.school" required>
                                 </div>
+
                             </div>
                             <div class="line line-dashed b-b line-lg pull-in"></div>
                             <div class="form-group">

@@ -12,7 +12,7 @@ define(function (require, exports, module) {
 
                 WeChatTitle('宝物详情');
                 $scope.isDialogShow = false;
-                $scope.buyNumber = 1;
+                $scope.buyNumber = 0;
 
                 $scope.initTreasureDetail = function () {
                     $scope.treasureDetailReq = Treasure.treasureDetail().query({
@@ -40,13 +40,17 @@ define(function (require, exports, module) {
                                 }
 
                                 if (x>$scope.treasureDetail.lastVisitors){
-                                    $scope.buyNumber = lastVisitors;
+                                    $scope.buyNumber = $scope.treasureDetail.lastVisitors;
                                 }else {
                                     $scope.buyNumber = x
                                 }
                             };
 
                             $scope.goToBuy = function () {
+                                if ($scope.buyNumber < 1){
+                                    Toast('至少购买一人份的夺宝机会');
+                                    return
+                                }
                                 window.location.href = ('/duobao/toPay?id='+$location.search().id+'&amount='+$scope.buyNumber+'&buyType=1'+'&count='+$scope.buyNumber)
                             };
 

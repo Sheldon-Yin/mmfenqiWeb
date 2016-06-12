@@ -143,3 +143,20 @@ img {
     color: #d2d2d2;
     font-weight: bold;
 }
+
+.treasure-bar-people{
+    transition: .5s ease;
+    width: 30%;left: 35%;
+}
+.treasure-bar-new{
+    transition: .5s ease;
+    width: 30%;left: 135%;
+}
+.treasure-bar-process{
+    transition: .5s ease;
+    width: 30%;left: 235%;
+}
+.treasure-bar-need{
+    transition: .5s ease;
+    width: 60%;left: 320%;
+}

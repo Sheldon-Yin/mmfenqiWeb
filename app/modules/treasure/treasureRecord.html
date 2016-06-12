@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="app-bootstrap-grey-bold-hr">
+        </div>
+    </div>
+
+    <div class="row" ng-click="goToDetail(x)" ng-repeat="x in treasureRecordList" style="border-bottom: 1px solid #ECECEC">
+
+        <div class="col-xs-4 app-padding-one">
+            <img src="modules/treasure/img/loading.png" ng-src="{{x.sweepStakesPic}}" style="height: 8rem;width: 8rem">
+        </div>
+
+        <div class="col-xs-8 app-padding-one">
+
+            <div style="height: 4rem;font-size: 1.4rem;line-height: 2rem;">
+                <img src="modules/treasure/img/end.png" style="height: 1.6rem" ng-if="x.statusMsg == '已结束'">
+                <img src="modules/treasure/img/doing.png" style="height: 1.6rem" ng-if="x.statusMsg == '进行中'">
+                <img src="modules/treasure/img/coming.png" style="height: 1.6rem" ng-if="x.statusMsg == '即将揭晓'">
+                （{{x.staging}}期）{{x.sweepStakesTitile}}
+            </div>
+
+            <div style="height: 2rem;line-height: 2rem;font-size: 1.2rem;" class="app-grey-text">
+                总需：{{x.validVisitors}}人次
+            </div>
+
+            <div style="height: 2rem;line-height: 2rem;font-size: 1.2rem" class="app-grey-text">
+                本期参与：<span class="app-blue-text">{{x.count}}</span>人次
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="col-xs-12 text-center" ng-if="!treasureRecordList">
+    <img src="modules/treasure/img/not.png" style="width: 20%;margin-top: 2rem">
+    <div style="font-size: 1.4rem;margin-top: 2rem">暂无记录~赶紧夺宝吧！</div>
+</div>

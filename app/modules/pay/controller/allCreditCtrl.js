@@ -102,9 +102,11 @@ define(function (require, exports, module) {
                             }, 1000);
                         } else {
                             Toast(res.msg, 3000);
+                            $scope.verifyCodeState = false;
                         }
                     }).catch(function (error) {
                         Toast('服务器暂时没有响应', 3000);
+                        $scope.verifyCodeState = false;
                     })
 
                 };

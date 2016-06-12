@@ -1,0 +1,116 @@
+<div class="container" style="padding-bottom: 4.8rem;">
+
+    <div style="position: fixed;right: 1.2rem;bottom: 5.8rem;z-index: 999">
+        <div>
+            <img src="modules/treasure/img/back-to-top.png" style="width: 2.5rem" ng-click="backTop()">
+        </div>
+    </div>
+
+    <div class="row">
+        <img ng-src="{{banner[0].img}}" ng-click="goToLinks(banner[0].href)">
+    </div>
+
+    <div id="treasure-title" style="color: #333;">
+        <div class="row text-center app-padding-one">
+
+            <!--<div class="col-xs-3">-->
+                <!--<div>-->
+                    <!--<img src="modules/treasure/img/index/kind.png" style="width: 3rem;margin-bottom: .5rem">-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--分类-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <div class="col-xs-4" ng-click="jumpTo('http://www.mmfenqi.com/duobao/help','夺宝秘籍')">
+                <div>
+                    <img src="modules/treasure/img/index/book.png" style="width: 3rem;margin-bottom: .5rem">
+                </div>
+                <div>
+                    夺宝秘籍
+                </div>
+            </div>
+
+            <div class="col-xs-4" ng-click="jumpToShare()">
+                <div>
+                    <img src="modules/treasure/img/index/share.png" style="width: 3rem;margin-bottom: .5rem">
+                </div>
+                <div>
+                    晒单
+                </div>
+            </div>
+
+            <div class="col-xs-4" ng-click="jumpToInvite()">
+                <div>
+                    <img src="modules/treasure/img/index/star.png" style="width: 3rem;margin-bottom: .5rem">
+                </div>
+                <div>
+                    邀请好友
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row app-padding-one text-center"
+             style="border-top: 1px solid #eee;border-bottom: 1px solid #eee;font-size: 1.15rem">
+
+            <div class="col-xs-3" ng-click="changeTreasureStatus(1)">
+                <div>
+                    人气
+                </div>
+                <div ng-class="{'1':'treasure-bar-people','2':'treasure-bar-new','3':'treasure-bar-process','4':'treasure-bar-need'}[treasureStatus]"
+                     style="position:absolute;padding: 0;border-bottom: .2rem solid #fb1787;text-align: center;margin-top: .3rem"></div>
+                <!--<div ng-if="treasureStatus==1"-->
+                     <!--style="position:absolute;width: 30%;left: 35%;padding: 0;border-bottom: .2rem solid #fb1787;text-align: center;margin-top: .3rem"></div>-->
+            </div>
+
+            <div class="col-xs-3" ng-click="changeTreasureStatus(2)">
+                最新
+                <!--<div ng-if="treasureStatus==2"-->
+                     <!--style="position:absolute;width: 30%;left: 35%;padding: 0;border-bottom: .2rem solid #fb1787;text-align: center;margin-top: .3rem"></div>-->
+            </div>
+
+            <div class="col-xs-3" ng-click="changeTreasureStatus(3)">
+                进度
+                <!--<div ng-if="treasureStatus==3"-->
+                     <!--style="position:absolute;width: 30%;left: 35%;padding: 0;border-bottom: .2rem solid #fb1787;text-align: center;margin-top: .3rem"></div>-->
+            </div>
+
+            <div class="col-xs-3" ng-click="changeTreasureStatus(4)">
+                总需人次
+                <!--<div ng-if="treasureStatus==4"-->
+                     <!--style="position:absolute;width: 60%;left: 20%;padding: 0;border-bottom: .2rem solid #fb1787;text-align: center;margin-top: .3rem"></div>-->
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row" id="content">
+
+        <div class="treasure-goods-block col-xs-6 app-padding-one text-center" ng-repeat="x in goods">
+            <img src="modules/treasure/img/loading.png" ng-src="{{x.sweepStakesPic}}" ng-click="goToDetail(x)"
+                 style="height: 12rem;width: auto;max-width: 100%;">
+            <div class="double-line text-left"
+                 style="line-height: 1.5rem;height: 3rem;margin-top: .5rem;font-size: 1.15rem">
+                {{x.sweepStakesTitile}}
+            </div>
+
+            <div class="row text-left" style="height: 2.8rem">
+                <div class="col-xs-7">
+                    进度<span>{{x.progress}}</span>
+                    <div class="treasure-progress-small">
+                        <span style="width: {{x.progress}}"></span>
+                    </div>
+                </div>
+                <div class="col-xs-5 text-center app-pink-text" style="padding: 0 .5rem;margin-top: .2rem"
+                     ng-click="goToDetail(x)">
+                    <div style="padding: .3rem 0;border-radius: 3px;border: 1px solid #FC1688;">
+                        立即参与
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

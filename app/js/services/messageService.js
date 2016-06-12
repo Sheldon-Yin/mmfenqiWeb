@@ -7,7 +7,7 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('MessageService', ['$resource',
             function ($resource) {
-                return $resource('/appinterface/user_getcode', {telephone:'@telephone'}, {
+                return $resource('/appinterface/user_getcode', {}, {
                     save: {
                         method: 'POST', params: {
                             smsFmtId: 'payCredit'

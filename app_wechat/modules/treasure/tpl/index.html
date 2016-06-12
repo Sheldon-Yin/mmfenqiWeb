@@ -57,26 +57,28 @@
                 <div>
                     人气
                 </div>
-                <div ng-if="treasureStatus==1"
-                     style="position:absolute;width: 30%;left: 35%;padding: 0;border-bottom: .2rem solid #fb1787;text-align: center;margin-top: .3rem"></div>
+                <div ng-class="{'1':'treasure-bar-people','2':'treasure-bar-new','3':'treasure-bar-process','4':'treasure-bar-need'}[treasureStatus]"
+                     style="position:absolute;padding: 0;border-bottom: .2rem solid #fb1787;text-align: center;margin-top: .3rem"></div>
+                <!--<div ng-if="treasureStatus==1"-->
+                <!--style="position:absolute;width: 30%;left: 35%;padding: 0;border-bottom: .2rem solid #fb1787;text-align: center;margin-top: .3rem"></div>-->
             </div>
 
             <div class="col-xs-3" ng-click="changeTreasureStatus(2)">
                 最新
-                <div ng-if="treasureStatus==2"
-                     style="position:absolute;width: 30%;left: 35%;padding: 0;border-bottom: .2rem solid #fb1787;text-align: center;margin-top: .3rem"></div>
+                <!--<div ng-if="treasureStatus==2"-->
+                <!--style="position:absolute;width: 30%;left: 35%;padding: 0;border-bottom: .2rem solid #fb1787;text-align: center;margin-top: .3rem"></div>-->
             </div>
 
             <div class="col-xs-3" ng-click="changeTreasureStatus(3)">
                 进度
-                <div ng-if="treasureStatus==3"
-                     style="position:absolute;width: 30%;left: 35%;padding: 0;border-bottom: .2rem solid #fb1787;text-align: center;margin-top: .3rem"></div>
+                <!--<div ng-if="treasureStatus==3"-->
+                <!--style="position:absolute;width: 30%;left: 35%;padding: 0;border-bottom: .2rem solid #fb1787;text-align: center;margin-top: .3rem"></div>-->
             </div>
 
             <div class="col-xs-3" ng-click="changeTreasureStatus(4)">
                 总需人次
-                <div ng-if="treasureStatus==4"
-                     style="position:absolute;width: 60%;left: 20%;padding: 0;border-bottom: .2rem solid #fb1787;text-align: center;margin-top: .3rem"></div>
+                <!--<div ng-if="treasureStatus==4"-->
+                <!--style="position:absolute;width: 60%;left: 20%;padding: 0;border-bottom: .2rem solid #fb1787;text-align: center;margin-top: .3rem"></div>-->
             </div>
 
         </div>

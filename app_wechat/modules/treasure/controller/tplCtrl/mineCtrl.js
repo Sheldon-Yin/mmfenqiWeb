@@ -43,12 +43,6 @@ define(function (require, exports, module) {
 
                 $scope.initMine();
 
-
-
-
-
-
-
             }])
     }
 });

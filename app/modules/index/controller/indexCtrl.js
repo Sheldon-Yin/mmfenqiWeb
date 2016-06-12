@@ -188,6 +188,12 @@ define(function (require, exports, module) {
                                     if (res.result != 0) {
                                         Toast(res.msg, 3000);
                                         $scope.loadError = true;
+                                    }else {
+                                        if (res.data.isCityOpen == false){
+                                            document.getElementById('notOpenTips').style.display = 'block';
+                                        }else if(res.data.isCityOpoen == true) {
+                                            document.getElementById('notOpenTips').style.display = 'none';
+                                        }
                                     }
                                 }).catch(function (error) {
                                     $scope.loadError = true;

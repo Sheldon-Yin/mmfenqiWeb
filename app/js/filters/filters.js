@@ -60,6 +60,21 @@ define(function (require, exports, module) {
               console.log(res);
               return res;
           }
-      })
+      });
+      app.filter('isRealName', function () {
+          return function (input) {
+              var res;
+              switch (input){
+                  case true:
+                      res = '已认证';
+                      break;
+                  case false:
+                      res = '未认证';
+                      break;
+              }
+              console.log(res);
+              return res;
+          }
+      });
   }
 });

@@ -184,6 +184,23 @@ td {
     line-height: 2.5rem
 }
 
+.app-white-input {
+    background-color: #FFFFFF;
+    padding: 1rem 1rem;
+    font-size: 1.4rem;
+}
+
+.app-white-input-text {
+    width: 70%;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+}
+
+.app-white-input-label{
+    width: 20%
+}
+
+
 .app-blue-text {
     color: #61C2FF;
 }
@@ -227,6 +244,11 @@ td {
     color: #FFFFFF;
     margin-top: 1rem;
     border-radius: 0.5rem;
+}
+
+.app-grey-background-container {
+    background-color: #ECECEC;
+    min-height: 100%;
 }
 
 /*swpier slide配置*/
