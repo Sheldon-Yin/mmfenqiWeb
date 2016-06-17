@@ -11,7 +11,7 @@ define(function (require, exports, module) {
             function ($scope,Treasure,Bridge) {
 
                 Bridge.appToken(function (response) {
-                    $scope.appToken = encodeURI(response);
+                    $scope.appToken = encodeURIComponent(response);
                     $scope.initShareList = function () {
                         $scope.shareListReq = Treasure.myShareList().query({
                             appToken:$scope.appToken

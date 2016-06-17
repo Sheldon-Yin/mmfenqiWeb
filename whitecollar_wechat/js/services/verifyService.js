@@ -83,7 +83,7 @@ define(function (require, exports, module) {
                     queryVerifyStatus: function () {
                         return $resource('/appinterface/query_white_collar_credit', {}, {
                             query: {
-                                method: 'POST', params: {
+                                method: 'GET', params: {
 
                                 }
                             }
@@ -92,7 +92,7 @@ define(function (require, exports, module) {
                     zmVerifyUrl: function () {
                         return $resource('/appinterface/authZMXY', {}, {
                             query: {
-                                method: 'POST', params: {
+                                method: 'GET', params: {
 
                                 }
                             }

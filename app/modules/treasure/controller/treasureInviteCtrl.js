@@ -19,7 +19,7 @@ define(function (require, exports, module) {
                 };
 
                 Bridge.appToken(function (response) {
-                    $scope.appToken = encodeURI(response);
+                    $scope.appToken = encodeURIComponent(response);
                     $scope.getInviteCode = Treasure.inviteCode().query({
                         appToken: $scope.appToken
                     });

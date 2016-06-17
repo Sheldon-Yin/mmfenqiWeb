@@ -237,7 +237,7 @@ define(function (require, exports, module) {
                 };
 
                 $scope.jumpToRecommend = function () {
-                    //window.location.href = encodeURI($location.absUrl().split('#')[0] + '#/recommend'+'?cityName='+$scope.cityName);
+                    window.location.href = encodeURI($location.absUrl().split('#')[0] + '#/recommend'+'?cityName='+$scope.cityName);
                     if (myBridge) {
                         var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/recommend' + '?cityName=' + $scope.cityName);
                         myBridge.callHandler('sendMessageToApp', {

@@ -22,7 +22,7 @@ define(function (require, exports, module) {
                             type: 2, data: {
                                 'url': url,
                                 'leftNavItems': [1],
-                                'title': title,
+                                'title': title
                             }
                         }, cb);
                     },
@@ -52,20 +52,32 @@ define(function (require, exports, module) {
                             }
                         }, cb);
                     },
-                    uploadImgFromCamera: function (cb) {
+                    uploadImgFromCamera: function (cb,_size) {
                         myBridge.callHandler('sendMessageToApp', {
                             type: 12, data: {
                                 type: 1,
-                                size: 120
+                                size: _size? _size :120
                             }
                         }, cb)
                     },
-                    uploadImgFromAlbum: function (cb) {
+                    uploadImgFromAlbum: function (cb,_size) {
                         myBridge.callHandler('sendMessageToApp', {
                             type: 12, data: {
                                 type: 0,
-                                size: 720
+                                size: _size? _size :120
                             }
+                        }, cb)
+                    },
+                    uploadImgFromCameraOrAlbum: function(cb,_size){
+                        myBridge.callHandler('sendMessageToApp', {
+                            type: 14, data: {
+                                size: _size ? _size :120
+                            }
+                        }, cb)
+                    },
+                    getContacts: function (cb) {
+                        myBridge.callHandler('sendMessageToApp', {
+                            type: 13
                         }, cb)
                     }
                 }

@@ -1,0 +1,50 @@
+<div class="container app-grey-background-container">
+
+
+    <div class="row text-center" style="font-size: 1.3rem;padding-top: 1.7rem;padding-bottom: 1.3rem">
+        已发送验证码（免费）到号码
+    </div>
+    <div class="row text-center app-very-blue-text" style="font-size: 2.5rem;padding-bottom: 1.7rem;font-weight: bold;">
+        {{telephone}}
+    </div>
+
+    <form ng-submit="register()">
+        <div class="app-white-input row">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">验证码</label>
+            <input type="text" ng-model="verifyCode" class="app-white-input-text" placeholder="输入验证码" style="width: 50%" required>
+            <span class="app-white-input-label app-very-blue-text" style="font-size: 1.2rem" ng-click="getVerifyCode()">{{verifyText}}</span>
+        </div>
+
+        <div class="app-white-input row app-margin-top-two-px">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">登录密码</label>
+            <input type="password" ng-model="password" class="col app-white-input-text" placeholder="按设置登录密码" required>
+        </div>
+
+        <div class="app-white-input row app-margin-top-one">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">邀请码</label>
+            <input class="col app-white-input-text" ng-model="recommendedCode" type="text" placeholder="输入邀请码（可选填）">
+        </div>
+
+        <div class="app-margin-top-one" style="font-size: 1.2rem">
+            密码区分大小写，建议使用6位以上数字、字母组合
+        </div>
+
+        <label style="display: block;">
+            <div class="app-little-pink-radius-button app-padding-one text-center">
+                确认
+            </div>
+            <button type="submit" style="display: none"></button>
+        </label>
+
+        <div class="row text-center app-margin-top-one" ng-click="toggleCheck()"
+             style="font-size: 1.2rem;line-height: 2rem;">
+
+            <img ng-src="{{isCheckedImg}}" src="modules/login/img/checked.png"
+                 style="width: 1.3rem;margin-right: 0.5rem">
+
+            同意<span class="app-blue-text">《美眉分期用户协议》</span>
+
+        </div>
+    </form>
+
+</div>

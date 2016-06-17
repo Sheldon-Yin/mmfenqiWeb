@@ -242,8 +242,17 @@ td {
 .app-pink-radius-button {
     background-color: #FB1788;
     color: #FFFFFF;
-    margin-top: 1rem;
+    margin-top: 1.7rem;
     border-radius: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.app-little-pink-radius-button {
+    background-color: #F2AACF;
+    color: #FFFFFF;
+    margin-top: 1.7rem;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
 }
 
 .app-grey-background-container {

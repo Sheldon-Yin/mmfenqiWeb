@@ -11,7 +11,7 @@ define(function (require, exports, module) {
                 $scope.baseUrl = $location.absUrl().split('#')[0];
 
                 Bridge.appToken(function (response) {
-                    $scope.appToken = encodeURI(response);
+                    $scope.appToken = encodeURIComponent(response);
                     //Toast($scope.appToken)
                     $scope.initMine = function () {
                         $scope.userInfoReq = Treasure.userInfo().query({

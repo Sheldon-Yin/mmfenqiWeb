@@ -1,0 +1,334 @@
+<link rel="stylesheet" href="modules/verify/css/verify-student.css">
+
+<div class="verify-select-dialog-container" ng-if="selecting">
+    <div class="verify-select-dialog-background" ng-click="hideSelect()">
+    </div>
+    <div class="verify-select-dialog">
+        <div class="container" style="height: 10%">
+            <div class="row" style="height: 100%">
+                <div class="verify-select-dialog-title">
+                    {{selectTitle}}
+                </div>
+            </div>
+        </div>
+        <div class="container" style="overflow: scroll;height: 90%;">
+            <div class="row">
+                <div class="col-xs-12 verify-select-dialog-item"
+                     ng-repeat="x in selectItems" ng-click="selectCallBack(x[itemValue],x[itemName])">
+                    {{x[itemName]}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" ng-if="status==1">
+    <div class="row">
+        <img src="modules/verify/img/student/header.png" class="header-img"/>
+    </div>
+    <div class="row selector">
+        <div class="col-xs-6" ng-class="{0: 'selector-hightlight', 1: 'selector-normal'}[currentSelectorIndex]"
+             ng-click="onSelectorToggle()">
+            学信网
+        </div>
+        <div class="col-xs-6" ng-class="{1: 'selector-hightlight', 0: 'selector-normal'}[currentSelectorIndex]"
+             ng-click="onSelectorToggle()">
+            学生证
+        </div>
+        <div class="col-xs-offset-4 col-xs-4 selector-img">
+            <img src="modules/verify/img/student/selector.png" ng-click="onSelectorToggle()"/>
+        </div>
+    </div>
+    <div class="row selector-tips">
+        <span>请选择<span class="selector-tips-color">"学信网"</span>或<span class="selector-tips-color">"学生证"</span>其中一项即可进行基础认证</span>
+    </div>
+
+    <div class="row" ng-show="currentSelectorIndex == 0">
+        <div class="col-xs-12 cell">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="modules/verify/img/student/dormitory.png" class="cell-img"/>
+                    <span class="cell-title">寝室信息</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 cell">
+            <div class="row">
+                <div class="col-xs-3">寝室号</div>
+                <div class="col-xs-9">
+                    <input type="text" placeholder="例如:东区3号楼308" ng-model="$parent.dormitory">
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 cell">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="modules/verify/img/student/student.png" class="cell-img-1"/>
+                    <span class="cell-title">学信网</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 cell">
+            <div class="row">
+                <div class="col-xs-3">账号</div>
+                <div class="col-xs-9">
+                    <input type="text" placeholder="请输入你的学信网账号" ng-model="$parent.xuexinwangAccount">
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 cell">
+            <div class="row">
+                <div class="col-xs-3">密码</div>
+                <div class="col-xs-9">
+                    <input type="password" placeholder="请输入你的学信网密码" ng-model="$parent.xuexinwangPassword">
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 cell" style="height: 100px;line-height: 100px" ng-if="imgCode">
+            <div class="row">
+                <div class="col-xs-3">验证码</div>
+                <div class="col-xs-4">
+                    <input type="text" placeholder="请输入你的验证码" ng-model="$parent.$parent.imgVerifyCode">
+                </div>
+                <div class="col-xs-5">
+                    <img ng-src="data:image/png;charset=utf-8;base64,{{imgCode}}" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 text-center">
+            <input type="button" class="submit-btn" value="确定,下一步" ng-click="commitFirstStep()">
+        </div>
+    </div>
+
+    <div class="row" ng-show="currentSelectorIndex == 1">
+        <div class="col-xs-12 cell">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="modules/verify/img/student/hat.png" class="cell-img"/>
+                    <span class="cell-title">学校信息</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 cell">
+            <div class="row" ng-click="selectSchool()">
+                <div class="col-xs-3">学校校区</div>
+                <div class="col-xs-8 cell-detail">{{selectSchoolName}}</div>
+                <div class="col-xs-1">
+                    <img src="modules/verify/img/student/arrow.png" class="cell-arrow"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 cell">
+            <div class="row" ng-click="selectJoinYear()">
+                <div class="col-xs-3">入学年份</div>
+                <div class="col-xs-8 cell-detail">{{selectJoinYearValue}}</div>
+                <div class="col-xs-1">
+                    <img src="modules/verify/img/student/arrow.png" class="cell-arrow"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 cell">
+            <div class="row" ng-click="selectLeaveYear()">
+                <div class="col-xs-3">毕业年份</div>
+                <div class="col-xs-8 cell-detail">{{selectLeaveYearValue}}</div>
+                <div class="col-xs-1">
+                    <img src="modules/verify/img/student/arrow.png" class="cell-arrow"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 cell">
+            <div class="row" ng-click="selectEducation()">
+                <div class="col-xs-3">学历类型</div>
+                <div class="col-xs-8 cell-detail">{{selectEducationName}}</div>
+                <div class="col-xs-1">
+                    <img src="modules/verify/img/student/arrow.png" class="cell-arrow"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 cell" style="margin-top: 15px;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="modules/verify/img/student/dormitory.png" class="cell-img"/>
+                    <span class="cell-title">寝室信息</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 cell">
+            <div class="row">
+                <div class="col-xs-3">寝室号</div>
+                <div class="col-xs-9">
+                    <input type="text" placeholder="例如:东区3号楼308" ng-model="$parent.dormitory">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 cell" style="margin-top: 15px;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="modules/verify/img/student/sutdentCard.png" class="cell-img"/>
+                    <span class="cell-title">上传学生证</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 cell" style="height: 160px;">
+            <div class="col-xs-4">
+                <div class="row">
+                    <div class="col-xs-12" ng-click="uploadImgOne()">
+                        <img src="modules/verify/img/student/card0.png" height="75" style="margin-top: 15px;"
+                             id="imgOne">
+                    </div>
+                    <div class="col-xs-12">
+                        <input type="button" class="upload-btn" value="点击上传" ng-click="uploadImgOne()">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="row">
+                    <div class="col-xs-12" ng-click="uploadImgTwo()">
+                        <img src="modules/verify/img/student/card1.png" height="75" style="margin-top: 15px;"
+                             id="imgTwo">
+                    </div>
+                    <div class="col-xs-12">
+                        <input type="button" class="upload-btn" value="点击上传" ng-click="uploadImgTwo()">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="row">
+                    <div class="col-xs-12" ng-click="uploadImgThree()">
+                        <img src="modules/verify/img/student/card2.png" height="75" style="margin-top: 15px;"
+                             id="imgThree">
+                    </div>
+                    <div class="col-xs-12">
+                        <input type="button" class="upload-btn" value="点击上传" ng-click="uploadImgThree()">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <input type="button" class="submit-btn" value="确定,下一步" ng-click="commitFirstStep()">
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" ng-if="status == 2">
+    <div class="row">
+        <img src="modules/verify/img/student/header1.png" class="header-img"/>
+    </div>
+
+    <div class="row tips">
+        <span>若您长期不还款且无法联系到您时,美眉分期将通过以下方式间接与您获得联系</span>
+    </div>
+
+    <form ng-submit="commitSecondStep()">
+        <div class="row">
+            <div class="col-xs-12 cell">
+                <div class="row">
+                    <div class="col-xs-3">父/母姓名</div>
+                    <div class="col-xs-9">
+                        <input type="text" placeholder="请输入父/母真实姓名" ng-model="$parent.parentName">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 cell">
+                <div class="row">
+                    <div class="col-xs-3">手机号码</div>
+                    <div class="col-xs-9">
+                        <input type="text" placeholder="请输入父/母手机号码" ng-model="$parent.parentPhone">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 cell">
+                <div class="row" ng-click="secondChooseProvince()">
+                    <div class="col-xs-3">居住省份</div>
+                    <div class="col-xs-8 cell-detail">{{$parent.selectProvName}}</div>
+                    <div class="col-xs-1">
+                        <img src="modules/verify/img/student/arrow.png" class="cell-arrow"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 cell">
+                <div class="row" ng-click="secondChooseCity()">
+                    <div class="col-xs-3">居住城市</div>
+                    <div class="col-xs-8 cell-detail">{{$parent.selectCityName}}</div>
+                    <div class="col-xs-1">
+                        <img src="modules/verify/img/student/arrow.png" class="cell-arrow"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 cell">
+                <div class="row">
+                    <div class="col-xs-3">详细地址</div>
+                    <div class="col-xs-9">
+                        <input type="text" class="input-address" placeholder="如(文三路478号 B403 杭州优贝网络科技有限公司)"
+                               ng-model="$parent.address">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 cell" style="margin-top: 15px;">
+                <div class="row">
+                    <div class="col-xs-3">同学姓名</div>
+                    <div class="col-xs-9">
+                        <input type="text" placeholder="请输入同学姓名" ng-model="$parent.schoolmateName">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 cell">
+                <div class="row">
+                    <div class="col-xs-3">手机号码</div>
+                    <div class="col-xs-9">
+                        <input type="text" placeholder="请输入同学手机号码" ng-model="$parent.schoolmatePhone">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <input type="submit" class="submit-btn" value="确定,下一步">
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container-fluid" ng-if="status==3">
+    <div class="row">
+        <img src="modules/verify/img/student/header2.png" class="header-img"/>
+    </div>
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-xs-12 cell">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="modules/verify/img/student/idcard.png" class="cell-img"/>
+                    <span class="cell-title">上传学生证正反面(清晰可见)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <hr class="app-bootstrap-hr">
+            <div class="row app-padding-one" style="background-color: white">
+                <div class="col-xs-6">
+                    <img src="modules/verify/img/student/front.png" id="frontIdentityPic" width="100%"
+                         ng-click="onUploadFront()"/>
+                </div>
+                <div class="col-xs-6">
+                    <img src="modules/verify/img/student/front.png" id="backIdentityPic" width="100%"
+                         ng-click="onUploadBackend()"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <input type="button" class="submit-btn" value="确定" ng-click="submitThirdInfo()">
+        </div>
+    </div>
+</div>

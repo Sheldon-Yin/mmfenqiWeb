@@ -1,0 +1,185 @@
+body {
+    background-color: rgb(235, 236, 237);
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+}
+
+.header-img {
+    width: 100%;
+    height: auto;
+}
+
+.selector {
+    margin-top: 15px;
+}
+
+.selector-img {
+    height: 66px;
+    margin-top: -63px;
+}
+
+.selector-img > img {
+    height: 66px;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.selector-normal, .selector-hightlight {
+    background-color: white;
+    color: black;
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 60px;
+}
+
+.selector-hightlight {
+    background-color: rgb(88, 172, 186);
+    color: white;
+}
+
+.selector-tips {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 0.8em;
+    padding-left: 5px;
+}
+
+.selector-tips-color {
+    color: rgb(68, 155, 238);
+}
+
+.cell {
+    height: 50px;
+    line-height: 50px;
+    background-color: white;
+    margin-top: 2px;
+    vertical-align: middle;
+}
+
+.cell-img {
+    width: auto;
+    height: 20px;
+}
+
+.cell-img-1 {
+    width: auto;
+    height: 25px;
+    margin-right: 12px;
+}
+
+.cell-arrow {
+    width: 7px;
+}
+
+.cell-detail {
+    text-align: right;
+}
+
+.cell-title {
+    color: #646464;
+    padding-left: 2px;
+}
+
+input {
+    border: 0px solid transparent;
+    line-height: 35px;
+    width: 100%;
+}
+
+.submit-btn {
+    margin-bottom: 15px;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+    width: 95%;
+    height: 45px;
+    line-height: 40px;
+    vertical-align: middle;
+    background-color: rgb(230, 66, 129);
+    border-radius: 5px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.cell-big {
+    height: 160px;
+    line-height: 160px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.upload-btn {
+    font-size: 0.8em;
+    vertical-align: middle;
+    line-height: 35px;
+    height: 35px;
+    color: white;
+    background-color: rgb(68, 155, 238);
+    width: 85%;
+    margin-top: 15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.verify-select-dialog-container {
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+
+    z-index: 99;
+}
+
+.verify-select-dialog-background {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index:10;
+}
+
+.verify-select-dialog {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 80%;
+    height: auto;
+    background-color: #eee;
+    border-radius: 1%;
+    z-index: 100;
+}
+
+.verify-select-dialog-title {
+    text-align: center;
+    height: 100%;
+    padding: 1rem;
+    font-size: 1.4rem;
+    border-bottom: 1px solid #999;
+    line-height: 100%;
+}
+
+.verify-select-dialog-item {
+    border-bottom: 1px solid #ccc;
+    padding: 1rem;
+    text-align: center;
+}
+
+.verify-select-dialog-item:hover {
+    background-color: #bbb;
+    color: white;
+}

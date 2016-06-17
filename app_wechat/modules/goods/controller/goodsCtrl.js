@@ -53,7 +53,7 @@ define(function (require, exports, module) {
                     $scope.goToOrder = function () {
                         if (myBridge) {
                             myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
-                                $scope.appToken = encodeURI(response);
+                                $scope.appToken = encodeURIComponent(response);
 
                                 $scope.isRealName = IsRealName.get({
                                     appToken: $scope.appToken

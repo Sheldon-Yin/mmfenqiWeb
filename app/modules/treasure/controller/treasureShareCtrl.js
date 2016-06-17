@@ -13,11 +13,6 @@ define(function (require, exports, module) {
                 $scope.imgList = [];
                 $scope.imgListLength = $scope.imgList.length;
 
-                //$scope.goToShare = function () {
-                //
-                //
-                //
-                //};
 
                 $scope.baseUrl = $location.absUrl().split('#')[0];
 
@@ -54,8 +49,8 @@ define(function (require, exports, module) {
                                 transformRequest: angular.identity
                             })
                             .success(function (res) {
+                                $scope.loading = false;
                                 if (res.result == 0) {
-                                    $scope.loading = false;
                                     Toast('上传成功');
                                     setTimeout(function () {
                                         Bridge.jumpRootTo($scope.baseUrl + '#/treasure', '一元夺宝')
@@ -81,7 +76,7 @@ define(function (require, exports, module) {
 
                 Bridge.appToken(function (response) {
 
-                    $scope.appToken = encodeURI(response);
+                    $scope.appToken = encodeURIComponent(response);
 
                     $scope.addImg = function () {
                         Bridge.uploadImgFromCamera(function (response) {

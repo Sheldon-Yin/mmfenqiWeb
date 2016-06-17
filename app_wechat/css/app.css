@@ -229,15 +229,40 @@ td {
 .app-pink-radius-button {
     background-color: #FB1788;
     color: #FFFFFF;
-    margin-top: 1rem;
+    margin-top: 1.7rem;
     border-radius: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+}
+
+.app-little-pink-radius-button {
+    background-color: #F2AACF;
+    color: #FFFFFF;
+    margin-top: 1.7rem;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
 }
 
 .app-grey-background-container {
     background-color: #ECECEC;
     min-height: 100%;
 }
+
+.app-white-input {
+    background-color: #FFFFFF;
+    padding: 1rem 1rem;
+    font-size: 1.4rem;
+}
+
+.app-white-input-text {
+    width: 70%;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+}
+
+.app-white-input-label{
+    width: 20%
+}
+
 
 /*swpier slide配置*/
 

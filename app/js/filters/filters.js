@@ -76,5 +76,27 @@ define(function (require, exports, module) {
               return res;
           }
       });
+      app.filter('verifyStatus', function () {
+          return function (input) {
+              var res;
+              switch (input){
+                  case "0":
+                      res = '立即提额';
+                      break;
+                  case "1":
+                      res = '已通过';
+                      break;
+                  case "2":
+                      res = '重新提额';
+                      break;
+                  case "3":
+                      res = '审核中';
+                      break;
+                  default:
+                      res = '立即提额';
+              }
+              return res;
+          }
+      })
   }
 });

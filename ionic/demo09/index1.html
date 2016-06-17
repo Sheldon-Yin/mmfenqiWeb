@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width,height=device-height">
+    <script src="http://www.runoob.com/static/ionic/js/ionic.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.runoob.com/static/ionic/css/ionic.min.css">
+
+</head>
+<body ng-controller="firstCtrl">
+<ion-nav-bar class="bar-positive">
+    <ion-nav-back-button></ion-nav-back-button>
+</ion-nav-bar>
+<!---<div ui-view></div>-->
+<ion-nav-view></ion-nav-view>
+
+</body>
+<script type="text/javascript">
+
+    var app = angular.module("myApp", ["ionic"]);
+
+    app.config(function($stateProvider) {
+        $stateProvider
+            .state("map", {
+                templateUrl: "map.html"
+            })
+            .state("music", {
+                templateUrl: "music.html"
+            }) ;
+
+
+    }).controller('firstCtrl',function($scope,$state){
+
+        $state.go('map');
+
+    })
+
+</script>
+
+</html>

@@ -12,7 +12,7 @@ define(function (require, exports, module) {
                 if (myBridge) {
                     myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
-                            $scope.appToken = encodeURI(response);
+                            $scope.appToken = encodeURIComponent(response);
                             //Toast(response,3000);
                             $scope.bill = MyBillList.get({
                                 appToken: $scope.appToken

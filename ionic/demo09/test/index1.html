@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width,height=device-height">
+    <script src="../lib/js/ionic.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../lib/css/ionic.min.css">
+
+</head>
+<body ng-controller="firstCtrl">
+
+
+<a class="button" ui-sref="map">map</a>
+
+<a class="button" ui-sref="music">music</a>
+
+<a class="button" ui-sref="class">class</a>
+
+
+<!---<div ui-view></div>-->
+<ion-nav-view></ion-nav-view>
+
+<script type="text/ng-template" id="class.html">
+    Content of the template.classclassclass
+</script>
+
+</body>
+<script type="text/javascript">
+    var app = angular.module("myApp", ["ionic"]);
+
+    app.config(function($stateProvider) {
+        $stateProvider
+            .state("map", {
+                templateUrl: "map.html"
+            })
+            .state("music", {
+                templateUrl: "music.html"
+            }) .state("class", {
+                    templateUrl: "class.html"
+            });
+
+
+    }).controller('firstCtrl',function($scope,$state){
+
+        $state.go('music');
+
+    })
+
+
+
+</script>
+
+
+</html>

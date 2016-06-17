@@ -7,7 +7,7 @@ define(function (require, exports, module) {
   //console.log('init app...' + (new Date().getTime()));
 
   //Step3: add 'angular-lazyload' to your main module's list of dependencies
-  var app = angular.module('app', ['angular-lazyload', 'ngRoute','ngResource','ui.angularSku','me-lazyload']);
+  var app = angular.module('app', ['angular-lazyload', 'ngRoute','ngResource','ui.angularSku']);
   require('./route.js')(app);
   require('./filters/filters.js')(app);
   require('./directives/directives.js')(app);

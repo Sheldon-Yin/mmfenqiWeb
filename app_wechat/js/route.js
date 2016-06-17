@@ -6,8 +6,8 @@
 define(function (require, exports, module) {
     "use strict";
     module.exports = function (app) {
-        app.config(['$routeProvider','$httpProvider',
-            function ($routeProvider,$httpProvider) {
+        app.config(['$routeProvider', '$httpProvider',
+            function ($routeProvider, $httpProvider) {
 
                 //$locationProvider.hashPrefix('?#');
 
@@ -18,6 +18,58 @@ define(function (require, exports, module) {
                     controller: 'PhoneListCtrl',
                     controllerUrl: './modules/demo/phone-controller.js'
                 }).
+
+                //login
+                when('/login/fast', {
+                    templateUrl: 'modules/login/loginFast.html',
+                    controller: 'LoginFastCtrl',
+                    controllerUrl: './modules/login/controller/loginFastCtrl.js'
+                }).when('/login/password', {
+                    templateUrl: 'modules/login/loginPassword.html',
+                    controller: 'LoginPasswordCtrl',
+                    controllerUrl: './modules/login/controller/loginPasswordCtrl.js'
+                }).when('/login/telephone', {
+                    templateUrl: 'modules/login/loginTelephone.html',
+                    controller: 'LoginTelephoneCtrl',
+                    controllerUrl: './modules/login/controller/loginTelephoneCtrl.js'
+                }).when('/login/reset', {
+                    templateUrl: 'modules/login/resetPassword.html',
+                    controller: 'ResetPasswordCtrl',
+                    controllerUrl: './modules/login/controller/resetPasswordCtrl.js'
+                }).when('/login/signUp', {
+                    templateUrl: 'modules/login/signUp.html',
+                    controller: 'SignUpCtrl',
+                    controllerUrl: './modules/login/controller/signUpCtrl.js'
+                }).
+
+                //实名认证提额
+                when('/verify/index', {
+                    templateUrl: 'modules/verify/index.html',
+                    controller: 'VerifyIndexCtrl',
+                    controllerUrl: './modules/verify/controller/verifyIndexCtrl.js'
+                }).when('/verify/bank', {
+                    templateUrl: 'modules/verify/bank-verify.html',
+                    controller: 'VerifyBankCtrl',
+                    controllerUrl: './modules/verify/controller/verifyBankCtrl.js'
+                }).when('/verify/real-name', {
+                    templateUrl: 'modules/verify/real-name.html',
+                    controller: 'VerifyRealNameCtrl',
+                    controllerUrl: './modules/verify/controller/verifyRealNameCtrl.js'
+                }).when('/verify/taobao', {
+                    templateUrl: 'modules/verify/taobao-verify.html',
+                    controller: 'VerifyTaobaoCtrl',
+                    controllerUrl: './modules/verify/controller/verifyTaobaoCtrl.js'
+                }).when('/verify/fast', {
+                    templateUrl: 'modules/verify/fast-verify.html',
+                    controller: 'VerifyFastCtrl',
+                    controllerUrl: './modules/verify/controller/verifyFastCtrl.js'
+                }).when('/verify/fast-student', {
+                    templateUrl: 'modules/verify/fast-verify-student.html',
+                    controller: 'VerifyFastStudentCtrl',
+                    controllerUrl: './modules/verify/controller/verifyFastStudentCtrl.js'
+                }).
+
+
 
                 //首页
                 when('/index', {
@@ -163,6 +215,12 @@ define(function (require, exports, module) {
                 when('/contact/loan', {
                     templateUrl: 'modules/static/loanContact.html'
                 }).
+                //芝麻信用回调
+                when('/zmxy/callback', {
+                    templateUrl: 'modules/static/zmVerifyCallback.html',
+                    controller: 'ZmVerifyCallbackCtrl',
+                    controllerUrl: './modules/static/controller/zmVerifyCallbackCtrl.js'
+                }).
                 //优惠券
                 when('/coupon', {
                     templateUrl: 'modules/coupon/coupon.html',
@@ -176,23 +234,19 @@ define(function (require, exports, module) {
                     templateUrl: 'modules/treasure/index.html',
                     controller: 'TreasureCtrl',
                     controllerUrl: './modules/treasure/controller/treasureCtrl.js'
-                }).
-                when('/treasure/detail', {
+                }).when('/treasure/detail', {
                     templateUrl: 'modules/treasure/detail.html',
                     controller: 'TreasureDetailCtrl',
                     controllerUrl: './modules/treasure/controller/treasureDetailCtrl.js'
-                }).
-                when('/treasure/location', {
+                }).when('/treasure/location', {
                     templateUrl: 'modules/treasure/location.html',
                     controller: 'TreasureLocationCtrl',
                     controllerUrl: './modules/treasure/controller/treasureLocationCtrl.js'
-                }).
-                when('/treasure/location/detail', {
+                }).when('/treasure/location/detail', {
                     templateUrl: 'modules/treasure/locationDetail.html',
                     controller: 'TreasureLocationDetailCtrl',
                     controllerUrl: './modules/treasure/controller/treasureLocationDetailCtrl.js'
-                }).
-                when('/treasure/recharge', {
+                }).when('/treasure/recharge', {
                     templateUrl: 'modules/treasure/recharge.html',
                     controller: 'TreasureRechargeCtrl',
                     controllerUrl: './modules/treasure/controller/treasureRechargeCtrl.js'
@@ -203,7 +257,6 @@ define(function (require, exports, module) {
                     redirectTo: '/treasure'
                 });
                 //$locationProvider.html5Mode(true);
-
 
 
                 // Use x-www-form-urlencoded Content-Type

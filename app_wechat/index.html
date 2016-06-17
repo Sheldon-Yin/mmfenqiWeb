@@ -28,6 +28,14 @@
 <body style="height: 100%">
 
 <div class="view-container" style="height: 100%">
+    <div style="width: 100%;position: fixed;height:100%;left: 0;z-index:999" ng-if="$root.loading">
+        <div style="top: 45%;position: absolute;width: 100%;left: 45%">
+            <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 10%">
+        </div>
+        <div style="top: 45%;position: absolute;width: 100%;left: 45%">
+            <img src="img/loading/loadingInner.png" style="width: 10%">
+        </div>
+    </div>
     <div ng-view class="view-frame" style="height: 100%"></div>
 </div>
 <script src="bower_components/seajs/dist/sea.js"></script>

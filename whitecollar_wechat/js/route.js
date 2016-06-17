@@ -40,7 +40,7 @@ define(function (require, exports, module) {
                     controllerUrl: './modules/login/controller/signUpCtrl.js'
                 }).
 
-                //实名认证
+                //实名认证提额
                 when('/verify/index', {
                     templateUrl: 'modules/verify/index.html',
                     controller: 'VerifyIndexCtrl',

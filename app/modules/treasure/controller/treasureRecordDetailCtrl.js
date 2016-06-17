@@ -16,7 +16,7 @@ define(function (require, exports, module) {
                 $scope.buyNumber = 0;
 
                 Bridge.appToken(function (response) {
-                    $scope.appToken = encodeURI(response);
+                    $scope.appToken = encodeURIComponent(response);
 
                     $scope.initTreasureDetail = function () {
                         $scope.treasureDetailReq = Treasure.recordDetail().query({

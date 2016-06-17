@@ -6,9 +6,8 @@
 define(function (require, exports, module) {
     "use strict";
     module.exports = function (app) {
-        app.config(['$routeProvider','$httpProvider',
-            function ($routeProvider,$httpProvider) {
-
+        app.config(['$routeProvider', '$httpProvider',
+            function ($routeProvider, $httpProvider) {
 
 
                 $routeProvider.
@@ -175,63 +174,78 @@ define(function (require, exports, module) {
                     templateUrl: 'modules/treasure/index.html',
                     controller: 'TreasureCtrl',
                     controllerUrl: './modules/treasure/controller/treasureCtrl.js'
-                }).
-                when('/treasure/detail', {
+                }).when('/treasure/detail', {
                     templateUrl: 'modules/treasure/detail.html',
                     controller: 'TreasureDetailCtrl',
                     controllerUrl: './modules/treasure/controller/treasureDetailCtrl.js'
-                }).
-                when('/treasure/record/detail', {
+                }).when('/treasure/record/detail', {
                     templateUrl: 'modules/treasure/recordDetail.html',
                     controller: 'TreasureRecordDetailCtrl',
                     controllerUrl: './modules/treasure/controller/treasureRecordDetailCtrl.js'
-                }).
-                when('/treasure/recharge', {
+                }).when('/treasure/recharge', {
                     templateUrl: 'modules/treasure/recharge.html',
                     controller: 'TreasureRechargeCtrl',
                     controllerUrl: './modules/treasure/controller/treasureRechargeCtrl.js'
-                }).
-                when('/treasure/my-share', {
+                }).when('/treasure/my-share', {
                     templateUrl: 'modules/treasure/myShare.html',
                     controller: 'TreasureMyShareCtrl',
                     controllerUrl: './modules/treasure/controller/treasureMyShareCtrl.js'
-                }).
-                when('/treasure/share', {
+                }).when('/treasure/share', {
                     templateUrl: 'modules/treasure/share.html',
                     controller: 'TreasureShareCtrl',
                     controllerUrl: './modules/treasure/controller/treasureShareCtrl.js'
-                }).
-                when('/treasure/share/list', {
+                }).when('/treasure/share/list', {
                     templateUrl: 'modules/treasure/shareList.html',
                     controller: 'TreasureShareListCtrl',
                     controllerUrl: './modules/treasure/controller/treasureShareListCtrl.js'
-                }).
-                when('/treasure/address', {
+                }).when('/treasure/address', {
                     templateUrl: 'modules/treasure/address.html',
                     controller: 'TreasureAddressCtrl',
                     controllerUrl: './modules/treasure/controller/treasureAddressCtrl.js'
-                }).
-                when('/treasure/prize-record', {
+                }).when('/treasure/prize-record', {
                     templateUrl: 'modules/treasure/prizeRecord.html',
                     controller: 'TreasurePrizeRecordCtrl',
                     controllerUrl: './modules/treasure/controller/treasurePrizeRecordCtrl.js'
-                }).
-                when('/treasure/treasure-record', {
+                }).when('/treasure/treasure-record', {
                     templateUrl: 'modules/treasure/treasureRecord.html',
                     controller: 'TreasureTreasureRecordCtrl',
                     controllerUrl: './modules/treasure/controller/treasureTreasureRecordCtrl.js'
-                }).
-                when('/treasure/invite', {
+                }).when('/treasure/invite', {
                     templateUrl: 'modules/treasure/invite.html',
                     controller: 'TreasureInviteCtrl',
                     controllerUrl: './modules/treasure/controller/treasureInviteCtrl.js'
-                }).
-                when('/treasure/pay-way', {
+                }).when('/treasure/pay-way', {
                     templateUrl: 'modules/treasure/payWay.html',
                     controller: 'TreasurePayWayCtrl',
                     controllerUrl: './modules/treasure/controller/treasurePayWayCtrl.js'
                 }).
-                    
+
+                //实名认证提额
+                when('/verify/index', {
+                    templateUrl: 'modules/verify/index.html',
+                    controller: 'VerifyIndexCtrl',
+                    controllerUrl: './modules/verify/controller/verifyIndexCtrl.js'
+                }).when('/verify/bank', {
+                    templateUrl: 'modules/verify/bank-verify.html',
+                    controller: 'VerifyBankCtrl',
+                    controllerUrl: './modules/verify/controller/verifyBankCtrl.js'
+                }).when('/verify/real-name', {
+                    templateUrl: 'modules/verify/real-name.html',
+                    controller: 'VerifyRealNameCtrl',
+                    controllerUrl: './modules/verify/controller/verifyRealNameCtrl.js'
+                }).when('/verify/taobao', {
+                    templateUrl: 'modules/verify/taobao-verify.html',
+                    controller: 'VerifyTaobaoCtrl',
+                    controllerUrl: './modules/verify/controller/verifyTaobaoCtrl.js'
+                }).when('/verify/fast', {
+                    templateUrl: 'modules/verify/fast-verify.html',
+                    controller: 'VerifyFastCtrl',
+                    controllerUrl: './modules/verify/controller/verifyFastCtrl.js'
+                }).when('/verify/fast-student', {
+                    templateUrl: 'modules/verify/fast-verify-student.html',
+                    controller: 'VerifyFastStudentCtrl',
+                    controllerUrl: './modules/verify/controller/verifyFastStudentCtrl.js'
+                }).
 
                 //默认首页
                 otherwise({
