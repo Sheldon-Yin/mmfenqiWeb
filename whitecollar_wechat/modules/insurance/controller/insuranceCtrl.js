@@ -11,7 +11,7 @@ define(function (require, exports, module) {
                 if (myBridge) {
                     myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
                         $scope.$apply(function () {
-                            $scope.appToken = encodeURIComponent(response);
+                            $scope.appToken = response;
                             $scope.orderId = $location.search().orderId;
                             $scope.insuranceDetail = InsuranceDetail.query({
                                 orderId: $scope.orderId,

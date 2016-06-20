@@ -7,8 +7,8 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/verifyService.js')(app);
         require('services/bridgeService.js')(app);
-        app.register.controller('VerifyFastStudentCtrl', ['$scope', 'Verify', '$location', 'Bridge','$http',
-            function ($scope, Verify, $location, Bridge,$http) {
+        app.register.controller('VerifyFastStudentCtrl', ['$scope', 'Verify', '$location', 'Bridge', '$http',
+            function ($scope, Verify, $location, Bridge, $http) {
 
                 $scope.currentSelectorIndex = 0;
 
@@ -20,10 +20,16 @@ define(function (require, exports, module) {
                 $scope.selectCityName = '选择';
                 $scope.selectProvName = '选择';
 
-
                 $scope.initBridge = function () {
                     Bridge.appToken(function (response) {
-                        $scope.appToken = encodeURIComponent(response);
+                        $scope.appToken = response;
+
+                        Bridge.getContacts(function (res) {
+                            Verify.uploadContacts().save({
+                                appToken: $scope.appToken,
+                                contactsBook: JSON.stringify(res)
+                            });
+                        });
 
                         $scope.initFastStatus = function () {
                             $scope.getFastStatus = Verify.resultForVerifyBaseInfoForStudent().query({
@@ -195,7 +201,7 @@ define(function (require, exports, module) {
                         fd.append('education', $scope.selectEducationValue);
                         fd.append('dormitory', $scope.dormitory);
                         fd.append('appToken', $scope.appToken);
-                        $http.post('/appinterface/school_credit', fd, {
+                        $http.post('/appinterface/school_credit_new', fd, {
                                 headers: {'Content-Type': undefined},
                                 transformRequest: angular.identity
                             })
@@ -227,7 +233,7 @@ define(function (require, exports, module) {
                 $scope.uploadImgOne = function () {
                     $scope.uploadImgForBridge('imgOne', 'imgOneMediaId')
                 };
-                
+
                 $scope.previewImgOne = function () {
                     $scope.showImg('imgOne');
                 };
@@ -243,13 +249,13 @@ define(function (require, exports, module) {
                 $scope.uploadImgThree = function () {
                     $scope.uploadImgForBridge('imgThree', 'imgThreeMediaId')
                 };
-                
+
                 $scope.previewImgThree = function () {
                     $scope.showImg('imgThree');
                 };
 
-                $scope.onSelectorToggle = function () {
-                    $scope.currentSelectorIndex = ($scope.currentSelectorIndex + 1) % 2;
+                $scope.onSelectorToggle = function (x) {
+                    $scope.currentSelectorIndex = x;
                 };
 
                 $scope.hideSelect = function () {
@@ -464,7 +470,6 @@ define(function (require, exports, module) {
                             $scope.$root.loading = false;
                             Toast(JSON.stringify(error))
                         });
-
                 };
 
             }

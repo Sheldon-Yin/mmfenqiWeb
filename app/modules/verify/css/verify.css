@@ -1,0 +1,211 @@
+.verify-index-background {
+    height: 100%;
+    background: -ms-linear-gradient(top, #ff8e57, #fb1788); /* IE 10 */
+    background: -moz-linear-gradient(top, #ff8e57, #fb1788); /*火狐*/
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff8e57), to(#fb1788)); /*谷歌*/
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff8e57), to(#fb1788)); /* Safari 4-5, Chrome 1-9*/
+    background: -webkit-linear-gradient(top, #ff8e57, #fb1788); /*Safari5.1 Chrome 10+*/
+    background: -o-linear-gradient(top, #ff8e57, #fb1788); /*Opera 11.10+*/
+    padding-top: 2rem;
+}
+
+.verify-index-title {
+
+    color: #fff;
+    font-size: 1.4rem;
+}
+
+.verify-index-money {
+    color: #fff;
+    font-size: 3rem;
+}
+
+.verify-index-modules-background {
+    background-color: #fff;
+    border-radius: 5px;
+    height: 22%;
+    margin: .7rem 2rem;
+}
+
+.verify-index-modules-img {
+    height: 70%;
+    top: 15%;
+    padding: 0 14px;
+    position: relative;
+}
+
+.verify-index-modules-img > img {
+    height: 100%;
+}
+
+.verify-index-modules-info {
+    height: 80%;
+    top: 10%;
+    position: relative;
+}
+
+.verify-index-modules-title {
+    color: #333;
+    padding-left: 1rem;
+    font-size: 1.3rem;
+}
+
+.verify-index-modules-pink-text {
+    color: #fb1788;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.verify-index-modules-get-cash {
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+    background-color: #fb1788;
+    border-radius: 5px;
+    width: 8rem;
+    padding: .3rem;
+    color: #fff;
+    text-align: center
+}
+
+.verify-index-modules-describe {
+    color: #666;
+}
+
+.verify-fast-title {
+    font-size: 1.4rem;
+    color: #333;
+    padding: 1rem;
+}
+
+.verify-fast-third-label {
+    width: 70%;
+}
+
+.verify-fast-third-check-area{
+    width: 30%;
+}
+
+.verify-fast-checked{
+    color: #333;
+}
+
+.verify-fast-checked>span{
+    width: 1.5rem;
+    height: 1.5rem;
+    padding-bottom: .25rem;
+    padding-left: 1.5rem;
+    background-image: url("../img/fast-third-checked.png");
+    background-size: 1.5rem 1.5rem;
+    background-repeat: no-repeat;
+}
+
+.verify-fast-checked>input{
+    opacity: 0;
+    width: 1px;
+}
+
+.verify-fast-unchecked{
+    color: #ccc;
+}
+
+.verify-fast-unchecked>span{
+    width: 1.5rem;
+    height: 1.5rem;
+    padding-bottom: .25rem;
+    padding-left: 1.5rem;
+    background-image: url("../img/fast-third-unchecked.png");
+    background-size: 1.5rem 1.5rem;
+    background-repeat: no-repeat;
+}
+
+.verify-fast-unchecked>input{
+    opacity: 0;
+    width: 1px;
+}
+
+.verify-fast-radio-checked>span{
+    border: #fb1787 solid 1px;
+    border-radius: 0.3rem;
+    -webkit-border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    color: #fb1787;
+    background: url("../img/fast-third-radio-checked.png") bottom right no-repeat;
+    background-size: 1rem 1rem;
+}
+
+.verify-fast-radio-checked>input{
+    opacity: 0;
+    width: 1px;
+}
+
+.verify-fast-radio-unchecked>span{
+    border: #cccccc solid 1px;
+    border-radius: 0.3rem;
+    -webkit-border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    color: #666666;
+}
+
+.verify-fast-radio-unchecked>input{
+    opacity: 0;
+    width: 1px;
+}
+
+.verify-color-little-pink{
+    background-color: #F2AACF;
+}
+
+.verify-color-yellow{
+    background-color: #FF8D13;
+}
+
+.verify-color-grey{
+    background-color: #ececec;
+}
+
+.verify-color-red{
+    background-color: #fb1787;
+}
+
+.selector {
+    margin-top: 15px;
+}
+
+
+.selector-img {
+    height: 66px;
+    margin-top: -63px;
+}
+
+.selector-img > img {
+    height: 66px;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.selector-normal, .selector-hightlight {
+    background-color: white;
+    color: black;
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 60px;
+}
+
+.selector-hightlight {
+    background-color: rgb(88, 172, 186);
+    color: white;
+}
+
+.selector-tips {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 0.8em;
+    padding-left: 5px;
+}
+
+.selector-tips-color {
+    color: rgb(68, 155, 238);
+}

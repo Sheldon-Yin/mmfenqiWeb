@@ -76,7 +76,7 @@ define(function (require, exports, module) {
 
                 Bridge.appToken(function (response) {
 
-                    $scope.appToken = encodeURIComponent(response);
+                    $scope.appToken = response;
 
                     $scope.addImg = function () {
                         Bridge.uploadImgFromCamera(function (response) {

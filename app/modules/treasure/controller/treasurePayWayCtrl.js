@@ -19,7 +19,7 @@ define(function (require, exports, module) {
                 };
 
                 Bridge.appToken(function (response) {
-                    $scope.appToken = encodeURIComponent(response);
+                    $scope.appToken = response;
 
                     $scope.getPayInfo = Treasure.toPay().save({
                         appToken: $scope.appToken,

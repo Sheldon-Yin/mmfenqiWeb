@@ -56,7 +56,7 @@ define(function (require, exports, module) {
                             };
 
                             $scope.goToPicDetail = function () {
-                                Bridge.jumpTo('http://pro.mmfenqi.com/duobao/toGoodsDetail/'+$scope.luckyGoodsId,'图文详情');
+                                Bridge.jumpTo('http://www.mmfenqi.com/duobao/toGoodsDetail/'+$scope.luckyGoodsId,'图文详情');
                             };
 
                             $scope.lastWinnerReq = Treasure.lastWinner().query({

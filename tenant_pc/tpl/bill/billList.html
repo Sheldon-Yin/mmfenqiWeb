@@ -27,7 +27,14 @@
     <div class="wrapper-md bg-light b-b">
         <div class="panel panel-default">
             <div class="panel-heading">
-                账单列表
+                <div class="row">
+                    <div class="col-xs-9">
+                        账单列表
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="/tenant/exportTenantOrderListExcel?channel=1">导出数据</a>
+                    </div>
+                </div>
             </div>
             <div class="panel-body b-b b-light">
                 <div class="col-xs-12 col-md-6">
@@ -61,6 +68,9 @@
                         订单金额
                     </th>
                     <th data-hide="phone,tablet">
+                        分期数
+                    </th>
+                    <th data-hide="phone,tablet">
                         实际收入（元）
                     </th>
                     <th data-hide="phone,tablet">
@@ -86,6 +96,7 @@
                     <td><a href>{{x.telphone}}</a></td>
                     <td>{{x.goodsName}}</td>
                     <td>{{x.orderPrice}}</td>
+                    <td>{{x.totalTimes}}</td>
                     <td>{{x.realAmount}}</td>
                     <td>{{x.orderSn}}</td>
                     <td>{{x | orderStatus}}</td>

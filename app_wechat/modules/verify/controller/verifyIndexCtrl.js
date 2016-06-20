@@ -43,6 +43,18 @@ define(function (require, exports, module) {
                             $scope.userType = res.data.userType;
                             $scope.realLoanMoney = res.data.realloanmoney;
                             $scope.availableMoney = res.data.availableMoney;
+
+                            if($scope.userType == 0){
+                                $scope.firstMoney = 8000;
+                                $scope.secondMoney = 15000;
+                                $scope.thirdMoney = 2000;
+                                $scope.forthMoney = 5000;
+                            }else if($scope.userType == 6){
+                                $scope.firstMoney = 20000;
+                                $scope.secondMoney = 20000;
+                                $scope.thirdMoney = 5000;
+                                $scope.forthMoney = 5000;
+                            }
                         } else if (res.result == 1013) {
                             window.location.href = './#/login/telephone';
                         } else {
@@ -76,7 +88,7 @@ define(function (require, exports, module) {
                 $scope.goToZmVerify = function (x) {
 
                     if ($scope.fastStatus != '1' && $scope.fastStatus != '3') {
-                        Toast('请先进行极速认证');
+                        Toast('请先进行基础认证');
                         return
                     }
 
@@ -135,7 +147,7 @@ define(function (require, exports, module) {
                 $scope.goToBankVerify = function (x) {
 
                     if ($scope.fastStatus != '1' && $scope.fastStatus != '3') {
-                        Toast('请先进行极速认证');
+                        Toast('请先进行基础认证');
                         return
                     }
 
@@ -152,7 +164,7 @@ define(function (require, exports, module) {
                 $scope.goToTaobaoVerify = function (x) {
 
                     if ($scope.fastStatus != '1' && $scope.fastStatus != '3') {
-                        Toast('请先进行极速认证');
+                        Toast('请先进行基础认证');
                         return
                     }
 

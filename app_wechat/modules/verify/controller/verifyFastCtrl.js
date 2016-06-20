@@ -131,11 +131,11 @@ define(function (require, exports, module) {
                             alert(res.errMsg);
                         });
                     } else {
-                        alert(res);
+                        //alert(res);
                     }
                 }).catch(function (error) {
                     $scope.$root.loading = false;
-                    alert(error)
+                    alert(JSON.stringify(error))
                 });
 
                 $scope.uploadFrontIdentityPic = function () {
@@ -157,6 +157,8 @@ define(function (require, exports, module) {
                                 fail: function (res) {
                                     alert(JSON.stringify(res));
                                 }
+
+
                             });
                         },
                         fail: function (res) {

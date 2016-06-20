@@ -7,6 +7,7 @@ app.controller('BillDetailCtrl', ['$scope', '$state', '$stateParams','QueryOrder
         console.log($stateParams.id);
 
         $scope.initOrderDetails = function () {
+
             $scope.orderDetail = QueryOrderDetail.query({
                 channel: 1,
                 orderSn: $stateParams.orderSn
@@ -23,6 +24,7 @@ app.controller('BillDetailCtrl', ['$scope', '$state', '$stateParams','QueryOrder
             }).catch(function (error) {
                     toaster.pop('error', '获取失败', error)
             })
+
         };
 
         $scope.initOrderDetails();

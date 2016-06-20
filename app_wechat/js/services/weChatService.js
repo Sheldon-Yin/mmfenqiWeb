@@ -19,6 +19,7 @@ define(function (require, exports, module) {
                     var body = document.getElementsByTagName('body')[0];
                     document.title = title;
                     var iframe = document.createElement("iframe");
+                    iframe.style.display = 'none';
                     iframe.setAttribute("src", "img/empty.png");
 
                     iframe.addEventListener('load', function() {

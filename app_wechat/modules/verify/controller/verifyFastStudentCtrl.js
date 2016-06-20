@@ -13,6 +13,8 @@ define(function (require, exports, module) {
 
                 $scope.currentSelectorIndex = 0;
 
+                $scope.targetUrl = $location.absUrl();
+
                 $scope.selectSchoolName = '选择';
                 $scope.selectJoinYearValue = '选择';
                 $scope.selectLeaveYearValue = '选择';
@@ -22,7 +24,6 @@ define(function (require, exports, module) {
                 $scope.selectProvName = '选择';
 
                 $scope.initWeChat = function () {
-                    $scope.targetUrl = $location.absUrl();
 
                     $scope.wxConfig = WeChat.save({
                         targetUrl: $scope.targetUrl.split('#')[0]
@@ -33,11 +34,11 @@ define(function (require, exports, module) {
                         if (res.result == 0) {
                             wx.config({
                                 debug: false,
-                                    appId: res.data.jsSDKConfig.appId,
-                                    timestamp: res.data.jsSDKConfig.timestamp,
-                                    nonceStr: res.data.jsSDKConfig.nonceStr,
-                                    signature: res.data.jsSDKConfig.signature,
-                                    jsApiList: [
+                                appId: res.data.jsSDKConfig.appId,
+                                timestamp: res.data.jsSDKConfig.timestamp,
+                                nonceStr: res.data.jsSDKConfig.nonceStr,
+                                signature: res.data.jsSDKConfig.signature,
+                                jsApiList: [
                                     'chooseImage',
                                     'uploadImage'
                                 ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
@@ -47,14 +48,14 @@ define(function (require, exports, module) {
                                 console.log('ready')
                             });
                             wx.error(function (res) {
-                                alert(res.errMsg);
+                                alert(JSON.stringify(res.errMsg));
                             });
                         } else {
-                            alert(res);
+                            //alert(JSON.stringify(res));
                         }
                     }).catch(function (error) {
                         $scope.$root.loading = false;
-                        alert(error)
+                        alert(JSON.stringify(error))
                     });
                 };
                 $scope.initWeChat();
@@ -260,8 +261,8 @@ define(function (require, exports, module) {
                     $scope.uploadImgForWx('imgThree', 'imgThreeMediaId')
                 };
 
-                $scope.onSelectorToggle = function () {
-                    $scope.currentSelectorIndex = ($scope.currentSelectorIndex + 1) % 2;
+                $scope.onSelectorToggle = function (x) {
+                    $scope.currentSelectorIndex = x;
                 };
 
                 $scope.hideSelect = function () {

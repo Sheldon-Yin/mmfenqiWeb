@@ -40,15 +40,15 @@
     </div>
     <div class="row selector">
         <div class="col-xs-6" ng-class="{0: 'selector-hightlight', 1: 'selector-normal'}[currentSelectorIndex]"
-             ng-click="onSelectorToggle()">
-            工作信息
+             ng-click="onSelectorToggle(0)">
+            学信网
         </div>
         <div class="col-xs-6" ng-class="{1: 'selector-hightlight', 0: 'selector-normal'}[currentSelectorIndex]"
-             ng-click="onSelectorToggle()">
-            手机服务码
+             ng-click="onSelectorToggle(1)">
+            学生证
         </div>
         <div class="col-xs-offset-4 col-xs-4 selector-img">
-            <img src="modules/verify/img/student/selector.png" ng-click="onSelectorToggle()"/>
+            <img src="modules/verify/img/student/selector.png" ng-click="onSelectorToggle((currentSelectorIndex+1)%2)"/>
         </div>
     </div>
     <div class="row selector-tips">
@@ -192,7 +192,7 @@
             <div class="col-xs-4">
                 <div class="row">
                     <div class="col-xs-12" ng-click="previewImgOne()">
-                        <img src="modules/verify/img/student/card0.png" height="75" style="margin-top: 15px;"
+                        <img src="modules/verify/img/student/card0.png" height="75" style="margin-top: 15px;max-width: 100%"
                              id="imgOne">
                     </div>
                     <div class="col-xs-12">
@@ -203,7 +203,7 @@
             <div class="col-xs-4">
                 <div class="row">
                     <div class="col-xs-12" ng-click="previewImgTwo()">
-                        <img src="modules/verify/img/student/card1.png" height="75" style="margin-top: 15px;"
+                        <img src="modules/verify/img/student/card1.png" height="75" style="margin-top: 15px;max-width: 100%"
                              id="imgTwo">
                     </div>
                     <div class="col-xs-12">
@@ -214,7 +214,7 @@
             <div class="col-xs-4">
                 <div class="row">
                     <div class="col-xs-12" ng-click="previewImgThree()">
-                        <img src="modules/verify/img/student/card2.png" height="75" style="margin-top: 15px;"
+                        <img src="modules/verify/img/student/card2.png" height="75" style="margin-top: 15px;max-width: 100%"
                              id="imgThree">
                     </div>
                     <div class="col-xs-12">
@@ -320,7 +320,8 @@
             <div class="row">
                 <div class="col-xs-12">
                     <img src="modules/verify/img/student/idcard.png" class="cell-img"/>
-                    <span class="cell-title">上传学生证正反面(清晰可见)</span>
+                    <span class="cell-title">上传身份证
+                        正反面(清晰可见)</span>
                 </div>
             </div>
         </div>
@@ -333,7 +334,7 @@
                          ng-click="onUploadFront()"/>
                 </div>
                 <div class="col-xs-6">
-                    <img src="modules/verify/img/student/front.png" id="backIdentityPic" width="100%"
+                    <img src="modules/verify/img/verify-back.png" id="backIdentityPic" width="100%"
                          ng-click="onUploadBackend()"/>
                 </div>
             </div>
