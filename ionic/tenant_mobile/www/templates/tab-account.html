@@ -1,0 +1,60 @@
+<ion-view>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">个人中心</h1>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list>
+
+      <div class="item">
+
+        <div class="padding">
+          {{userInfo.userName}} <span>{{userInfo.adminType | adminType}}</span>
+        </div>
+
+        <div class="padding">
+          {{userInfo.hospitalName}}
+        </div>
+
+      </div>
+
+      <div class="item text-center">
+
+        <div class="row">
+          <div class="col">
+            <div>
+              总收入
+            </div>
+            <div>
+              {{moneyInfo.total_amount}}
+            </div>
+          </div>
+
+          <div class="col">
+            <div>
+              已提现
+            </div>
+            <div>
+              {{moneyInfo.use_withdraw_cash}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item item-divider"></div>
+
+      <ion-item class="item-remove-animate item-icon-right" type="item-text-wrap" ng-click="logOut()">
+        <h2>退出登录</h2>
+        <div class="icon icon-accessory icon-right"><span style="margin-right: 1rem"></span><i
+          class="ion-chevron-right" style="margin-right: 1rem"></i></div>
+      </ion-item>
+
+      <!--<ion-item class="item-remove-animate item-icon-right" type="item-text-wrap"-->
+                <!--href="#/tab/bills/{{bill.id}}">-->
+        <!--<h2>修改密码</h2>-->
+        <!--<div class="icon icon-accessory icon-right"><span style="margin-right: 1rem"></span><i-->
+          <!--class="ion-chevron-right" style="margin-right: 1rem"></i></div>-->
+      <!--</ion-item>-->
+
+    </ion-list>
+  </ion-content>
+</ion-view>

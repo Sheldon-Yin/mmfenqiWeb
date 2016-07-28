@@ -1,0 +1,5318 @@
+{
+  "{\"filename\":\"D:/wamp/www/react-redux-universal-hot-example-master/api/api.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false}:6.10.4:production": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault",
+        "interopRequireWildcard"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [
+          {
+            "source": "express",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "express"
+              }
+            ]
+          },
+          {
+            "source": "express-session",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "session"
+              }
+            ]
+          },
+          {
+            "source": "body-parser",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "bodyParser"
+              }
+            ]
+          },
+          {
+            "source": "../src/config",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "config"
+              }
+            ]
+          },
+          {
+            "source": "./actions/index",
+            "imported": [
+              "*"
+            ],
+            "specifiers": [
+              {
+                "kind": "namespace",
+                "local": "actions"
+              }
+            ]
+          },
+          {
+            "source": "./utils/url.js",
+            "imported": [
+              "mapUrl"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "mapUrl",
+                "local": "mapUrl"
+              }
+            ]
+          },
+          {
+            "source": "pretty-error",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "PrettyError"
+              }
+            ]
+          },
+          {
+            "source": "http",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "http"
+              }
+            ]
+          },
+          {
+            "source": "socket.io",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "SocketIo"
+              }
+            ]
+          }
+        ],
+        "exports": {
+          "exported": [],
+          "specifiers": []
+        }
+      }
+    },
+    "options": {
+      "filename": "D:/wamp/www/react-redux-universal-hot-example-master/api/api.js",
+      "filenameRelative": "D:/wamp/www/react-redux-universal-hot-example-master/api/api.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMap": "both",
+      "sourceMaps": "both",
+      "sourceMapTarget": "api.js",
+      "sourceFileName": "api.js",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "basename": "api"
+    },
+    "ignored": false,
+    "code": "'use strict';\n\nvar _express = require('express');\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _expressSession = require('express-session');\n\nvar _expressSession2 = _interopRequireDefault(_expressSession);\n\nvar _bodyParser = require('body-parser');\n\nvar _bodyParser2 = _interopRequireDefault(_bodyParser);\n\nvar _config = require('../src/config');\n\nvar _config2 = _interopRequireDefault(_config);\n\nvar _index = require('./actions/index');\n\nvar actions = _interopRequireWildcard(_index);\n\nvar _url = require('./utils/url.js');\n\nvar _prettyError = require('pretty-error');\n\nvar _prettyError2 = _interopRequireDefault(_prettyError);\n\nvar _http = require('http');\n\nvar _http2 = _interopRequireDefault(_http);\n\nvar _socket = require('socket.io');\n\nvar _socket2 = _interopRequireDefault(_socket);\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar pretty = new _prettyError2.default();\nvar app = (0, _express2.default)();\n\nvar server = new _http2.default.Server(app);\n\nvar io = new _socket2.default(server);\nio.path('/ws');\n\napp.use((0, _expressSession2.default)({\n  secret: 'react and redux rule!!!!',\n  resave: false,\n  saveUninitialized: false,\n  cookie: { maxAge: 60000 }\n}));\napp.use(_bodyParser2.default.json());\n\napp.use(function (req, res) {\n  var splittedUrlPath = req.url.split('?')[0].split('/').slice(1);\n\n  var _mapUrl = (0, _url.mapUrl)(actions, splittedUrlPath);\n\n  var action = _mapUrl.action;\n  var params = _mapUrl.params;\n\n\n  if (action) {\n    action(req, params).then(function (result) {\n      if (result instanceof Function) {\n        result(res);\n      } else {\n        res.json(result);\n      }\n    }, function (reason) {\n      if (reason && reason.redirect) {\n        res.redirect(reason.redirect);\n      } else {\n        console.error('API ERROR:', pretty.render(reason));\n        res.status(reason.status || 500).json(reason);\n      }\n    });\n  } else {\n    res.status(404).end('NOT FOUND');\n  }\n});\n\nvar bufferSize = 100;\nvar messageBuffer = new Array(bufferSize);\nvar messageIndex = 0;\n\nif (_config2.default.apiPort) {\n  var runnable = app.listen(_config2.default.apiPort, function (err) {\n    if (err) {\n      console.error(err);\n    }\n    console.info('----\\n==> 🌎  API is running on port %s', _config2.default.apiPort);\n    console.info('==> 💻  Send requests to http://%s:%s', _config2.default.apiHost, _config2.default.apiPort);\n  });\n\n  io.on('connection', function (socket) {\n    socket.emit('news', { msg: '\\'Hello World!\\' from sheldon-server' });\n\n    socket.on('history', function () {\n      for (var index = 0; index < bufferSize; index++) {\n        var msgNo = (messageIndex + index) % bufferSize;\n        var msg = messageBuffer[msgNo];\n        if (msg) {\n          socket.emit('msg', msg);\n        }\n      }\n    });\n\n    socket.on('msg', function (data) {\n      data.id = messageIndex;\n      messageBuffer[messageIndex % bufferSize] = data;\n      messageIndex++;\n      io.emit('msg', data);\n    });\n  });\n  io.listen(runnable);\n} else {\n  console.error('==>     ERROR: No PORT environment variable has been specified');\n}\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwaS5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBOzs7O0FBQ0E7Ozs7QUFDQTs7OztBQUNBOzs7O0FBQ0E7O0lBQVksTzs7QUFDWjs7QUFDQTs7OztBQUNBOzs7O0FBQ0E7Ozs7Ozs7O0FBRUEsSUFBTSxTQUFTLDJCQUFmO0FBQ0EsSUFBTSxNQUFNLHdCQUFaOztBQUVBLElBQU0sU0FBUyxJQUFJLGVBQUssTUFBVCxDQUFnQixHQUFoQixDQUFmOztBQUVBLElBQU0sS0FBSyxxQkFBYSxNQUFiLENBQVg7QUFDQSxHQUFHLElBQUgsQ0FBUSxLQUFSOztBQUVBLElBQUksR0FBSixDQUFRLDhCQUFRO0FBQ2QsVUFBUSwwQkFETTtBQUVkLFVBQVEsS0FGTTtBQUdkLHFCQUFtQixLQUhMO0FBSWQsVUFBUSxFQUFFLFFBQVEsS0FBVjtBQUpNLENBQVIsQ0FBUjtBQU1BLElBQUksR0FBSixDQUFRLHFCQUFXLElBQVgsRUFBUjs7QUFHQSxJQUFJLEdBQUosQ0FBUSxVQUFDLEdBQUQsRUFBTSxHQUFOLEVBQWM7QUFDcEIsTUFBTSxrQkFBa0IsSUFBSSxHQUFKLENBQVEsS0FBUixDQUFjLEdBQWQsRUFBbUIsQ0FBbkIsRUFBc0IsS0FBdEIsQ0FBNEIsR0FBNUIsRUFBaUMsS0FBakMsQ0FBdUMsQ0FBdkMsQ0FBeEI7O0FBRG9CLGdCQUdLLGlCQUFPLE9BQVAsRUFBZ0IsZUFBaEIsQ0FITDs7QUFBQSxNQUdiLE1BSGEsV0FHYixNQUhhO0FBQUEsTUFHTCxNQUhLLFdBR0wsTUFISzs7O0FBS3BCLE1BQUksTUFBSixFQUFZO0FBQ1YsV0FBTyxHQUFQLEVBQVksTUFBWixFQUNHLElBREgsQ0FDUSxVQUFDLE1BQUQsRUFBWTtBQUNoQixVQUFJLGtCQUFrQixRQUF0QixFQUFnQztBQUM5QixlQUFPLEdBQVA7QUFDRCxPQUZELE1BRU87QUFDTCxZQUFJLElBQUosQ0FBUyxNQUFUO0FBQ0Q7QUFDRixLQVBILEVBT0ssVUFBQyxNQUFELEVBQVk7QUFDYixVQUFJLFVBQVUsT0FBTyxRQUFyQixFQUErQjtBQUM3QixZQUFJLFFBQUosQ0FBYSxPQUFPLFFBQXBCO0FBQ0QsT0FGRCxNQUVPO0FBQ0wsZ0JBQVEsS0FBUixDQUFjLFlBQWQsRUFBNEIsT0FBTyxNQUFQLENBQWMsTUFBZCxDQUE1QjtBQUNBLFlBQUksTUFBSixDQUFXLE9BQU8sTUFBUCxJQUFpQixHQUE1QixFQUFpQyxJQUFqQyxDQUFzQyxNQUF0QztBQUNEO0FBQ0YsS0FkSDtBQWVELEdBaEJELE1BZ0JPO0FBQ0wsUUFBSSxNQUFKLENBQVcsR0FBWCxFQUFnQixHQUFoQixDQUFvQixXQUFwQjtBQUNEO0FBQ0YsQ0F4QkQ7O0FBMkJBLElBQU0sYUFBYSxHQUFuQjtBQUNBLElBQU0sZ0JBQWdCLElBQUksS0FBSixDQUFVLFVBQVYsQ0FBdEI7QUFDQSxJQUFJLGVBQWUsQ0FBbkI7O0FBRUEsSUFBSSxpQkFBTyxPQUFYLEVBQW9CO0FBQ2xCLE1BQU0sV0FBVyxJQUFJLE1BQUosQ0FBVyxpQkFBTyxPQUFsQixFQUEyQixVQUFDLEdBQUQsRUFBUztBQUNuRCxRQUFJLEdBQUosRUFBUztBQUNQLGNBQVEsS0FBUixDQUFjLEdBQWQ7QUFDRDtBQUNELFlBQVEsSUFBUixDQUFhLHlDQUFiLEVBQXdELGlCQUFPLE9BQS9EO0FBQ0EsWUFBUSxJQUFSLENBQWEsdUNBQWIsRUFBc0QsaUJBQU8sT0FBN0QsRUFBc0UsaUJBQU8sT0FBN0U7QUFDRCxHQU5nQixDQUFqQjs7QUFRQSxLQUFHLEVBQUgsQ0FBTSxZQUFOLEVBQW9CLFVBQUMsTUFBRCxFQUFZO0FBQzlCLFdBQU8sSUFBUCxDQUFZLE1BQVosRUFBb0IsRUFBQywyQ0FBRCxFQUFwQjs7QUFFQSxXQUFPLEVBQVAsQ0FBVSxTQUFWLEVBQXFCLFlBQU07QUFDekIsV0FBSyxJQUFJLFFBQVEsQ0FBakIsRUFBb0IsUUFBUSxVQUE1QixFQUF3QyxPQUF4QyxFQUFpRDtBQUMvQyxZQUFNLFFBQVEsQ0FBQyxlQUFlLEtBQWhCLElBQXlCLFVBQXZDO0FBQ0EsWUFBTSxNQUFNLGNBQWMsS0FBZCxDQUFaO0FBQ0EsWUFBSSxHQUFKLEVBQVM7QUFDUCxpQkFBTyxJQUFQLENBQVksS0FBWixFQUFtQixHQUFuQjtBQUNEO0FBQ0Y7QUFDRixLQVJEOztBQVVBLFdBQU8sRUFBUCxDQUFVLEtBQVYsRUFBaUIsVUFBQyxJQUFELEVBQVU7QUFDekIsV0FBSyxFQUFMLEdBQVUsWUFBVjtBQUNBLG9CQUFjLGVBQWUsVUFBN0IsSUFBMkMsSUFBM0M7QUFDQTtBQUNBLFNBQUcsSUFBSCxDQUFRLEtBQVIsRUFBZSxJQUFmO0FBQ0QsS0FMRDtBQU1ELEdBbkJEO0FBb0JBLEtBQUcsTUFBSCxDQUFVLFFBQVY7QUFDRCxDQTlCRCxNQThCTztBQUNMLFVBQVEsS0FBUixDQUFjLGdFQUFkO0FBQ0QiLCJmaWxlIjoiYXBpLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IGV4cHJlc3MgZnJvbSAnZXhwcmVzcyc7XG5pbXBvcnQgc2Vzc2lvbiBmcm9tICdleHByZXNzLXNlc3Npb24nO1xuaW1wb3J0IGJvZHlQYXJzZXIgZnJvbSAnYm9keS1wYXJzZXInO1xuaW1wb3J0IGNvbmZpZyBmcm9tICcuLi9zcmMvY29uZmlnJztcbmltcG9ydCAqIGFzIGFjdGlvbnMgZnJvbSAnLi9hY3Rpb25zL2luZGV4JztcbmltcG9ydCB7bWFwVXJsfSBmcm9tICcuL3V0aWxzL3VybC5qcyc7XG5pbXBvcnQgUHJldHR5RXJyb3IgZnJvbSAncHJldHR5LWVycm9yJztcbmltcG9ydCBodHRwIGZyb20gJ2h0dHAnO1xuaW1wb3J0IFNvY2tldElvIGZyb20gJ3NvY2tldC5pbyc7XG5cbmNvbnN0IHByZXR0eSA9IG5ldyBQcmV0dHlFcnJvcigpO1xuY29uc3QgYXBwID0gZXhwcmVzcygpO1xuXG5jb25zdCBzZXJ2ZXIgPSBuZXcgaHR0cC5TZXJ2ZXIoYXBwKTtcblxuY29uc3QgaW8gPSBuZXcgU29ja2V0SW8oc2VydmVyKTtcbmlvLnBhdGgoJy93cycpO1xuXG5hcHAudXNlKHNlc3Npb24oe1xuICBzZWNyZXQ6ICdyZWFjdCBhbmQgcmVkdXggcnVsZSEhISEnLFxuICByZXNhdmU6IGZhbHNlLFxuICBzYXZlVW5pbml0aWFsaXplZDogZmFsc2UsXG4gIGNvb2tpZTogeyBtYXhBZ2U6IDYwMDAwIH1cbn0pKTtcbmFwcC51c2UoYm9keVBhcnNlci5qc29uKCkpO1xuXG5cbmFwcC51c2UoKHJlcSwgcmVzKSA9PiB7XG4gIGNvbnN0IHNwbGl0dGVkVXJsUGF0aCA9IHJlcS51cmwuc3BsaXQoJz8nKVswXS5zcGxpdCgnLycpLnNsaWNlKDEpO1xuXG4gIGNvbnN0IHthY3Rpb24sIHBhcmFtc30gPSBtYXBVcmwoYWN0aW9ucywgc3BsaXR0ZWRVcmxQYXRoKTtcblxuICBpZiAoYWN0aW9uKSB7XG4gICAgYWN0aW9uKHJlcSwgcGFyYW1zKVxuICAgICAgLnRoZW4oKHJlc3VsdCkgPT4ge1xuICAgICAgICBpZiAocmVzdWx0IGluc3RhbmNlb2YgRnVuY3Rpb24pIHtcbiAgICAgICAgICByZXN1bHQocmVzKTtcbiAgICAgICAgfSBlbHNlIHtcbiAgICAgICAgICByZXMuanNvbihyZXN1bHQpO1xuICAgICAgICB9XG4gICAgICB9LCAocmVhc29uKSA9PiB7XG4gICAgICAgIGlmIChyZWFzb24gJiYgcmVhc29uLnJlZGlyZWN0KSB7XG4gICAgICAgICAgcmVzLnJlZGlyZWN0KHJlYXNvbi5yZWRpcmVjdCk7XG4gICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgY29uc29sZS5lcnJvcignQVBJIEVSUk9SOicsIHByZXR0eS5yZW5kZXIocmVhc29uKSk7XG4gICAgICAgICAgcmVzLnN0YXR1cyhyZWFzb24uc3RhdHVzIHx8IDUwMCkuanNvbihyZWFzb24pO1xuICAgICAgICB9XG4gICAgICB9KTtcbiAgfSBlbHNlIHtcbiAgICByZXMuc3RhdHVzKDQwNCkuZW5kKCdOT1QgRk9VTkQnKTtcbiAgfVxufSk7XG5cblxuY29uc3QgYnVmZmVyU2l6ZSA9IDEwMDtcbmNvbnN0IG1lc3NhZ2VCdWZmZXIgPSBuZXcgQXJyYXkoYnVmZmVyU2l6ZSk7XG5sZXQgbWVzc2FnZUluZGV4ID0gMDtcblxuaWYgKGNvbmZpZy5hcGlQb3J0KSB7XG4gIGNvbnN0IHJ1bm5hYmxlID0gYXBwLmxpc3Rlbihjb25maWcuYXBpUG9ydCwgKGVycikgPT4ge1xuICAgIGlmIChlcnIpIHtcbiAgICAgIGNvbnNvbGUuZXJyb3IoZXJyKTtcbiAgICB9XG4gICAgY29uc29sZS5pbmZvKCctLS0tXFxuPT0+IPCfjI4gIEFQSSBpcyBydW5uaW5nIG9uIHBvcnQgJXMnLCBjb25maWcuYXBpUG9ydCk7XG4gICAgY29uc29sZS5pbmZvKCc9PT4g8J+SuyAgU2VuZCByZXF1ZXN0cyB0byBodHRwOi8vJXM6JXMnLCBjb25maWcuYXBpSG9zdCwgY29uZmlnLmFwaVBvcnQpO1xuICB9KTtcblxuICBpby5vbignY29ubmVjdGlvbicsIChzb2NrZXQpID0+IHtcbiAgICBzb2NrZXQuZW1pdCgnbmV3cycsIHttc2c6IGAnSGVsbG8gV29ybGQhJyBmcm9tIHNoZWxkb24tc2VydmVyYH0pO1xuXG4gICAgc29ja2V0Lm9uKCdoaXN0b3J5JywgKCkgPT4ge1xuICAgICAgZm9yIChsZXQgaW5kZXggPSAwOyBpbmRleCA8IGJ1ZmZlclNpemU7IGluZGV4KyspIHtcbiAgICAgICAgY29uc3QgbXNnTm8gPSAobWVzc2FnZUluZGV4ICsgaW5kZXgpICUgYnVmZmVyU2l6ZTtcbiAgICAgICAgY29uc3QgbXNnID0gbWVzc2FnZUJ1ZmZlclttc2dOb107XG4gICAgICAgIGlmIChtc2cpIHtcbiAgICAgICAgICBzb2NrZXQuZW1pdCgnbXNnJywgbXNnKTtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH0pO1xuXG4gICAgc29ja2V0Lm9uKCdtc2cnLCAoZGF0YSkgPT4ge1xuICAgICAgZGF0YS5pZCA9IG1lc3NhZ2VJbmRleDtcbiAgICAgIG1lc3NhZ2VCdWZmZXJbbWVzc2FnZUluZGV4ICUgYnVmZmVyU2l6ZV0gPSBkYXRhO1xuICAgICAgbWVzc2FnZUluZGV4Kys7XG4gICAgICBpby5lbWl0KCdtc2cnLCBkYXRhKTtcbiAgICB9KTtcbiAgfSk7XG4gIGlvLmxpc3RlbihydW5uYWJsZSk7XG59IGVsc2Uge1xuICBjb25zb2xlLmVycm9yKCc9PT4gICAgIEVSUk9SOiBObyBQT1JUIGVudmlyb25tZW50IHZhcmlhYmxlIGhhcyBiZWVuIHNwZWNpZmllZCcpO1xufVxuIl19",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "api.js"
+      ],
+      "names": [],
+      "mappings": ";;AAAA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;IAAY,O;;AACZ;;AACA;;;;AACA;;;;AACA;;;;;;;;AAEA,IAAM,SAAS,2BAAf;AACA,IAAM,MAAM,wBAAZ;;AAEA,IAAM,SAAS,IAAI,eAAK,MAAT,CAAgB,GAAhB,CAAf;;AAEA,IAAM,KAAK,qBAAa,MAAb,CAAX;AACA,GAAG,IAAH,CAAQ,KAAR;;AAEA,IAAI,GAAJ,CAAQ,8BAAQ;AACd,UAAQ,0BADM;AAEd,UAAQ,KAFM;AAGd,qBAAmB,KAHL;AAId,UAAQ,EAAE,QAAQ,KAAV;AAJM,CAAR,CAAR;AAMA,IAAI,GAAJ,CAAQ,qBAAW,IAAX,EAAR;;AAGA,IAAI,GAAJ,CAAQ,UAAC,GAAD,EAAM,GAAN,EAAc;AACpB,MAAM,kBAAkB,IAAI,GAAJ,CAAQ,KAAR,CAAc,GAAd,EAAmB,CAAnB,EAAsB,KAAtB,CAA4B,GAA5B,EAAiC,KAAjC,CAAuC,CAAvC,CAAxB;;AADoB,gBAGK,iBAAO,OAAP,EAAgB,eAAhB,CAHL;;AAAA,MAGb,MAHa,WAGb,MAHa;AAAA,MAGL,MAHK,WAGL,MAHK;;;AAKpB,MAAI,MAAJ,EAAY;AACV,WAAO,GAAP,EAAY,MAAZ,EACG,IADH,CACQ,UAAC,MAAD,EAAY;AAChB,UAAI,kBAAkB,QAAtB,EAAgC;AAC9B,eAAO,GAAP;AACD,OAFD,MAEO;AACL,YAAI,IAAJ,CAAS,MAAT;AACD;AACF,KAPH,EAOK,UAAC,MAAD,EAAY;AACb,UAAI,UAAU,OAAO,QAArB,EAA+B;AAC7B,YAAI,QAAJ,CAAa,OAAO,QAApB;AACD,OAFD,MAEO;AACL,gBAAQ,KAAR,CAAc,YAAd,EAA4B,OAAO,MAAP,CAAc,MAAd,CAA5B;AACA,YAAI,MAAJ,CAAW,OAAO,MAAP,IAAiB,GAA5B,EAAiC,IAAjC,CAAsC,MAAtC;AACD;AACF,KAdH;AAeD,GAhBD,MAgBO;AACL,QAAI,MAAJ,CAAW,GAAX,EAAgB,GAAhB,CAAoB,WAApB;AACD;AACF,CAxBD;;AA2BA,IAAM,aAAa,GAAnB;AACA,IAAM,gBAAgB,IAAI,KAAJ,CAAU,UAAV,CAAtB;AACA,IAAI,eAAe,CAAnB;;AAEA,IAAI,iBAAO,OAAX,EAAoB;AAClB,MAAM,WAAW,IAAI,MAAJ,CAAW,iBAAO,OAAlB,EAA2B,UAAC,GAAD,EAAS;AACnD,QAAI,GAAJ,EAAS;AACP,cAAQ,KAAR,CAAc,GAAd;AACD;AACD,YAAQ,IAAR,CAAa,yCAAb,EAAwD,iBAAO,OAA/D;AACA,YAAQ,IAAR,CAAa,uCAAb,EAAsD,iBAAO,OAA7D,EAAsE,iBAAO,OAA7E;AACD,GANgB,CAAjB;;AAQA,KAAG,EAAH,CAAM,YAAN,EAAoB,UAAC,MAAD,EAAY;AAC9B,WAAO,IAAP,CAAY,MAAZ,EAAoB,EAAC,2CAAD,EAApB;;AAEA,WAAO,EAAP,CAAU,SAAV,EAAqB,YAAM;AACzB,WAAK,IAAI,QAAQ,CAAjB,EAAoB,QAAQ,UAA5B,EAAwC,OAAxC,EAAiD;AAC/C,YAAM,QAAQ,CAAC,eAAe,KAAhB,IAAyB,UAAvC;AACA,YAAM,MAAM,cAAc,KAAd,CAAZ;AACA,YAAI,GAAJ,EAAS;AACP,iBAAO,IAAP,CAAY,KAAZ,EAAmB,GAAnB;AACD;AACF;AACF,KARD;;AAUA,WAAO,EAAP,CAAU,KAAV,EAAiB,UAAC,IAAD,EAAU;AACzB,WAAK,EAAL,GAAU,YAAV;AACA,oBAAc,eAAe,UAA7B,IAA2C,IAA3C;AACA;AACA,SAAG,IAAH,CAAQ,KAAR,EAAe,IAAf;AACD,KALD;AAMD,GAnBD;AAoBA,KAAG,MAAH,CAAU,QAAV;AACD,CA9BD,MA8BO;AACL,UAAQ,KAAR,CAAc,gEAAd;AACD",
+      "file": "api.js",
+      "sourcesContent": [
+        "import express from 'express';\nimport session from 'express-session';\nimport bodyParser from 'body-parser';\nimport config from '../src/config';\nimport * as actions from './actions/index';\nimport {mapUrl} from './utils/url.js';\nimport PrettyError from 'pretty-error';\nimport http from 'http';\nimport SocketIo from 'socket.io';\n\nconst pretty = new PrettyError();\nconst app = express();\n\nconst server = new http.Server(app);\n\nconst io = new SocketIo(server);\nio.path('/ws');\n\napp.use(session({\n  secret: 'react and redux rule!!!!',\n  resave: false,\n  saveUninitialized: false,\n  cookie: { maxAge: 60000 }\n}));\napp.use(bodyParser.json());\n\n\napp.use((req, res) => {\n  const splittedUrlPath = req.url.split('?')[0].split('/').slice(1);\n\n  const {action, params} = mapUrl(actions, splittedUrlPath);\n\n  if (action) {\n    action(req, params)\n      .then((result) => {\n        if (result instanceof Function) {\n          result(res);\n        } else {\n          res.json(result);\n        }\n      }, (reason) => {\n        if (reason && reason.redirect) {\n          res.redirect(reason.redirect);\n        } else {\n          console.error('API ERROR:', pretty.render(reason));\n          res.status(reason.status || 500).json(reason);\n        }\n      });\n  } else {\n    res.status(404).end('NOT FOUND');\n  }\n});\n\n\nconst bufferSize = 100;\nconst messageBuffer = new Array(bufferSize);\nlet messageIndex = 0;\n\nif (config.apiPort) {\n  const runnable = app.listen(config.apiPort, (err) => {\n    if (err) {\n      console.error(err);\n    }\n    console.info('----\\n==> 🌎  API is running on port %s', config.apiPort);\n    console.info('==> 💻  Send requests to http://%s:%s', config.apiHost, config.apiPort);\n  });\n\n  io.on('connection', (socket) => {\n    socket.emit('news', {msg: `'Hello World!' from sheldon-server`});\n\n    socket.on('history', () => {\n      for (let index = 0; index < bufferSize; index++) {\n        const msgNo = (messageIndex + index) % bufferSize;\n        const msg = messageBuffer[msgNo];\n        if (msg) {\n          socket.emit('msg', msg);\n        }\n      }\n    });\n\n    socket.on('msg', (data) => {\n      data.id = messageIndex;\n      messageBuffer[messageIndex % bufferSize] = data;\n      messageIndex++;\n      io.emit('msg', data);\n    });\n  });\n  io.listen(runnable);\n} else {\n  console.error('==>     ERROR: No PORT environment variable has been specified');\n}\n"
+      ]
+    },
+    "mtime": 1467874933679
+  },
+  "{\"filename\":\"D:/wamp/www/react-redux-universal-hot-example-master/src/config.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false}:6.10.4:production": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [],
+        "exports": {
+          "exported": [],
+          "specifiers": []
+        }
+      }
+    },
+    "options": {
+      "filename": "D:/wamp/www/react-redux-universal-hot-example-master/src/config.js",
+      "filenameRelative": "D:/wamp/www/react-redux-universal-hot-example-master/src/config.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMap": "both",
+      "sourceMaps": "both",
+      "sourceMapTarget": "config.js",
+      "sourceFileName": "config.js",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "basename": "config"
+    },
+    "ignored": false,
+    "code": "'use strict';\n\nvar _assign = require('babel-runtime/core-js/object/assign');\n\nvar _assign2 = _interopRequireDefault(_assign);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nrequire('babel-polyfill');\n\nvar environment = {\n  development: {\n    isProduction: false\n  },\n  production: {\n    isProduction: true\n  }\n}[process.env.NODE_ENV || 'development'];\n\nmodule.exports = (0, _assign2.default)({\n  host: process.env.HOST || 'localhost',\n  port: process.env.PORT,\n  apiHost: process.env.APIHOST || 'localhost',\n  apiPort: process.env.APIPORT,\n  app: {\n    title: 'React Redux Example',\n    description: 'All the modern best practices in one example.',\n    head: {\n      titleTemplate: 'React Redux Example: %s',\n      meta: [{ name: 'description', content: 'All the modern best practices in one example.' }, { charset: 'utf-8' }, { property: 'og:site_name', content: 'React Redux Example' }, { property: 'og:image', content: 'https://react-redux.herokuapp.com/logo.jpg' }, { property: 'og:locale', content: 'en_US' }, { property: 'og:title', content: 'React Redux Example' }, { property: 'og:description', content: 'All the modern best practices in one example.' }, { property: 'og:card', content: 'summary' }, { property: 'og:site', content: '@erikras' }, { property: 'og:creator', content: '@erikras' }, { property: 'og:image:width', content: '200' }, { property: 'og:image:height', content: '200' }]\n    }\n  }\n}, environment);\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbmZpZy5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7OztBQUFBLFFBQVEsZ0JBQVI7O0FBRUEsSUFBTSxjQUFjO0FBQ2xCLGVBQWE7QUFDWCxrQkFBYztBQURILEdBREs7QUFJbEIsY0FBWTtBQUNWLGtCQUFjO0FBREo7QUFKTSxFQU9sQixRQUFRLEdBQVIsQ0FBWSxRQUFaLElBQXdCLGFBUE4sQ0FBcEI7O0FBU0EsT0FBTyxPQUFQLEdBQWlCLHNCQUFjO0FBQzdCLFFBQU0sUUFBUSxHQUFSLENBQVksSUFBWixJQUFvQixXQURHO0FBRTdCLFFBQU0sUUFBUSxHQUFSLENBQVksSUFGVztBQUc3QixXQUFTLFFBQVEsR0FBUixDQUFZLE9BQVosSUFBdUIsV0FISDtBQUk3QixXQUFTLFFBQVEsR0FBUixDQUFZLE9BSlE7QUFLN0IsT0FBSztBQUNILFdBQU8scUJBREo7QUFFSCxpQkFBYSwrQ0FGVjtBQUdILFVBQU07QUFDSixxQkFBZSx5QkFEWDtBQUVKLFlBQU0sQ0FDSixFQUFDLE1BQU0sYUFBUCxFQUFzQixTQUFTLCtDQUEvQixFQURJLEVBRUosRUFBQyxTQUFTLE9BQVYsRUFGSSxFQUdKLEVBQUMsVUFBVSxjQUFYLEVBQTJCLFNBQVMscUJBQXBDLEVBSEksRUFJSixFQUFDLFVBQVUsVUFBWCxFQUF1QixTQUFTLDRDQUFoQyxFQUpJLEVBS0osRUFBQyxVQUFVLFdBQVgsRUFBd0IsU0FBUyxPQUFqQyxFQUxJLEVBTUosRUFBQyxVQUFVLFVBQVgsRUFBdUIsU0FBUyxxQkFBaEMsRUFOSSxFQU9KLEVBQUMsVUFBVSxnQkFBWCxFQUE2QixTQUFTLCtDQUF0QyxFQVBJLEVBUUosRUFBQyxVQUFVLFNBQVgsRUFBc0IsU0FBUyxTQUEvQixFQVJJLEVBU0osRUFBQyxVQUFVLFNBQVgsRUFBc0IsU0FBUyxVQUEvQixFQVRJLEVBVUosRUFBQyxVQUFVLFlBQVgsRUFBeUIsU0FBUyxVQUFsQyxFQVZJLEVBV0osRUFBQyxVQUFVLGdCQUFYLEVBQTZCLFNBQVMsS0FBdEMsRUFYSSxFQVlKLEVBQUMsVUFBVSxpQkFBWCxFQUE4QixTQUFTLEtBQXZDLEVBWkk7QUFGRjtBQUhIO0FBTHdCLENBQWQsRUEwQmQsV0ExQmMsQ0FBakIiLCJmaWxlIjoiY29uZmlnLmpzIiwic291cmNlc0NvbnRlbnQiOlsicmVxdWlyZSgnYmFiZWwtcG9seWZpbGwnKTtcblxuY29uc3QgZW52aXJvbm1lbnQgPSB7XG4gIGRldmVsb3BtZW50OiB7XG4gICAgaXNQcm9kdWN0aW9uOiBmYWxzZVxuICB9LFxuICBwcm9kdWN0aW9uOiB7XG4gICAgaXNQcm9kdWN0aW9uOiB0cnVlXG4gIH1cbn1bcHJvY2Vzcy5lbnYuTk9ERV9FTlYgfHwgJ2RldmVsb3BtZW50J107XG5cbm1vZHVsZS5leHBvcnRzID0gT2JqZWN0LmFzc2lnbih7XG4gIGhvc3Q6IHByb2Nlc3MuZW52LkhPU1QgfHwgJ2xvY2FsaG9zdCcsXG4gIHBvcnQ6IHByb2Nlc3MuZW52LlBPUlQsXG4gIGFwaUhvc3Q6IHByb2Nlc3MuZW52LkFQSUhPU1QgfHwgJ2xvY2FsaG9zdCcsXG4gIGFwaVBvcnQ6IHByb2Nlc3MuZW52LkFQSVBPUlQsXG4gIGFwcDoge1xuICAgIHRpdGxlOiAnUmVhY3QgUmVkdXggRXhhbXBsZScsXG4gICAgZGVzY3JpcHRpb246ICdBbGwgdGhlIG1vZGVybiBiZXN0IHByYWN0aWNlcyBpbiBvbmUgZXhhbXBsZS4nLFxuICAgIGhlYWQ6IHtcbiAgICAgIHRpdGxlVGVtcGxhdGU6ICdSZWFjdCBSZWR1eCBFeGFtcGxlOiAlcycsXG4gICAgICBtZXRhOiBbXG4gICAgICAgIHtuYW1lOiAnZGVzY3JpcHRpb24nLCBjb250ZW50OiAnQWxsIHRoZSBtb2Rlcm4gYmVzdCBwcmFjdGljZXMgaW4gb25lIGV4YW1wbGUuJ30sXG4gICAgICAgIHtjaGFyc2V0OiAndXRmLTgnfSxcbiAgICAgICAge3Byb3BlcnR5OiAnb2c6c2l0ZV9uYW1lJywgY29udGVudDogJ1JlYWN0IFJlZHV4IEV4YW1wbGUnfSxcbiAgICAgICAge3Byb3BlcnR5OiAnb2c6aW1hZ2UnLCBjb250ZW50OiAnaHR0cHM6Ly9yZWFjdC1yZWR1eC5oZXJva3VhcHAuY29tL2xvZ28uanBnJ30sXG4gICAgICAgIHtwcm9wZXJ0eTogJ29nOmxvY2FsZScsIGNvbnRlbnQ6ICdlbl9VUyd9LFxuICAgICAgICB7cHJvcGVydHk6ICdvZzp0aXRsZScsIGNvbnRlbnQ6ICdSZWFjdCBSZWR1eCBFeGFtcGxlJ30sXG4gICAgICAgIHtwcm9wZXJ0eTogJ29nOmRlc2NyaXB0aW9uJywgY29udGVudDogJ0FsbCB0aGUgbW9kZXJuIGJlc3QgcHJhY3RpY2VzIGluIG9uZSBleGFtcGxlLid9LFxuICAgICAgICB7cHJvcGVydHk6ICdvZzpjYXJkJywgY29udGVudDogJ3N1bW1hcnknfSxcbiAgICAgICAge3Byb3BlcnR5OiAnb2c6c2l0ZScsIGNvbnRlbnQ6ICdAZXJpa3Jhcyd9LFxuICAgICAgICB7cHJvcGVydHk6ICdvZzpjcmVhdG9yJywgY29udGVudDogJ0BlcmlrcmFzJ30sXG4gICAgICAgIHtwcm9wZXJ0eTogJ29nOmltYWdlOndpZHRoJywgY29udGVudDogJzIwMCd9LFxuICAgICAgICB7cHJvcGVydHk6ICdvZzppbWFnZTpoZWlnaHQnLCBjb250ZW50OiAnMjAwJ31cbiAgICAgIF1cbiAgICB9XG4gIH0sXG59LCBlbnZpcm9ubWVudCk7XG4iXX0=",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "config.js"
+      ],
+      "names": [],
+      "mappings": ";;;;;;;;AAAA,QAAQ,gBAAR;;AAEA,IAAM,cAAc;AAClB,eAAa;AACX,kBAAc;AADH,GADK;AAIlB,cAAY;AACV,kBAAc;AADJ;AAJM,EAOlB,QAAQ,GAAR,CAAY,QAAZ,IAAwB,aAPN,CAApB;;AASA,OAAO,OAAP,GAAiB,sBAAc;AAC7B,QAAM,QAAQ,GAAR,CAAY,IAAZ,IAAoB,WADG;AAE7B,QAAM,QAAQ,GAAR,CAAY,IAFW;AAG7B,WAAS,QAAQ,GAAR,CAAY,OAAZ,IAAuB,WAHH;AAI7B,WAAS,QAAQ,GAAR,CAAY,OAJQ;AAK7B,OAAK;AACH,WAAO,qBADJ;AAEH,iBAAa,+CAFV;AAGH,UAAM;AACJ,qBAAe,yBADX;AAEJ,YAAM,CACJ,EAAC,MAAM,aAAP,EAAsB,SAAS,+CAA/B,EADI,EAEJ,EAAC,SAAS,OAAV,EAFI,EAGJ,EAAC,UAAU,cAAX,EAA2B,SAAS,qBAApC,EAHI,EAIJ,EAAC,UAAU,UAAX,EAAuB,SAAS,4CAAhC,EAJI,EAKJ,EAAC,UAAU,WAAX,EAAwB,SAAS,OAAjC,EALI,EAMJ,EAAC,UAAU,UAAX,EAAuB,SAAS,qBAAhC,EANI,EAOJ,EAAC,UAAU,gBAAX,EAA6B,SAAS,+CAAtC,EAPI,EAQJ,EAAC,UAAU,SAAX,EAAsB,SAAS,SAA/B,EARI,EASJ,EAAC,UAAU,SAAX,EAAsB,SAAS,UAA/B,EATI,EAUJ,EAAC,UAAU,YAAX,EAAyB,SAAS,UAAlC,EAVI,EAWJ,EAAC,UAAU,gBAAX,EAA6B,SAAS,KAAtC,EAXI,EAYJ,EAAC,UAAU,iBAAX,EAA8B,SAAS,KAAvC,EAZI;AAFF;AAHH;AALwB,CAAd,EA0Bd,WA1Bc,CAAjB",
+      "file": "config.js",
+      "sourcesContent": [
+        "require('babel-polyfill');\n\nconst environment = {\n  development: {\n    isProduction: false\n  },\n  production: {\n    isProduction: true\n  }\n}[process.env.NODE_ENV || 'development'];\n\nmodule.exports = Object.assign({\n  host: process.env.HOST || 'localhost',\n  port: process.env.PORT,\n  apiHost: process.env.APIHOST || 'localhost',\n  apiPort: process.env.APIPORT,\n  app: {\n    title: 'React Redux Example',\n    description: 'All the modern best practices in one example.',\n    head: {\n      titleTemplate: 'React Redux Example: %s',\n      meta: [\n        {name: 'description', content: 'All the modern best practices in one example.'},\n        {charset: 'utf-8'},\n        {property: 'og:site_name', content: 'React Redux Example'},\n        {property: 'og:image', content: 'https://react-redux.herokuapp.com/logo.jpg'},\n        {property: 'og:locale', content: 'en_US'},\n        {property: 'og:title', content: 'React Redux Example'},\n        {property: 'og:description', content: 'All the modern best practices in one example.'},\n        {property: 'og:card', content: 'summary'},\n        {property: 'og:site', content: '@erikras'},\n        {property: 'og:creator', content: '@erikras'},\n        {property: 'og:image:width', content: '200'},\n        {property: 'og:image:height', content: '200'}\n      ]\n    }\n  },\n}, environment);\n"
+      ]
+    },
+    "mtime": 1467873693502
+  },
+  "{\"filename\":\"D:/wamp/www/react-redux-universal-hot-example-master/api/actions/index.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false}:6.10.4:production": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault",
+        "interopRequireWildcard"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [],
+        "exports": {
+          "exported": [
+            "loadInfo",
+            "loadAuth",
+            "login",
+            "logout",
+            "widget",
+            "survey"
+          ],
+          "specifiers": [
+            {
+              "kind": "external",
+              "local": "loadInfo",
+              "exported": "loadInfo",
+              "source": "./loadInfo"
+            },
+            {
+              "kind": "external",
+              "local": "loadAuth",
+              "exported": "loadAuth",
+              "source": "./loadAuth"
+            },
+            {
+              "kind": "external",
+              "local": "login",
+              "exported": "login",
+              "source": "./login"
+            },
+            {
+              "kind": "external",
+              "local": "logout",
+              "exported": "logout",
+              "source": "./logout"
+            },
+            {
+              "kind": "external-namespace",
+              "exported": "widget",
+              "source": "./widget/index"
+            },
+            {
+              "kind": "external-namespace",
+              "exported": "survey",
+              "source": "./survey/index"
+            }
+          ]
+        }
+      }
+    },
+    "options": {
+      "filename": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/index.js",
+      "filenameRelative": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/index.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMap": "both",
+      "sourceMaps": "both",
+      "sourceMapTarget": "index.js",
+      "sourceFileName": "index.js",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "basename": "index"
+    },
+    "ignored": false,
+    "code": "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.survey = exports.widget = exports.logout = exports.login = exports.loadAuth = exports.loadInfo = undefined;\n\nvar _loadInfo2 = require('./loadInfo');\n\nvar _loadInfo3 = _interopRequireDefault(_loadInfo2);\n\nvar _loadAuth2 = require('./loadAuth');\n\nvar _loadAuth3 = _interopRequireDefault(_loadAuth2);\n\nvar _login2 = require('./login');\n\nvar _login3 = _interopRequireDefault(_login2);\n\nvar _logout2 = require('./logout');\n\nvar _logout3 = _interopRequireDefault(_logout2);\n\nvar _index = require('./widget/index');\n\nvar _widget = _interopRequireWildcard(_index);\n\nvar _index2 = require('./survey/index');\n\nvar _survey = _interopRequireWildcard(_index2);\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.loadInfo = _loadInfo3.default;\nexports.loadAuth = _loadAuth3.default;\nexports.login = _login3.default;\nexports.logout = _logout3.default;\nexports.widget = _widget;\nexports.survey = _survey;\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1FBQU8sUTtRQUNBLFE7UUFDQSxLO1FBQ0EsTTtRQUNLLE07UUFDQSxNIiwiZmlsZSI6ImluZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGxvYWRJbmZvIGZyb20gJy4vbG9hZEluZm8nO1xuZXhwb3J0IGxvYWRBdXRoIGZyb20gJy4vbG9hZEF1dGgnO1xuZXhwb3J0IGxvZ2luIGZyb20gJy4vbG9naW4nO1xuZXhwb3J0IGxvZ291dCBmcm9tICcuL2xvZ291dCc7XG5leHBvcnQgKiBhcyB3aWRnZXQgZnJvbSAnLi93aWRnZXQvaW5kZXgnO1xuZXhwb3J0ICogYXMgc3VydmV5IGZyb20gJy4vc3VydmV5L2luZGV4JztcbiJdfQ==",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "index.js"
+      ],
+      "names": [],
+      "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;QAAO,Q;QACA,Q;QACA,K;QACA,M;QACK,M;QACA,M",
+      "file": "index.js",
+      "sourcesContent": [
+        "export loadInfo from './loadInfo';\nexport loadAuth from './loadAuth';\nexport login from './login';\nexport logout from './logout';\nexport * as widget from './widget/index';\nexport * as survey from './survey/index';\n"
+      ]
+    },
+    "mtime": 1463894115000
+  },
+  "{\"filename\":\"D:/wamp/www/react-redux-universal-hot-example-master/api/actions/loadInfo.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false}:6.10.4:production": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [],
+        "exports": {
+          "exported": [
+            "loadInfo"
+          ],
+          "specifiers": [
+            {
+              "kind": "local",
+              "local": "loadInfo",
+              "exported": "default"
+            }
+          ]
+        }
+      }
+    },
+    "options": {
+      "filename": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/loadInfo.js",
+      "filenameRelative": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/loadInfo.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMap": "both",
+      "sourceMaps": "both",
+      "sourceMapTarget": "loadInfo.js",
+      "sourceFileName": "loadInfo.js",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "basename": "loadInfo"
+    },
+    "ignored": false,
+    "code": "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _promise = require('babel-runtime/core-js/promise');\n\nvar _promise2 = _interopRequireDefault(_promise);\n\nexports.default = loadInfo;\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction loadInfo() {\n  return new _promise2.default(function (resolve) {\n    resolve({\n      message: 'This came from the api server',\n      time: Date.now()\n    });\n  });\n}\nmodule.exports = exports['default'];\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvYWRJbmZvLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7a0JBQXdCLFE7Ozs7QUFBVCxTQUFTLFFBQVQsR0FBb0I7QUFDakMsU0FBTyxzQkFBWSxVQUFDLE9BQUQsRUFBYTtBQUM5QixZQUFRO0FBQ04sZUFBUywrQkFESDtBQUVOLFlBQU0sS0FBSyxHQUFMO0FBRkEsS0FBUjtBQUlELEdBTE0sQ0FBUDtBQU1EIiwiZmlsZSI6ImxvYWRJbmZvLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gbG9hZEluZm8oKSB7XG4gIHJldHVybiBuZXcgUHJvbWlzZSgocmVzb2x2ZSkgPT4ge1xuICAgIHJlc29sdmUoe1xuICAgICAgbWVzc2FnZTogJ1RoaXMgY2FtZSBmcm9tIHRoZSBhcGkgc2VydmVyJyxcbiAgICAgIHRpbWU6IERhdGUubm93KClcbiAgICB9KTtcbiAgfSk7XG59XG4iXX0=",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "loadInfo.js"
+      ],
+      "names": [],
+      "mappings": ";;;;;;;;;;kBAAwB,Q;;;;AAAT,SAAS,QAAT,GAAoB;AACjC,SAAO,sBAAY,UAAC,OAAD,EAAa;AAC9B,YAAQ;AACN,eAAS,+BADH;AAEN,YAAM,KAAK,GAAL;AAFA,KAAR;AAID,GALM,CAAP;AAMD",
+      "file": "loadInfo.js",
+      "sourcesContent": [
+        "export default function loadInfo() {\n  return new Promise((resolve) => {\n    resolve({\n      message: 'This came from the api server',\n      time: Date.now()\n    });\n  });\n}\n"
+      ]
+    },
+    "mtime": 1463894115000
+  },
+  "{\"filename\":\"D:/wamp/www/react-redux-universal-hot-example-master/api/actions/loadAuth.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false}:6.10.4:production": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [],
+        "exports": {
+          "exported": [
+            "loadAuth",
+            "req"
+          ],
+          "specifiers": [
+            {
+              "kind": "local",
+              "local": "loadAuth",
+              "exported": "default"
+            },
+            {
+              "kind": "local",
+              "local": "req",
+              "exported": "default"
+            }
+          ]
+        }
+      }
+    },
+    "options": {
+      "filename": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/loadAuth.js",
+      "filenameRelative": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/loadAuth.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMap": "both",
+      "sourceMaps": "both",
+      "sourceMapTarget": "loadAuth.js",
+      "sourceFileName": "loadAuth.js",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "basename": "loadAuth"
+    },
+    "ignored": false,
+    "code": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _promise = require(\"babel-runtime/core-js/promise\");\n\nvar _promise2 = _interopRequireDefault(_promise);\n\nexports.default = loadAuth;\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction loadAuth(req) {\n  return _promise2.default.resolve(req.session.user || null);\n}\nmodule.exports = exports['default'];\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvYWRBdXRoLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7a0JBQXdCLFE7Ozs7QUFBVCxTQUFTLFFBQVQsQ0FBa0IsR0FBbEIsRUFBdUI7QUFDcEMsU0FBTyxrQkFBUSxPQUFSLENBQWdCLElBQUksT0FBSixDQUFZLElBQVosSUFBb0IsSUFBcEMsQ0FBUDtBQUNEIiwiZmlsZSI6ImxvYWRBdXRoLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gbG9hZEF1dGgocmVxKSB7XG4gIHJldHVybiBQcm9taXNlLnJlc29sdmUocmVxLnNlc3Npb24udXNlciB8fCBudWxsKTtcbn1cbiJdfQ==",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "loadAuth.js"
+      ],
+      "names": [],
+      "mappings": ";;;;;;;;;;kBAAwB,Q;;;;AAAT,SAAS,QAAT,CAAkB,GAAlB,EAAuB;AACpC,SAAO,kBAAQ,OAAR,CAAgB,IAAI,OAAJ,CAAY,IAAZ,IAAoB,IAApC,CAAP;AACD",
+      "file": "loadAuth.js",
+      "sourcesContent": [
+        "export default function loadAuth(req) {\n  return Promise.resolve(req.session.user || null);\n}\n"
+      ]
+    },
+    "mtime": 1463894115000
+  },
+  "{\"filename\":\"D:/wamp/www/react-redux-universal-hot-example-master/api/actions/login.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false}:6.10.4:production": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [],
+        "exports": {
+          "exported": [
+            "login",
+            "req"
+          ],
+          "specifiers": [
+            {
+              "kind": "local",
+              "local": "login",
+              "exported": "default"
+            },
+            {
+              "kind": "local",
+              "local": "req",
+              "exported": "default"
+            }
+          ]
+        }
+      }
+    },
+    "options": {
+      "filename": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/login.js",
+      "filenameRelative": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/login.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMap": "both",
+      "sourceMaps": "both",
+      "sourceMapTarget": "login.js",
+      "sourceFileName": "login.js",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "basename": "login"
+    },
+    "ignored": false,
+    "code": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _promise = require(\"babel-runtime/core-js/promise\");\n\nvar _promise2 = _interopRequireDefault(_promise);\n\nexports.default = login;\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction login(req) {\n  var user = {\n    name: req.body.name\n  };\n  req.session.user = user;\n  return _promise2.default.resolve(user);\n}\nmodule.exports = exports['default'];\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvZ2luLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7a0JBQXdCLEs7Ozs7QUFBVCxTQUFTLEtBQVQsQ0FBZSxHQUFmLEVBQW9CO0FBQ2pDLE1BQU0sT0FBTztBQUNYLFVBQU0sSUFBSSxJQUFKLENBQVM7QUFESixHQUFiO0FBR0EsTUFBSSxPQUFKLENBQVksSUFBWixHQUFtQixJQUFuQjtBQUNBLFNBQU8sa0JBQVEsT0FBUixDQUFnQixJQUFoQixDQUFQO0FBQ0QiLCJmaWxlIjoibG9naW4uanMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBsb2dpbihyZXEpIHtcbiAgY29uc3QgdXNlciA9IHtcbiAgICBuYW1lOiByZXEuYm9keS5uYW1lXG4gIH07XG4gIHJlcS5zZXNzaW9uLnVzZXIgPSB1c2VyO1xuICByZXR1cm4gUHJvbWlzZS5yZXNvbHZlKHVzZXIpO1xufVxuIl19",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "login.js"
+      ],
+      "names": [],
+      "mappings": ";;;;;;;;;;kBAAwB,K;;;;AAAT,SAAS,KAAT,CAAe,GAAf,EAAoB;AACjC,MAAM,OAAO;AACX,UAAM,IAAI,IAAJ,CAAS;AADJ,GAAb;AAGA,MAAI,OAAJ,CAAY,IAAZ,GAAmB,IAAnB;AACA,SAAO,kBAAQ,OAAR,CAAgB,IAAhB,CAAP;AACD",
+      "file": "login.js",
+      "sourcesContent": [
+        "export default function login(req) {\n  const user = {\n    name: req.body.name\n  };\n  req.session.user = user;\n  return Promise.resolve(user);\n}\n"
+      ]
+    },
+    "mtime": 1463894115000
+  },
+  "{\"filename\":\"D:/wamp/www/react-redux-universal-hot-example-master/api/actions/logout.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false}:6.10.4:production": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [],
+        "exports": {
+          "exported": [
+            "logout",
+            "req"
+          ],
+          "specifiers": [
+            {
+              "kind": "local",
+              "local": "logout",
+              "exported": "default"
+            },
+            {
+              "kind": "local",
+              "local": "req",
+              "exported": "default"
+            }
+          ]
+        }
+      }
+    },
+    "options": {
+      "filename": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/logout.js",
+      "filenameRelative": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/logout.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMap": "both",
+      "sourceMaps": "both",
+      "sourceMapTarget": "logout.js",
+      "sourceFileName": "logout.js",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "basename": "logout"
+    },
+    "ignored": false,
+    "code": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _promise = require(\"babel-runtime/core-js/promise\");\n\nvar _promise2 = _interopRequireDefault(_promise);\n\nexports.default = logout;\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction logout(req) {\n  return new _promise2.default(function (resolve) {\n    req.session.destroy(function () {\n      req.session = null;\n      return resolve(null);\n    });\n  });\n}\nmodule.exports = exports['default'];\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvZ291dC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O2tCQUF3QixNOzs7O0FBQVQsU0FBUyxNQUFULENBQWdCLEdBQWhCLEVBQXFCO0FBQ2xDLFNBQU8sc0JBQVksVUFBQyxPQUFELEVBQWE7QUFDOUIsUUFBSSxPQUFKLENBQVksT0FBWixDQUFvQixZQUFNO0FBQ3hCLFVBQUksT0FBSixHQUFjLElBQWQ7QUFDQSxhQUFPLFFBQVEsSUFBUixDQUFQO0FBQ0QsS0FIRDtBQUlELEdBTE0sQ0FBUDtBQU1EIiwiZmlsZSI6ImxvZ291dC5qcyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIGxvZ291dChyZXEpIHtcbiAgcmV0dXJuIG5ldyBQcm9taXNlKChyZXNvbHZlKSA9PiB7XG4gICAgcmVxLnNlc3Npb24uZGVzdHJveSgoKSA9PiB7XG4gICAgICByZXEuc2Vzc2lvbiA9IG51bGw7XG4gICAgICByZXR1cm4gcmVzb2x2ZShudWxsKTtcbiAgICB9KTtcbiAgfSk7XG59XG4iXX0=",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "logout.js"
+      ],
+      "names": [],
+      "mappings": ";;;;;;;;;;kBAAwB,M;;;;AAAT,SAAS,MAAT,CAAgB,GAAhB,EAAqB;AAClC,SAAO,sBAAY,UAAC,OAAD,EAAa;AAC9B,QAAI,OAAJ,CAAY,OAAZ,CAAoB,YAAM;AACxB,UAAI,OAAJ,GAAc,IAAd;AACA,aAAO,QAAQ,IAAR,CAAP;AACD,KAHD;AAID,GALM,CAAP;AAMD",
+      "file": "logout.js",
+      "sourcesContent": [
+        "export default function logout(req) {\n  return new Promise((resolve) => {\n    req.session.destroy(() => {\n      req.session = null;\n      return resolve(null);\n    });\n  });\n}\n"
+      ]
+    },
+    "mtime": 1463894115000
+  },
+  "{\"filename\":\"D:/wamp/www/react-redux-universal-hot-example-master/api/actions/widget/index.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false}:6.10.4:production": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [],
+        "exports": {
+          "exported": [
+            "update",
+            "load"
+          ],
+          "specifiers": [
+            {
+              "kind": "external",
+              "local": "update",
+              "exported": "update",
+              "source": "./update"
+            },
+            {
+              "kind": "external",
+              "local": "load",
+              "exported": "load",
+              "source": "./load"
+            }
+          ]
+        }
+      }
+    },
+    "options": {
+      "filename": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/widget/index.js",
+      "filenameRelative": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/widget/index.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMap": "both",
+      "sourceMaps": "both",
+      "sourceMapTarget": "index.js",
+      "sourceFileName": "index.js",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "basename": "index"
+    },
+    "ignored": false,
+    "code": "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.load = exports.update = undefined;\n\nvar _update2 = require('./update');\n\nvar _update3 = _interopRequireDefault(_update2);\n\nvar _load2 = require('./load');\n\nvar _load3 = _interopRequireDefault(_load2);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.update = _update3.default;\nexports.load = _load3.default;\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7O1FBQU8sTTtRQUNBLEkiLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgdXBkYXRlIGZyb20gJy4vdXBkYXRlJztcbmV4cG9ydCBsb2FkIGZyb20gJy4vbG9hZCc7XG4iXX0=",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "index.js"
+      ],
+      "names": [],
+      "mappings": ";;;;;;;;;;;;;;;;;QAAO,M;QACA,I",
+      "file": "index.js",
+      "sourcesContent": [
+        "export update from './update';\nexport load from './load';\n"
+      ]
+    },
+    "mtime": 1463894115000
+  },
+  "{\"filename\":\"D:/wamp/www/react-redux-universal-hot-example-master/api/actions/widget/update.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false}:6.10.4:production": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [
+          {
+            "source": "./load",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "load"
+              }
+            ]
+          }
+        ],
+        "exports": {
+          "exported": [
+            "update",
+            "req"
+          ],
+          "specifiers": [
+            {
+              "kind": "local",
+              "local": "update",
+              "exported": "default"
+            },
+            {
+              "kind": "local",
+              "local": "req",
+              "exported": "default"
+            }
+          ]
+        }
+      }
+    },
+    "options": {
+      "filename": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/widget/update.js",
+      "filenameRelative": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/widget/update.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMap": "both",
+      "sourceMaps": "both",
+      "sourceMapTarget": "update.js",
+      "sourceFileName": "update.js",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "basename": "update"
+    },
+    "ignored": false,
+    "code": "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _promise = require('babel-runtime/core-js/promise');\n\nvar _promise2 = _interopRequireDefault(_promise);\n\nexports.default = update;\n\nvar _load = require('./load');\n\nvar _load2 = _interopRequireDefault(_load);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction update(req) {\n  return new _promise2.default(function (resolve, reject) {\n    // write to database\n    setTimeout(function () {\n      if (Math.random() < 0.2) {\n        reject('Oh no! Widget save fails 20% of the time. Try again.');\n      } else {\n        (0, _load2.default)(req).then(function (data) {\n          var widgets = data;\n          var widget = req.body;\n          if (widget.color === 'Green') {\n            reject({\n              color: 'We do not accept green widgets' // example server-side validation error\n            });\n          }\n          if (widget.id) {\n            widgets[widget.id - 1] = widget; // id is 1-based. please don't code like this in production! :-)\n            req.session.widgets = widgets;\n          }\n          resolve(widget);\n        }, function (err) {\n          reject(err);\n        });\n      }\n    }, 1500); // simulate async db write\n  });\n}\nmodule.exports = exports['default'];\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVwZGF0ZS5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O2tCQUV3QixNOztBQUZ4Qjs7Ozs7O0FBRWUsU0FBUyxNQUFULENBQWdCLEdBQWhCLEVBQXFCO0FBQ2xDLFNBQU8sc0JBQVksVUFBQyxPQUFELEVBQVUsTUFBVixFQUFxQjs7QUFFdEMsZUFBVyxZQUFNO0FBQ2YsVUFBSSxLQUFLLE1BQUwsS0FBZ0IsR0FBcEIsRUFBeUI7QUFDdkIsZUFBTyxzREFBUDtBQUNELE9BRkQsTUFFTztBQUNMLDRCQUFLLEdBQUwsRUFBVSxJQUFWLENBQWUsZ0JBQVE7QUFDckIsY0FBTSxVQUFVLElBQWhCO0FBQ0EsY0FBTSxTQUFTLElBQUksSUFBbkI7QUFDQSxjQUFJLE9BQU8sS0FBUCxLQUFpQixPQUFyQixFQUE4QjtBQUM1QixtQkFBTztBQUNMLHFCQUFPLGdDO0FBREYsYUFBUDtBQUdEO0FBQ0QsY0FBSSxPQUFPLEVBQVgsRUFBZTtBQUNiLG9CQUFRLE9BQU8sRUFBUCxHQUFZLENBQXBCLElBQXlCLE1BQXpCLEM7QUFDQSxnQkFBSSxPQUFKLENBQVksT0FBWixHQUFzQixPQUF0QjtBQUNEO0FBQ0Qsa0JBQVEsTUFBUjtBQUNELFNBYkQsRUFhRyxlQUFPO0FBQ1IsaUJBQU8sR0FBUDtBQUNELFNBZkQ7QUFnQkQ7QUFDRixLQXJCRCxFQXFCRyxJQXJCSCxFO0FBc0JELEdBeEJNLENBQVA7QUF5QkQiLCJmaWxlIjoidXBkYXRlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IGxvYWQgZnJvbSAnLi9sb2FkJztcblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gdXBkYXRlKHJlcSkge1xuICByZXR1cm4gbmV3IFByb21pc2UoKHJlc29sdmUsIHJlamVjdCkgPT4ge1xuICAgIC8vIHdyaXRlIHRvIGRhdGFiYXNlXG4gICAgc2V0VGltZW91dCgoKSA9PiB7XG4gICAgICBpZiAoTWF0aC5yYW5kb20oKSA8IDAuMikge1xuICAgICAgICByZWplY3QoJ09oIG5vISBXaWRnZXQgc2F2ZSBmYWlscyAyMCUgb2YgdGhlIHRpbWUuIFRyeSBhZ2Fpbi4nKTtcbiAgICAgIH0gZWxzZSB7XG4gICAgICAgIGxvYWQocmVxKS50aGVuKGRhdGEgPT4ge1xuICAgICAgICAgIGNvbnN0IHdpZGdldHMgPSBkYXRhO1xuICAgICAgICAgIGNvbnN0IHdpZGdldCA9IHJlcS5ib2R5O1xuICAgICAgICAgIGlmICh3aWRnZXQuY29sb3IgPT09ICdHcmVlbicpIHtcbiAgICAgICAgICAgIHJlamVjdCh7XG4gICAgICAgICAgICAgIGNvbG9yOiAnV2UgZG8gbm90IGFjY2VwdCBncmVlbiB3aWRnZXRzJyAvLyBleGFtcGxlIHNlcnZlci1zaWRlIHZhbGlkYXRpb24gZXJyb3JcbiAgICAgICAgICAgIH0pO1xuICAgICAgICAgIH1cbiAgICAgICAgICBpZiAod2lkZ2V0LmlkKSB7XG4gICAgICAgICAgICB3aWRnZXRzW3dpZGdldC5pZCAtIDFdID0gd2lkZ2V0OyAgLy8gaWQgaXMgMS1iYXNlZC4gcGxlYXNlIGRvbid0IGNvZGUgbGlrZSB0aGlzIGluIHByb2R1Y3Rpb24hIDotKVxuICAgICAgICAgICAgcmVxLnNlc3Npb24ud2lkZ2V0cyA9IHdpZGdldHM7XG4gICAgICAgICAgfVxuICAgICAgICAgIHJlc29sdmUod2lkZ2V0KTtcbiAgICAgICAgfSwgZXJyID0+IHtcbiAgICAgICAgICByZWplY3QoZXJyKTtcbiAgICAgICAgfSk7XG4gICAgICB9XG4gICAgfSwgMTUwMCk7IC8vIHNpbXVsYXRlIGFzeW5jIGRiIHdyaXRlXG4gIH0pO1xufVxuIl19",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "update.js"
+      ],
+      "names": [],
+      "mappings": ";;;;;;;;;;kBAEwB,M;;AAFxB;;;;;;AAEe,SAAS,MAAT,CAAgB,GAAhB,EAAqB;AAClC,SAAO,sBAAY,UAAC,OAAD,EAAU,MAAV,EAAqB;;AAEtC,eAAW,YAAM;AACf,UAAI,KAAK,MAAL,KAAgB,GAApB,EAAyB;AACvB,eAAO,sDAAP;AACD,OAFD,MAEO;AACL,4BAAK,GAAL,EAAU,IAAV,CAAe,gBAAQ;AACrB,cAAM,UAAU,IAAhB;AACA,cAAM,SAAS,IAAI,IAAnB;AACA,cAAI,OAAO,KAAP,KAAiB,OAArB,EAA8B;AAC5B,mBAAO;AACL,qBAAO,gC;AADF,aAAP;AAGD;AACD,cAAI,OAAO,EAAX,EAAe;AACb,oBAAQ,OAAO,EAAP,GAAY,CAApB,IAAyB,MAAzB,C;AACA,gBAAI,OAAJ,CAAY,OAAZ,GAAsB,OAAtB;AACD;AACD,kBAAQ,MAAR;AACD,SAbD,EAaG,eAAO;AACR,iBAAO,GAAP;AACD,SAfD;AAgBD;AACF,KArBD,EAqBG,IArBH,E;AAsBD,GAxBM,CAAP;AAyBD",
+      "file": "update.js",
+      "sourcesContent": [
+        "import load from './load';\n\nexport default function update(req) {\n  return new Promise((resolve, reject) => {\n    // write to database\n    setTimeout(() => {\n      if (Math.random() < 0.2) {\n        reject('Oh no! Widget save fails 20% of the time. Try again.');\n      } else {\n        load(req).then(data => {\n          const widgets = data;\n          const widget = req.body;\n          if (widget.color === 'Green') {\n            reject({\n              color: 'We do not accept green widgets' // example server-side validation error\n            });\n          }\n          if (widget.id) {\n            widgets[widget.id - 1] = widget;  // id is 1-based. please don't code like this in production! :-)\n            req.session.widgets = widgets;\n          }\n          resolve(widget);\n        }, err => {\n          reject(err);\n        });\n      }\n    }, 1500); // simulate async db write\n  });\n}\n"
+      ]
+    },
+    "mtime": 1463894115000
+  },
+  "{\"filename\":\"D:/wamp/www/react-redux-universal-hot-example-master/api/actions/widget/load.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false}:6.10.4:production": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [],
+        "exports": {
+          "exported": [
+            "getWidgets",
+            "req",
+            "load",
+            "req"
+          ],
+          "specifiers": [
+            {
+              "kind": "local",
+              "local": "getWidgets",
+              "exported": "getWidgets"
+            },
+            {
+              "kind": "local",
+              "local": "req",
+              "exported": "req"
+            },
+            {
+              "kind": "local",
+              "local": "load",
+              "exported": "default"
+            },
+            {
+              "kind": "local",
+              "local": "req",
+              "exported": "default"
+            }
+          ]
+        }
+      }
+    },
+    "options": {
+      "filename": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/widget/load.js",
+      "filenameRelative": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/widget/load.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMap": "both",
+      "sourceMaps": "both",
+      "sourceMapTarget": "load.js",
+      "sourceFileName": "load.js",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "basename": "load"
+    },
+    "ignored": false,
+    "code": "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _promise = require('babel-runtime/core-js/promise');\n\nvar _promise2 = _interopRequireDefault(_promise);\n\nexports.getWidgets = getWidgets;\nexports.default = load;\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar initialWidgets = [{ id: 1, color: 'Red', sprocketCount: 7, owner: 'John' }, { id: 2, color: 'Taupe', sprocketCount: 1, owner: 'George' }, { id: 3, color: 'Green', sprocketCount: 8, owner: 'Ringo' }, { id: 4, color: 'Blue', sprocketCount: 2, owner: 'Paul' }];\n\nfunction getWidgets(req) {\n  var widgets = req.session.widgets;\n  if (!widgets) {\n    widgets = initialWidgets;\n    req.session.widgets = widgets;\n  }\n  return widgets;\n}\n\nfunction load(req) {\n  return new _promise2.default(function (resolve, reject) {\n    // make async call to database\n    setTimeout(function () {\n      if (Math.random() < 0.33) {\n        reject('Widget load fails 33% of the time. You were unlucky.');\n      } else {\n        resolve(getWidgets(req));\n      }\n    }, 1000); // simulate async load\n  });\n}\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvYWQuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztRQU9nQixVLEdBQUEsVTtrQkFTUSxJOzs7O0FBaEJ4QixJQUFNLGlCQUFpQixDQUNyQixFQUFDLElBQUksQ0FBTCxFQUFRLE9BQU8sS0FBZixFQUFzQixlQUFlLENBQXJDLEVBQXdDLE9BQU8sTUFBL0MsRUFEcUIsRUFFckIsRUFBQyxJQUFJLENBQUwsRUFBUSxPQUFPLE9BQWYsRUFBd0IsZUFBZSxDQUF2QyxFQUEwQyxPQUFPLFFBQWpELEVBRnFCLEVBR3JCLEVBQUMsSUFBSSxDQUFMLEVBQVEsT0FBTyxPQUFmLEVBQXdCLGVBQWUsQ0FBdkMsRUFBMEMsT0FBTyxPQUFqRCxFQUhxQixFQUlyQixFQUFDLElBQUksQ0FBTCxFQUFRLE9BQU8sTUFBZixFQUF1QixlQUFlLENBQXRDLEVBQXlDLE9BQU8sTUFBaEQsRUFKcUIsQ0FBdkI7O0FBT08sU0FBUyxVQUFULENBQW9CLEdBQXBCLEVBQXlCO0FBQzlCLE1BQUksVUFBVSxJQUFJLE9BQUosQ0FBWSxPQUExQjtBQUNBLE1BQUksQ0FBQyxPQUFMLEVBQWM7QUFDWixjQUFVLGNBQVY7QUFDQSxRQUFJLE9BQUosQ0FBWSxPQUFaLEdBQXNCLE9BQXRCO0FBQ0Q7QUFDRCxTQUFPLE9BQVA7QUFDRDs7QUFFYyxTQUFTLElBQVQsQ0FBYyxHQUFkLEVBQW1CO0FBQ2hDLFNBQU8sc0JBQVksVUFBQyxPQUFELEVBQVUsTUFBVixFQUFxQjs7QUFFdEMsZUFBVyxZQUFNO0FBQ2YsVUFBSSxLQUFLLE1BQUwsS0FBZ0IsSUFBcEIsRUFBMEI7QUFDeEIsZUFBTyxzREFBUDtBQUNELE9BRkQsTUFFTztBQUNMLGdCQUFRLFdBQVcsR0FBWCxDQUFSO0FBQ0Q7QUFDRixLQU5ELEVBTUcsSUFOSCxFO0FBT0QsR0FUTSxDQUFQO0FBVUQiLCJmaWxlIjoibG9hZC5qcyIsInNvdXJjZXNDb250ZW50IjpbImNvbnN0IGluaXRpYWxXaWRnZXRzID0gW1xuICB7aWQ6IDEsIGNvbG9yOiAnUmVkJywgc3Byb2NrZXRDb3VudDogNywgb3duZXI6ICdKb2huJ30sXG4gIHtpZDogMiwgY29sb3I6ICdUYXVwZScsIHNwcm9ja2V0Q291bnQ6IDEsIG93bmVyOiAnR2VvcmdlJ30sXG4gIHtpZDogMywgY29sb3I6ICdHcmVlbicsIHNwcm9ja2V0Q291bnQ6IDgsIG93bmVyOiAnUmluZ28nfSxcbiAge2lkOiA0LCBjb2xvcjogJ0JsdWUnLCBzcHJvY2tldENvdW50OiAyLCBvd25lcjogJ1BhdWwnfVxuXTtcblxuZXhwb3J0IGZ1bmN0aW9uIGdldFdpZGdldHMocmVxKSB7XG4gIGxldCB3aWRnZXRzID0gcmVxLnNlc3Npb24ud2lkZ2V0cztcbiAgaWYgKCF3aWRnZXRzKSB7XG4gICAgd2lkZ2V0cyA9IGluaXRpYWxXaWRnZXRzO1xuICAgIHJlcS5zZXNzaW9uLndpZGdldHMgPSB3aWRnZXRzO1xuICB9XG4gIHJldHVybiB3aWRnZXRzO1xufVxuXG5leHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBsb2FkKHJlcSkge1xuICByZXR1cm4gbmV3IFByb21pc2UoKHJlc29sdmUsIHJlamVjdCkgPT4ge1xuICAgIC8vIG1ha2UgYXN5bmMgY2FsbCB0byBkYXRhYmFzZVxuICAgIHNldFRpbWVvdXQoKCkgPT4ge1xuICAgICAgaWYgKE1hdGgucmFuZG9tKCkgPCAwLjMzKSB7XG4gICAgICAgIHJlamVjdCgnV2lkZ2V0IGxvYWQgZmFpbHMgMzMlIG9mIHRoZSB0aW1lLiBZb3Ugd2VyZSB1bmx1Y2t5LicpO1xuICAgICAgfSBlbHNlIHtcbiAgICAgICAgcmVzb2x2ZShnZXRXaWRnZXRzKHJlcSkpO1xuICAgICAgfVxuICAgIH0sIDEwMDApOyAvLyBzaW11bGF0ZSBhc3luYyBsb2FkXG4gIH0pO1xufVxuIl19",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "load.js"
+      ],
+      "names": [],
+      "mappings": ";;;;;;;;;;QAOgB,U,GAAA,U;kBASQ,I;;;;AAhBxB,IAAM,iBAAiB,CACrB,EAAC,IAAI,CAAL,EAAQ,OAAO,KAAf,EAAsB,eAAe,CAArC,EAAwC,OAAO,MAA/C,EADqB,EAErB,EAAC,IAAI,CAAL,EAAQ,OAAO,OAAf,EAAwB,eAAe,CAAvC,EAA0C,OAAO,QAAjD,EAFqB,EAGrB,EAAC,IAAI,CAAL,EAAQ,OAAO,OAAf,EAAwB,eAAe,CAAvC,EAA0C,OAAO,OAAjD,EAHqB,EAIrB,EAAC,IAAI,CAAL,EAAQ,OAAO,MAAf,EAAuB,eAAe,CAAtC,EAAyC,OAAO,MAAhD,EAJqB,CAAvB;;AAOO,SAAS,UAAT,CAAoB,GAApB,EAAyB;AAC9B,MAAI,UAAU,IAAI,OAAJ,CAAY,OAA1B;AACA,MAAI,CAAC,OAAL,EAAc;AACZ,cAAU,cAAV;AACA,QAAI,OAAJ,CAAY,OAAZ,GAAsB,OAAtB;AACD;AACD,SAAO,OAAP;AACD;;AAEc,SAAS,IAAT,CAAc,GAAd,EAAmB;AAChC,SAAO,sBAAY,UAAC,OAAD,EAAU,MAAV,EAAqB;;AAEtC,eAAW,YAAM;AACf,UAAI,KAAK,MAAL,KAAgB,IAApB,EAA0B;AACxB,eAAO,sDAAP;AACD,OAFD,MAEO;AACL,gBAAQ,WAAW,GAAX,CAAR;AACD;AACF,KAND,EAMG,IANH,E;AAOD,GATM,CAAP;AAUD",
+      "file": "load.js",
+      "sourcesContent": [
+        "const initialWidgets = [\n  {id: 1, color: 'Red', sprocketCount: 7, owner: 'John'},\n  {id: 2, color: 'Taupe', sprocketCount: 1, owner: 'George'},\n  {id: 3, color: 'Green', sprocketCount: 8, owner: 'Ringo'},\n  {id: 4, color: 'Blue', sprocketCount: 2, owner: 'Paul'}\n];\n\nexport function getWidgets(req) {\n  let widgets = req.session.widgets;\n  if (!widgets) {\n    widgets = initialWidgets;\n    req.session.widgets = widgets;\n  }\n  return widgets;\n}\n\nexport default function load(req) {\n  return new Promise((resolve, reject) => {\n    // make async call to database\n    setTimeout(() => {\n      if (Math.random() < 0.33) {\n        reject('Widget load fails 33% of the time. You were unlucky.');\n      } else {\n        resolve(getWidgets(req));\n      }\n    }, 1000); // simulate async load\n  });\n}\n"
+      ]
+    },
+    "mtime": 1463894115000
+  },
+  "{\"filename\":\"D:/wamp/www/react-redux-universal-hot-example-master/api/actions/survey/index.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false}:6.10.4:production": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [],
+        "exports": {
+          "exported": [
+            "isValid"
+          ],
+          "specifiers": [
+            {
+              "kind": "external",
+              "local": "isValid",
+              "exported": "isValid",
+              "source": "./isValid"
+            }
+          ]
+        }
+      }
+    },
+    "options": {
+      "filename": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/survey/index.js",
+      "filenameRelative": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/survey/index.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMap": "both",
+      "sourceMaps": "both",
+      "sourceMapTarget": "index.js",
+      "sourceFileName": "index.js",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "basename": "index"
+    },
+    "ignored": false,
+    "code": "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.isValid = undefined;\n\nvar _isValid2 = require('./isValid');\n\nvar _isValid3 = _interopRequireDefault(_isValid2);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.isValid = _isValid3.default;\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7UUFBTyxPIiwiZmlsZSI6ImluZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGlzVmFsaWQgZnJvbSAnLi9pc1ZhbGlkJztcbiJdfQ==",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "index.js"
+      ],
+      "names": [],
+      "mappings": ";;;;;;;;;;;;;QAAO,O",
+      "file": "index.js",
+      "sourcesContent": [
+        "export isValid from './isValid';\n"
+      ]
+    },
+    "mtime": 1463894115000
+  },
+  "{\"filename\":\"D:/wamp/www/react-redux-universal-hot-example-master/api/actions/survey/isValid.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false}:6.10.4:production": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [],
+        "exports": {
+          "exported": [
+            "survey",
+            "req"
+          ],
+          "specifiers": [
+            {
+              "kind": "local",
+              "local": "survey",
+              "exported": "default"
+            },
+            {
+              "kind": "local",
+              "local": "req",
+              "exported": "default"
+            }
+          ]
+        }
+      }
+    },
+    "options": {
+      "filename": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/survey/isValid.js",
+      "filenameRelative": "D:/wamp/www/react-redux-universal-hot-example-master/api/actions/survey/isValid.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMap": "both",
+      "sourceMaps": "both",
+      "sourceMapTarget": "isValid.js",
+      "sourceFileName": "isValid.js",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "basename": "isValid"
+    },
+    "ignored": false,
+    "code": "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _promise = require('babel-runtime/core-js/promise');\n\nvar _promise2 = _interopRequireDefault(_promise);\n\nexports.default = survey;\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction survey(req) {\n  return new _promise2.default(function (resolve, reject) {\n    setTimeout(function () {\n      var errors = {};\n      var valid = true;\n      if (~['bobby@gmail.com', 'timmy@microsoft.com'].indexOf(req.body.email)) {\n        errors.email = 'Email address already used';\n        valid = false;\n      }\n      if (valid) {\n        resolve();\n      } else {\n        reject(errors);\n      }\n    }, 1000);\n  });\n}\nmodule.exports = exports['default'];\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImlzVmFsaWQuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztrQkFBd0IsTTs7OztBQUFULFNBQVMsTUFBVCxDQUFnQixHQUFoQixFQUFxQjtBQUNsQyxTQUFPLHNCQUFZLFVBQUMsT0FBRCxFQUFVLE1BQVYsRUFBcUI7QUFDdEMsZUFBVyxZQUFNO0FBQ2YsVUFBTSxTQUFTLEVBQWY7QUFDQSxVQUFJLFFBQVEsSUFBWjtBQUNBLFVBQUksQ0FBQyxDQUFDLGlCQUFELEVBQW9CLHFCQUFwQixFQUEyQyxPQUEzQyxDQUFtRCxJQUFJLElBQUosQ0FBUyxLQUE1RCxDQUFMLEVBQXlFO0FBQ3ZFLGVBQU8sS0FBUCxHQUFlLDRCQUFmO0FBQ0EsZ0JBQVEsS0FBUjtBQUNEO0FBQ0QsVUFBSSxLQUFKLEVBQVc7QUFDVDtBQUNELE9BRkQsTUFFTztBQUNMLGVBQU8sTUFBUDtBQUNEO0FBQ0YsS0FaRCxFQVlHLElBWkg7QUFhRCxHQWRNLENBQVA7QUFlRCIsImZpbGUiOiJpc1ZhbGlkLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gc3VydmV5KHJlcSkge1xuICByZXR1cm4gbmV3IFByb21pc2UoKHJlc29sdmUsIHJlamVjdCkgPT4ge1xuICAgIHNldFRpbWVvdXQoKCkgPT4ge1xuICAgICAgY29uc3QgZXJyb3JzID0ge307XG4gICAgICBsZXQgdmFsaWQgPSB0cnVlO1xuICAgICAgaWYgKH5bJ2JvYmJ5QGdtYWlsLmNvbScsICd0aW1teUBtaWNyb3NvZnQuY29tJ10uaW5kZXhPZihyZXEuYm9keS5lbWFpbCkpIHtcbiAgICAgICAgZXJyb3JzLmVtYWlsID0gJ0VtYWlsIGFkZHJlc3MgYWxyZWFkeSB1c2VkJztcbiAgICAgICAgdmFsaWQgPSBmYWxzZTtcbiAgICAgIH1cbiAgICAgIGlmICh2YWxpZCkge1xuICAgICAgICByZXNvbHZlKCk7XG4gICAgICB9IGVsc2Uge1xuICAgICAgICByZWplY3QoZXJyb3JzKTtcbiAgICAgIH1cbiAgICB9LCAxMDAwKTtcbiAgfSk7XG59XG4iXX0=",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "isValid.js"
+      ],
+      "names": [],
+      "mappings": ";;;;;;;;;;kBAAwB,M;;;;AAAT,SAAS,MAAT,CAAgB,GAAhB,EAAqB;AAClC,SAAO,sBAAY,UAAC,OAAD,EAAU,MAAV,EAAqB;AACtC,eAAW,YAAM;AACf,UAAM,SAAS,EAAf;AACA,UAAI,QAAQ,IAAZ;AACA,UAAI,CAAC,CAAC,iBAAD,EAAoB,qBAApB,EAA2C,OAA3C,CAAmD,IAAI,IAAJ,CAAS,KAA5D,CAAL,EAAyE;AACvE,eAAO,KAAP,GAAe,4BAAf;AACA,gBAAQ,KAAR;AACD;AACD,UAAI,KAAJ,EAAW;AACT;AACD,OAFD,MAEO;AACL,eAAO,MAAP;AACD;AACF,KAZD,EAYG,IAZH;AAaD,GAdM,CAAP;AAeD",
+      "file": "isValid.js",
+      "sourcesContent": [
+        "export default function survey(req) {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      const errors = {};\n      let valid = true;\n      if (~['bobby@gmail.com', 'timmy@microsoft.com'].indexOf(req.body.email)) {\n        errors.email = 'Email address already used';\n        valid = false;\n      }\n      if (valid) {\n        resolve();\n      } else {\n        reject(errors);\n      }\n    }, 1000);\n  });\n}\n"
+      ]
+    },
+    "mtime": 1463894115000
+  },
+  "{\"filename\":\"D:/wamp/www/react-redux-universal-hot-example-master/api/utils/url.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"async\":false,\"asyncGenerators\":false}],[[],null],[[],null],[[],null],[[],null],[[],null]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false}:6.10.4:production": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [],
+        "exports": {
+          "exported": [
+            "mapUrl",
+            "availableActions",
+            "url"
+          ],
+          "specifiers": [
+            {
+              "kind": "local",
+              "local": "mapUrl",
+              "exported": "mapUrl"
+            },
+            {
+              "kind": "local",
+              "local": "availableActions",
+              "exported": "availableActions"
+            },
+            {
+              "kind": "local",
+              "local": "url",
+              "exported": "url"
+            }
+          ]
+        }
+      }
+    },
+    "options": {
+      "filename": "D:/wamp/www/react-redux-universal-hot-example-master/api/utils/url.js",
+      "filenameRelative": "D:/wamp/www/react-redux-universal-hot-example-master/api/utils/url.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMap": "both",
+      "sourceMaps": "both",
+      "sourceMapTarget": "url.js",
+      "sourceFileName": "url.js",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "basename": "url"
+    },
+    "ignored": false,
+    "code": "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _keys = require('babel-runtime/core-js/object/keys');\n\nvar _keys2 = _interopRequireDefault(_keys);\n\nexports.mapUrl = mapUrl;\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction mapUrl() {\n  var availableActions = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];\n  var url = arguments.length <= 1 || arguments[1] === undefined ? [] : arguments[1];\n\n  var notFound = { action: null, params: [] };\n\n  // test for empty input\n  if (url.length === 0 || (0, _keys2.default)(availableActions).length === 0) {\n    return notFound;\n  }\n  /*eslint-disable */\n  var reducer = function reducer(prev, current) {\n    if (prev.action && prev.action[current]) {\n      return { action: prev.action[current], params: [] }; // go deeper\n    } else {\n      if (typeof prev.action === 'function') {\n        return { action: prev.action, params: prev.params.concat(current) }; // params are found\n      } else {\n        return notFound;\n      }\n    }\n  };\n  /*eslint-enable */\n\n  var actionAndParams = url.reduce(reducer, { action: availableActions, params: [] });\n\n  return typeof actionAndParams.action === 'function' ? actionAndParams : notFound;\n}\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVybC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O1FBQWdCLE0sR0FBQSxNOzs7O0FBQVQsU0FBUyxNQUFULEdBQWlEO0FBQUEsTUFBakMsZ0JBQWlDLHlEQUFkLEVBQWM7QUFBQSxNQUFWLEdBQVUseURBQUosRUFBSTs7QUFDdEQsTUFBTSxXQUFXLEVBQUMsUUFBUSxJQUFULEVBQWUsUUFBUSxFQUF2QixFQUFqQjs7O0FBR0EsTUFBSSxJQUFJLE1BQUosS0FBZSxDQUFmLElBQW9CLG9CQUFZLGdCQUFaLEVBQThCLE1BQTlCLEtBQXlDLENBQWpFLEVBQW9FO0FBQ2xFLFdBQU8sUUFBUDtBQUNEOztBQUVELE1BQU0sVUFBVSxTQUFWLE9BQVUsQ0FBQyxJQUFELEVBQU8sT0FBUCxFQUFtQjtBQUNqQyxRQUFJLEtBQUssTUFBTCxJQUFlLEtBQUssTUFBTCxDQUFZLE9BQVosQ0FBbkIsRUFBeUM7QUFDdkMsYUFBTyxFQUFDLFFBQVEsS0FBSyxNQUFMLENBQVksT0FBWixDQUFULEVBQStCLFFBQVEsRUFBdkMsRUFBUCxDO0FBQ0QsS0FGRCxNQUVPO0FBQ0wsVUFBSSxPQUFPLEtBQUssTUFBWixLQUF1QixVQUEzQixFQUF1QztBQUNyQyxlQUFPLEVBQUMsUUFBUSxLQUFLLE1BQWQsRUFBc0IsUUFBUSxLQUFLLE1BQUwsQ0FBWSxNQUFaLENBQW1CLE9BQW5CLENBQTlCLEVBQVAsQztBQUNELE9BRkQsTUFFTztBQUNMLGVBQU8sUUFBUDtBQUNEO0FBQ0Y7QUFDRixHQVZEOzs7QUFhQSxNQUFNLGtCQUFrQixJQUFJLE1BQUosQ0FBVyxPQUFYLEVBQW9CLEVBQUMsUUFBUSxnQkFBVCxFQUEyQixRQUFRLEVBQW5DLEVBQXBCLENBQXhCOztBQUVBLFNBQVEsT0FBTyxnQkFBZ0IsTUFBdkIsS0FBa0MsVUFBbkMsR0FBaUQsZUFBakQsR0FBbUUsUUFBMUU7QUFDRCIsImZpbGUiOiJ1cmwuanMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZnVuY3Rpb24gbWFwVXJsKGF2YWlsYWJsZUFjdGlvbnMgPSB7fSwgdXJsID0gW10pIHtcbiAgY29uc3Qgbm90Rm91bmQgPSB7YWN0aW9uOiBudWxsLCBwYXJhbXM6IFtdfTtcblxuICAvLyB0ZXN0IGZvciBlbXB0eSBpbnB1dFxuICBpZiAodXJsLmxlbmd0aCA9PT0gMCB8fCBPYmplY3Qua2V5cyhhdmFpbGFibGVBY3Rpb25zKS5sZW5ndGggPT09IDApIHtcbiAgICByZXR1cm4gbm90Rm91bmQ7XG4gIH1cbiAgLyplc2xpbnQtZGlzYWJsZSAqL1xuICBjb25zdCByZWR1Y2VyID0gKHByZXYsIGN1cnJlbnQpID0+IHtcbiAgICBpZiAocHJldi5hY3Rpb24gJiYgcHJldi5hY3Rpb25bY3VycmVudF0pIHtcbiAgICAgIHJldHVybiB7YWN0aW9uOiBwcmV2LmFjdGlvbltjdXJyZW50XSwgcGFyYW1zOiBbXX07IC8vIGdvIGRlZXBlclxuICAgIH0gZWxzZSB7XG4gICAgICBpZiAodHlwZW9mIHByZXYuYWN0aW9uID09PSAnZnVuY3Rpb24nKSB7XG4gICAgICAgIHJldHVybiB7YWN0aW9uOiBwcmV2LmFjdGlvbiwgcGFyYW1zOiBwcmV2LnBhcmFtcy5jb25jYXQoY3VycmVudCl9OyAvLyBwYXJhbXMgYXJlIGZvdW5kXG4gICAgICB9IGVsc2Uge1xuICAgICAgICByZXR1cm4gbm90Rm91bmQ7XG4gICAgICB9XG4gICAgfVxuICB9O1xuICAvKmVzbGludC1lbmFibGUgKi9cblxuICBjb25zdCBhY3Rpb25BbmRQYXJhbXMgPSB1cmwucmVkdWNlKHJlZHVjZXIsIHthY3Rpb246IGF2YWlsYWJsZUFjdGlvbnMsIHBhcmFtczogW119KTtcblxuICByZXR1cm4gKHR5cGVvZiBhY3Rpb25BbmRQYXJhbXMuYWN0aW9uID09PSAnZnVuY3Rpb24nKSA/IGFjdGlvbkFuZFBhcmFtcyA6IG5vdEZvdW5kO1xufVxuIl19",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "url.js"
+      ],
+      "names": [],
+      "mappings": ";;;;;;;;;;QAAgB,M,GAAA,M;;;;AAAT,SAAS,MAAT,GAAiD;AAAA,MAAjC,gBAAiC,yDAAd,EAAc;AAAA,MAAV,GAAU,yDAAJ,EAAI;;AACtD,MAAM,WAAW,EAAC,QAAQ,IAAT,EAAe,QAAQ,EAAvB,EAAjB;;;AAGA,MAAI,IAAI,MAAJ,KAAe,CAAf,IAAoB,oBAAY,gBAAZ,EAA8B,MAA9B,KAAyC,CAAjE,EAAoE;AAClE,WAAO,QAAP;AACD;;AAED,MAAM,UAAU,SAAV,OAAU,CAAC,IAAD,EAAO,OAAP,EAAmB;AACjC,QAAI,KAAK,MAAL,IAAe,KAAK,MAAL,CAAY,OAAZ,CAAnB,EAAyC;AACvC,aAAO,EAAC,QAAQ,KAAK,MAAL,CAAY,OAAZ,CAAT,EAA+B,QAAQ,EAAvC,EAAP,C;AACD,KAFD,MAEO;AACL,UAAI,OAAO,KAAK,MAAZ,KAAuB,UAA3B,EAAuC;AACrC,eAAO,EAAC,QAAQ,KAAK,MAAd,EAAsB,QAAQ,KAAK,MAAL,CAAY,MAAZ,CAAmB,OAAnB,CAA9B,EAAP,C;AACD,OAFD,MAEO;AACL,eAAO,QAAP;AACD;AACF;AACF,GAVD;;;AAaA,MAAM,kBAAkB,IAAI,MAAJ,CAAW,OAAX,EAAoB,EAAC,QAAQ,gBAAT,EAA2B,QAAQ,EAAnC,EAApB,CAAxB;;AAEA,SAAQ,OAAO,gBAAgB,MAAvB,KAAkC,UAAnC,GAAiD,eAAjD,GAAmE,QAA1E;AACD",
+      "file": "url.js",
+      "sourcesContent": [
+        "export function mapUrl(availableActions = {}, url = []) {\n  const notFound = {action: null, params: []};\n\n  // test for empty input\n  if (url.length === 0 || Object.keys(availableActions).length === 0) {\n    return notFound;\n  }\n  /*eslint-disable */\n  const reducer = (prev, current) => {\n    if (prev.action && prev.action[current]) {\n      return {action: prev.action[current], params: []}; // go deeper\n    } else {\n      if (typeof prev.action === 'function') {\n        return {action: prev.action, params: prev.params.concat(current)}; // params are found\n      } else {\n        return notFound;\n      }\n    }\n  };\n  /*eslint-enable */\n\n  const actionAndParams = url.reduce(reducer, {action: availableActions, params: []});\n\n  return (typeof actionAndParams.action === 'function') ? actionAndParams : notFound;\n}\n"
+      ]
+    },
+    "mtime": 1463894115000
+  }
+}

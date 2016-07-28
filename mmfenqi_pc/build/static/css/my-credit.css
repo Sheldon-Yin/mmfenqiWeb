@@ -1,0 +1,79 @@
+.wrap-content .wrap-content-right {
+    width: 961px;
+}
+
+.wrap-content .wrap-content-right > div {
+    margin: 32px 0 0 2px;
+    padding: 0 22px;
+
+}
+
+.wrap-content .wrap-content-right .top {
+    overflow: hidden;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 22px 20px;
+    width: 100%;
+}
+
+
+.top ul{
+    overflow: hidden;
+}
+.top ul li{
+    float: left;
+}
+.top ._a li{
+    color: #9a9a9a;
+}
+.top ._a li,
+.top ._money li,
+.top ._pg li{
+    width: 45%;
+    padding-bottom: 8px;
+    font-size: 18px;
+}
+
+
+
+.top ._money li:first-child{
+    color: #fd657a;
+}
+.top ._money li:first-child+li{
+    color: #039cf4;
+    text-align: right;
+}
+
+
+.top ._pg li:first-child{
+    background-color: #fd657a;
+    height: 20px;
+
+}
+
+.top ._pg li:first-child+li{
+    background-color: #f8f8f8;
+    height: 20px;
+}
+
+.pseudo {
+    padding: 30px;
+    overflow: hidden;
+}
+
+.pseudo .two-dimension{
+    height: 240px;
+    border: 1px solid red;
+}
+
+
+.pseudo li,.left,.right{
+    float: left;
+}
+
+.pseudo .right p:first-child{
+    padding-top:50px ;
+}
+
+.pseudo .right .two_btn img{
+    margin: 0 50px;
+}

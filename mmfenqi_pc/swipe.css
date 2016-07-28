@@ -1,0 +1,35 @@
+.ui-swipe {
+  position: relative;
+  overflow: hidden; }
+  .ui-swipe .ui-swipe-items .ui-swipe-item {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    cursor: pointer; }
+    .ui-swipe .ui-swipe-items .ui-swipe-item:after {
+      clear: both; }
+    .ui-swipe .ui-swipe-items .ui-swipe-item .ui-swipe-pic img {
+      width: 100%;
+      height: auto; }
+    .ui-swipe .ui-swipe-items .ui-swipe-item .ui-swipe-info {
+      position: absolute;
+      left: 20px;
+      bottom: 30px; }
+      .ui-swipe .ui-swipe-items .ui-swipe-item .ui-swipe-info .ui-swipe-title {
+        color: #fff; }
+  .ui-swipe .ui-swipe-pagination {
+    position: absolute;
+    right: 0;
+    bottom: 0; }
+    .ui-swipe .ui-swipe-pagination ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px; }
+      .ui-swipe .ui-swipe-pagination ul li {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        cursor: pointer; }
+        .ui-swipe .ui-swipe-pagination ul li.active {
+          background: #fff; }

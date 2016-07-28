@@ -1,0 +1,66 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{bill.username}}">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content class="padding">
+
+    <div class="list card">
+
+      <div class="item item-input item-icon-right">
+
+        <div class="input-label">
+          <h2 style="margin-bottom: .5rem">{{bill.username}}-{{bill.telephone}}</h2>
+          <p>{{bill.name}} - {{bill.price}}元 / {{bill.stage}}期</p>
+        </div>
+
+        <div class="icon-right icon">
+          <span style="font-size: 22px">
+            审核中
+          </span>
+        </div>
+
+      </div>
+
+      <div class="item item-body">
+        <img class="full-image" src="img/ben.png">
+      </div>
+
+      <div class="item">
+        订单号
+          <span class="item-note">
+            123456
+          </span>
+      </div>
+
+      <div class="item">
+        实际收入
+          <span class="item-note">
+            1200
+          </span>
+      </div>
+
+      <div class="item">
+        备注
+          <span class="item-note">
+            不错哦
+          </span>
+      </div>
+
+
+      <div class="item tabs tabs-secondary tabs-icon-right">
+        <a class="tab-item" href="#">
+          <i class="icon ion-share"></i>
+          上传收据
+        </a>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

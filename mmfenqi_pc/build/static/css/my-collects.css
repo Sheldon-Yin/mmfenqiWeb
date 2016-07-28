@@ -1,0 +1,86 @@
+.wrap-content .wrap-content-right {
+    width: 961px;
+}
+
+.wrap-content .wrap-content-right > div:first-child {
+    margin: 32px 0 0 2px;
+    border: 1px solid #e8e8e8;
+    padding: 0 22px;
+
+}
+
+.wrap-content .wrap-content-right .top {
+    overflow: hidden;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 22px 0;
+}
+
+.wrap-content .wrap-content-right .top ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+.wrap-content .wrap-content-right .top ul li {
+    list-style: none;
+    float: left;
+    margin-right: 20px;
+    font-size: 14px;
+    color: #333;
+}
+.wrap-content .top-content{
+    padding: 10px 0;
+}
+
+.top-content ul{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.top-content ul li{
+    float: left;
+    border: 1px solid #efefef;
+    width: 215px;
+    height: 248px;
+    position: relative;
+    /*overflow: hidden;*/
+}
+
+.top-content .goods-collect .babyInfo{
+    padding-bottom: 18px;
+    margin-bottom: 11px;
+}
+
+
+.goods-collect .babyInfo .infoTit1{
+    font-size: 14px;
+    height: 49px;
+    line-height: 18px;
+    overflow: hidden;
+    padding-top: 12px;
+    margin-bottom: 5px;
+}
+
+.goods-collect .babyInfo .infoTit2{
+    margin-bottom: 5px;
+}
+.goods-collect .babyInfo .infoTit2 del{
+    color: #b1b1b1;
+    padding-left: 5px;
+
+}
+
+.goods-collect .babyInfo .infoTit3{
+    width: 100%;
+    background: #fd657a;
+
+}
+.goods-collect .babyInfo .infoTit3 a{
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+
+    color: #ffffff;
+}

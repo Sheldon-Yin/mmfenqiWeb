@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "debug": "registry:npm/debug#2.0.0+20160511151334",
+    "knockout": "registry:npm/knockout#3.4.0+20160516171930"
+  }
+}

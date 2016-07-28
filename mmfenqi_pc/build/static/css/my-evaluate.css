@@ -1,0 +1,96 @@
+.wrap-content{
+    width: 100%;
+    font-size: 12px;
+    padding: 50px 0;
+}
+
+
+.wrap-content .title{
+    padding: 5px 0;
+    font-size: 14px;
+
+}
+
+.wrap-content ._main{
+    border: 1px solid #E8E8E8;
+    width: 100%;
+}
+
+
+
+.wrap-content .evaluate-info{
+    width: 100%;
+    overflow: hidden;
+}
+
+.evaluate-info {
+    padding: 20px 0;
+}
+
+.evaluate-info .left-info{
+    float: left;
+    width: 300px;
+    font-size: 14px;
+
+}
+
+
+
+.left-info .left-info-goods{
+    width: 100%;
+    padding: 0 40px;
+
+}
+
+.left-info-goods div{
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+.left-info-goods img{
+    width: 215px;
+    height: 135px;
+}
+
+.evaluate-info .right-info{
+    float: left;
+    width: 898px;
+    padding: 0 40px;
+}
+
+.evaluate-info .right-info .info1 ,.info2 ,.info3{
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.evaluate-info .right-info .info1 ,.info2 ,.info3  ul li{
+    float: left;
+    width: 30%;
+}
+
+.evaluate-info textarea{
+    border: 1px solid #e8e8e8;
+    padding-left: 5px;
+}
+
+.right-info >div{
+    padding: 5px 0;
+}
+
+.right-info .btn{
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    line-height: 1.5;
+    margin: 10px 0;
+    width: 100px;
+}
+
+.right-info .btn .upload_btn{
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #fd657a;
+    border-color: #fd657a;
+}

@@ -1,0 +1,256 @@
+.goods-main{
+    width: 100%;
+    height:auto;
+}
+
+
+.goods-main .main{
+    width: 100%;
+    height: 365px;
+}
+
+.goods-main .main img{
+    width: 100%;
+    height: 100%;
+}
+
+.goods-date{
+    width: 100%;
+    background-color: #FAFAFA;
+
+}
+
+.goods-date ._main{
+    width: 1200px;
+    overflow: auto;
+    margin: 0 auto;
+    padding: 25px 50px;
+}
+
+
+.goods-date .left{
+    width: 50%;
+    float: left;
+    padding: 5px 0;
+}
+
+.goods-date .left div{
+    display: inline-block;
+
+    background: #FFFFff;
+    padding: 10px;
+    margin: 0 10px;
+
+}
+
+.goods-date .right{
+    width: 50%;
+    float: left;
+}
+
+.activity-main{
+    width: 100%;
+}
+
+.activity-main .activity-title{
+    width: 1200px;
+    overflow: hidden;
+    margin: 40px auto;
+
+    padding: 0 10px;
+
+}
+
+
+
+.activity-title .left .t-content{
+    padding: 16px 20px;
+    overflow: hidden;
+
+}
+
+
+
+
+
+
+
+
+
+.t-content .today-seckilling{
+    width: 200px;
+    text-align: center;
+    float: left;
+}
+
+.t-content .today-time{
+    float: left;
+    width: 300px;
+
+}
+
+.activity-title   ._cb{
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid red;
+
+    margin: auto;
+
+}
+
+.today-time > div{
+    display: inline-block;
+    background: #FFFFff;
+    padding: 10px;
+    margin: 0 10px;
+
+}
+
+.activity-title .left,.right{
+    float: left;
+    width: 49%;
+    position: relative;
+}
+
+
+.activity-title .right .tm{
+
+    padding: 19px 20px;
+    overflow: hidden;
+    color: #cccccc !important;
+}
+
+
+
+.activity-title .bd{
+    border: 1px solid #CCCCCC;
+    padding: 15px 20px !important;
+}
+.activity-title .bd2{
+    border: 1px solid #CCCCCC;
+    padding: 12px 20px !important;
+}
+
+.activity-title ._bg{
+    background-image: url("../images/_tab.png");
+}
+
+.tm .tm-seckilling{
+    width: 100%;
+    text-align: center;
+    color: #999999;!important;
+}
+
+
+.activity-main .activity-content{
+    width: 1200px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+
+.activity-content .one{
+    width: 385px;
+    float: left;
+    margin: 5px;
+
+}
+
+
+.one  li{
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #dfdfdf;
+    position: relative;
+    padding:2px 0 2px 2px ;
+
+
+}
+
+
+.one li .top-img{
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+
+
+.one li .img{
+    width: 155px;
+    height: 155px;
+    float: left;
+}
+
+.img img{
+    width: 100%;
+    height: 100%;
+
+
+}
+
+.one li .goods-info{
+    width: 230px;
+    float: left;
+    color: #707070;
+
+}
+
+.goods-info p:first-child{
+    color: #666666;
+    padding: 10px 10px 10px 10px;
+    font-size: 14px;
+    min-height: 32px;
+}
+
+.goods-info >div{
+    padding: 10px;
+}
+
+.goods-info p:nth-child(2) span{
+
+}
+
+.goods-info del{
+    font-size: 12px;
+}
+
+.goods-info b{
+    color: #fd657a;
+}
+
+
+
+.one li .goods-info .bg-img{
+    width: 230px;
+    height: 35px;
+    background: url(../images/goods/goods-bar.jpg) center no-repeat ;
+    padding: 0 !important;
+
+
+}
+
+.bg-img div{
+    display: inline-block;
+    line-height: 35px;
+
+
+}
+
+.bg-img .month-pay{
+    color: #FFF;
+    font-size: 14px;
+    width: 160px;
+
+}
+
+.bg-img .month-pay span{
+    font-size: 10px;
+}
+
+
+.more{
+
+}

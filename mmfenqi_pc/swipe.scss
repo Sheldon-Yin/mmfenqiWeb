@@ -1,0 +1,60 @@
+.ui-swipe {
+  position: relative;
+  overflow: hidden;
+
+  .ui-swipe-items {
+
+    .ui-swipe-item {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      cursor: pointer;
+
+      &:after {
+        clear: both;
+      }
+
+      .ui-swipe-pic {
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .ui-swipe-info {
+        position: absolute;
+        left: 20px;
+        bottom: 30px;
+
+        .ui-swipe-title {
+          color: #fff;
+        }
+      }
+
+    }
+  }
+
+  .ui-swipe-pagination {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px;
+
+      li {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        cursor: pointer;
+
+        &.active {
+          background: #fff;
+        }
+      }
+    }
+  }
+}

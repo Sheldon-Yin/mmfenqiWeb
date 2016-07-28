@@ -1,0 +1,62 @@
+<style>
+  .item-select:after {
+    right: 28%;
+  }
+</style>
+
+<ion-view>
+  <ion-header-bar class="bar-positive">
+    <button class="button button-clear"></button>
+    <h1 class="title">账单列表</h1>
+    <button class="button button-clear ion-ios-search-strong" ng-click="modal.show()">查询</button>
+  </ion-header-bar>
+  <div class="bar bar-subheader item-select text-center item" style="padding: 10px 0;margin: 0;">
+    <!--<div class="item text-center item-select text-center" style="padding: 10px 0">-->
+    <select style="text-align: center;position: relative;max-width: 100%;padding:0 30%" ng-model="receiptAudit" ng-change="refresh()">
+      <option value="">全部订单</option>
+      <option value="0">未上传</option>
+      <option value="1">审核中</option>
+      <option value="2">审核成功</option>
+      <option value="3">审核失败</option>
+      <option value="4">提现中</option>
+      <option value="5">提现成功</option>
+    </select>
+    <!--</div>-->
+  </div>
+
+  <ion-content>
+    <ion-refresher pulling-text="下拉刷新" on-refresh="refresh()"></ion-refresher>
+    <div>
+      <div class="item item-input text-center" style="padding: 1px;margin-top: 44px">
+        <div class="input-label" style="padding: 1px 0;width: 40%" ng-click="openStartPicker()">
+          {{start_time | date: 'yyyy-MM-dd'}}<i class="icon ion-chevron-down" style="margin-left: .7rem"></i>
+        </div>
+        <div class="input-label" style="padding: 1px 0;width: 20%">
+          ------
+        </div>
+
+        <div class="input-label" style="padding: 5px 0;width: 40%" ng-click="openEndPicker()">
+          {{end_time | date: 'yyyy-MM-dd'}}<i class="icon ion-chevron-down" style="margin-left: 1rem"></i>
+        </div>
+      </div>
+    </div>
+    <ion-list  style="margin-top: 72px">
+      <ion-item class="item-remove-animate item-icon-right" ng-repeat="bill in bills" type="item-text-wrap"
+                href="#/tab/bills/{{bill.orderId}}">
+        <div style="width: 80%">
+          <h2 style="margin-bottom: .5rem">{{bill.name}}-{{bill.telphone}}</h2>
+          <p>{{bill.goodsName}} - {{bill.orderPrice}}元 / {{bill.totalTimes}}期</p>
+        </div>
+        <div class="icon icon-accessory icon-right"><span style="margin-right: 1rem">{{bill | receiptStatus}}</span><i
+          class="ion-chevron-right" style="margin-right: 1rem"></i></div>
+        <!--<ion-option-button class="button-assertive" ng-click="remove(bill)">-->
+        <!--Delete-->
+        <!--</ion-option-button>-->
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll ng-if="moredata" on-infinite="loadMore()" distance="1%" ></ion-infinite-scroll>
+    <div ng-if="!moredata" class="text-center padding">
+      没有更多数据了
+    </div>
+  </ion-content>
+</ion-view>

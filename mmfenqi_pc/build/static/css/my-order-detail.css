@@ -1,0 +1,300 @@
+
+.order-detail-main{
+    width: 1200px;
+    margin: 0 auto;
+
+}
+
+
+.order-detail-main .main{
+    width: 1000px;
+    margin: 0 auto;
+    font-size: 12px;
+}
+
+
+.main .order-content{
+    width: 100%;
+}
+
+.order-content .o-t{
+    background: #FCFCFC;
+    padding: 5px;
+    color: #3c3c3c;
+    border: 1px solid #e2e2e2;
+    margin-top: 30px;
+
+}
+
+.order-content .o-info{
+    padding: 15px;
+    color: #818181 !important;
+    border: 1px solid #e2e2e2;
+
+}
+
+
+.o-info .info-pay{
+    overflow: hidden;
+
+}
+
+
+.info-pay .left , .right{
+    float: left;
+}
+
+.info-pay .left{
+    width: 50%;
+    text-align: left;
+}
+
+.left div a,span{
+    font-size: 12px;
+    line-height: 20px;
+}
+
+
+
+.info-pay .right{
+    width: 50%;
+    text-align: right;
+}
+
+
+.order-detail-main ._sub{
+    width: 100%;
+    border: 1px solid #e2e2e2;
+    margin: 20px 0;
+    display: none;
+}
+
+.order-detail-main .pay-method{
+    background-color: #FCFCFC;
+    padding: 10px;
+
+}
+.order-detail-main .pay-content{
+    width: 100%;
+
+
+
+}
+
+
+.order-detail-main .pay-content .weChatPay{
+    margin: 0 20px;
+    border: 2px solid #fd657a;
+    position: relative;
+
+
+}
+
+
+.order-detail-main .weChatPay .good{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.weChatPay .we-title{
+    padding: 10px 0;
+    border-bottom:1px solid #def4eb;
+    margin: 0 40px;
+
+}
+
+.weChatPay .weixinma{
+    margin: 0 auto;
+    width: 250px;
+}
+.weChatPay .weixinma div{
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
+}
+
+.weChatPay .weixinma p{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.order-detail-main .pay-content .alipay{
+    padding: 10px 0;
+    border:1px solid #ffe0e5;
+    margin: 0 20px;
+    overflow: hidden;
+
+}
+
+.order-detail-main .pay-content .alipay >div{
+    float: left;
+}
+
+
+
+.order-detail-main ._main{
+    border: 1px solid #E8E8E8;
+    width: 100%;
+}
+
+
+
+.order-detail-main .evaluate-info{
+    width: 100%;
+    overflow: hidden;
+}
+
+.evaluate-info {
+    padding: 20px 0;
+}
+
+.evaluate-info .left-info{
+    float: left;
+    width: 300px;
+    font-size: 14px;
+
+}
+
+
+
+.left-info .left-info-goods{
+    width: 100%;
+    padding: 0 40px;
+
+}
+
+.left-info-goods div{
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+.left-info-goods img{
+    width: 215px;
+    height: 135px;
+}
+
+.evaluate-info .right-info{
+    float: left;
+    width: 898px;
+    padding: 0 40px;
+}
+
+.evaluate-info .right-info .info1 ,.info2 ,.info3{
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.evaluate-info .right-info .info1 ,.info2 ,.info3  ul li{
+    float: left;
+    width: 30%;
+}
+
+.evaluate-info textarea{
+    border: 1px solid #e8e8e8;
+    padding-left: 5px;
+}
+
+.right-info >div{
+    padding: 5px 0;
+}
+
+.right-info .btn{
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    line-height: 1.5;
+    margin: 10px 0;
+    width: 100px;
+}
+
+.right-info .btn .upload_btn{
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #fd657a;
+    border-color: #fd657a;
+}
+
+
+
+.order-detail-main .pay-content{
+    width: 100%;
+
+
+
+}
+.pay-content .xinyong-pay{
+    width: 410px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.pay-content .xinyong-pay > div{
+    padding: 10px 0;
+}
+
+
+.xinyong-pay .note{
+    font-size: 16px;
+
+}
+.xinyong-pay .phone{
+    font-size: 14px;
+    color: #fd657a;
+}
+
+.xinyong-pay .yzm{
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+    border: 1px solid #e9e9e9;
+    padding: 0 !important;
+}
+
+.xinyong-pay .yzm div{
+    float: left;
+}
+
+.xinyong-pay .yzm input[type='text']{
+
+    margin: 8px 5px;
+    padding: 2px 5px;
+    width: 180px;
+    border: 0;
+    border-right: 1px solid #e9e9e9;
+
+    outline: none;
+
+}
+
+.xinyong-pay .yzm div:nth-child(2){
+    width: 100px;
+    padding: 10px 5px;
+    color: #66bbfb;
+    cursor: pointer;
+
+}
+
+
+.order-detail-main .knowing-agreeing{
+    width: 100%;
+    margin: 20px 0;
+}
+
+.knowing-agreeing img{
+    vertical-align: middle;
+}
+.knowing-agreeing div{
+    display: inline-block;
+    margin: 0 10px;
+
+}
+
+
+.knowing-agreeing div span{
+    color: #66bbfb;
+}
