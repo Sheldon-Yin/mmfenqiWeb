@@ -2,7 +2,7 @@
  * Created by sheldon on 2016/5/4.
  */
 
-app.controller('CustomerListCtrl', ['$scope', '$state', 'toaster', function ($scope, $state, toaster) {
+app.controller('CustomerListCtrl', ['$scope', '$state', 'toaster', '$resource', function ($scope, $state,toaster,  $resource) {
 
     $scope.getDefaultTime = function () {
         $scope.today = new Date();
@@ -16,20 +16,21 @@ app.controller('CustomerListCtrl', ['$scope', '$state', 'toaster', function ($sc
         $scope.last_month.setSeconds(1);
     };
 
-    $scope.myFilter = 150;
-
     $scope.getDefaultTime();
+    $scope.currentPage = 1;
 
-    $scope.initData = function () {
-        $.get('/html/mmfq/api/customers/get_customers').then(function (res) {
-            $scope.$apply(function () {
-                console.log(res);
-                $scope.customerListData = res.data;
-            });
-        });
+    $scope.setPage = function (pageNo) {
+        $scope.currentPage = pageNo;
+        console.log(pageNo)
     };
 
-    $scope.updateData = function () {
+
+    $scope.pageChanged = function () {
+        console.log($scope.currentPage);
+        $scope.initData($scope.currentPage)
+    };
+
+    $scope.initData = function (index) {
         if (!!$scope.end_time) {
             $scope.end_time.setHours(23);
             $scope.end_time.setMinutes(59);
@@ -42,16 +43,25 @@ app.controller('CustomerListCtrl', ['$scope', '$state', 'toaster', function ($sc
             $scope.start_time.setSeconds(1);
         }
 
-        $.get('/html/mmfq/api/customers/get_customers', {
+        $scope.getCustomerListReq = $resource('/html/mmfq/api/customers/get_customers', {}, {
+            query: {method: 'GET'}
+        });
+
+        $scope.req = $scope.getCustomerListReq.query({
             start_time: Date.parse($scope.start_time) / 1000 ? Date.parse($scope.start_time) / 1000 : Date.parse($scope.last_month) / 1000,
-            end_time: Date.parse($scope.end_time) / 1000 ? Date.parse($scope.end_time) / 1000 : Date.parse($scope.today) / 1000
-        }).then(function (res) {
-            $scope.$apply(function () {
-                console.log(res);
-                $scope.customerListData = res.data;
-            });
+            end_time: Date.parse($scope.end_time) / 1000 ? Date.parse($scope.end_time) / 1000 : Date.parse($scope.today) / 1000,
+            index: (index-1),
+            key_words: !!$scope.keyWords ? $scope.keyWords : ''
+        });
+        $scope.req.$promise.then(function (res) {
+            console.log(res);
+            $scope.customerListData = res.data;
+            $scope.bigTotalItems = res.data.length;
         });
     };
+
+    $scope.initData($scope.currentPage);
+
 
     $.get('/html/mmfq/api/users/get_users').then(function (res) {
         $scope.$apply(function () {
@@ -62,8 +72,6 @@ app.controller('CustomerListCtrl', ['$scope', '$state', 'toaster', function ($sc
         toaster.pop('error', '获取失败', error);
     });
 
-
-    $scope.initData();
 
     $scope.customerStar = function (x) {
         x.waitingForStar = true;
@@ -139,5 +147,7 @@ app.controller('CustomerListCtrl', ['$scope', '$state', 'toaster', function ($sc
             toaster.pop('error', '获取意向分类失败', error);
         })
     });
+
+
 
 }]);

@@ -8,8 +8,9 @@ define(function (require, exports, module) {
         require('services/goodsSearchService.js')(app);
         require('services/hospitalService.js')(app);
         require('services/categoriesService.js')(app);
-        app.register.controller('ListCtrl', ['$scope', 'GoodsSearch', 'Hospital', 'Categories','$timeout','$location',
-            function ($scope, GoodsSearch, Hospital, Categories,$timeout,$location) {
+        require('services/weChatService.js')(app);
+        app.register.controller('ListCtrl', ['$scope', 'GoodsSearch', 'Hospital', 'Categories','$timeout','$location','Bridge',
+            function ($scope, GoodsSearch, Hospital, Categories,$timeout,$location,Bridge) {
 
                 var searchObject = $location.search();
                 console.log(searchObject);
@@ -18,16 +19,17 @@ define(function (require, exports, module) {
                 $scope.subCategoryId = $location.search().subId ? $location.search().subId : 0;
                 $scope.hospitalId = $location.search().hospitalId ? $location.search().hospitalId : 0;
                 $scope.sortId = $location.search().sortId ? $location.search().sortId : 1;
-                $scope.cityId = $location.search().cityId ? $location.search().cityId : 2;
                 $scope.searchInfo = $location.search().keyword ? $location.search().keyword : '';
-                $scope.cityName = $location.search().cityName ? $location.search().cityName : '';
-
+                $scope.searchContent = $location.search().keyword ? $location.search().keyword : '';
+                Bridge.getCity(function (res) {
+                    console.log(res);
+                    $scope.cityName = res
+                });
 
                 $scope.refreshData = function () {
                     $scope.goods = GoodsSearch.query(
                         {
                             sortId: $scope.sortId,
-                            cityId: $scope.cityId,
                             hospitalId: $scope.hospitalId,
                             parentCategoryId: $scope.parentCategoryId,
                             categoryId: $scope.subCategoryId,
@@ -37,28 +39,21 @@ define(function (require, exports, module) {
                     )
                 };
 
-                $scope.hospital = Hospital.query();
-                $scope.categories = Categories.query();
+                $scope.hospital = Hospital.query({
+                    cityName: $scope.cityName
+                });
+                $scope.categories = Categories.query({
+                    cityName: $scope.cityName
+                });
                 $scope.refreshData();
 
-                //$scope.goBack = function () {
-                //    window.history.go(-1);
-                //};
+                $scope.goToSearch = function () {
+                    $scope.searchInfo = $scope.searchContent;
+                    $scope.refreshData();
+                };
 
                 $scope.jumpToGoods = function (x) {
-                    if (myBridge) {
-                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + x);
-                        myBridge.callHandler('sendMessageToApp', {
-                            type: 2, data: {
-                                url: jumpUrl,
-                                title: '产品详情',
-                                leftNavItems: [1],
-                                rightNavItems: [0]
-                            }
-                        }, function (response) {
-                            //todo custom
-                        });
-                    }
+                    Bridge.jumpTo(encodeURI($location.absUrl().split('#')[0] + x,'产品详情'));
                 };
 
                 //类目设置模块开始
@@ -160,22 +155,6 @@ define(function (require, exports, module) {
                         $scope.loading();
                     }
                 }, true);
-
-
-                if (myBridge) {
-                    myBridge.registerHandler('sendMessageToHTML', function (message, callback) {
-                        var jumpUrl;
-                        if (message.type==10001) {
-                            jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/list?keyword='+message.data+'&cityName='+$scope.cityName);
-                            window.location.href= jumpUrl;
-                        } else {
-                            myBridge.callHandler('sendMessageToApp', {type: message, data: {}}, function (response) {
-                                //todo custom
-                            });
-                        }
-
-                    });
-                }
 
             }]);
     }

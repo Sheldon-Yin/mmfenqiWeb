@@ -6,94 +6,72 @@
 define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/orderService.js')(app);
-        app.register.controller('OrderListCtrl', ['$scope', 'QueryMyOrder','$location',
-            function ($scope, QueryMyOrder,$location) {
-
-                //$scope.appToken = encodeURI('MMFQ:hfB4RC9zM80eD1ZbGaD84axUSr/eVHSjf2coCBqm+Sg7y7qP3cxXNrFPbOxmsf2R');
-                //$scope.orderId = $location.search().orderId;
-                //$scope.data = QueryMyOrder.query({
-                //    appToken: $scope.appToken
-                //});
-                //
-                //$scope.data.$promise.then(function (res) {
-                //    if (res.result != 0){
-                //        Toast(res.msg,3000);
-                //        $scope.loadError = true;
-                //    }else {
-                //        Toast('获取订单成功',2020);
-                //    }
-                //}).catch(function (error) {
-                //    Toast('服务器错误'+error,2000);
-                //    $scope.loadError = true;
-                //});
+        require('services/weChatService.js')(app);
+        app.register.controller('OrderListCtrl', ['$scope', 'QueryMyOrder', '$location', 'Bridge',
+            function ($scope, QueryMyOrder, $location, Bridge) {
 
 
-                if (myBridge) {
-                    myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
-                        $scope.$apply(function () {
-                            $scope.appToken = response;
-                            if (!!$location.search().orderStatus){
-                                $scope.data = QueryMyOrder.query({
-                                    appToken: $scope.appToken,
-                                    orderStatus: $location.search().orderStatus
-                                });
-                            }else {
-                                $scope.data = QueryMyOrder.query({
-                                    appToken: $scope.appToken,
-                                    orderStatus: -1
-                                });
-                            }
+                Bridge.appToken(function (response) {
 
-                            $scope.data.$promise.then(function (res) {
-                                if (res.result != 0){
-                                    Toast(res.msg,3000);
-                                    $scope.loadError = true;
-                                }else {
-                                    Toast('获取订单成功',2020);
-                                }
-                            }).catch(function (error) {
-                                Toast('服务器错误'+error,2000);
-                                $scope.loadError = true;
-                            });
-
-                            console.log($scope.data);
-
-                            if ($location.search().orderStatus == 1){
-                                $scope.nowType = '待支付'
-                            }else if ($location.search().orderStatus == 2) {
-                                $scope.nowType = '待完成'
-                            }else {
-                                $scope.nowType = '全部订单';
-                            }
-
-                            $scope.goToOrderDetail = function (x) {
-                                if (myBridge) {
-                                    var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/order/detail?orderId=' + x.orderId);
-                                    myBridge.callHandler('sendMessageToApp', {
-                                        type: 2, data: {
-                                            url: jumpUrl,
-                                            leftNavItems: [1],
-                                            title: '订单详情'
-                                        }
-                                    }, function (response) {
-                                        //todo custom
-                                    });
-                                }
-                            };
-
-                            $scope.setItems = function(x) {
-                                $scope.nowType = x.project;
-                                $scope.orderStatus = x.orderStatus;
-                                $scope.data = QueryMyOrder.query({appToken: $scope.appToken,orderStatus:$scope.orderStatus});
-                                $scope.selectState = 0;
-                            }
-
+                    $scope.appToken = response;
+                    if (!!$location.search().orderStatus) {
+                        $scope.data = QueryMyOrder.query({
+                            appToken: $scope.appToken,
+                            orderStatus: $location.search().orderStatus
                         });
-                    })
-                }
-                //TODO
+                    } else {
+                        $scope.data = QueryMyOrder.query({
+                            appToken: $scope.appToken,
+                            orderStatus: -1
+                        });
+                    }
 
-                //$scope.appToken = 'MMFQ:hfB4RC9zM80v4ZI5ANbXiVVKyivU3TTJIZnhZfqx5btQzwgzDUxlgdnqjQDPw85z';
+                    $scope.data.$promise.then(function (res) {
+                        if (res.result != 0) {
+                            Toast(res.msg, 3000);
+                            $scope.loadError = true;
+                        } else {
+                            Toast('获取订单成功', 2020);
+                        }
+                    }).catch(function (error) {
+                        Toast('服务器错误' + error, 2000);
+                        $scope.loadError = true;
+                    });
+
+                    console.log($scope.data);
+
+                    if ($location.search().orderStatus == 1) {
+                        $scope.nowType = '待支付'
+                    } else if ($location.search().orderStatus == 2) {
+                        $scope.nowType = '待完成'
+                    } else if ($location.search().orderStatus == 3) {
+                        $scope.nowType = '已完成'
+                    } else if ($location.search().orderStatus == 4) {
+                        $scope.nowType = '已取消'
+                    } else if ($location.search().orderStatus == 5) {
+                        $scope.nowType = '退款审核中'
+                    } else if ($location.search().orderStatus == 6) {
+                        $scope.nowType = '退款成功'
+                    } else {
+                        $scope.nowType = '全部订单';
+                    }
+
+                    $scope.goToOrderDetail = function (x) {
+                        Bridge.jumpTo(encodeURI($location.absUrl().split('#')[0] + '#?/order/detail?orderId=' + x.orderId), '订单详情');
+                    };
+
+                    $scope.setItems = function (x) {
+                        $scope.nowType = x.project;
+                        $scope.orderStatus = x.orderStatus;
+                        $scope.data = QueryMyOrder.query({
+                            appToken: $scope.appToken,
+                            orderStatus: $scope.orderStatus
+                        });
+                        $scope.selectState = 0;
+                    }
+
+
+                });
 
                 $scope.projects = [
                     {

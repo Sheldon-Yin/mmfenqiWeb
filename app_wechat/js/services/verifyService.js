@@ -45,10 +45,9 @@ define(function (require, exports, module) {
                         })
                     },
                     verifyBaseInfoSecond: function () {
-                        return $resource('/appinterface/white_collar_auth_five', {}, {
+                        return $resource('/appinterface/white_collar_auth_five_h5', {}, {
                             save: {
                                 method: 'POST', params: {
-
                                 }
                             }
                         })
@@ -71,7 +70,7 @@ define(function (require, exports, module) {
                         })
                     },
                     verifyBankPayment: function () {
-                        return $resource('/appinterface/payment_credit', {}, {
+                        return $resource('/appinterface/bank_statement_credit_h5', {}, {
                             save: {
                                 method: 'POST', params: {
                                 }
@@ -103,7 +102,7 @@ define(function (require, exports, module) {
                         })
                     },
                     verifyStudentFirst: function () {
-                        return $resource('/appinterface/school_credit',{},{
+                        return $resource('/appinterface/school_credit_h5',{},{
                             save:{
                                 method:'POST',params:{
                                 }
@@ -120,7 +119,7 @@ define(function (require, exports, module) {
                         })
                     },
                     verifyStudentThird: function () {
-                        return $resource('/appinterface/upload_identity_pic',{},{
+                        return $resource('/appinterface/upload_identity_pic_h5',{},{
                             save:{
                                 method:'POST',params:{
 
@@ -151,6 +150,22 @@ define(function (require, exports, module) {
                             query:{
                                 method:'GET',params:{
 
+                                }
+                            }
+                        })
+                    },
+                    verifyReForCaptcha: function () {
+                        return $resource('/appinterface/reForCaptcha',{},{
+                            save:{
+                                method:'POST',params:{
+                                }
+                            }
+                        })
+                    },
+                    getIp : function () {
+                        return $resource('/appinterface/getIP',{},{
+                            query:{
+                                method:'GET',params:{
                                 }
                             }
                         })

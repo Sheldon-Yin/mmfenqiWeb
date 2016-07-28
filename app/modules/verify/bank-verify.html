@@ -17,7 +17,7 @@
     </div>
 
     <div class="row" style="margin-top: 2rem">
-        <div class="col-xs-6 app-padding-one" ng-repeat="x in imgList" style="position: relative">
+        <div class="col-xs-6 app-padding-one" ng-repeat="x in imgList track by $index" style="position: relative">
             <img ng-src="data:image/png;base64,{{x}}" style="width: 100%;">
             <img src="modules/verify/img/bank-delete.png" style="position: absolute;top: 2rem;right: 2rem" ng-click="deleteImg(x)">
         </div>

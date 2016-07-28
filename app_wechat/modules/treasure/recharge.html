@@ -85,7 +85,8 @@
         </div>
     </div>
 
-    <div class="row app-padding-one" style="background-color: white">
+
+    <div class="row app-padding-one" style="background-color: white" ng-click="setChannel(0)">
         <div class="col-xs-2">
             <img src="modules/treasure/img/recharge/wechat.png" style="width: 3rem">
         </div>
@@ -98,9 +99,8 @@
             </div>
         </div>
         <div class="col-xs-2">
-            <img src="modules/treasure/img/recharge/checked.png" style="width: 1.5rem;margin-top: 0.7rem">
+            <div class="treasure-checked" ng-class="{'true':'treasure-checked','false':'treasure-unchecked'}[channel == 0]"></div>
         </div>
-
     </div>
 
     <div class="row app-padding-one">

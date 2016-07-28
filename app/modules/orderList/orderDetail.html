@@ -135,17 +135,14 @@
             <div class="row text-center">
                 <div class="col-xs-12 text-center">
                     <div class="app-pink-radius-button"
-                         ng-click="goToInform()"
                          style="background-color: #029cf4;margin-left:20%;width: 60%;font-size: 1.2rem;padding: 0.5rem;margin-top: 0.5rem"
                          ng-if="orderDetail.data.orderDetailResponse.orderStatus==2 && orderDetail.data.orderDetailResponse.projectReviewStatus == 0"
                          ng-click="goToInform()">
                         上传知情同意书
                     </div>
                     <div class="app-pink-radius-button"
-                         ng-click="goToInform()"
                          style="background-color: #029cf4;margin-left:20%;width: 60%;font-size: 1.2rem;padding: 0.5rem;margin-top: 0.5rem"
-                         ng-if="orderDetail.data.orderDetailResponse.orderStatus==2 && orderDetail.data.orderDetailResponse.projectReviewStatus == 1"
-                         ng-click="goToInform()">
+                         ng-if="orderDetail.data.orderDetailResponse.orderStatus==2 && orderDetail.data.orderDetailResponse.projectReviewStatus == 1">
                         知情同意书审核中
                     </div>
                     <img src="modules/orderList/img/qrcode.png" class="text-right"

@@ -119,13 +119,13 @@ define(function (require, exports, module) {
                         });
                     },
                     saveLocation: function () {
-                        return $resource('/appinterface/temp_edit_address ', {}, {
+                        return $resource('/appinterface/temp_edit_address', {}, {
                             save: {
                                 method: 'POST', params: {}
                             }
                         });
                     },
-                    uploadShare:function () {
+                    uploadShare: function () {
                         return $resource('/appinterface/upload_userTan ', {}, {
                             save: {
                                 method: 'POST', params: {}

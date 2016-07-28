@@ -58,11 +58,19 @@ define(function (require, exports, module) {
 
                             console.log($scope.data);
 
-                            if ($location.search().orderStatus == 1){
+                            if ($location.search().orderStatus == 1) {
                                 $scope.nowType = '待支付'
-                            }else if ($location.search().orderStatus == 2) {
+                            } else if ($location.search().orderStatus == 2) {
                                 $scope.nowType = '待完成'
-                            }else {
+                            } else if ($location.search().orderStatus == 3) {
+                                $scope.nowType = '已完成'
+                            } else if ($location.search().orderStatus == 4) {
+                                $scope.nowType = '已取消'
+                            } else if ($location.search().orderStatus == 5) {
+                                $scope.nowType = '退款审核中'
+                            } else if ($location.search().orderStatus == 6) {
+                                $scope.nowType = '退款成功'
+                            } else {
                                 $scope.nowType = '全部订单';
                             }
 

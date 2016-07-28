@@ -1,0 +1,44 @@
+<div style="width: 100%;position: fixed;height:100%;left: 0;z-index: 999" ng-if="!!loading">
+    <div style="top: 50%;position: absolute;width: 100%;left: 45%;">
+        <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 10%">
+    </div>
+    <div style="top: 50%;position: absolute;width: 100%;left: 45%;">
+        <img src="img/loading/loadingInner.png" style="width: 10%">
+    </div>
+</div>
+
+
+<div class="app-grey-background-container container">
+
+    <div class="row">
+        <div class="app-bootstrap-grey-bold-hr" style="background-color: #ECECEC">
+        </div>
+    </div>
+
+
+    <div class="app-white-input row app-margin-top-two-px">
+        <input type="text" ng-model="content" class="col app-white-input-text" style="background-color: white"
+               placeholder="既然中奖了就要晒出来"
+               required>
+    </div>
+
+    <div class="row" style="background-color: #fff;margin-top: 1rem">
+        <div class="col-xs-4" style="padding: 1rem .5rem" ng-repeat="x in imgList">
+            <img ng-src="data:image/png;base64,{{x}}" style="width: 100%">
+        </div>
+        <div class="col-xs-4" style="padding: 1rem .5rem" ng-if="imgListLength < 3" ng-click="addImg()">
+            <img src="modules/treasure/img/add.png" style="width: 100%">
+        </div>
+    </div>
+
+
+    <div style="position: fixed;bottom: 0;width: 100%;background-color: #fff;border-top: 1px solid #eee;font-size: 1.4rem" class="row">
+        <div class="col-xs-12">
+            <div class="app-pink-radius-button app-padding-one text-center" ng-click="goToShare()"
+                 style="margin-bottom: 1rem;">
+                发表
+            </div>
+        </div>
+    </div>
+
+</div>

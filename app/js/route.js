@@ -245,6 +245,31 @@ define(function (require, exports, module) {
                     templateUrl: 'modules/verify/fast-verify-student.html',
                     controller: 'VerifyFastStudentCtrl',
                     controllerUrl: './modules/verify/controller/verifyFastStudentCtrl.js'
+                }).when('/verify/how-to-register',{
+                    templateUrl: 'modules/verify/how-to-register.html'
+                }).
+
+                //拼团
+                when('/groupbuy/detail', {
+                    templateUrl: 'modules/groupbuy/detail.html',
+                    controller: 'GroupBuyDetailCtrl',
+                    controllerUrl: './modules/groupbuy/controller/groupBuyDetailCtrl.js'
+                }).when('/groupbuy/list', {
+                    templateUrl: 'modules/groupbuy/list.html',
+                    controller: 'GroupBuyListCtrl',
+                    controllerUrl: './modules/groupbuy/controller/groupBuyListCtrl.js'
+                }).when('/groupbuy/mine', {
+                    templateUrl: 'modules/groupbuy/mine.html',
+                    controller: 'GroupBuyMineCtrl',
+                    controllerUrl: './modules/groupbuy/controller/groupBuyMineCtrl.js'
+                }).when('/groupbuy/join', {
+                    templateUrl: 'modules/groupbuy/join.html',
+                    controller: 'GroupBuyJoinCtrl',
+                    controllerUrl: './modules/groupbuy/controller/groupBuyJoinCtrl.js'
+                }).when('/groupbuy/pay', {
+                    templateUrl: 'modules/groupbuy/pay.html',
+                    controller: 'GroupBuyPayCtrl',
+                    controllerUrl: './modules/groupbuy/controller/groupBuyPayCtrl.js'
                 }).
 
                 //默认首页

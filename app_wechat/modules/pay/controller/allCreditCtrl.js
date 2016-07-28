@@ -8,74 +8,42 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/messageService.js')(app);
         require('services/orderService.js')(app);
-        app.register.controller('AllCreditCtrl', ['$scope', '$interval', '$location', 'MessageService', 'EnsureOrderForMessage',
-            function ($scope, $interval, $location, MessageService, EnsureOrderForMessage) {
-                //$scope.goBack = function () {
-                //    window.history.back(-1);
-                //};
+        require('services/weChatService.js')(app);
+        app.register.controller('AllCreditCtrl', ['$scope', '$interval', '$location', 'MessageService', 'EnsureOrderForMessage', 'Bridge',
+            function ($scope, $interval, $location, MessageService, EnsureOrderForMessage, Bridge) {
 
                 $scope.verifyCodeState = false;
                 $scope.telephone = $location.search().telephone;
                 $scope.orderId = $location.search().orderId;
 
-                //$scope.appToken = 'MMFQ:hfB4RC9zM80v4ZI5ANbXiVVKyivU3TTJIZnhZfqx5btQzwgzDUxlgdnqjQDPw85z';
-                //$scope.ensurePay = function () {
-                //    if ($scope.inputCode==null || $scope.inputCode==''){
-                //        Toast('请输入验证码')
-                //    }else {
-                //        $scope.ensureOrderForMessage = EnsureOrderForMessage.query({
-                //            appToken: $scope.appToken,
-                //            orderId: $scope.orderId,
-                //            smsCode: $scope.inputCode
-                //        });
-                //        $scope.ensureOrderForMessage.$promise.then(function (res) {
-                //            if(res.result==0){
-                //                Toast('信用额度支付成功',2000);
-                //            }else {
-                //                Toast(res.msg,2000)
-                //            }
-                //        }).catch(function (error) {
-                //            Toast('服务器返回错误',2000);
-                //        })
-                //    }
-                //};
+                Bridge.appToken(function (response) {
 
-                if (myBridge) {
-                    myBridge.callHandler('sendMessageToApp', {type: 8, data: {}}, function (response) {
-                        $scope.$apply(function () {
-                            $scope.appToken = response;
-                        });
-                        $scope.ensurePay = function () {
-                            if ($scope.inputCode == null || $scope.inputCode == '') {
-                                Toast('请输入验证码')
-                            } else {
-                                //$scope.ensureOrderForMessage = EnsureOrderForMessage.query({
-                                //    appToken: $scope.appToken,
-                                //    orderId: $scope.orderId,
-                                //    smsCode: $scope.inputCode
-                                //});
-                                //$scope.ensureOrderForMessage.$promise.then(function (res) {
-                                //    if(res.result==0){
-                                //        Toast('信用额度支付成功',2000);
-                                //    }else {
-                                //        Toast(res.msg,2000)
-                                //    }
-                                //}).catch(function (error) {
-                                //    Toast('服务器返回错误',2000);
-                                //})
-                                if (myBridge) {
-                                    myBridge.callHandler('sendMessageToApp', {
-                                        type: 11, data: {
-                                            orderId: $scope.orderId,
-                                            smsCode: $scope.inputCode
-                                        }
-                                    }, function (response) {
-                                    })
+                    $scope.appToken = response;
+
+                    $scope.ensurePay = function () {
+                        if ($scope.inputCode == null || $scope.inputCode == '') {
+                            Toast('请输入验证码')
+                        } else {
+                            $scope.pay = EnsureOrderForMessage.query({
+                                appToken: $scope.appToken,
+                                orderId: $scope.orderId,
+                                smsCode: $scope.inputCode
+                            });
+                            $scope.pay.$promise.then(function (res) {
+                                console.log(res);
+                                if (res.result == 0){
+                                    Toast('支付成功');
+                                    window.localStorage.appStatus = 3;
+                                    Bridge.jumpTo($location.absUrl().split('#')[0])
+                                }else {
+                                    Toast(res.msg)
                                 }
-                            }
+                            }).catch(function () {
+                                Toast('服务器返回错误')
+                            })
                         }
-                    })
-                }
+                    }
+                });
 
                 $scope.getVerifyCode = function () {
                     if ($scope.verifyCodeState == true) {
@@ -83,7 +51,8 @@ define(function (require, exports, module) {
                     }
                     $scope.verifyCodeState = true;
                     $scope.message = MessageService.save({
-                        telephone: $scope.telephone
+                        telephone: $scope.telephone,
+                        smsFmtId: 'payCredit'
                     });
                     $scope.message.$promise.then(function (res) {
                         if (res.result == 0) {
@@ -101,6 +70,8 @@ define(function (require, exports, module) {
                                 }
                             }, 1000);
                         } else {
+                            $scope.verifyCodeState = false;
+                            console.log(res);
                             Toast(res.msg, 3000);
                         }
                     }).catch(function (error) {
@@ -110,33 +81,11 @@ define(function (require, exports, module) {
                 };
 
                 $scope.goToServiceContact = function () {
-                    if (myBridge) {
-                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/contact/service');
-                        myBridge.callHandler('sendMessageToApp', {
-                            type: 2, data: {
-                                url: jumpUrl,
-                                leftNavItems: [1],
-                                title: '服务合同'
-                            }
-                        }, function (response) {
-                            //todo custom
-                        });
-                    }
+                    Bridge.jumpTo(encodeURI($location.absUrl().split('#')[0] + '#?/contact/service'),'服务合同');
                 };
 
                 $scope.goToLoanContact = function () {
-                    if (myBridge) {
-                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/contact/loan');
-                        myBridge.callHandler('sendMessageToApp', {
-                            type: 2, data: {
-                                url: jumpUrl,
-                                leftNavItems: [1],
-                                title: '借款合同'
-                            }
-                        }, function (response) {
-                            //todo custom
-                        });
-                    }
+                    Bridge.jumpTo(encodeURI($location.absUrl().split('#')[0] + '#?/contact/loan'),'借款合同');
                 };
 
 

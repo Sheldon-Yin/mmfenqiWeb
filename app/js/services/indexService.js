@@ -11,6 +11,12 @@ define(function (require, exports, module) {
                     get: {method:'GET'}
                 })
             }]);
+        app.register.factory('City', ['$resource',
+            function ($resource) {
+                return $resource('/appinterface/query_city_app',{},{
+                    query: {method:'GET'}
+                })
+            }]);
     }
 });
 

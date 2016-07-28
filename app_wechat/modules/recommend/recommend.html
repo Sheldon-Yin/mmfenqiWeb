@@ -20,7 +20,7 @@
         <div class="app-bootstrap-grey-bold-hr"></div>
     </div>
 
-    <div ng-repeat="x in data.data.qoutiqueListResponse.goodsItemList" ng-click="jumpToGoods('#/goods?goodsId='+x.goodsHerf)" style="position: relative">
+    <div ng-repeat="x in data.data.qoutiqueListResponse.goodsItemList" ng-click="jumpToGoods('#?/goods?goodsId='+x.goodsHerf)" style="position: relative">
         <div class="row app-project-container">
             <div class="col-xs-5" style="width:34%;">
                 <img ng-src="{{x.goodsHerPic}}" style="width: 100%;min-height: 5rem">

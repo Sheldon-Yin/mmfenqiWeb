@@ -3,12 +3,13 @@
  */
 define(function (require, exports, module) {
     module.exports = function (app) {
-        app.register.controller('TreasureIndexCtrl', ['$scope', '$location','Treasure',
-            function ($scope, $location,Treasure) {
+        app.register.controller('TreasureIndexCtrl', ['$scope', '$location','Treasure','Bridge',
+            function ($scope, $location,Treasure,Bridge) {
+
+                $scope.baseUrl = $location.absUrl().split('#')[0];
 
                 console.log('index');
                 $scope.treasureStatus = 1;
-
 
                 $scope.initTreasureList = function () {
                     $scope.treasureList = Treasure.treasureList().query({
@@ -23,24 +24,20 @@ define(function (require, exports, module) {
                         console.log(error)
                     })
                 };
+
                 $scope.initTreasureList();
-
-
-
 
                 $scope.backTop = function () {
                     var timer = setInterval(function () {
 
                         window.scrollBy(0, -100);
 
-                        if (document.documentElement.scrollTop == 0 && document.body.scrollTop == 0)
+                        if (document.documentElement.scrollTop < 1 && document.body.scrollTop < 1)
 
                             clearInterval(timer);
 
                     }, 10);
                 };
-
-                $scope.backTop();
 
                 $scope.changeTreasureStatus = function (x) {
                     $scope.treasureStatus = x;
@@ -48,14 +45,24 @@ define(function (require, exports, module) {
                 };
 
                 $scope.goToDetail = function (x) {
-                    $location.url('/treasure/detail?id='+ x.id);
-                    window.onscroll = function () {
-                    };
+                    Bridge.jumpTo($scope.baseUrl+'#?/treasure/detail?id='+ x.id,'宝贝详情')
+                };
+
+                $scope.jumpTo = function(x,title){
+                    Bridge.jumpTo(x,title)
+                };
+
+                $scope.jumpToInvite = function () {
+                    Bridge.jumpTo($scope.baseUrl+'#?/treasure/invite','邀请好友')
+                };
+
+                $scope.jumpToShare = function () {
+                    Bridge.jumpTo($scope.baseUrl + '#?/treasure/share/list','晒单')
                 };
 
                 $scope.goToLinks = function (x) {
-                    window.location.href = x;
-                }
+                    Bridge.jumpTo( x,'一元夺宝')
+                };
 
             }])
     }

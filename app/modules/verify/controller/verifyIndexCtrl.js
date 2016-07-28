@@ -7,8 +7,8 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/verifyService.js')(app);
         require('services/bridgeService.js')(app);
-        app.register.controller('VerifyIndexCtrl', ['$scope', '$location', 'Verify','Bridge',
-            function ($scope, $location, Verify,Bridge) {
+        app.register.controller('VerifyIndexCtrl', ['$scope', '$location', 'Verify', 'Bridge',
+            function ($scope, $location, Verify, Bridge) {
 
                 $scope.baseUrl = $location.absUrl().split('#')[0];
 
@@ -17,9 +17,7 @@ define(function (require, exports, module) {
                 $scope.fastRemark = '信用信息审核';
 
                 Bridge.appToken(function (response) {
-
                     $scope.appToken = response;
-
                     $scope.initStatus = function () {
                         $scope.queryVerifyStatus = Verify.queryVerifyStatus().query({
                             appToken: $scope.appToken
@@ -50,12 +48,12 @@ define(function (require, exports, module) {
                                 $scope.availableMoney = res.data.availableMoney;
                                 $scope.userType = res.data.userType;
 
-                                if($scope.userType == 0){
+                                if ($scope.userType == 0) {
                                     $scope.firstMoney = 8000;
                                     $scope.secondMoney = 15000;
                                     $scope.thirdMoney = 2000;
                                     $scope.forthMoney = 5000;
-                                }else if($scope.userType == 6){
+                                } else if ($scope.userType == 6) {
                                     $scope.firstMoney = 20000;
                                     $scope.secondMoney = 20000;
                                     $scope.thirdMoney = 5000;
@@ -97,8 +95,8 @@ define(function (require, exports, module) {
 
                     $scope.goToZmVerify = function (x) {
 
-                        if ($scope.fastStatus != '1' && $scope.fastStatus != '3') {
-                            Toast('请先进行基础认证');
+                        if ($scope.fastStatus != '1') {
+                            Toast('请先通过基础认证');
                             return
                         }
 
@@ -118,7 +116,7 @@ define(function (require, exports, module) {
                             if (res.result == 0) {
                                 Toast('获取成功');
                                 if (!!res.data.url) {
-                                    Bridge.jumpTo(res.data.url,'芝麻信用');
+                                    Bridge.jumpTo(res.data.url, '芝麻信用');
                                 } else {
                                     $scope.initStatus();
                                 }
@@ -138,15 +136,15 @@ define(function (require, exports, module) {
                         if (x == '1' || x == '3') return;
 
                         if ($scope.realNameStatus == 0 || $scope.realNameStatus == 2) {
-                            Bridge.jumpTo($scope.baseUrl+'#/verify/real-name','实名认证');
+                            Bridge.jumpTo($scope.baseUrl + '#/verify/real-name', '实名认证');
                             return
                         }
 
 
-                        if($scope.userType == 6){
-                            Bridge.jumpTo($scope.baseUrl+'#/verify/fast','极速认证');
-                        } else if($scope.userType == 0){
-                            Bridge.jumpTo($scope.baseUrl+'#/verify/fast-student','极速认证');
+                        if ($scope.userType == 6) {
+                            Bridge.jumpTo($scope.baseUrl + '#/verify/fast', '极速认证');
+                        } else if ($scope.userType == 0) {
+                            Bridge.jumpTo($scope.baseUrl + '#/verify/fast-student', '极速认证');
                         }
 
                     };
@@ -161,11 +159,11 @@ define(function (require, exports, module) {
                         if (x == '1' || x == '3') return;
 
                         if ($scope.realNameStatus == 0 || $scope.realNameStatus == 2) {
-                            Bridge.jumpTo($scope.baseUrl+'#/verify/real-name','实名认证');
+                            Bridge.jumpTo($scope.baseUrl + '#/verify/real-name', '实名认证');
                             return
                         }
 
-                        Bridge.jumpTo($scope.baseUrl+'#/verify/bank','银行流水认证');
+                        Bridge.jumpTo($scope.baseUrl + '#/verify/bank', '银行流水认证');
                     };
 
                     $scope.goToTaobaoVerify = function (x) {
@@ -178,19 +176,16 @@ define(function (require, exports, module) {
                         if (x == '1' || x == '3') return;
 
                         if ($scope.realNameStatus == 0 || $scope.realNameStatus == 2) {
-                            Bridge.jumpTo($scope.baseUrl+'#/verify/real-name','实名认证');
+                            Bridge.jumpTo($scope.baseUrl + '#/verify/real-name', '实名认证');
                             return
                         }
 
-                        Bridge.jumpTo($scope.baseUrl+'#/verify/taobao','电商认证');
+                        Bridge.jumpTo($scope.baseUrl + '#/verify/taobao', '电商认证');
                     }
-
-
                 });
-                
-                Bridge.listenEvent(function (message,callback) {
-                    if(message == 10003){
-                        Toast(1);
+
+                Bridge.listenEvent(function (message, callback) {
+                    if (message == 10003) {
                         $scope.initStatus();
                     }
                 })

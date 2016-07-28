@@ -7,11 +7,9 @@
 define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/queryQoutiqueListService.js')(app);
-        app.register.controller('RecommendCtrl', ['$scope','Qoutique','$location',
-            function ($scope,Qoutique,$location) {
-                //$scope.goBack = function () {
-                //    window.history.go(-1);
-                //};
+        require('services/weChatService.js')(app);
+        app.register.controller('RecommendCtrl', ['$scope','Qoutique','$location','Bridge',
+            function ($scope,Qoutique,$location,Bridge) {
 
                 $scope.data = Qoutique.query({
                     isBoutique:true
@@ -28,19 +26,9 @@ define(function (require, exports, module) {
                 console.log($scope.data);
 
                 $scope.jumpToGoods = function (x) {
-                    if (myBridge) {
-                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + x + '&cityName=' + $scope.cityName);
-                        myBridge.callHandler('sendMessageToApp', {
-                            type: 2, data: {
-                                url: jumpUrl,
-                                title: '产品详情',
-                                leftNavItems: [1],
-                                rightNavItems: [0]
-                            }
-                        }, function (response) {
-                            //todo custom
-                        });
-                    }
+
+                    Bridge.jumpTo(encodeURI($location.absUrl().split('#')[0] + x + '&cityName=' + $scope.cityName),'产品详情')
+
                 };
 
                 console.log($scope.data);

@@ -7,8 +7,8 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('Categories', ['$resource',
             function ($resource) {
-                return $resource('/appinterface/query_category_app', {cityId:'@cityId'}, {
-                    query: {method: 'GET', params: {cityId: '0'}}
+                return $resource('/appinterface/query_category_app', {}, {
+                    query: {method: 'GET', params: {}}
                 });
             }]);
     }

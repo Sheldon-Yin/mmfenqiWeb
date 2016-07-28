@@ -9,31 +9,18 @@ define(function (require, exports, module) {
         require('../controller/tplCtrl/mineCtrl.js')(app);
         require('../controller/tplCtrl/newCtrl.js')(app);
         require('../controller/tplCtrl/rechargeCtrl.js')(app);
-        require('services/weChatService.js')(app);
         require('services/treasureService.js')(app);
-        app.register.controller('TreasureCtrl', ['$scope','WeChatTitle','$location',
-            function ($scope,WeChatTitle,$location) {
+        require('services/weChatService.js')(app);
+        app.register.controller('TreasureCtrl', ['$scope','$location',
+            function ($scope,$location) {
 
-                $scope.pageStatus = $location.search().status ? $location.search().status : 1;
+                var storageStatus = window.localStorage.pageStatus ? window.localStorage.pageStatus : 1;
 
-                $scope.$watch('pageStatus', function(newValue, oldValue) {
-                    switch (Number(newValue)){
-                        case 1:
-                            WeChatTitle('一元夺宝');
-                            break;
-                        case 2:
-                            WeChatTitle('最新揭晓');
-                            break;
-                        case 3:
-                            WeChatTitle('我要充值');
-                            break;
-                        case 4:
-                            WeChatTitle('我的夺宝');
-                            break;
-                        default:
-                            WeChatTitle('美眉分期');
-                    }
-                });
+                $scope.pageStatus = $location.search().status ? $location.search().status : storageStatus;
+
+                $scope.$watch('pageStatus', function (newVal, oldVal) {
+                    window.localStorage.pageStatus = newVal
+                })
 
             }])
     }

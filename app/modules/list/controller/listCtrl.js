@@ -8,8 +8,8 @@ define(function (require, exports, module) {
         require('services/goodsSearchService.js')(app);
         require('services/hospitalService.js')(app);
         require('services/categoriesService.js')(app);
-        app.register.controller('ListCtrl', ['$scope', 'GoodsSearch', 'Hospital', 'Categories','$timeout','$location',
-            function ($scope, GoodsSearch, Hospital, Categories,$timeout,$location) {
+        app.register.controller('ListCtrl', ['$scope', 'GoodsSearch', 'Hospital', 'Categories', '$timeout', '$location',
+            function ($scope, GoodsSearch, Hospital, Categories, $timeout, $location) {
 
                 var searchObject = $location.search();
                 console.log(searchObject);
@@ -20,25 +20,26 @@ define(function (require, exports, module) {
                 $scope.sortId = $location.search().sortId ? $location.search().sortId : 1;
                 $scope.cityId = $location.search().cityId ? $location.search().cityId : 2;
                 $scope.searchInfo = $location.search().keyword ? $location.search().keyword : '';
-                $scope.cityName = $location.search().cityName ? $location.search().cityName : '';
-
 
                 $scope.refreshData = function () {
                     $scope.goods = GoodsSearch.query(
                         {
                             sortId: $scope.sortId,
-                            cityId: $scope.cityId,
                             hospitalId: $scope.hospitalId,
                             parentCategoryId: $scope.parentCategoryId,
                             categoryId: $scope.subCategoryId,
                             searchInfo: $scope.searchInfo,
-                            cityName: $scope.cityName
+                            cityName: window.localStorage.cityName ? window.localStorage.cityName : '杭州'
                         }
                     )
                 };
 
-                $scope.hospital = Hospital.query();
-                $scope.categories = Categories.query();
+                $scope.hospital = Hospital.query({
+                    cityName: window.localStorage.cityName ? window.localStorage.cityName : '杭州'
+                });
+                $scope.categories = Categories.query({
+                    cityName: window.localStorage.cityName ? window.localStorage.cityName : '杭州'
+                });
                 $scope.refreshData();
 
                 //$scope.goBack = function () {
@@ -143,9 +144,9 @@ define(function (require, exports, module) {
 
                 //监控数据加载情况
                 $scope.loading = function () {
-                    if($scope.goods.data==undefined){
+                    if ($scope.goods.data == undefined) {
                         console.log('数据刷新了');
-                        timeout = $timeout(function() {
+                        timeout = $timeout(function () {
                             $scope.badConnection = 1;
                         }, 10000);
                     }
@@ -165,9 +166,9 @@ define(function (require, exports, module) {
                 if (myBridge) {
                     myBridge.registerHandler('sendMessageToHTML', function (message, callback) {
                         var jumpUrl;
-                        if (message.type==10001) {
-                            jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/list?keyword='+message.data+'&cityName='+$scope.cityName);
-                            window.location.href= jumpUrl;
+                        if (message.type == 10001) {
+                            jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/list?keyword=' + message.data + '&cityName=' + $scope.cityName);
+                            window.location.href = jumpUrl;
                         } else {
                             myBridge.callHandler('sendMessageToApp', {type: message, data: {}}, function (response) {
                                 //todo custom

@@ -9,8 +9,9 @@
 define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/orderService.js')(app);
-        app.register.controller('OrderDetailInformCtrl', ['$scope', '$http', '$location', 'Informs', 'UploadInform', 'DeleteInform', 'SubmitInforms',
-            function ($scope, $http, $location, Informs, UploadInform, DeleteInform, SubmitInforms) {
+        require('services/bridgeService.js')(app);
+        app.register.controller('OrderDetailInformCtrl', ['$scope', '$http', '$location', 'Informs', 'UploadInform', 'DeleteInform', 'SubmitInforms','Bridge',
+            function ($scope, $http, $location, Informs, UploadInform, DeleteInform, SubmitInforms,Bridge) {
 
                 $scope.orderId = $location.search().orderId;
                 $scope.uploading = false;
@@ -185,7 +186,7 @@ define(function (require, exports, module) {
                                     Toast(error + '服务器错误')
                                 })
                             };
-                            
+
                             $scope.submitInforms = function () {
                                 $scope.submitInformsRequest = SubmitInforms.query({
                                     appToken: $scope.appToken,
@@ -193,7 +194,8 @@ define(function (require, exports, module) {
                                 });
                                 $scope.submitInformsRequest.$promise.then(function (res) {
                                     if (res.result == 0){
-                                        $scope.initInform()
+                                        $scope.initInform();
+                                        Bridge.goBack();
                                     }else {
                                         Toast(res.msg);
                                     }

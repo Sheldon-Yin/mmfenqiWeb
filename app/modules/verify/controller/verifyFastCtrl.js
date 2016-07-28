@@ -12,7 +12,7 @@ define(function (require, exports, module) {
 
                 $scope.baseUrl = $location.absUrl().split('#')[0];
 
-                //$scope.status = 2;
+                $scope.status = 2;
 
                 Bridge.appToken(function (response) {
 
@@ -35,7 +35,7 @@ define(function (require, exports, module) {
                             if (res.result == 0) {
                                 $scope.status = Number(res.data.firstStepFlag);
 
-                                if (res.data.checkStatus == "3") {
+                                if (res.data.checkStatus == "3" || res.data.checkStatus == "1") {
                                     Bridge.goBack();
                                     return
                                 }
@@ -116,8 +116,78 @@ define(function (require, exports, module) {
 
                 //second
 
+                $scope.currentSelectorIndex = 0;
+                $scope.codeTips = '重新发送';
+                $scope.showVerify = false;
+                $scope.verifyCode = "";
+
+                $scope.popVerifyCode = function () {
+                    $scope.showVerify = true
+                };
+
+                $scope.hideVerifyCode = function () {
+                    $scope.showVerify = false;
+                    $scope.verifyCode = '';
+                    console.log($scope.showVerify)
+                };
+
+                $scope.countTips = function () {
+
+                    if ($scope.codeUnabled == true) {
+                        return
+                    }
+                    $scope.codeUnabled = true;
+
+                    $scope.codeTips = 60;
+                    var si = setInterval(function () {
+                        $scope.$apply(function () {
+                            $scope.codeTips--;
+                        });
+                        if ($scope.codeTips < 1) {
+                            clearTimeout(si);
+                            $scope.$apply(function () {
+                                $scope.codeTips = '重新发送';
+                                $scope.codeUnabled = false;
+                            });
+                        }
+                    }, 1000);
+                };
+
+                $scope.reSendVerifyCode = function () {
+
+                    if ($scope.codeUnabled == true) {
+                        return
+                    }
+
+                    if (!$scope.myTelephone || !$scope.serviceCode) {
+                        Toast('请输入手机号及服务码');
+                        return
+                    }
+
+                    $scope.captchaReq = Verify.verifyReForCaptcha().save({
+                        telphone: $scope.myTelephone,
+                        serviceCode: $scope.serviceCode,
+                        appToken: $scope.appToken
+                    });
+                    $scope.captchaReq.$promise.then(function (res) {
+                        if (res.result == 0) {
+                            $scope.countTips();
+                        } else {
+                            $scope.codeUnabled = false;
+                            Toast(res.msg)
+                        }
+                    }).catch(function (error) {
+                        $scope.codeUnabled = false;
+                        Toast(error)
+                    })
+                };
+
+                $scope.onSelectorToggle = function (x) {
+                    $scope.currentSelectorIndex = x;
+                };
+
                 $scope.uploadFrontIdentityPic = function () {
-                    Bridge.uploadImgFromCamera(function (response) {
+                    Bridge.uploadImgFromCameraOrAlbum(function (response) {
                         $scope.$apply(function () {
                             document.getElementById('frontIdentityPic').src = 'data:image/png;base64,' + response;
                             $scope.frontIdentityMediaId = response;
@@ -132,7 +202,7 @@ define(function (require, exports, module) {
                 };
 
                 $scope.uploadBackIdentityPic = function () {
-                    Bridge.uploadImgFromCamera(function (response) {
+                    Bridge.uploadImgFromCameraOrAlbum(function (response) {
                         $scope.$apply(function () {
                             document.getElementById('backIdentityPic').src = 'data:image/png;base64,' + response;
                             $scope.backIdentityMediaId = response;
@@ -147,7 +217,7 @@ define(function (require, exports, module) {
                 };
 
                 $scope.uploadWorkProvePic = function () {
-                    Bridge.uploadImgFromCamera(function (response) {
+                    Bridge.uploadImgFromCameraOrAlbum(function (response) {
                         $scope.$apply(function () {
                             document.getElementById('workProvePic').src = 'data:image/png;base64,' + response;
                             $scope.workProveMediaId = response;
@@ -160,10 +230,15 @@ define(function (require, exports, module) {
                     delete $scope.workProveMediaId;
                 };
 
-                $scope.submitSecondInfo = function () {
-                    console.log(2);
-                    if (!$scope.frontIdentityMediaId || !$scope.backIdentityMediaId || !$scope.workProveMediaId) {
+                $scope.submitSecondInfoWithCode = function () {
+
+                    if (!$scope.frontIdentityMediaId || !$scope.backIdentityMediaId) {
                         Toast('请上传完整的照片信息');
+                        return
+                    }
+
+                    if (!$scope.myTelephone || !$scope.serviceCode) {
+                        Toast('请输入手机及服务码');
                         return
                     }
 
@@ -171,7 +246,9 @@ define(function (require, exports, module) {
                     var fd = new FormData();
                     fd.append('frontIdentityPic', $scope.frontIdentityMediaId);
                     fd.append('backIdentityPic', $scope.backIdentityMediaId);
-                    fd.append('workProve', $scope.workProveMediaId);
+                    fd.append('telphone', $scope.myTelephone);
+                    fd.append('serviceCode', $scope.serviceCode);
+                    fd.append('captcha', $scope.verifyCode);
                     fd.append('appToken', $scope.appToken);
 
                     $http.post('/appinterface/white_collar_auth_five', fd, {
@@ -182,12 +259,16 @@ define(function (require, exports, module) {
                             $scope.$root.loading = false;
                             if (res.result == 0) {
                                 Toast('上传成功');
-                                setTimeout(function () {
-                                    $scope.$apply(function () {
-                                        $scope.initFastStatus();
-                                    });
-                                }, 1000)
-                            } else {
+
+                                $scope.hideVerifyCode();
+                                $scope.initFastStatus();
+
+                            } else if (res.result == 2) {
+                                Toast('需要验证码，验证码发送中');
+                                $scope.popVerifyCode();
+                                $scope.countTips();
+                            }
+                            else {
                                 Toast(res.msg + '上传失败')
                             }
                         })
@@ -200,14 +281,61 @@ define(function (require, exports, module) {
                             $scope.$root.loading = false;
                             Toast(JSON.stringify(error))
                         });
+
                 };
 
+                $scope.submitSecondInfo = function () {
+
+                    if ($scope.currentSelectorIndex == 0) {
+
+
+                        console.log(2);
+                        if (!$scope.frontIdentityMediaId || !$scope.backIdentityMediaId || !$scope.workProveMediaId) {
+                            Toast('请上传完整的照片信息');
+                            return
+                        }
+
+                        $scope.$root.loading = true;
+                        var fd = new FormData();
+                        fd.append('frontIdentityPic', $scope.frontIdentityMediaId);
+                        fd.append('backIdentityPic', $scope.backIdentityMediaId);
+                        fd.append('workProve', $scope.workProveMediaId);
+                        fd.append('appToken', $scope.appToken);
+
+                        $http.post('/appinterface/white_collar_auth_five', fd, {
+                                headers: {'Content-Type': undefined},
+                                transformRequest: angular.identity
+                            })
+                            .success(function (res) {
+                                $scope.$root.loading = false;
+                                if (res.result == 0) {
+                                    Toast('上传成功');
+                                    setTimeout(function () {
+                                        $scope.$apply(function () {
+                                            $scope.initFastStatus();
+                                        });
+                                    }, 1000)
+                                } else {
+                                    Toast(res.msg + '上传失败')
+                                }
+                            })
+
+                            .error(function (error) {
+                                $scope.$root.loading = false;
+                                Toast(error);
+                            })
+                            .catch(function (error) {
+                                $scope.$root.loading = false;
+                                Toast(JSON.stringify(error))
+                            });
+                    } else {
+                        $scope.submitSecondInfoWithCode();
+                    }
+                };
 
                 //third
 
                 $scope.submitThirdInfo = function () {
-
-                    console.log(3);
 
                     $scope.thirdInfoReq = Verify.verifyBaseInfoThird().save({
                         is_credit_card: $scope.isCreditCard,
@@ -236,8 +364,6 @@ define(function (require, exports, module) {
                     })
 
                 }
-
-
 
             }])
     }

@@ -1,16 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8"/>
+    <meta name="author" content="TAT.Jet,TAT.Weber,TAT.DM,TAT.CG,TAT.Addison"/>
+    <meta name="copyright" content="Tencent.AlloyTeam"/>
+    <meta name="keywords" content="腾讯, AlloyTeam团队, CodeStar, 前端特工, 代码, 代码星计划"/>
+    <meta name="description"
+          content="CodeStar第一季《前端特工》，由腾讯招聘团队、腾讯QQ空间团队、腾讯AlloyTeam团队联合打造，在这里你将饰演一个意欲混入TX窃取新产品机密的特工，经历种种困难种种意外种种危机，你需要运用你的前端知识完成一个不可能完成的任务。成功通关的你，将有机会亲临腾讯大厦，优先获得面试机会~"/>
+
+    <link href="favicon.ico" type="image/x-icon" rel="icon"/>
+    <link href="favicon.ico" type="image/x-icon" rel="shortcut icon"/>
+
+    <title>第一章：潜入 - 前端特工 - CodeStar代码星计划</title>
+    <link type="text/css" rel="stylesheet" href="/q1/web/style/common.css?t=1"/>
+
+    <style>
+        .comic {
+            height: 1541px;
+        }
+
+        #board {
+            height: 360px;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 30px 0 0;
+            font-size: 40px;
+            color: #333;
+        }
+
+        #msgForm {
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 250px;
+            font-size: 18px;
+            display: block;
+            margin: 10px auto 0;
+            padding: 8px 16px;
+        }
+
+        #btnSubmit {
+            padding: 8px 16px;
+            font-size: 18px;
+        }
+
+        .mt10 {
+            margin-top: 10px;
+        }
+
+        .mt30 {
+            margin-top: 30px;
+        }
+    </style>
+
 </head>
 <body>
 
+<div id="main">
+    <div class="comic">
+        <img src="/q1/style/image/comic1_01.jpg"/>
+        <img src="/q1/style/image/comic1_02.jpg"/>
+        <img src="/q1/style/image/comic1_03.jpg"/>
+    </div>
+    <div class="clearfix" id="control">
 
-<a style="display: inline-block">
-    <a>d</a>
-    <a>5</a>
-</a>
+        <a class="btn btn-primary" href="#" id="btnQuiz">闯关</a>
+        <a class="btn" href="/q1/2" id="btnNext">下一章</a>
 
+    </div>
+</div>
+
+<div id="board">
+    <a id="close" href="#">&times;</a>
+    <div class="info">输入个人信息，打开后门门锁</div>
+    <h2>后 门</h2>
+    <form class="mt30" id="msgForm">
+        <input type="text" name="name" placeholder="姓名"/>
+        <input type="text" name="email" placeholder="邮箱（后面用到）"/>
+        <input type="hidden" name="timestamp"/>
+        <div class="mt30">
+            <button class="btn" id="btnSubmit">打开</button>
+        </div>
+    </form>
+</div>
+
+
+<form action="./pass">
+    <input type="text" name="q" onclick=""/>
+    <button type="submit">通关</button>
+</form>
+
+
+<div id="log">3c0afed833fb4f309b88028d8ff7f3d2</div>
+
+<script src="/q1/web/js/common.js"></script>
+
+<script>
+    (function () {
+        var e = function (c) {
+            for (var a = 5381, b = 0, d = c.length; b < d; ++b)a += (a << 5) + c.charAt(b).charCodeAt();
+            console.log(a & 2147483647);
+        }, f = log.innerHTML, h = function (c, a, b) {
+            ajax("./signup", {
+                method: "POST",
+                data: JSON.stringify({name: c, email: a, timestamp: b}),
+                contentType: "application/json",
+                onSuccess: function (a) {
+                    g()
+                },
+                onError: function (a) {
+                    10001 === a.retcode || 10002 === a.retcode ? 10002 === a.retcode && 'Illegal param "timestamp".' == a.result ? alert("\u5931\u8d25\uff0c\u8bf7\u5e26\u4e0a\u5408\u9002\u7684\u65f6\u95f4\u6233") : alert("\u6253\u4e0d\u5f00\uff1f\u6293\u4e00\u4e0b\u5305\u770b\u770b\u2026\u2026") :
+                            alert("\u7f51\u7edc\u9519\u8bef\uff1a" + a.retcode)
+                }
+            })
+        }, g = function () {
+            ajax("./pass", {
+                method: "POST",
+                data: '{"q":1,"s":1,"_t":' + e(f) + "}",
+                contentType: "application/json",
+                onSuccess: function (c) {
+                    hideBoard();
+                    document.getElementById("btnNext").className += " show";
+                    alert("\u8fc7\u5173\uff01\u4e0b\u4e00\u5173\u7684\u5165\u53e3\u5df2\u6253\u5f00")
+                }
+            })
+        };
+        document.getElementById("btnSubmit").onclick = function (c) {
+            var a = document.getElementById("msgForm"), b = a.name.value, d = a.email.value, a = a.timestamp.value;
+            c.preventDefault();
+            /^\s*$/.test(b) || /^\s*$/.test(d) ? alert("\u59d3\u540d\u548c\u90ae\u7bb1\u662f\u4f60\u7684\u95ef\u5173\u51ed\u8bc1\uff0c\u4e0d\u80fd\u4e3a\u7a7a") : h(b, d, a)
+        };
+        clear();
+        console.log("\n\u7b2c\u4e00\u7ae0\uff1a\u6f5c\u5165\n");
+        console.log("\u201c\u5f00\u4e2a\u95e8\u800c\u5df2\uff0c\u7adf\u7136\u8fd8\u8981\u6293\u5305\u2026\u2026\u201d\n")
+    })();
+</script>
+
+
+<div onclick="var c='312da4dc14d4176fcc763fbc7967d046';for (var a = 5381, b = 0, d = c.length; b < d; ++b)a += (a << 5) + c.charAt(b).charCodeAt();console.log(a & 2147483647);var xx = (a & 2147483647);ajax('./pass', {method: 'POST',data: '{q:1,s:1,_t:' +xx+ '}',contentType: 'application/plain',onSuccess: function (c) {hideBoard();document.getElementById('btnNext').className += ' show';alert('\u8fc7\u5173\uff01\u4e0b\u4e00\u5173\u7684\u5165\u53e3\u5df2\u6253\u5f00')}})">
+    asdfasdf
+</div>
+
+
+1731486664
+
+51ee94a0c11f5337224b4590e9278dd7
+
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=27959434" charset="UTF-8"></script>
+<!--Шeb-->
 </body>
 </html>

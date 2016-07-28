@@ -1,5 +1,36 @@
 <link href="modules/verify/css/verify.css" rel="stylesheet">
 
+<div id="confirmDialogContainer" class="app-grey-dialog-container" style="display: block;" ng-show="showVerify">
+    <div class="verify-bank-verifyCode-dialog">
+        <div class="container">
+            <div class="text-center row app-padding-one" style="font-size: 1.4rem">
+                <div class="col-xs-10 text-left">
+                    手机短信验证码已发送
+                </div>
+                <div class="col-xs-2 text-right" ng-click="hideVerifyCode()">
+                    <span class="fa fa-times fa-lg"></span>
+                </div>
+
+            </div>
+            <hr class="app-bootstrap-hr">
+
+            <div class="row app-padding-one" style="border-radius: 5px;border: 1px solid #ccc;margin: 1rem;">
+                <div class="col-xs-8">
+                    <input placeholder="请输入验证码" ng-model="verifyCode">
+                </div>
+                <div class="col-xs-4 text-center app-bootstrap-padding-zero app-grey-text" style="border-left: 1px solid #ccc"
+                     ng-click="reSendVerifyCode()">
+                    {{codeTips}}
+                </div>
+            </div>
+
+            <hr class="app-bootstrap-hr">
+            <div class="row text-center app-pink-text" style="font-size: 1.8rem;padding: 1rem" ng-click="submitSecondInfoWithCode()">
+                确定
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--步骤一：联系方式-->
 <div class="app-grey-background-container container" ng-if="status==1">
@@ -113,7 +144,23 @@
         </div>
     </div>
 
-    <div class="app-white-input row" style="margin-top: 10px">
+
+
+    <div class="row selector">
+        <div class="col-xs-6" ng-class="{0: 'selector-hightlight', 1: 'selector-normal'}[currentSelectorIndex]"
+             ng-click="onSelectorToggle(0)">
+            工作信息
+        </div>
+        <div class="col-xs-6" ng-class="{1: 'selector-hightlight', 0: 'selector-normal'}[currentSelectorIndex]"
+             ng-click="onSelectorToggle(1)">
+            手机服务码
+        </div>
+        <div class="col-xs-offset-4 col-xs-4 selector-img">
+            <img src="modules/verify/img/student/selector.png" ng-click="onSelectorToggle((currentSelectorIndex+1)%2)"/>
+        </div>
+    </div>
+
+    <div class="app-white-input row" style="margin-top: 10px" ng-show="currentSelectorIndex == 0">
         <label class="col-xs-12 app-bootstrap-padding-zero">上传工作证明信息（清晰可见）</label>
         <div class="col-xs-6 app-padding-one" ng-click="uploadWorkProvePic()" style="position: relative">
             <img src="modules/verify/img/fast-second-add.png" id="workProvePic" style="width: 100%">
@@ -122,14 +169,14 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" ng-show="currentSelectorIndex == 0">
         <div class="col-xs-12 app-padding-one" style="color: #fb2282;">
             <img src="modules/verify/img/fast-second-tips.png" style="width: 1rem;padding-bottom: 0.25rem">
             提醒:上传名片/工牌/信用卡/社保信息/手持纸质同意书照片。额度更高哦！
         </div>
     </div>
 
-    <div class="row app-padding-one" style="background-color: white">
+    <div class="row app-padding-one" style="background-color: white" ng-show="currentSelectorIndex == 0">
         <div class="col-xs-6">
             <img style="width: 100%" src="modules/verify/img/fast-templete.jpg">
         </div>
@@ -148,9 +195,40 @@
         </div>
     </div>
 
+    <div class="row" ng-show="currentSelectorIndex == 1">
+
+        <div class="col-xs-12 app-padding-one app-grey-text">
+            手机信息认证将收集您手机号码的基本信息、通话记录、亲密联系人等信息，运营商会发短信告知您。这是正常的验证过程，我们不会泄露您的信息
+        </div>
+
+    </div>
+
+    <div class="app-white-input row app-margin-top-two-px" ng-show="currentSelectorIndex == 1">
+        <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">手机号</label>
+        <input type="text" ng-model="$parent.myTelephone" class="col app-white-input-text"
+               placeholder="你的手机号">
+    </div>
+
+    <div class="app-white-input row app-margin-top-two-px" ng-show="currentSelectorIndex == 1">
+        <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">服务码</label>
+        <input type="text" ng-model="$parent.serviceCode" class="col app-white-input-text"
+               placeholder="手机服务码">
+    </div>
+
+    <div class="row" ng-show="currentSelectorIndex == 1">
+        <div class="col-xs-12">
+            <h3 class="app-padding-one">移动用户：</h3>
+            <p class=" app-grey-text">拨打10086获取你的手机服务密码</p>
+            <h3 class="app-padding-one">联通用户：</h3>
+            <p class=" app-grey-text">拨打10010获取你的手机服务密码</p>
+            <h3 class="app-padding-one">电信用户：</h3>
+            <p class=" app-grey-text">拨打10001获取你的手机服务密码</p>
+        </div>
+    </div>
+
     <label style="display: block;padding-bottom: 2rem">
         <div class="app-padding-one text-center" ng-click="submitSecondInfo()"
-             ng-class="{true:'app-little-pink-radius-button',false:'app-pink-radius-button'}[!$parent.workProveMediaId ||!$parent.frontIdentityMediaId||!$parent.backIdentityMediaId ]">
+             ng-class="{true:'app-little-pink-radius-button',false:'app-pink-radius-button'}[!$parent.backIdentityMediaId ||!$parent.frontIdentityMediaId||(!$parent.workProveMediaId && !(!!$parent.myTelephone && !!$parent.serviceCode))]">
             下一步
         </div>
     </label>
@@ -171,12 +249,12 @@
             <div class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-check-area">
                 <label ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isCreditCard]">
                     <span>是</span>
-                    <input type="radio" name="is_credit_card" ng-model="$parent.isCreditCard" value="true" required>
+                    <input type="radio" name="is_credit_card" ng-model="$parent.isCreditCard" value="true">
                 </label>
                 <label ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isCreditCard]"
                        style="padding-left: 1rem">
                     <span>否</span>
-                    <input type="radio" name="is_credit_card" ng-model="$parent.isCreditCard" value="false" required>
+                    <input type="radio" name="is_credit_card" ng-model="$parent.isCreditCard" value="false">
                 </label>
             </div>
 
@@ -186,12 +264,12 @@
             <div class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-check-area">
                 <label ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isLoan]">
                     <span>是</span>
-                    <input type="radio" name="is_loan" ng-model="$parent.isLoan" value="true" required>
+                    <input type="radio" name="is_loan" ng-model="$parent.isLoan" value="true">
                 </label>
                 <label ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isLoan]"
                        style="padding-left: 1rem">
                     <span>否</span>
-                    <input type="radio" name="is_loan" ng-model="$parent.isLoan" value="false" required>
+                    <input type="radio" name="is_loan" ng-model="$parent.isLoan" value="false">
                 </label>
             </div>
         </div>
@@ -200,12 +278,12 @@
             <div class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-check-area">
                 <label ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isInvestment]">
                     <span>是</span>
-                    <input type="radio" name="is_investment" ng-model="$parent.isInvestment" value="true" required>
+                    <input type="radio" name="is_investment" ng-model="$parent.isInvestment" value="true">
                 </label>
                 <label ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isInvestment]"
                        style="padding-left: 1rem">
                     <span>否</span>
-                    <input type="radio" name="is_investment" ng-model="$parent.isInvestment" value="false" required>
+                    <input type="radio" name="is_investment" ng-model="$parent.isInvestment" value="false">
                 </label>
             </div>
         </div>
@@ -214,12 +292,12 @@
             <div class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-check-area">
                 <label ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isDriving]">
                     <span>是</span>
-                    <input type="radio" name="is_driving" ng-model="$parent.isDriving" value="true" required>
+                    <input type="radio" name="is_driving" ng-model="$parent.isDriving" value="true">
                 </label>
                 <label ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isDriving]"
                        style="padding-left: 1rem">
                     <span>否</span>
-                    <input type="radio" name="is_driving" ng-model="$parent.isDriving" value="false" required>
+                    <input type="radio" name="is_driving" ng-model="$parent.isDriving" value="false">
                 </label>
             </div>
         </div>
@@ -228,12 +306,12 @@
             <div class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-check-area">
                 <label ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isHouse]">
                     <span>是</span>
-                    <input type="radio" name="is_house" ng-model="$parent.isHouse" value="true" required>
+                    <input type="radio" name="is_house" ng-model="$parent.isHouse" value="true">
                 </label>
                 <label ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isHouse]"
                        style="padding-left: 1rem">
                     <span>否</span>
-                    <input type="radio" name="is_house" ng-model="$parent.isHouse" value="false" required>
+                    <input type="radio" name="is_house" ng-model="$parent.isHouse" value="false">
                 </label>
             </div>
         </div>
@@ -289,5 +367,6 @@
         </label>
 
     </form>
+
 
 </div>

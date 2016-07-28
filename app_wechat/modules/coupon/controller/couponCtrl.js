@@ -13,13 +13,6 @@ define(function (require, exports, module) {
 
                 $scope.coupons = [{price:1},{price:2}];
 
-                //$scope.ok = function () {
-                //    console.log($scope.couponInput);
-                //}
-                //$scope.couponInput = 1;
-
-
-
             }])
     }
 });

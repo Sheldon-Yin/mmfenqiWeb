@@ -8,17 +8,26 @@ define(function (require, exports, module) {
         require('services/loginService.js')(app);
         require('services/utilsService.js')(app);
         require('services/weChatService.js')(app);
-        app.register.controller('LoginPasswordCtrl', ['$scope', 'Login', '$location', 'MD5','WeChatTitle',
-            function ($scope, Login, $location, MD5,WeChatTitle) {
+        app.register.controller('LoginPasswordCtrl', ['$scope', 'Login', '$location', 'MD5', 'WeChatTitle', 'Bridge',
+            function ($scope, Login, $location, MD5, WeChatTitle, Bridge) {
 
                 WeChatTitle('登录');
                 $scope.telephone = Number($location.search().telephone);
 
-                console.log(1);
+                document.getElementById("passwordInput").focus();
 
                 $scope.goToResetPassword = function () {
                     $location.path('/login/reset');
                 };
+
+                function is_weixn() {
+                    var ua = navigator.userAgent.toLowerCase();
+                    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
 
                 $scope.Login = function () {
                     $scope.login = Login.login().save({
@@ -27,11 +36,16 @@ define(function (require, exports, module) {
                     });
                     $scope.$root.loading = true;
                     $scope.login.$promise.then(function (res) {
-                        if(res.result == 0){
-                            $scope.referer = res.data.referer;
+                        if (res.result == 0) {
                             Toast('登录成功');
-                            window.location.href = (!!$scope.referer && $scope.referer != undefined && $scope.referer != 'undefined' && $scope.referer != null) ? decodeURI($scope.referer) : '#/verify/index';
-                        }else {
+                            var appToken = res.data.APP_TOKEN;
+                            Bridge.saveAppToken(appToken, function (res) {
+                                console.log(window.localStorage.referer);
+                                var href = !!window.localStorage.referer ? window.localStorage.referer : $location.absUrl().split('#')[0];
+                                window.location.href = is_weixn() ? ("/appinterface/webAuthorize?appToken=" + appToken + "&state=" + encodeURIComponent(href)) : href;
+                            });
+                            console.log(appToken)
+                        } else {
                             Toast(res.msg);
                         }
                         console.log(res);
@@ -42,7 +56,6 @@ define(function (require, exports, module) {
                         $scope.$root.loading = false;
                     })
                 }
-
             }])
     }
 });

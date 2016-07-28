@@ -17,7 +17,7 @@
 
 .verify-index-money {
     color: #fff;
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 .verify-index-modules-background {
@@ -208,4 +208,14 @@
 
 .selector-tips-color {
     color: rgb(68, 155, 238);
+}
+
+.verify-bank-verifyCode-dialog {
+    position: absolute;
+    top: 30%;
+    background-color: #FFFFFF;
+    width: 80%;
+    right: 10%;
+    height: auto;
+    border-radius: 1rem
 }

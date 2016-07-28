@@ -20,7 +20,6 @@ define(function (require, exports, module) {
                     Bridge.uploadImgFromCameraOrAlbum(function (res) {
                         $scope.$apply(function () {
                             $scope.imgList.push(res);
-                            Toast('添加成功'+$scope.imgList.length)
                         })
                     },720)
                 };
@@ -73,16 +72,13 @@ define(function (require, exports, module) {
                             .error(function (error) {
                                 $scope.$root.loading = false;
                                 Toast(JSON.stringify(error));
-                                //Toast(1);
                             })
                             .catch(function (error) {
                                 $scope.$root.loading = false;
                                 Toast(JSON.stringify(error))
                             });
                     }
-
                 };
-
 
             }])
     }

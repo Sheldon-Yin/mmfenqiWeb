@@ -7,8 +7,14 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('Index', ['$resource',
             function ($resource) {
-                return $resource('/appinterface/query_index_app',{cityId:'@cityId'},{
+                return $resource('/appinterface/query_index_app',{},{
                     get: {method:'GET'}
+                })
+            }]);
+        app.register.factory('City', ['$resource',
+            function ($resource) {
+                return $resource('/appinterface/query_city_app',{},{
+                    query: {method:'GET'}
                 })
             }]);
     }

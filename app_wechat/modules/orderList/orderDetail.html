@@ -135,17 +135,14 @@
             <div class="row text-center">
                 <div class="col-xs-12 text-center">
                     <div class="app-pink-radius-button"
-                         ng-click="goToInform()"
                          style="background-color: #029cf4;margin-left:20%;width: 60%;font-size: 1.2rem;padding: 0.5rem;margin-top: 0.5rem"
                          ng-if="orderDetail.data.orderDetailResponse.orderStatus==2 && orderDetail.data.orderDetailResponse.projectReviewStatus == 0"
                          ng-click="goToInform()">
                         上传知情同意书
                     </div>
                     <div class="app-pink-radius-button"
-                         ng-click="goToInform()"
                          style="background-color: #029cf4;margin-left:20%;width: 60%;font-size: 1.2rem;padding: 0.5rem;margin-top: 0.5rem"
-                         ng-if="orderDetail.data.orderDetailResponse.orderStatus==2 && orderDetail.data.orderDetailResponse.projectReviewStatus == 1"
-                         ng-click="goToInform()">
+                         ng-if="orderDetail.data.orderDetailResponse.orderStatus==2 && orderDetail.data.orderDetailResponse.projectReviewStatus == 1">
                         知情同意书审核中
                     </div>
                     <img src="modules/orderList/img/qrcode.png" class="text-right"
@@ -187,14 +184,14 @@
             </div>
         </div>
     </div>
-    <!--//2，待完成-取消订单-->
-    <div style="position: absolute;width: 76%;left: 12%;bottom: 5%"
-         ng-if="orderDetail.data.orderDetailResponse.orderStatus==2">
-        <div class="order-pink-radius-button text-center app-padding-one" style="background-color: #F2AACF"
-             ng-click="showConfirm()">
-            取消订单
-        </div>
-    </div>
+    <!--&lt;!&ndash;//2，待完成-取消订单&ndash;&gt;-->
+    <!--<div style="position: absolute;width: 76%;left: 12%;bottom: 5%"-->
+         <!--ng-if="orderDetail.data.orderDetailResponse.orderStatus==2">-->
+        <!--<div class="order-pink-radius-button text-center app-padding-one" style="background-color: #F2AACF"-->
+             <!--ng-click="showConfirm()">-->
+            <!--取消订单-->
+        <!--</div>-->
+    <!--</div>-->
     <!--//3，已完成-提前还款-进入账单-->
     <div style="position: absolute;width: 76%;left: 12%;bottom: 5%"
          ng-if="orderDetail.data.orderDetailResponse.orderStatus==3">
@@ -232,21 +229,6 @@
             <hr class="app-bootstrap-hr">
 
             <form>
-
-                <label style="display: block">
-                    <div class="row order-pay-choose-pay-way-dialog-row">
-                        <div class="col-xs-6">
-                            <img src="modules/pay/img/alipay.png" style="margin-right: 1rem">支付宝
-                        </div>
-                        <div class="col-xs-6 text-right">
-                            <input ng-model="payWay" type="radio" ng-change="setAliPay()"
-                                   value="alipay" checked="checked" style="display: none">
-                            <img ng-src="{{alipayImg}}">
-                        </div>
-                    </div>
-                </label>
-
-                <hr class="app-bootstrap-hr">
 
                 <label style="display: block">
                     <div class="row order-pay-choose-pay-way-dialog-row">

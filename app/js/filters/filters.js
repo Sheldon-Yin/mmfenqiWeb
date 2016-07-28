@@ -61,6 +61,63 @@ define(function (require, exports, module) {
               return res;
           }
       });
+      app.filter('groupStatus', function () {
+          return function (input) {
+              var res;
+              switch (input){
+                  case "0":
+                      res = '全部';
+                      break;
+                  case "1":
+                      res = '拼团中';
+                      break;
+                  case "2":
+                      res = '拼团成功';
+                      break;
+                  case "3":
+                      res = '退款中';
+                      break;
+                  case "4":
+                      res = '已退款';
+                      break;
+              }
+              console.log(res);
+              return res;
+          }
+      });
+      app.filter('groupJoinStatus', function () {
+          return function (input) {
+              var res;
+              if(!input){
+                  return
+              }
+              switch (input.toString()){
+                  case "0":
+                      res = '可开团';
+                      break;
+                  case "1":
+                      res = '可参团';
+                      break;
+                  case "2":
+                      res = '已参团';
+                      break;
+                  case "3":
+                      res = '拼团成功';
+                      break;
+                  case "4":
+                      res = '已结束';
+                      break;
+                  case "5":
+                      res = '参团失败';
+                      break;
+                  case "6":
+                      res = '此团已满';
+                      break;
+              }
+              console.log(res);
+              return res;
+          }
+      });
       app.filter('isRealName', function () {
           return function (input) {
               var res;

@@ -3,7 +3,7 @@
 html body {
     height: 100%;
     position: relative;
-    font-family: "Microsoft JhengHei","Adobe Fan Heiti Std B";
+    font-family: "Arial","Microsoft JhengHei","Adobe Fan Heiti Std B";
 }
 
 body {
@@ -77,7 +77,7 @@ td {
     top: 0;
     padding: 0.5rem 0;
     background-color: #FFFFFF;
-    z-index: 99;
+    z-index: 999;
     border-bottom: solid rgb(202, 202, 202) 1px;
 }
 
@@ -203,6 +203,10 @@ td {
 .app-padding-one {
     padding-top: 1rem;
     padding-bottom: 1rem;
+}
+
+.app-margin-top-one{
+    margin-top: 1rem;
 }
 
 .app-pink-bottom-bar {

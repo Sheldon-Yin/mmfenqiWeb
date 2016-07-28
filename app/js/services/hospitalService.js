@@ -7,8 +7,8 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         app.register.factory('Hospital', ['$resource',
             function ($resource) {
-                return $resource('/appinterface/query_hospital_app', {cityId:'@cityId'}, {
-                    query: {method: 'GET',params:{cityId:2}}
+                return $resource('/appinterface/query_hospital_app', {}, {
+                    query: {method: 'GET',params:{}}
                 });
             }]);
     }

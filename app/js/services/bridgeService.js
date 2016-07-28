@@ -26,6 +26,17 @@ define(function (require, exports, module) {
                             }
                         }, cb);
                     },
+                    jumpToWithShare: function (url, title, cb) {
+                        if (!myBridge) return;
+                        return myBridge.callHandler('sendMessageToApp', {
+                            type: 2, data: {
+                                'url': url,
+                                'leftNavItems': [1],
+                                'title': title,
+                                rightNavItems: [0]
+                            }
+                        }, cb);
+                    },
                     jumpRootTo: function (url, title, cb) {
                         if (!myBridge) return;
                         return myBridge.callHandler('sendMessageToApp', {
@@ -52,11 +63,23 @@ define(function (require, exports, module) {
                             }
                         }, cb);
                     },
+                    weChatOnlyShare: function (description, title, url, imageUrl, cb) {
+                        if (!myBridge) return;
+                        return myBridge.callHandler('sendMessageToApp', {
+                            type: 0, data: {
+                                'description': description,
+                                'title': title,
+                                'url': url,
+                                'imageUrl': imageUrl,
+                                'wechatOnly': 1
+                            }
+                        }, cb);
+                    },
                     uploadImgFromCamera: function (cb,_size) {
                         myBridge.callHandler('sendMessageToApp', {
                             type: 12, data: {
                                 type: 1,
-                                size: _size? _size :120
+                                size: _size? _size :450
                             }
                         }, cb)
                     },
@@ -64,14 +87,14 @@ define(function (require, exports, module) {
                         myBridge.callHandler('sendMessageToApp', {
                             type: 12, data: {
                                 type: 0,
-                                size: _size? _size :120
+                                size: _size? _size :450
                             }
                         }, cb)
                     },
                     uploadImgFromCameraOrAlbum: function(cb,_size){
                         myBridge.callHandler('sendMessageToApp', {
                             type: 14, data: {
-                                size: _size ? _size :120
+                                size: _size ? _size :450
                             }
                         }, cb)
                     },

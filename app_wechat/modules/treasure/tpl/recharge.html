@@ -12,7 +12,7 @@
             <div class="text-center" style="margin-top: 1.5rem">
                 <label>
                     <div class="col-xs-4">
-                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[$parent.money==10]">
+                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[money==10]">
 
                             <span>10</span>
                             <input type="radio" name="money" ng-model="$parent.money" value="10" style="display: none" required>
@@ -22,7 +22,7 @@
                 </label>
                 <label>
                     <div class="col-xs-4">
-                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[$parent.money==20]">
+                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[money==20]">
 
                             <span>20</span>
                             <input type="radio" name="money" ng-model="$parent.money" value="20" style="display: none" required>
@@ -32,7 +32,7 @@
                 </label>
                 <label>
                     <div class="col-xs-4">
-                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[$parent.money==50]">
+                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[money==50]">
 
                             <span>50</span>
                             <input type="radio" name="money" ng-model="$parent.money" value="50" style="display: none" required>
@@ -45,7 +45,7 @@
             <div class="text-center" style="margin-top: 4.5rem;margin-bottom: 1rem">
                 <label>
                     <div class="col-xs-4">
-                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[$parent.money==100]">
+                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[money==100]">
 
                             <span>100</span>
                             <input type="radio" name="money" ng-model="$parent.money" value="100" style="display: none"
@@ -56,7 +56,7 @@
                 </label>
                 <label>
                     <div class="col-xs-4">
-                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[$parent.money==200]">
+                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[money==200]">
 
                             <span>200</span>
                             <input type="radio" name="money" ng-model="$parent.money" value="200" style="display: none"
@@ -67,7 +67,7 @@
                 </label>
                 <label>
                     <div class="col-xs-4" >
-                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[$parent.money==-1]">
+                        <div ng-class="{true: 'treasure-selected', false: 'treasure-unselected'}[money==-1]">
 
                             <input type="text" ng-model="$parent.otherPrice" placeholder="其他金额"
                                    style="width: 4rem;text-align: center" ng-click="setMoneyDiy()">

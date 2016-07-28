@@ -17,6 +17,7 @@ define(function (require, exports, module) {
                 $scope.verifyText = '获取验证码';
                 $scope.verifyStatus = true;
                 $scope.telephone = Number($location.search().telephone);
+                $scope.userType = '6';
 
                 $scope.getVerifyCode = function () {
                     if (!$scope.verifyStatus) return;
@@ -62,7 +63,7 @@ define(function (require, exports, module) {
                         password: MD5($scope.password),
                         verifyCode: $scope.verifyCode,
                         recommendedCode: $scope.recommendedCode,
-                        userType: 1
+                        userType: $scope.userType
                     });
                     $scope.$root.loading = true;
 

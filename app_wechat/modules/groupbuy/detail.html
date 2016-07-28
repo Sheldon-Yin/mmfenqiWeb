@@ -1,0 +1,70 @@
+<link type="text/css" href="modules/groupbuy/css/groupbuy.css" rel="stylesheet">
+<link type="text/css" href="modules/groupbuy/css/item.css" rel="stylesheet">
+
+<div style="position: fixed;right: 1.2rem;bottom: 7.6rem;z-index: 999">
+    <div>
+        <img src="modules/treasure/img/home.png" style="width: 2.5rem;margin-top: 1.2rem" ng-click="backHome()">
+    </div>
+</div>
+
+<div class="groupbuy-poster-img">
+    <img ng-src={{goodDetail.coverPic}}>
+</div>
+
+
+<div style="width: auto">
+    <div class="groupbuy-price-div">
+    <span class="groupbuy-price-now">
+        ￥{{goodDetail.shopPrice}}
+    </span>
+    <span class="groupbuy-price-original">
+        原价：{{goodDetail.marketPrice}}
+    </span>
+    </div>
+</div>
+
+<div class="groupbuy-title">
+    {{goodDetail.goodsName}}
+</div>
+
+<div>
+    <span class="fa fa-map-marker groupbuy-pink col-xs-1" style="font-size: 2rem;"></span>
+    <span class="single-line" style="font-size: 1.2rem;line-height: 2rem">{{goodDetail.hosName}}</span>
+</div>
+
+<div style="margin-top: .5rem">
+    <img src="modules/groupbuy/img/product.jpg" style="width: 100%">
+</div>
+<div class="line-1px"></div>
+
+<div class="groupbuy-introduction">
+    <div class="groupbuy-introduction-title">
+        项目介绍
+    </div>
+
+    <div class="groubuy-introduction-content">
+        <div class="row" ng-repeat="x in goodDetail.goodsGalleryMapList">
+            <div class="col-xs-12">
+                <span>
+                    {{x.text_desc}}
+                </span>
+            </div>
+            <div class="col-xs-12">
+                <img ng-src={{x.img_url}} style="width: 100%">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="groupbuy-bottom-btn" ng-click="joinGroup()">
+    <p class="groupbuy-buy-text">￥{{goodDetail.shopPrice}}</p>
+    <p class="groupbuy-buy-text">{{goodDetail.canBuyNum}}人团</p>
+</div>
+
+<script src="modules/groupbuy/js/groupbuy.js"></script>
+
+<script>
+    ShowCountDown(2016, 3, 23, 'leftTime');
+    //    只需要传入拼团结束的年/月/日即可进行倒计时
+</script>

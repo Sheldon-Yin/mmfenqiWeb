@@ -68,7 +68,7 @@ define(function (require, exports, module) {
                                         var jumpUrl;
                                         if (!!$scope.skuData && !!$scope.storeId) {
                                             if (myBridge) {
-                                                jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/order?orderAmount=' + $scope.price + '&goodsId=' + goodsId.goodsId + '&storeGoodsCombinationId=' + $scope.storeId+ '&customProjectId='+goodsId.customProjectId);
+                                                jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#?/order?orderAmount=' + $scope.price + '&goodsId=' + goodsId.goodsId + '&storeGoodsCombinationId=' + $scope.storeId+ '&customProjectId='+goodsId.customProjectId);
                                                 myBridge.callHandler('sendMessageToApp', {
                                                     type: 2, data: {
                                                         url: jumpUrl,
@@ -81,7 +81,7 @@ define(function (require, exports, module) {
                                             }
                                         } else if ($scope.type.length == 0) {
                                             if (myBridge) {
-                                                jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/order?orderAmount=' + $scope.defaultPrice + '&goodsId=' + goodsId.goodsId+ '&customProjectId='+goodsId.customProjectId);
+                                                jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#?/order?orderAmount=' + $scope.defaultPrice + '&goodsId=' + goodsId.goodsId+ '&customProjectId='+goodsId.customProjectId);
                                                 myBridge.callHandler('sendMessageToApp', {
                                                     type: 2, data: {
                                                         url: jumpUrl,

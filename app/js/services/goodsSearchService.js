@@ -9,18 +9,11 @@ define(function (require, exports, module) {
             function ($resource) {
                 return $resource('/appinterface/query_goodsList_app',
                     {
-                        cityId: '@cityId',
-                        index: '@index',
-                        hospitalId: '@hospitalId',
-                        categoryId: '@categoryId',
-                        sortId: '@sortId',
-                        searchInfo: '@keyword'
                     },
                     {
                         query: {
                             method: 'GET',
                             params: {
-                                cityId: '0',
                                 categoryId: '0',
                                 sortId: '1',
                                 hospitalId: '0'

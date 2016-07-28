@@ -7,8 +7,8 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/treasureService.js')(app);
         require('services/bridgeService.js')(app);
-        app.register.controller('TreasureAddressCtrl', ['$scope','Treasure','Bridge',
-            function ($scope,Treasure,Bridge) {
+        app.register.controller('TreasureAddressCtrl', ['$scope', 'Treasure', 'Bridge',
+            function ($scope, Treasure, Bridge) {
 
                 Bridge.appToken(function (res) {
                     $scope.appToken = encodeURI(res);
@@ -17,7 +17,7 @@ define(function (require, exports, module) {
                         appToken: $scope.appToken
                     });
                     $scope.initLocation.$promise.then(function (res) {
-                        if (res.result == 0){
+                        if (res.result == 0) {
                             $scope.location = res.data;
 
                             $scope.saveLocation = function () {
@@ -26,9 +26,9 @@ define(function (require, exports, module) {
                                     address: $scope.location.address
                                 });
                                 $scope.saveLocationReq.$promise.then(function (res) {
-                                    if (res.result == 0){
+                                    if (res.result == 0) {
                                         Toast('修改成功')
-                                    }else {
+                                    } else {
                                         Toast(res.msg)
                                     }
                                 }).catch(function (error) {
@@ -36,13 +36,12 @@ define(function (require, exports, module) {
                                 })
                             }
 
-                        }else {
+                        } else {
                             Toast(res.msg)
                         }
                     }).catch(function (error) {
                         Toast(error)
                     });
-
 
                 })
 

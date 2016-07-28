@@ -22,6 +22,18 @@
     </div>
 </div>
 
+<div class="verify-select-dialog-container" ng-show="showing" ng-click="hideImg()">
+    <div class="verify-select-dialog-background">
+    </div>
+    <div class="verify-select-dialog">
+        <div class="container" style="height: 10%">
+            <div class="row" style="height: 100%">
+                <img id="imgPreShow" style="width: 100%">
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid" ng-if="status==1">
     <div class="row">
         <img src="modules/verify/img/student/header.png" class="header-img"/>
@@ -94,6 +106,9 @@
                     <img ng-src="data:image/png;charset=utf-8;base64,{{imgCode}}" style="width: 100%;">
                 </div>
             </div>
+        </div>
+        <div class="col-xs-12 text-right" style="margin-top: 1rem">
+            <span class="app-blue-text" ng-click="goToHowToRegister()">如何注册？</span>
         </div>
         <div class="col-xs-12 text-center">
             <input type="button" class="submit-btn" value="确定,下一步" ng-click="commitFirstStep()">
@@ -179,9 +194,8 @@
         <div class="col-xs-12 cell" style="height: 160px;">
             <div class="col-xs-4">
                 <div class="row">
-                    <div class="col-xs-12" ng-click="uploadImgOne()">
-                        <img src="modules/verify/img/student/card0.png" height="75"
-                             style="margin-top: 15px;max-width: 100%"
+                    <div class="col-xs-12" ng-click="previewImgOne()">
+                        <img src="modules/verify/img/student/card0.png" height="75" style="margin-top: 15px;max-width: 100%"
                              id="imgOne">
                     </div>
                     <div class="col-xs-12">
@@ -191,9 +205,8 @@
             </div>
             <div class="col-xs-4">
                 <div class="row">
-                    <div class="col-xs-12" ng-click="uploadImgTwo()">
-                        <img src="modules/verify/img/student/card1.png" height="75"
-                             style="margin-top: 15px;max-width: 100%"
+                    <div class="col-xs-12" ng-click="previewImgTwo()">
+                        <img src="modules/verify/img/student/card1.png" height="75" style="margin-top: 15px;max-width: 100%"
                              id="imgTwo">
                     </div>
                     <div class="col-xs-12">
@@ -203,9 +216,8 @@
             </div>
             <div class="col-xs-4">
                 <div class="row">
-                    <div class="col-xs-12" ng-click="uploadImgThree()">
-                        <img src="modules/verify/img/student/card2.png" height="75"
-                             style="margin-top: 15px;max-width: 100%"
+                    <div class="col-xs-12" ng-click="previewImgThree()">
+                        <img src="modules/verify/img/student/card2.png" height="75" style="margin-top: 15px;max-width: 100%"
                              id="imgThree">
                     </div>
                     <div class="col-xs-12">

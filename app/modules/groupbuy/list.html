@@ -1,0 +1,129 @@
+<link rel="stylesheet" type="text/css" href="modules/groupbuy/css/groupbuy.css">
+<link rel="stylesheet" type="text/css" href="bower_components/bootstrap-submenu/dist/css/bootstrap-submenu.css">
+
+<div class="container" style="padding-bottom: 4.8rem">
+    <div class="row groupbuy-border groupbuy-toolbar">
+
+        <div class="col-xs-4" ng-click="($parent.selectState==1) ? ($parent.selectState=0) : ($parent.selectState=1)">
+            <div ng-show="$parent.selectState == 1" style="color: #FC58AE">
+                {{selectProjectName}} <i class="fa fa-angle-up"></i>
+            </div>
+            <div ng-hide="$parent.selectState == 1">
+                {{selectProjectName}} <i class="fa fa-angle-down"></i>
+            </div>
+        </div>
+        <div class="row groupbuy-list-view" ng-show="$parent.selectState == 1">
+            <div style="height: 30%;background-color: white;display: flex;align-items: center;">
+                <!--Categories-->
+                <div class="container">
+                    <img style="position: relative;min-height: 1px;padding-right: 5px;padding-left: 5px;width: 20%;float: left;margin: 0.5rem 0;"
+                         ng-src="{{x.categoryHerPic}}" ng-click="setProject(x.categoryHerf,x.categoryName)"
+                         ng-repeat="x in projects">
+                </div>
+            </div>
+            <div class="groupbuy-list-view-background" style="z-index: 1" ng-click="$parent.selectState=0">
+            </div>
+        </div>
+
+        <div class="col-xs-4" ng-click="($parent.selectState==2) ? ($parent.selectState=0) : ($parent.selectState=2)">
+            <div ng-show="$parent.selectState == 2" style="color: #FC58AE">
+                {{selectCityName}} <i class="fa fa-angle-up"></i>
+            </div>
+            <div ng-hide="$parent.selectState == 2">
+                {{selectCityName}} <i class="fa fa-angle-down"></i>
+            </div>
+        </div>
+
+        <div class="row groupbuy-list-view" ng-show="$parent.selectState == 2">
+            <div class="col-xs-12" style="background-color: #FFFFFF;height: auto;text-align: left;z-index: 2" ng-click="setCity(0,'全国')">
+                <div class="col-xs-12" style="margin: 1rem 0">
+                    全国
+                </div>
+            </div>
+
+            <div style="background-color: #cccccc;z-index: 2;text-align: left;padding: 1rem" class="col-xs-12">
+                <div>
+                    已开通城市
+                </div>
+
+                <div class="col-xs-3 groupbuy-city-radius-btn" ng-repeat="x in citys" ng-click="setCity(x.cityId,x.cityName)">
+                    {{x.cityName}}
+                </div>
+            </div>
+
+            <div class="groupbuy-list-view-background" style="z-index: 1" ng-click="$parent.selectState=0">
+            </div>
+        </div>
+
+        <div class="col-xs-4" ng-click="($parent.selectState==3) ? ($parent.selectState=0) : ($parent.selectState=3)">
+            <div ng-show="$parent.selectState == 3" style="color: #FC58AE">
+                {{selectSortName}} <i class="fa fa-angle-up"></i>
+            </div>
+            <div ng-hide="$parent.selectState == 3">
+                {{selectSortName}} <i class="fa fa-angle-down"></i>
+            </div>
+        </div>
+        <div class="row groupbuy-list-view" ng-show="$parent.selectState == 3">
+            <div class="col-xs-12" style="background-color: #FFFFFF;height: auto;text-align: left;z-index: 2">
+                <div style="padding: 1rem" class="groupbuy-list-view-span" ng-click="setSort('','智能排序')">
+                    智能排序
+                </div>
+                <div style="padding: 1rem" class="groupbuy-list-view-span" ng-click="setSort(0,'从高到低')">
+                    价格从高到低
+                </div>
+                <div style="padding: 1rem" class="groupbuy-list-view-span" ng-click="setSort(1,'从低到高')">
+                    价格从低到高
+                </div>
+            </div>
+
+            <div class="groupbuy-list-view-background" style="z-index: 1" ng-click="$parent.selectState=0">
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 3.6rem">
+        <div class="grey-bold-line"></div>
+    </div>
+
+    <!--商品列表区-->
+    <div class="row" ng-click="goToDetail(x.goodsId)" ng-repeat="x in goods">
+        <div class="groupbuy-poster-img" style="position: relative">
+            <img ng-src={{x.goodsPic}}>
+        </div>
+        <div class="col-xs-12">
+            <i class="col-xs-1 fa fa-"></i>
+        </div>
+        <div class="row groupbuy-shopping-bottom" style="padding: 0.2rem 1rem;padding-top: 0.5rem;margin: 0;padding-bottom: .5rem;">
+            <div style="position: relative;">
+                <div class="col-xs-12 text-left" style="padding-left: 0">
+                    <div class="col-xs-12" style="padding: 0">
+                        <span class="double-line" style="font-size: 1.4rem;line-height: 2rem;font-weight: bold"> {{x.goodsName}}</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="col-xs-2 text-left" style="padding: 0">
+                    <span class="app-project-original-price" style="font-size: 1.2rem;text-decoration:blink">{{x.canBuyNum}}人团</span>
+                </div>
+                <div class="col-xs-4 app-pink-text" style="padding-right: 0">
+                    <span style="font-size: 1.2rem">￥</span><span
+                        style="font-size: 2.2rem;line-height: 2.6rem">{{x.shopPrice}}</span>
+                </div>
+                <div class="col-xs-2 text-left" style="padding: 0">
+                    <span class="app-project-original-price" style="font-size: 1.2rem">￥{{x.marketPrice}}</span>
+                </div>
+
+                <div style="padding-right: 0" class="col-xs-4 text-right">
+                    <p class="col-xs-8"
+                       style="padding: .4rem 0;height: 2.8rem;font-size: 1rem;line-height: 2rem;text-align: center;border-radius: 5px;float: right;">
+                        <span style="font-size: 1.2rem"> 去拼团<i class="fa fa-angle-right" style="margin-left: .5rem"></i> </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="grey-bold-line"></div>
+    </div>
+
+</div>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/bootstrap-submenu/dist/js/bootstrap-submenu.js"></script>

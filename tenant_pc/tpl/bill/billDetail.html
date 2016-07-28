@@ -86,23 +86,23 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-xs-6 text-right">
-                            <p>订单状态：</p>
-                        </div>
-                        <div class="col-xs-6 text-left">
-                            {{orderDetailInfo | orderStatus}}
-                        </div>
-                    </div>
+                    <!--<div class="row">-->
+                        <!--<div class="col-xs-6 text-right">-->
+                            <!--<p>订单状态：</p>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-6 text-left">-->
+                            <!--{{orderDetailInfo | orderStatus}}-->
+                        <!--</div>-->
+                    <!--</div>-->
 
-                    <div class="row">
-                        <div class="col-xs-6 text-right">
-                            <p>知情同意书审核状态：</p>
-                        </div>
-                        <div class="col-xs-6 text-left">
-                            {{orderDetailInfo | projectStatus}}
-                        </div>
-                    </div>
+                    <!--<div class="row">-->
+                        <!--<div class="col-xs-6 text-right">-->
+                            <!--<p>知情同意书审核状态：</p>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-6 text-left">-->
+                            <!--{{orderDetailInfo | projectStatus}}-->
+                        <!--</div>-->
+                    <!--</div>-->
 
                     <div class="row">
                         <div class="col-xs-6 text-right">
@@ -127,7 +127,7 @@
                             <img ng-src="{{downloadImgUrl}}" src="img/addImg.png" class="ng-isolate-scope"
                                  style="width: 100%">
                             <input type="file" style="display: none" ng-model="uploadImgForInform"
-                                   ng-disabled="orderDetailInfo.receiptAudit == 1||orderDetailInfo.receiptAudit == 2||orderDetailInfo.receiptAudit == 4||orderDetailInfo.receiptAudit == 5 ||orderDetailInfo.projectReviewStatus!=2"
+                                   ng-disabled="orderDetailInfo.receiptAudit == 1||orderDetailInfo.receiptAudit == 2||orderDetailInfo.receiptAudit == 4||orderDetailInfo.receiptAudit == 5"
                                    onchange="angular.element(this).scope().uploadInform(this.files)"
                                    required>
                         </label>

@@ -10,7 +10,6 @@ define(function (require, exports, module) {
                 return $resource('/appinterface/user_getcode', {}, {
                     save: {
                         method: 'POST', params: {
-                            smsFmtId: 'payCredit'
                         }
                     }
                 })

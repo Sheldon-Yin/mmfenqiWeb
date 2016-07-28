@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {margin: 0px; padding: 0px;}
+    </style>
+</head>
+<body>
+<div id="container" style="height: 100%; width: 100%; transform:translate(0,-250px); background-color: green;">
+    <div style="height: 250px; width: 100%; background-color: rgb(255, 204, 102);text-align: center;">
+        <div style="height: 200px; width: 100%; background-color: rgb(255, 204, 102);text-align: center;">
+            <img src="loading.gif" height="200" style="text-align: center;">
+        </div>
+        <div id="tips" style="line-height: 50px; color: white; font-size: 2.0rem;"></div>
+    </div>
+    <div style="height: 100%">
+        asdfasd
+    </div>
+</div>
+
+<script src="refresh.js">
+</script>
+<script>
+
+    R(document.getElementById('container'), {
+        headerHeight: 250,
+        timeInterval: 250
+    }).onRefresh(function(endRefresh) {
+        document.getElementById('tips').innerHTML = '';
+        setTimeout(function(){ //do something
+            endRefresh();
+        }, 3000);
+    }).onPulling(function(percent){
+        document.getElementById('tips').innerHTML = '下拉刷新...' + parseInt(percent * 100) + '%';
+    }).onReady(function(){
+        document.getElementById('tips').innerHTML = '松开刷新...';
+    });
+
+//    R(document.getElementById('container'), {
+//        headerHeight: 250,
+//        timeInterval: 250
+//    }).onRefresh(function(endRefresh) {
+//        document.getElementById('tips').innerHTML = '';
+//        setTimeout(function(){ //do something
+//            endRefresh();
+//        }, 15000);
+//    });
+
+</script>
+</body>
+</html>

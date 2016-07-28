@@ -68,7 +68,7 @@ define(function (require, exports, module) {
             }]);
         app.register.factory('UploadInform', ['$resource',
             function ($resource) {
-                return $resource('/appinterface/upload_informed_consent', {}, {
+                return $resource('/appinterface/upload_informed_consent_h5', {}, {
                     query:{
                         method: 'GET'
                     }
