@@ -74,6 +74,9 @@ define(function (require, exports, module) {
                                                 'customer_action': 1
                                             }
                                         }, function (response) {
+                                            if (response == 0){
+                                                Toast('支付成功')
+                                            }
                                         });
 
                                     }).catch(function (error) {
@@ -99,8 +102,10 @@ define(function (require, exports, module) {
                                                 'customer_action':1
                                             }
                                         }, function (response) {
+                                            if (response == 0){
+                                                Toast('支付成功')
+                                            }
                                         });
-
                                     }).catch(function (error) {
                                         alert('服务器返回失败');
                                         console.log(error);

@@ -9,80 +9,60 @@ define(function (require, exports, module) {
         require('services/orderService.js')(app);
         require('services/alipayService.js')(app);
         require('services/wxpayService.js')(app);
-        app.register.controller('FirstPayCtrl', ['$scope', 'OrderInfoForEnsure', '$location', 'Wxpay', 'Alipay','$rootScope',
-            function ($scope, OrderInfoForEnsure, $location, Wxpay, Alipay,$rootScope) {
-                $scope.goBack = function () {
-                    window.history.back(-1);
-                };
+        require('services/weChatService.js')(app);
+        app.register.controller('FirstPayCtrl', ['$scope', 'OrderInfoForEnsure', '$location', 'Wxpay', 'Alipay','$rootScope','Bridge',
+            function ($scope, OrderInfoForEnsure, $location, Wxpay, Alipay,$rootScope,Bridge) {
 
                 $scope.order = $location.search();
                 $scope.order.shoufuAmt = Number($scope.order.shoufuAmt);
                 $scope.order.insuranceAmount = Number($scope.order.insuranceAmount);
+                $scope.order.hrefPic = window.localStorage.hrefPic;
                 console.log($scope.order);
-
-                $scope.goToPay = function () {
-                    if ($scope.payWay == 'alipay') {
-                        if (!!$scope.order) {
-                            var alipay = Alipay.query({
-                                orderId: $scope.order.orderId,
-                                downpayAmount: $scope.order.shoufuAmt,
-                                type: 0
-                            });
-                            alipay.$promise.then(function (res) {
-                                console.log(res);
-                                //alipay
-                                if (myBridge) {
-                                    myBridge.callHandler('sendMessageToApp', {
-                                        type: 3, data: {
-                                            'notify_url': res.data.notify_url,
-                                            'out_trade_no': res.data.out_trade_no,
-                                            'subject': res.data.subject,
-                                            'total_fee': res.data.total_fee
-                                        }
-                                    }, function (response) {
-                                    });
-                                }
-                            }).catch(function (error) {
-                                alert('服务器返回失败');
-                                console.log(error);
-                            })
-                        }
-                    } else if ($scope.payWay == 'wxpay') {
-                        if (!!$scope.order) {
-                            var wxpay = Wxpay.query({
-                                orderId: $scope.order.orderId,
-                                downpayAmount: $scope.order.shoufuAmt,
-                                type: 0
-                            });
-                            wxpay.$promise.then(function (res) {
-                                console.log(res);
-                                //wxpay
-                                if (myBridge) {
-                                    myBridge.callHandler('sendMessageToApp', {
-                                        type: 4, data: {
-                                            'appid': res.data.resPar.parameters.appid,
-                                            'partnerid': res.data.resPar.parameters.partnerid,
-                                            'sign': res.data.resPar.parameters.sign,
-                                            'timestamp': res.data.resPar.parameters.timestamp,
-                                            'noncestr': res.data.resPar.parameters.noncestr,
-                                            'prepayid': res.data.resPar.parameters.prepayid
-                                        }
-                                    }, function (response) {
-                                    });
-                                }
-                            }).catch(function (error) {
-                                alert('服务器返回失败');
-                                console.log(error);
-                            })
-                        }
-                    }
-                };
-
                 var checkedImgSrc = 'modules/pay/img/checked.png';
                 var uncheckedImgSrc = 'modules/pay/img/unchecked.png';
-                $scope.alipayImg = checkedImgSrc;
-                $scope.wxpayImg = uncheckedImgSrc;
-                $scope.payWay = 'alipay';
+                $scope.wxpayImg = checkedImgSrc;
+                $scope.payWay = 'wxpay';
+
+                Bridge.appToken(function (response) {
+                    $scope.appToken = response;
+
+                    $scope.goToPay = function () {
+                        if ($scope.payWay == 'wxpay') {
+                            if (!!$scope.order) {
+                                var wxpay = Wxpay.query({
+                                    orderId: $scope.order.orderId,
+                                    downpayAmount: $scope.order.shoufuAmt,
+                                    appToken: $scope.appToken,
+                                    orderName: $scope.order.hotItemName,
+                                    type: 0,
+                                    payType: 0
+                                });
+                                wxpay.$promise.then(function (res) {
+                                    console.log(res);
+                                    if (res.result == 0) {
+                                        Bridge.weChatPay(res, function (response) {
+                                            if (response.err_msg == "get_brand_wcpay_request:ok") {
+                                                Toast('支付成功');
+                                                window.localStorage.appStatus = 3;
+                                                Bridge.jumpTo($location.absUrl().split('#')[0])
+                                            } else if (response.err_msg == "get_brand_wcpay_request:cancel") {
+                                                Toast('支付取消')
+                                            } else {
+                                                Toast('支付失败')
+                                            }
+                                        })
+                                    } else {
+                                        Toast(res.msg)
+                                    }
+                                }).catch(function (error) {
+                                    alert('服务器返回失败');
+                                    console.log(error);
+                                })
+                            }
+                        }
+                    };
+
+                });
 
                 $scope.choosePayWay = function () {
                     var choosePayWayContainer = document.getElementById('choosePayWayDialogContainer');
@@ -94,33 +74,11 @@ define(function (require, exports, module) {
                 };
 
                 $scope.goToServiceContact = function () {
-                    if (myBridge) {
-                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/contact/service');
-                        myBridge.callHandler('sendMessageToApp', {
-                            type: 2, data: {
-                                url: jumpUrl,
-                                leftNavItems: [1],
-                                title: '服务合同'
-                            }
-                        }, function (response) {
-                            //todo custom
-                        });
-                    }
+                    Bridge.jumpTo(encodeURI($location.absUrl().split('#')[0] + '#?/contact/service'),'服务合同');
                 };
 
                 $scope.goToLoanContact = function () {
-                    if (myBridge) {
-                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + '#/contact/loan');
-                        myBridge.callHandler('sendMessageToApp', {
-                            type: 2, data: {
-                                url: jumpUrl,
-                                leftNavItems: [1],
-                                title: '借款合同'
-                            }
-                        }, function (response) {
-                            //todo custom
-                        });
-                    }
+                    Bridge.jumpTo(encodeURI($location.absUrl().split('#')[0] + '#?/contact/loan'),'借款合同');
                 };
 
                 $scope.setAliPay = function () {

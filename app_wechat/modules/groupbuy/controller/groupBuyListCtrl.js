@@ -1,95 +1,102 @@
 /**
  * Created by sheldon on 2016/3/25.
  */
-
+'use strict';
 
 define(function (require, exports, module) {
     module.exports = function (app) {
-        app.register.controller('GroupBuyListCtrl', ['$scope',
-            function ($scope) {
-                $scope.$root.title = '美眉分期';
-                $scope.baseUrl = 'modules/groupbuy/';
-                $scope.orderProp = 'age';
-                $scope.selectState = 0;
-                $scope.citys =
-                    [
-                        {x: 1},
-                        {x: 2},
-                        {x: 3},
-                        {x: 1},
-                        {x: 2},
-                        {x: 3}
-                    ];
+        require('services/weChatService.js')(app);
+        require('services/indexService.js')(app);
+        require('services/groupBuyService.js')(app);
+        app.register.controller('GroupBuyListCtrl', ['$scope', '$location', 'Bridge', 'Index', 'City', 'GroupBuy',
+            function ($scope, $location, Bridge, Index, City, GroupBuy) {
 
-                $scope.setItems = function (items) {
-                    $scope.items = items;
+                $scope.initChoose = function () {
+                    $scope.selectProjectName = '全部项目';
+                    $scope.selectCityName = '全国';
+                    $scope.selectSortName = '智能排序';
+                    $scope.selectedCity = 0;
+                    $scope.selectedType = 0;
+                    $scope.selectedSort = '';
+
+                    Index.get().$promise.then(function (res) {
+                        if (res.result == 0) {
+                            $scope.projects = res.data.showIndexResponse.itemCategoryList;
+                        }
+                        console.log(res);
+                    }).catch(function (err) {
+                        console.log(err)
+                    });
+                    City.query().$promise.then(function (res) {
+                        if (res.result == 0) {
+                            $scope.citys = res.data.citySelectResponse;
+                        }
+                        console.log(res);
+                    }).catch(function (err) {
+                        console.log(err)
+                    })
                 };
 
-                $scope.projects = [
-                    {
-                        project : "面部轮廓",
-                        items : [
-                            "瘦脸针",
-                            "半永久妆",
-                            "祛痘"
-                        ]
-                    },
-                    {
-                        project : "眼部",
-                        items : [
-                            "单眼皮",
-                            "双眼皮",
-                            "三眼神童"
-                        ]
-                    },
-                    {
-                        project : "鼻部",
-                        items : [
-                            "隆鼻",
-                            "牙齿矫正",
-                        ]
-                    },
-                    {
-                        project : "面部轮廓",
-                        items : [
-                            "瘦脸针",
-                            "半永久妆",
-                            "祛痘"
-                        ]
-                    },
-                    {
-                        project : "面部轮廓",
-                        items : [
-                            "瘦脸针",
-                            "半永久妆",
-                            "祛痘"
-                        ]
-                    },
-                    {
-                        project : "面部轮廓",
-                        items : [
-                            "瘦脸针",
-                            "半永久妆",
-                            "祛痘"
-                        ]
-                    },
-                    {
-                        project : "面部轮廓",
-                        items : [
-                            "瘦脸针",
-                            "半永久妆",
-                            "祛痘"
-                        ]
-                    },
-                    {
-                        project : "面部轮廓",
-                        items : [
-                            "瘦脸针",
-                            "半永久妆",
-                            "祛痘"
-                        ]
-                    }
-                ];
+                $scope.initList = function () {
+                    GroupBuy.list().query({
+                        cityId: $scope.selectedCity,
+                        typeId: $scope.selectedType,
+                        sortByDesc: $scope.selectedSort
+                    }).$promise.then(function (res) {
+                        $scope.goods = res.data.teamBuyGoodsList;
+                        console.log(res);
+                    }).catch(function (err) {
+                        console.log(err)
+                    })
+                };
+
+                $scope.initChoose();
+
+                $scope.initList();
+
+                $scope.orderProp = 'age';
+                $scope.selectState = 0;
+
+                $scope.goToDetail = function (x) {
+                    Bridge.jumpTo(encodeURI($location.absUrl().split('#')[0] + '#?/groupbuy/detail?goodsId=' + x), '拼团详情');
+                };
+
+                $scope.shareFriend = function (x) {
+                    $scope.showShare = true;
+                    var description = '快来和我一起拼团吧！';
+                    var title = '拼团大优惠';
+                    var url = encodeURI(window.location.href);
+                    var imageUrl = 'http://www.mmfenqi.com/static/masserts/pc/img/login/logo.png';
+                    Bridge.share(description, title, url, imageUrl, function () {
+
+                    });
+                };
+
+                $scope.shareFriend();
+
+
+                $scope.setProject = function (x,name) {
+                    $scope.selectedType = x;
+                    $scope.selectProjectName = name;
+                    $scope.selectState = 0;
+                    $scope.initList();
+
+                };
+
+                $scope.setCity = function (x,name) {
+                    $scope.selectedCity = x;
+                    $scope.selectCityName = name;
+                    $scope.selectState = 0;
+                    $scope.initList();
+                };
+
+                $scope.setSort = function (x,name) {
+                    $scope.selectedSort = x;
+                    $scope.selectSortName = name;
+                    $scope.selectState = 0;
+                    $scope.initList();
+                }
+
             }]);
     }
 });

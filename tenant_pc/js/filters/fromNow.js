@@ -23,7 +23,7 @@ angular.module('app')
         return function (receipt) {
             switch (receipt.receiptAudit){
                 case 0:
-                    return '未审核';
+                    return '未上传';
                     break;
                 case 1:
                     return '审核中';

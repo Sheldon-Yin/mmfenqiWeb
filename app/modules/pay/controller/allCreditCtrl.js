@@ -83,7 +83,8 @@ define(function (require, exports, module) {
                     }
                     $scope.verifyCodeState = true;
                     $scope.message = MessageService.save({
-                        telephone: $scope.telephone
+                        telephone: $scope.telephone,
+                        smsFmtId: 'payCredit'
                     });
                     $scope.message.$promise.then(function (res) {
                         if (res.result == 0) {

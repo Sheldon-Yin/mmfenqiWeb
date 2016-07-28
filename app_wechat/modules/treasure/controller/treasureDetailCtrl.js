@@ -5,12 +5,13 @@
 
 define(function (require, exports, module) {
     module.exports = function (app) {
-        require('services/weChatService.js')(app);
         require('services/treasureService.js')(app);
-        app.register.controller('TreasureDetailCtrl', ['$scope', 'WeChatTitle', '$location', 'Treasure',
-            function ($scope, WeChatTitle, $location, Treasure) {
+        require('services/weChatService.js')(app);
+        app.register.controller('TreasureDetailCtrl', ['$scope', '$location', 'Treasure','Bridge',
+            function ($scope, $location, Treasure,Bridge) {
 
-                WeChatTitle('宝物详情');
+                $scope.baseUrl = $location.absUrl().split('#')[0];
+
                 $scope.isDialogShow = false;
                 $scope.buyNumber = 0;
 
@@ -51,11 +52,11 @@ define(function (require, exports, module) {
                                     Toast('至少购买一人份的夺宝机会');
                                     return
                                 }
-                                window.location.href = ('/duobao/toPay?id='+$location.search().id+'&amount='+$scope.buyNumber+'&buyType=1'+'&count='+$scope.buyNumber)
+                                Bridge.jumpTo($scope.baseUrl + '#?/treasure/pay-way?id='+$location.search().id+'&count='+$scope.buyNumber,'支付')
                             };
 
                             $scope.goToPicDetail = function () {
-                                window.location.href = '/duobao/toGoodsDetail/'+$scope.luckyGoodsId;
+                                Bridge.jumpTo('http://www.mmfenqi.com/duobao/toGoodsDetail/'+$scope.luckyGoodsId,'图文详情');
                             };
 
                             $scope.lastWinnerReq = Treasure.lastWinner().query({
@@ -99,7 +100,7 @@ define(function (require, exports, module) {
 
 
                 $scope.backHome = function () {
-                    $location.path('/treasure')
+                    Bridge.goBack();
                 };
 
                 $scope.backTop = function () {
@@ -107,14 +108,13 @@ define(function (require, exports, module) {
 
                         window.scrollBy(0, -100);
 
-                        if (document.documentElement.scrollTop == 0 && document.body.scrollTop == 0)
+                        if (document.documentElement.scrollTop < 1 && document.body.scrollTop < 1)
 
                             clearInterval(timer);
 
                     }, 10);
                 };
 
-                $scope.backTop();
 
             }])
     }

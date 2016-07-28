@@ -12,6 +12,10 @@ define(function (require, exports, module) {
 
                 $scope.currentSelectorIndex = 0;
 
+                $scope.baseUrl = $location.absUrl().split('#')[0];
+
+                //$scope.status = 1;
+
                 $scope.selectSchoolName = '选择';
                 $scope.selectJoinYearValue = '选择';
                 $scope.selectLeaveYearValue = '选择';
@@ -158,6 +162,7 @@ define(function (require, exports, module) {
                             console.log(error);
                             Toast('服务器返回错误')
                         })
+
                     } else if ($scope.currentSelectorIndex == 1) {
 
                         if (!$scope.imgOne || !$scope.imgTwo || !$scope.imgThree) {
@@ -228,6 +233,10 @@ define(function (require, exports, module) {
                                 Toast(JSON.stringify(error))
                             });
                     }
+                };
+
+                $scope.goToHowToRegister = function () {
+                    Bridge.jumpTo($scope.baseUrl + '#/verify/how-to-register','如何注册学信网')
                 };
 
                 $scope.uploadImgOne = function () {

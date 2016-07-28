@@ -1,0 +1,27 @@
+.app-tab-bar {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 4.8rem;
+    border-top: 1px solid #e6e6e6;
+    background-color: #fff;
+    z-index: 999;
+}
+
+.app-tab-bar-button {
+    padding: 0;
+    color: #333;
+}
+
+.app-tab-bar-button > label {
+    display: block;
+    margin-top: .6rem;
+}
+
+.app-tab-bar-button > label > input {
+    display: none;
+}
+
+.app-tab-bar-button > label > span {
+    margin-top: .8rem;
+}

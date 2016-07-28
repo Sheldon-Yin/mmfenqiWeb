@@ -1,9 +1,5 @@
 <link href="modules/verify/css/verify.css" rel="stylesheet">
 
-<div>
-    {{test}}
-</div>
-
 <div class="verify-index-background container">
 
     <div class="row text-center" style="height: 15%">
@@ -12,7 +8,7 @@
                 信用额度(元)
             </div>
             <div class="verify-index-money">
-                {{realLoanMoney | number:1}}
+                {{realLoanMoney | number:2}}
             </div>
         </div>
         <div class="col-xs-6">
@@ -20,16 +16,33 @@
                 可用额度（元）
             </div>
             <div class="verify-index-money">
-                {{availableMoney | number:1}}
+                {{availableMoney | number:2}}
             </div>
         </div>
     </div>
 
     <div class="row text-center" style="height: 85%">
         <div class="verify-index-modules-background" style="position:relative" ng-click="goToFastVerify(fastStatus)">
+
+            <div style="position: absolute;width: 100%;height: 100%;background-color: rgba(0,0,0,0.7);z-index: 48;border-radius: 5px;" ng-if="fastStatus == 2">
+                <div class="col-xs-12 text-center" style="color: white;padding: 0.5rem 0">
+                    基础认证失败原因
+                </div>
+
+                <div class="col-xs-12">
+                    <!--<div style="height: 1px;background-color: #fff"></div>-->
+                    <hr class="app-bootstrap-hr-no-match">
+                </div>
+
+                <div class="col-xs-12 text-left" style="color: #fff;padding: 0.5rem 2rem">
+                    {{fastRemark}}
+                </div>
+
+            </div>
+
             <div class="col-xs-3 verify-index-modules-img">
                 <img src="./modules/verify/img/fast-verify.png">
-                <img src="modules/verify/img/verify-nopass.png" style="top: -22%;left: 0;position: absolute" ng-if="fastStatus == 2">
+                <img src="modules/verify/img/verify-nopass.png" style="top: -22%;left: 0;position: absolute;z-index: 50;" ng-if="fastStatus == 2">
             </div>
             <div class="col-xs-9 text-left verify-index-modules-info">
                 <div style="padding-left: 1rem" class="verify-index-modules-title">
@@ -38,16 +51,32 @@
                 <div style="padding-left: 1rem" class="verify-index-modules-describe">
                     {{fastRemark}}
                 </div>
-                <div class="verify-index-modules-get-cash" ng-class="{'1':'verify-color-little-pink','3':'verify-color-yellow'}[fastStatus]">
+                <div class="verify-index-modules-get-cash" ng-class="{'1':'verify-color-little-pink','3':'verify-color-yellow'}[fastStatus]" style="z-index: 49">
                     {{fastStatus | verifyStatus}}
                 </div>
             </div>
         </div>
 
         <div class="verify-index-modules-background" style="position:relative"  ng-click="goToBankVerify(bankStatus)">
+
+            <div style="position: absolute;width: 100%;height: 100%;background-color: rgba(0,0,0,0.7);z-index: 48;border-radius: 5px;" ng-if="bankStatus == 2">
+                <div class="col-xs-12 text-center" style="color: white;padding: 0.5rem 0">
+                    银行流水认证失败原因
+                </div>
+
+                <div class="col-xs-12">
+                    <!--<div style="height: 1px;background-color: #fff"></div>-->
+                    <hr class="app-bootstrap-hr-no-match">
+                </div>
+
+                <div class="col-xs-12 text-left" style="color: #fff;padding: 0.5rem 2rem">
+                    {{bankRemark}}
+                </div>
+            </div>
+
             <div class="col-xs-3 verify-index-modules-img">
                 <img src="./modules/verify/img/bank-verify.png">
-                <img src="modules/verify/img/verify-nopass.png" style="top: -22%;left: 0;position: absolute" ng-if="bankStatus == 2">
+                <img src="modules/verify/img/verify-nopass.png" style="top: -22%;left: 0;position: absolute;z-index: 50;" ng-if="bankStatus == 2">
             </div>
             <div class="col-xs-9 text-left verify-index-modules-info">
                 <div style="padding-left: 1rem" class="verify-index-modules-title">
@@ -56,16 +85,33 @@
                 <div style="padding-left: 1rem" class="verify-index-modules-describe">
                     {{bankRemark}}
                 </div>
-                <div class="verify-index-modules-get-cash" ng-class="{'1':'verify-color-little-pink','3':'verify-color-yellow'}[bankStatus]">
+                <div class="verify-index-modules-get-cash" ng-class="{'1':'verify-color-little-pink','3':'verify-color-yellow'}[bankStatus]" style="z-index: 49">
                     {{bankStatus | verifyStatus}}
                 </div>
             </div>
         </div>
 
         <div class="verify-index-modules-background" style="position:relative" ng-click="goToZmVerify(zmStatus)">
+
+            <div style="position: absolute;width: 100%;height: 100%;background-color: rgba(0,0,0,0.7);z-index: 48;border-radius: 5px;" ng-if="zmStatus == 2">
+                <div class="col-xs-12 text-center" style="color: white;padding: 0.5rem 0">
+                    芝麻认证失败原因
+                </div>
+
+                <div class="col-xs-12">
+                    <!--<div style="height: 1px;background-color: #fff"></div>-->
+                    <hr class="app-bootstrap-hr-no-match">
+                </div>
+
+                <div class="col-xs-12 text-left" style="color: #fff;padding: 0.5rem 2rem">
+                    可能您实名认证使用的身份证和您的注册用手机号不匹配~可以联系客服进行修改
+                </div>
+
+            </div>
+
             <div class="col-xs-3 verify-index-modules-img">
                 <img src="./modules/verify/img/zm-verify.png">
-                <img src="modules/verify/img/verify-nopass.png" style="top: -22%;left: 0;position: absolute" ng-if="zmStatus == 2">
+                <img src="modules/verify/img/verify-nopass.png" style="top: -22%;left: 0;position: absolute;z-index: 50;" ng-if="zmStatus == 2">
             </div>
             <div class="col-xs-9 text-left verify-index-modules-info">
                 <div style="padding-left: 1rem" class="verify-index-modules-title">
@@ -74,16 +120,33 @@
                 <div style="padding-left: 1rem" class="verify-index-modules-describe">
                     芝麻信用授权
                 </div>
-                <div class="verify-index-modules-get-cash" ng-class="{'1':'verify-color-little-pink','3':'verify-color-yellow'}[zmStatus]">
+                <div class="verify-index-modules-get-cash" ng-class="{'1':'verify-color-little-pink','3':'verify-color-yellow'}[zmStatus]" style="z-index: 49">
                     {{zmStatus | verifyStatus}}
                 </div>
             </div>
         </div>
 
         <div class="verify-index-modules-background" style="position:relative" ng-click="goToTaobaoVerify(businessStatus)">
+
+            <div style="position: absolute;width: 100%;height: 100%;background-color: rgba(0,0,0,0.7);z-index: 48;border-radius: 5px;" ng-if="businessStatus == 2">
+                <div class="col-xs-12 text-center" style="color: white;padding: 0.5rem 0">
+                    电商认证失败原因
+                </div>
+
+                <div class="col-xs-12">
+                    <!--<div style="height: 1px;background-color: #fff"></div>-->
+                    <hr class="app-bootstrap-hr-no-match">
+                </div>
+
+                <div class="col-xs-12 text-left" style="color: #fff;padding: 0.5rem 2rem">
+                    {{businessRemark}}
+                </div>
+
+            </div>
+
             <div class="col-xs-3 verify-index-modules-img">
                 <img src="./modules/verify/img/taobao-verify.png">
-                <img src="modules/verify/img/verify-nopass.png" style="top: -22%;left: 0;position: absolute" ng-if="businessStatus == 2">
+                <img src="modules/verify/img/verify-nopass.png" style="top: -22%;left: 0;position: absolute;z-index: 50;" ng-if="businessStatus == 2">
             </div>
             <div class="col-xs-9 text-left verify-index-modules-info">
                 <div style="padding-left: 1rem" class="verify-index-modules-title">
@@ -92,7 +155,7 @@
                 <div style="padding-left: 1rem" class="verify-index-modules-describe">
                     {{businessRemark}}
                 </div>
-                <div class="verify-index-modules-get-cash" ng-class="{'1':'verify-color-little-pink','3':'verify-color-yellow'}[businessStatus]">
+                <div class="verify-index-modules-get-cash" ng-class="{'1':'verify-color-little-pink','3':'verify-color-yellow'}[businessStatus]" style="z-index: 49">
                     {{businessStatus | verifyStatus}}
                 </div>
             </div>

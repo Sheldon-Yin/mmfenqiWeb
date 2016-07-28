@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="modules/app/css/app.css">
+
+<div style="padding-bottom: 4.8rem;height: 100%">
+    <div ng-include="'modules/index/index.html'" ng-controller="IndexCtrl" style="padding-bottom: 4.8rem"
+         ng-show="pageStatus == 1"></div>
+    <div ng-include="'modules/categories/categories.html'" ng-controller="CategoriesCtrl" ng-if="pageStatus == 2"
+         style="height: 100%;padding-bottom: 4.8rem"></div>
+    <div ng-include="'modules/groupbuy/list.html'" ng-controller="GroupBuyListCtrl" ng-if="pageStatus == 4"
+         style="height: 100%;padding-bottom: 4.8rem"></div>
+    <div ng-include="'modules/mine/mine.html'" ng-controller="MineCtrl" style="height: 100%;padding-bottom: 4.8rem"
+         ng-if="pageStatus == 3"></div>
+</div>
+
+<div class="container text-center app-tab-bar">
+
+    <div class="row">
+        <div class="col-xs-3 app-tab-bar-button" ng-class="{'app-pink-text': (pageStatus==1)}">
+            <label>
+                <div>
+                    <img ng-if="pageStatus!=1"
+                         src="modules/app/img/tabbar/home.png" style="width: 2rem;margin-bottom: .2rem">
+                    <img ng-if="pageStatus==1"
+                         src="modules/app/img/tabbar/homed.png" style="width: 2rem;margin-bottom: .2rem">
+                </div>
+                <span>美眉分期</span>
+                <input type="radio" ng-model="pageStatus" name="pageStatus" value="1">
+            </label>
+        </div>
+        <div class="col-xs-3 app-tab-bar-button" ng-class="{'app-pink-text': (pageStatus==2)}">
+            <label>
+                <div>
+                    <img ng-if="pageStatus!=2"
+                         src="modules/app/img/tabbar/kind.png" style="width: 2rem;margin-bottom: .2rem">
+                    <img ng-if="pageStatus==2"
+                         src="modules/app/img/tabbar/kinded.png" style="width: 2rem;margin-bottom: .2rem">
+                </div>
+                <span>分类</span>
+                <input type="radio" ng-model="pageStatus" name="pageStatus" value="2">
+            </label>
+        </div>
+        <div class="col-xs-3 app-tab-bar-button" ng-class="{'app-pink-text': (pageStatus==4)}">
+            <label>
+                <div>
+                    <img ng-if="pageStatus!=4"
+                         src="modules/app/img/tabbar/new.png" style="width: 2rem;margin-bottom: .2rem">
+                    <img ng-if="pageStatus==4"
+                         src="modules/app/img/tabbar/newed.png" style="width: 2rem;margin-bottom: .2rem">
+                </div>
+                <span>拼团</span>
+                <input type="radio" ng-model="pageStatus" name="pageStatus" value="4">
+            </label>
+        </div>
+        <div class="col-xs-3 app-tab-bar-button" ng-class="{'app-pink-text': (pageStatus==3)}">
+            <label>
+                <div>
+                    <img ng-if="pageStatus!=3"
+                         src="modules/app/img/tabbar/mine.png" style="width: 2rem;margin-bottom: .2rem">
+                    <img ng-if="pageStatus==3"
+                         src="modules/app/img/tabbar/mined.png" style="width: 2rem;margin-bottom: .2rem">
+                </div>
+                <span>我的</span>
+                <input type="radio" ng-model="pageStatus" name="pageStatus" value="3">
+            </label>
+        </div>
+    </div>
+
+</div>

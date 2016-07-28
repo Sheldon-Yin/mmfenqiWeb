@@ -7,24 +7,21 @@
 define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/categoriesService.js')(app);
-        app.register.controller('CategoriesCtrl', ['$scope','Categories','$location',
-            function ($scope,Categories,$location) {
+        require('services/weChatService.js')(app);
+        app.register.controller('CategoriesCtrl', ['$scope', 'Categories', '$location', 'Bridge',
+            function ($scope, Categories, $location, Bridge) {
 
                 $scope.categories = Categories.query();
                 console.log($scope.categories);
                 $scope.categories.$promise.then(function (res) {
-                    if (res.result != 0){
-                        Toast(res.msg,3000);
+                    if (res.result != 0) {
+                        Toast(res.msg, 3000);
                         $scope.loadError = true;
                     }
                 }).catch(function (error) {
                     $scope.loadError = true;
                     Toast(error);
                 });
-
-                //$scope.goBack = function () {
-                //    window.history.back(-1);
-                //};
 
                 $scope.nowProject = '全部类目';
                 $scope.filterProject = '';
@@ -41,19 +38,10 @@ define(function (require, exports, module) {
                     $scope.selectState = 0;
                 };
 
-                $scope.jumpTo = function(x) {
-                    if (myBridge) {
-                        var jumpUrl = encodeURI($location.absUrl().split('#')[0] + x);
-                        myBridge.callHandler('sendMessageToApp', {
-                            type: 2, data: {
-                                url: jumpUrl,
-                                hasSearchView: true,
-                                leftNavItems: [1]
-                            }
-                        }, function (response) {
-                            //todo custom
-                        });
-                    }
+                $scope.jumpTo = function (x) {
+
+                    Bridge.jumpTo(encodeURI($location.absUrl().split('#')[0] + x), '产品类别');
+
                 }
 
             }])

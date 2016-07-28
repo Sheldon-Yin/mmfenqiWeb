@@ -10,7 +10,7 @@
             <div style="font-size: 1.5rem" ng-if="!!userInfo.telphone">
                 {{userInfo.telphone}}
             </div>
-            <div style="font-size: 1.5rem" ng-if="!userInfo.telphone" onclick="window.location.href='/user/tologin'">
+            <div style="font-size: 1.5rem" ng-if="!userInfo.telphone" ng-click="getAppToken()">
                 未登录，点击登录
             </div>
 
@@ -51,7 +51,7 @@
 
 
     <div class="row text-center" style="color: #333;background-color: #fff">
-        <div class="col-xs-4 app-padding-one" style="border-right: 1px solid #F8F8F8;border-bottom: 1px solid #F8F8F8" onclick="window.location.href='?#/treasure/recharge'">
+        <div class="col-xs-4 app-padding-one" style="border-right: 1px solid #F8F8F8;border-bottom: 1px solid #F8F8F8" ng-click="goToRecharge()">
             <div class="app-padding-one">
                 <img src="modules/treasure/img/mine/money.png" style="height: 2rem;width: auto">
             </div>
@@ -59,7 +59,7 @@
                 <span>优呗充值</span>
             </div>
         </div>
-        <div class="col-xs-4 app-padding-one" style="border-right: 1px solid #F8F8F8;border-bottom: 1px solid #F8F8F8" onclick="window.location.href='/duobao/myIndex'">
+        <div class="col-xs-4 app-padding-one" style="border-right: 1px solid #F8F8F8;border-bottom: 1px solid #F8F8F8" ng-click="goToTreasureRecord()">
             <div class="app-padding-one">
                 <img src="modules/treasure/img/mine/note.png" style="height: 2rem;width: auto">
             </div>
@@ -67,7 +67,7 @@
                 <span>抢宝记录</span>
             </div>
         </div>
-        <div class="col-xs-4 app-padding-one" style="border-bottom: 1px solid #F8F8F8" onclick="window.location.href='/duobao/myWinning'">
+        <div class="col-xs-4 app-padding-one" style="border-bottom: 1px solid #F8F8F8" ng-click="goToPrizeRecord()">
             <div class="app-padding-one">
                 <img src="modules/treasure/img/mine/record.png" style="height: 2rem;width: auto">
             </div>
@@ -75,7 +75,7 @@
                 <span>中奖记录</span>
             </div>
         </div>
-        <div class="col-xs-4 app-padding-one" style="border-right: 1px solid #F8F8F8;border-bottom: 1px solid #F8F8F8" onclick="window.location.href='/user/torecommend'">
+        <div class="col-xs-4 app-padding-one" style="border-right: 1px solid #F8F8F8;border-bottom: 1px solid #F8F8F8" ng-click="goToInvite()">
             <div class="app-padding-one">
                 <img src="modules/treasure/img/mine/angpao.png" style="height: 2rem;width: auto">
             </div>
@@ -83,7 +83,7 @@
                 <span>分享赢优呗</span>
             </div>
         </div>
-        <div class="col-xs-4 app-padding-one" style="border-right: 1px solid #F8F8F8;border-bottom: 1px solid #F8F8F8" onclick="window.location.href='/duobao/toMyShow'">
+        <div class="col-xs-4 app-padding-one" style="border-right: 1px solid #F8F8F8;border-bottom: 1px solid #F8F8F8" ng-click="goToMyShare()">
             <div class="app-padding-one">
                 <img src="modules/treasure/img/mine/share.png" style="height: 2rem;width: auto">
             </div>
@@ -91,7 +91,7 @@
                 <span>我的晒单</span>
             </div>
         </div>
-        <div class="col-xs-4 app-padding-one" style="border-bottom: 1px solid #F8F8F8" onclick="window.location.href='/duobao/toUpdateAddress'">
+        <div class="col-xs-4 app-padding-one" style="border-bottom: 1px solid #F8F8F8" ng-click="goToAddress()">
             <div class="app-padding-one">
                 <img src="modules/treasure/img/mine/location.png" style="height: 2rem;width: auto">
             </div>

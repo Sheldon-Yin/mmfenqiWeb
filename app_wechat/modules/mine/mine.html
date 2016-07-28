@@ -1,0 +1,211 @@
+<link href="modules/mine/css/mine.css" rel="stylesheet">
+
+<div class="container">
+    <div class="row mine-little-pink">
+        <div class="app-padding-one">
+            <div class="col-xs-2 text-left">
+
+                <img src="modules/mine/img/pot.png" class="mine-pot">
+
+                <img src="modules/mine/img/head1.jpg" class="mine-avatar">
+            </div>
+            <div class="col-xs-6 text-left" ng-click="goToSetting()">
+                <div class="mine-name">
+                    {{nickName}}
+                </div>
+                <div class="mine-verify-status">
+                    实名认证：{{userInfo.isIdentityAuth | isRealName}}
+                </div>
+            </div>
+            <div class="col-xs-4 text-right mine-verify" ng-click="goToVerify()">
+                立即提额 <span class="fa fa-angle-right"></span>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <span class="mine-could-use-mark">￥</span><span class="mine-could-use-money">{{ userInfo.available_credit | number:2 }}</span>
+        </div>
+
+        <div class="text-center mine-verify-status" style="padding-bottom: 1rem">
+            可用额度
+        </div>
+
+        <div class="text-center">
+            <div class="col-xs-4 mine-pink-area">
+                <div class="mine-pink-area-content">
+                    ￥{{userInfo.realloanmoney}}
+                </div>
+                <div class="mine-pink-area-title">
+                    <img src="modules/mine/img/money.png" class="mine-pink-area-img">信用额度
+                </div>
+                <div style="width: 1px;background-color: #fa8b91;position: absolute;right: 0;height: 16px;bottom: 22px"></div>
+            </div>
+            <div class="col-xs-4 mine-pink-area">
+                <div class="mine-pink-area-content">
+                    {{userInfo.account_total}}<span style="font-size: 0.8rem">个</span>
+                </div>
+                <div class="mine-pink-area-title">
+                    <img src="modules/mine/img/you.png" class="mine-pink-area-img">优呗
+                </div>
+                <div style="width: 1px;background-color: #fa8b91;position: absolute;right: 0;height: 16px;bottom: 22px"></div>
+            </div>
+            <div class="col-xs-4 mine-pink-area">
+                <div class="mine-pink-area-content">
+                    {{userInfo.integral}}<span style="font-size: 0.8rem">分</span>
+                </div>
+                <div class="mine-pink-area-title">
+                    <img src="modules/mine/img/score.png" class="mine-pink-area-img">积分
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" style="border-bottom: 1px solid #e6e6e6">
+        <div class="app-bootstrap-grey-bold-hr">
+        </div>
+    </div>
+
+    <div class="row" style="padding: 7px 0"  ng-click="goToOrderList(-1)">
+        <div class="col-xs-6">
+            <img src="modules/mine/img/order.png" class="mine-title-icon"><span class="mine-title">我的订单</span>
+        </div>
+
+        <div class="col-xs-6 text-right mine-title-content">
+            全部 <span class="fa fa-lg fa-angle-right" style="margin-left: 1rem"></span>
+        </div>
+    </div>
+
+    <hr class="app-bootstrap-hr-no-match">
+
+    <div class="row text-center app-padding-one">
+        <div class="col-xs-1" style="width: 20%;padding: 0" ng-click="goToOrderList(1)">
+            <img src="modules/mine/img/order/wait.png" class="mine-order-img">
+            <div class="mine-order-tips" ng-show="userInfo.paid_number != 0">{{userInfo.paid_number}}</div>
+        </div>
+        <div class="col-xs-1" style="width: 20%;padding: 0" ng-click="goToOrderList(2)">
+            <img src="modules/mine/img/order/not.png" class="mine-order-img">
+            <div class="mine-order-tips" ng-show="userInfo.completed_number != 0">{{userInfo.completed_number}}</div>
+        </div>
+        <div class="col-xs-1" style="width: 20%;padding: 0" ng-click="goToOrderList(3)">
+            <img src="modules/mine/img/order/already.png" class="mine-order-img">
+            <div class="mine-order-tips" ng-show="userInfo.using_number != 0">{{userInfo.using_number}}</div>
+        </div>
+        <div class="col-xs-1" style="width: 20%;padding: 0" ng-click="goToOrderList(4)">
+            <img src="modules/mine/img/order/cancel.png" class="mine-order-img">
+            <div class="mine-order-tips" ng-show="userInfo.cancel_number != 0">{{userInfo.cancel_number}}</div>
+        </div>
+        <div class="col-xs-1" style="width: 20%;padding: 0" ng-click="goToOrderList(5)">
+            <img src="modules/mine/img/order/back.png" class="mine-order-img">
+        </div>
+    </div>
+
+    <div class="row" style="border-bottom: 1px solid #e6e6e6;border-top: 1px solid #e6e6e6">
+        <div class="app-bootstrap-grey-bold-hr">
+        </div>
+    </div>
+
+    <div class="row" style="padding: 7px 0">
+        <div class="col-xs-6">
+            <img src="modules/mine/img/bill.png" class="mine-title-icon"><span class="mine-title">我的账单</span>
+        </div>
+
+        <div class="col-xs-6 text-right mine-title-content" ng-click="goToBillList()">
+            全部 <span class="fa fa-lg fa-angle-right" style="margin-left: 1rem"></span>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <hr class="app-bootstrap-hr-no-match">
+        </div>
+    </div>
+
+    <div class="row text-center" style="padding: 8px">
+        <div class="col-xs-6">
+            <div class="mine-bill-pink-text">
+                {{userInfo.repayment_amount | number:2}}
+            </div>
+            <div class="mine-bill-grey-text">
+                本月待还
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="mine-bill-grey-text">
+                还剩 <span class="mine-bill-pink-text">{{userInfo.repayment_day}}</span> 天
+            </div>
+            <div class="mine-bill-grey-text">
+                离最近还款日
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" style="border-bottom: 1px solid #e6e6e6;border-top: 1px solid #e6e6e6">
+        <div class="app-bootstrap-grey-bold-hr">
+        </div>
+    </div>
+
+
+    <div class="row" style="padding-top: 13px;padding-bottom: 13px"  ng-click="goToTreasure()">
+        <div class="col-xs-6">
+            <img src="modules/mine/img/coupon.png" class="mine-title-icon"><span class="mine-title">一元夺宝</span>
+        </div>
+
+        <div class="col-xs-6 text-right mine-title-content">
+            <span style="color: #fd657a"></span> <span class="fa fa-lg fa-angle-right"
+                                                        style="margin-left: 1rem"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <hr class="app-bootstrap-hr-no-match">
+        </div>
+    </div>
+
+    <div class="row" style="padding-top: 13px;padding-bottom: 13px"  ng-click="goToRecommend()">
+        <div class="col-xs-6">
+            <img src="modules/mine/img/friend.png" class="mine-title-icon"><span class="mine-title">邀请好友</span>
+        </div>
+
+        <div class="col-xs-6 text-right mine-title-content">
+            <span style="color: #fd657a"></span> <span class="fa fa-lg fa-angle-right"
+                                                       style="margin-left: 1rem"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <hr class="app-bootstrap-hr-no-match">
+        </div>
+    </div>
+
+    <div class="row" style="padding-top: 13px"  ng-click="goToGroup()">
+        <div class="col-xs-6">
+            <img src="modules/mine/img/ping.png" class="mine-title-icon"><span class="mine-title">我的拼团</span>
+        </div>
+
+        <div class="col-xs-6 text-right mine-title-content">
+            <span class="fa fa-lg fa-angle-right" style="margin-left: 1rem"></span>
+        </div>
+    </div>
+
+    <div class="row mine-grey-area" ng-click="callMmfq()"
+         style="color: #bababa;margin-top: 1rem;margin-bottom: .5rem;padding-bottom: 4.8rem;border-top: 1px solid #e6e6e6;border-bottom: 1px solid #e6e6e6">
+        <div class="col-xs-5 text-right" style="width: 32%">
+            <img src="modules/treasure/img/mine/call.png"
+                 style="width: 2.4rem;height: 2.4rem;margin-top: .5rem;padding-right: 0">
+        </div>
+        <div class="col-xs-7 text-left" style="padding-left: 0;width: 68%">
+            <div style="line-height: 2.2rem;font-family: Arial;font-size: 1.1rem;margin-left: .5rem">
+                联系客服:400-711-8898
+            </div>
+            <div style="line-height: 1.2rem;font-size: .8rem">
+                工作日:9:00-21:00 周末:10:00-17:00
+            </div>
+        </div>
+    </div>
+
+</div>

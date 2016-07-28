@@ -6,10 +6,10 @@
 define(function (require, exports, module) {
     "use strict";
     module.exports = function (app) {
-        app.config(['$routeProvider', '$httpProvider',
-            function ($routeProvider, $httpProvider) {
+        app.config(['$routeProvider', '$httpProvider', '$locationProvider',
+            function ($routeProvider, $httpProvider, $locationProvider) {
 
-                //$locationProvider.hashPrefix('?#');
+                $locationProvider.hashPrefix('?');
 
                 $routeProvider.
                 //Demo
@@ -67,15 +67,19 @@ define(function (require, exports, module) {
                     templateUrl: 'modules/verify/fast-verify-student.html',
                     controller: 'VerifyFastStudentCtrl',
                     controllerUrl: './modules/verify/controller/verifyFastStudentCtrl.js'
+                }).when('/verify/how-to-register', {
+                    templateUrl: 'modules/verify/how-to-register.html'
                 }).
-
-
 
                 //首页
                 when('/index', {
                     templateUrl: 'modules/index/index.html',
                     controller: 'IndexCtrl',
                     controllerUrl: './modules/index/controller/indexCtrl.js'
+                }).when('/mine/setting', {
+                    templateUrl: 'modules/mine/setting.html',
+                    controller: 'SettingCtrl',
+                    controllerUrl: './modules/mine/controller/settingCtrl.js'
                 }).
 
                 //分类页面
@@ -238,23 +242,83 @@ define(function (require, exports, module) {
                     templateUrl: 'modules/treasure/detail.html',
                     controller: 'TreasureDetailCtrl',
                     controllerUrl: './modules/treasure/controller/treasureDetailCtrl.js'
-                }).when('/treasure/location', {
-                    templateUrl: 'modules/treasure/location.html',
-                    controller: 'TreasureLocationCtrl',
-                    controllerUrl: './modules/treasure/controller/treasureLocationCtrl.js'
-                }).when('/treasure/location/detail', {
-                    templateUrl: 'modules/treasure/locationDetail.html',
-                    controller: 'TreasureLocationDetailCtrl',
-                    controllerUrl: './modules/treasure/controller/treasureLocationDetailCtrl.js'
+                }).when('/treasure/record/detail', {
+                    templateUrl: 'modules/treasure/recordDetail.html',
+                    controller: 'TreasureRecordDetailCtrl',
+                    controllerUrl: './modules/treasure/controller/treasureRecordDetailCtrl.js'
                 }).when('/treasure/recharge', {
                     templateUrl: 'modules/treasure/recharge.html',
                     controller: 'TreasureRechargeCtrl',
                     controllerUrl: './modules/treasure/controller/treasureRechargeCtrl.js'
+                }).when('/treasure/my-share', {
+                    templateUrl: 'modules/treasure/myShare.html',
+                    controller: 'TreasureMyShareCtrl',
+                    controllerUrl: './modules/treasure/controller/treasureMyShareCtrl.js'
+                }).when('/treasure/share', {
+                    templateUrl: 'modules/treasure/share.html',
+                    controller: 'TreasureShareCtrl',
+                    controllerUrl: './modules/treasure/controller/treasureShareCtrl.js'
+                }).when('/treasure/share/list', {
+                    templateUrl: 'modules/treasure/shareList.html',
+                    controller: 'TreasureShareListCtrl',
+                    controllerUrl: './modules/treasure/controller/treasureShareListCtrl.js'
+                }).when('/treasure/address', {
+                    templateUrl: 'modules/treasure/address.html',
+                    controller: 'TreasureAddressCtrl',
+                    controllerUrl: './modules/treasure/controller/treasureAddressCtrl.js'
+                }).when('/treasure/prize-record', {
+                    templateUrl: 'modules/treasure/prizeRecord.html',
+                    controller: 'TreasurePrizeRecordCtrl',
+                    controllerUrl: './modules/treasure/controller/treasurePrizeRecordCtrl.js'
+                }).when('/treasure/treasure-record', {
+                    templateUrl: 'modules/treasure/treasureRecord.html',
+                    controller: 'TreasureTreasureRecordCtrl',
+                    controllerUrl: './modules/treasure/controller/treasureTreasureRecordCtrl.js'
+                }).when('/treasure/invite', {
+                    templateUrl: 'modules/treasure/invite.html',
+                    controller: 'TreasureInviteCtrl',
+                    controllerUrl: './modules/treasure/controller/treasureInviteCtrl.js'
+                }).when('/treasure/pay-way', {
+                    templateUrl: 'modules/treasure/payWay.html',
+                    controller: 'TreasurePayWayCtrl',
+                    controllerUrl: './modules/treasure/controller/treasurePayWayCtrl.js'
+                }).
+
+
+                //拼团
+                when('/groupbuy/detail', {
+                    templateUrl: 'modules/groupbuy/detail.html',
+                    controller: 'GroupBuyDetailCtrl',
+                    controllerUrl: './modules/groupbuy/controller/groupBuyDetailCtrl.js'
+                }).when('/groupbuy/list', {
+                    templateUrl: 'modules/groupbuy/list.html',
+                    controller: 'GroupBuyListCtrl',
+                    controllerUrl: './modules/groupbuy/controller/groupBuyListCtrl.js'
+                }).when('/groupbuy/mine', {
+                    templateUrl: 'modules/groupbuy/mine.html',
+                    controller: 'GroupBuyMineCtrl',
+                    controllerUrl: './modules/groupbuy/controller/groupBuyMineCtrl.js'
+                }).when('/groupbuy/join', {
+                    templateUrl: 'modules/groupbuy/join.html',
+                    controller: 'GroupBuyJoinCtrl',
+                    controllerUrl: './modules/groupbuy/controller/groupBuyJoinCtrl.js'
+                }).when('/groupbuy/pay', {
+                    templateUrl: 'modules/groupbuy/pay.html',
+                    controller: 'GroupBuyPayCtrl',
+                    controllerUrl: './modules/groupbuy/controller/groupBuyPayCtrl.js'
+                }).
+
+
+                //首页
+                when('/', {
+                    templateUrl: 'modules/app/app.html',
+                    controller: 'AppCtrl',
+                    controllerUrl: './modules/app/controller/appCtrl.js'
                 }).
 
                 //默认首页
                 otherwise({
-                    redirectTo: '/treasure'
+                    redirectTo: '/'
                 });
                 //$locationProvider.html5Mode(true);
 

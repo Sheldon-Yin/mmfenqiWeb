@@ -1,0 +1,105 @@
+<link type="text/css" href="modules/groupbuy/css/groupbuy.css" rel="stylesheet">
+<link type="text/css" href="modules/groupbuy/css/item.css" rel="stylesheet">
+
+<div class="groupbuy-poster-img">
+    <img ng-src={{goodDetail.coverPic}}>
+</div>
+
+<div style="position: fixed;right: 1.2rem;bottom: 7.6rem;z-index: 999">
+    <div>
+        <img src="modules/treasure/img/home.png" style="width: 2.5rem;margin-top: 1.2rem" ng-click="backHome()">
+    </div>
+</div>
+
+<div style="width: auto">
+
+    <div class="groupbuy-price-div">
+    <span class="groupbuy-price-now">
+        ￥{{goodDetail.shopPrice}}
+    </span>
+
+    <span class="groupbuy-price-original">
+        原价：￥{{goodDetail.marketPrice}}
+    </span>
+    </div>
+
+</div>
+
+<div class="groupbuy-title">
+    {{goodDetail.goodsName}}
+</div>
+
+<div>
+    <span class="fa fa-map-marker groupbuy-pink col-xs-1" style="font-size: 2rem;"></span>
+    <span class="single-line" style="font-size: 1.2rem;line-height: 2rem">{{goodDetail.hosName}}</span>
+</div>
+
+<!--拼团进行中-->
+<div class="groupbuy-condition">
+
+    <div class="groupbuy-condition-left">
+        <span>团长：</span><span>{{goodDetail.userList[0].telephone}}</span>
+    </div>
+    <div class="groupbuy-condition-right">
+        <span class="groupbuy-condition-red-text">{{goodDetail.userList.length}}</span><span>人参团/</span>
+        <span>{{goodDetail.canBuyNum}}</span><span>人成团</span>
+    </div>
+
+    <div class="groupbuy-progress">
+        <span style="width: {{goodDetail.userList.length/goodDetail.canBuyNum*100}}%"></span>
+    </div>
+
+    <div class="groupbuy-left-time">
+        <span id="leftTime" ng-hide="goodDetail.teamStatus == 3 || goodDetail.teamStatus == 6 || goodDetail.teamStatus == 4 || goodDetail.teamStatus == 5"></span>
+    </div>
+
+</div>
+
+<!--拼团的另一个状态-->
+<div class="groupbuy-condition">
+    拼团状态：<span>{{goodDetail.teamStatus | groupJoinStatus}}</span>
+</div>
+
+<div style="margin-top: .5rem">
+    <img src="modules/groupbuy/img/product.jpg" style="width: 100%">
+</div>
+<div class="line-1px"></div>
+
+<div class="groupbuy-introduction">
+    <div class="groupbuy-introduction-title">
+        项目介绍
+    </div>
+
+    <div class="groubuy-introduction-content">
+        <div class="row" ng-repeat="x in goodDetail.goodsGalleryMapList">
+            <div class="col-xs-12">
+                <span>
+                    {{x.text_desc}}
+                </span>
+            </div>
+            <div class="col-xs-12">
+                <img ng-src={{x.img_url}} style="width: 100%">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="groupbuy-bottom-btn" ng-click="joinGroup()" ng-show="goodDetail.teamStatus == 1">
+    <p class="groupbuy-join-text">参团</p>
+</div>
+
+
+<!--另一种状态-->
+<!--<div class="groupbuy-bottom-btn" onclick="void(0)">-->
+<!--<p class="groupbuy-buy-text">￥28.80</p>-->
+<!--<p class="groupbuy-buy-text">2人团</p>-->
+<!--</div>-->
+
+<script rel="stylesheet" src="modules/groupbuy/js/groupbuy.js"></script>
+
+<script>
+    ShowCountDown(2016, 8, 23, 'leftTime');
+    console.log(1);
+    //    只需要传入拼团结束的年/月/日即可进行倒计时
+</script>

@@ -34,13 +34,13 @@ define(function (require, exports, module) {
                         if (res.result == 0) {
                             switch (res.data.telephone_exist) {
                                 case true:
-                                    $location.url('/login/password?telephone=' + $scope.telephone + '&referer=' + $location.search().referer);
+                                    $location.url('/login/password?telephone=' + $scope.telephone);
                                     break;
                                 case false:
-                                    $location.url('/login/signUp?telephone=' + $scope.telephone + '&referer=' + $location.search().referer);
+                                    $location.url('/login/signUp?telephone=' + $scope.telephone);
                                     break;
                                 default:
-                                    Toast('从服务器返回了奇怪的数据')
+                                    Toast('服务器开小差了~')
                             }
                         } else {
                             Toast(res.message);
@@ -53,7 +53,7 @@ define(function (require, exports, module) {
                 };
 
                 $scope.goToFastLogin = function () {
-                    $location.url('/login/fast?telephone=' + $scope.telephone + '&referer=' + $location.search().referer)
+                    $location.url('/login/fast?telephone=' + $scope.telephone)
                 }
 
             }])

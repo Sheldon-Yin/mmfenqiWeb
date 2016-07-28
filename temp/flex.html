@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div style="display: flex;width: 100%">
+    <div style="flex-grow: 1;order: 2;background-color: #00A000;transition: ease 5s linear">
+        222
+    </div>
+    <div id="test" style="flex-grow: 0;order: 3;width: 200px;background-color: #00a8f3;transition: ease 5s linear">
+        111
+    </div>
+
+</div>
+<script>
+    setTimeout(function () {
+        window.document.getElementById('test').style.order = 1;
+    },2000)
+</script>
+</body>
+</html>

@@ -168,6 +168,14 @@ define(function (require, exports, module) {
                                 }
                             }
                         })
+                    },
+                    verifyReForCaptcha: function () {
+                        return $resource('/appinterface/reForCaptcha',{},{
+                            save:{
+                                method:'POST',params:{
+                                }
+                            }
+                        })
                     }
                 }
             }]);
