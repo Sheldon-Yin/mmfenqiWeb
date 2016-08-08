@@ -79,7 +79,89 @@ define(function (require, exports, module) {
                                 }
                             }
                         })
-                    }
+                    },
+                    query_staging:function () {
+                    return $resource('/appinterface/query_staging',{},{
+                        query:{
+                            method:'GET',params:{
+
+                            }
+
+                        }
+                    })
+                },
+
+                    business_register: function () {
+                    return $resource('/appinterface/business_register', {}, {
+                        save: {
+                            method: 'POST', params: {
+
+                            }
+                        }
+                    })
+                },
+
+                    query_staging_info: function () {
+                        return $resource('/appinterface/query_staging_info', {}, {
+                            query: {
+                                method: 'GET', params: {
+
+                                }
+                            }
+                        })
+                    },
+
+
+                    query_white_collar_credit:function () {
+                        return $resource('/appinterface/query_white_collar_credit',{},{
+                            query:{
+                                method:'GET',params:{
+
+                                }
+
+                            }
+                        })
+                    },
+
+
+                    add_store_intention_orders:function () {
+                        return $resource('/appinterface/add_store_intention_orders',{},{
+                            save:{
+                                method:'POST',params:{
+
+                                }
+
+                            }
+                        })
+                    },
+                    query_store_intention_orders:function () {
+                        return $resource('/appinterface/query_store_intention_orders',{},{
+                            query:{
+                                method:'GET',params:{
+
+                                }
+
+                            }
+                        })
+                    },
+                    update_store_intention_orders:function () {
+                        return $resource('/appinterface/update_store_intention_orders',{},{
+                            save:{
+                                method:'POST',params:{
+
+                                }
+
+                            }
+                        })
+                    },
+
+
+
+
+
+
+
+
                 }
             }]);
     }

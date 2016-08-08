@@ -6,8 +6,10 @@
 define(function (require, exports, module) {
     "use strict";
     module.exports = function (app) {
-        app.config(['$routeProvider', '$httpProvider',
-            function ($routeProvider, $httpProvider) {
+        app.config(['$routeProvider', '$httpProvider','$locationProvider',
+            function ($routeProvider, $httpProvider,$locationProvider) {
+
+                $locationProvider.hashPrefix('?');
 
                 $routeProvider.
                 //Demo
@@ -38,31 +40,18 @@ define(function (require, exports, module) {
                     templateUrl: 'modules/login/signUp.html',
                     controller: 'SignUpCtrl',
                     controllerUrl: './modules/login/controller/signUpCtrl.js'
+                }).when('/login/info',{
+                    templateUrl: 'modules/login/info.html',
+                    controller: 'InfoCtrl',
+                    controllerUrl: './modules/login/controller/infoCtrl.js'
                 }).
 
                 //实名认证提额
-                when('/verify/index', {
-                    templateUrl: 'modules/verify/index.html',
-                    controller: 'VerifyIndexCtrl',
-                    controllerUrl: './modules/verify/controller/verifyIndexCtrl.js'
-                }).when('/verify/bank', {
-                    templateUrl: 'modules/verify/bank-verify.html',
-                    controller: 'VerifyBankCtrl',
-                    controllerUrl: './modules/verify/controller/verifyBankCtrl.js'
-                }).when('/verify/real-name', {
-                    templateUrl: 'modules/verify/real-name.html',
-                    controller: 'VerifyRealNameCtrl',
-                    controllerUrl: './modules/verify/controller/verifyRealNameCtrl.js'
-                }).when('/verify/taobao', {
-                    templateUrl: 'modules/verify/taobao-verify.html',
-                    controller: 'VerifyTaobaoCtrl',
-                    controllerUrl: './modules/verify/controller/verifyTaobaoCtrl.js'
-                }).when('/verify/fast', {
-                    templateUrl: 'modules/verify/fast-verify.html',
-                    controller: 'VerifyFastCtrl',
-                    controllerUrl: './modules/verify/controller/verifyFastCtrl.js'
+                when('/verify', {
+                    templateUrl: 'modules/verify/dispatcher.html',
+                    controller: 'VerifyDispatcherCtrl',
+                    controllerUrl: './modules/verify/controller/verifyDispatcherCtrl.js'
                 }).
-
 
                 //首页
                 when('/index', {

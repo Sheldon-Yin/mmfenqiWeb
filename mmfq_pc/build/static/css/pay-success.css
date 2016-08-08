@@ -1,0 +1,23 @@
+.wrap-content{
+    width: 1200px;
+    margin: 40px auto;
+}
+
+.wrap-content .main{
+
+    text-align: center;
+}
+
+.wrap-content ._foot{
+    text-align: center;
+    margin: 20px 0;
+}
+
+._foot div{
+    display: inline-block;
+    margin: 0 20px;
+}
+._foot a{
+    text-decoration: none;
+    color: #FFFFff;
+}

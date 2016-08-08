@@ -1,0 +1,131 @@
+.wrap-business{
+    width: 100%;
+    background-color: #f9f9f9;
+}
+
+.business-wrap-top{
+    width: 100%;
+    min-width: 1200px;
+    height: 220px;
+    background-image: url("../images/commerce/banner.jpg");
+    background-position: center center;
+}
+
+.business-wrap-top2{
+    width: 100%;
+    min-width: 1200px;
+    height: 580px;
+    background-image: url("../images/commerce/banner2.jpg");
+    background-position: center center;
+}
+
+.business-wrap-top2 >div{
+  margin: 0 auto;
+    padding-top:480px;
+    text-align: center;
+}
+
+.partTit{ width:1200px; margin:0 auto; height:120px;  overflow:hidden}
+.partTit p{ height:73px;border-bottom:1px solid #efefef; position:relative; text-align:center}
+.partTit p span{ display:block; width:250px; height:113px; background-color:#fff; margin:0 auto}
+.partTit .ft31{ font-size:23px; display:block; padding-top:47px; text-align:center}
+.partTit .ft31 > a { color: #333;}
+.pink{ color:#666}
+.partTit .eng{ color:#b4b4b4; font-size:16px; font-family:Arial;}
+
+.business-wrap-content{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.business-wrap-content2{
+    width: 1124px;
+    margin: 40px auto;
+
+    min-height: 657px;
+}
+
+.business-wrap-content2 ul li{
+    float: left;
+    width: 364px;
+    height: 324px;
+    margin: 5px;
+
+}
+
+ul li div{
+    width: 100%;
+}
+
+ul li div img{
+    width: 100%;
+    height: 292px;
+}
+
+.business-wrap-content .title{
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+}
+
+
+
+.business-wrap-content .content{
+    background-color: #FFFFff;
+    padding-bottom: 20px;
+
+}
+
+.business-wrap-content .content > div{
+    width: 560px;
+    margin: 0 auto;
+    padding-top:5px;
+    padding-bottom: 0;
+    padding-left: 206px;
+}
+
+.business-wrap-content .content > div >div:first-child{
+    height: 18px;
+    font-size: 12px;
+    margin-left: 100px;
+    color: #ff5b75;
+
+}
+
+.business-wrap-content .content label{
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+
+
+.business-wrap-content .content input[type='text'],select,textarea{
+    padding: 5px;
+    background-color: #f8f8f8;
+    outline: none;
+    border: 0;
+    border:1px solid #dadada;
+    min-width: 193px;
+}
+
+select option{
+    font-size: 12px;
+}
+
+.wrap-business .btn{
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    line-height: 1.5;
+    width: 100px;
+    padding: 5px;
+}
+
+.wrap-business .btn.submit-btn{
+    color: #fff!important;
+    background-color: #ff8c27;
+    border-color: #ff8c27;
+}
+

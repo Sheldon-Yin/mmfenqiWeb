@@ -28,7 +28,7 @@
         <!-- Banner -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" ng-repeat="x in goods.data.goodsDetailsResponse.goodsItem.showPicList" on-finish-render-filters>
+                <div class="swiper-slide" ng-repeat="x in goods.data.goodsDetailsResponse.goodsItem.showPicList track by $index" on-finish-render-filters>
                     <img ng-src="{{x}}" width="100%" style="min-height: 20rem">
                 </div>
             </div>

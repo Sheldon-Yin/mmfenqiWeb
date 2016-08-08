@@ -313,20 +313,12 @@ define(function (require, exports, module) {
                 };
 
                 $scope.submitSecondInfo = function () {
-                    if ($scope.currentSelectorIndex == 0) {
-
-                        if (!$scope.frontIdentityPic || !$scope.backIdentityPic || !$scope.workProvePic) {
-                            Toast('请上传完整的照片信息');
-                            return
-                        }
 
                         $scope.getIp = Verify.getIp().query();
 
                         $scope.getIp.$promise.then(function (res) {
                             if (res.result == 0) {
-
                                 $scope.serverIP = res.data.ip;
-
                                 $scope.secondInfoReq = $resource(
                                     'http://' + $scope.serverIP + '/appinterface/white_collar_auth_five_h5'
                                     , {}, {
@@ -337,10 +329,13 @@ define(function (require, exports, module) {
                                     });
 
                                 $scope.secondInfo = $scope.secondInfoReq.jsonpquery({
+                                    workProve: $scope.workProveMediaId,
+                                    appToken: $scope.appToken,
                                     frontIdentityPic: $scope.frontIdentityMediaId,
                                     backIdentityPic: $scope.backIdentityMediaId,
-                                    workProve: $scope.workProveMediaId,
-                                    appToken: $scope.appToken
+                                    telphone: $scope.myTelephone,
+                                    serviceCode: $scope.serviceCode,
+                                    captcha: $scope.verifyCode
                                 });
                                 $scope.$root.loading = true;
 
@@ -350,7 +345,12 @@ define(function (require, exports, module) {
 
                                     if (res.result == 0) {
                                         $scope.initFastStatus();
+                                        $scope.hideVerifyCode();
                                         Toast('提交成功');
+                                    } else if (res.result == 2) {
+                                        Toast(res.msg);
+                                        $scope.countTips();
+                                        $scope.popVerifyCode();
                                     } else {
                                         Toast(res.msg)
                                     }
@@ -364,10 +364,6 @@ define(function (require, exports, module) {
                                 Toast(res.msg)
                             }
                         });
-
-                    } else {
-                        $scope.submitSecondInfoWithCode();
-                    }
                 };
 
 

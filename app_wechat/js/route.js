@@ -211,6 +211,10 @@ define(function (require, exports, module) {
                 when('/insurance/introduce', {
                     templateUrl: 'modules/static/insuranceIntroduce.html'
                 }).
+                //保险条款静态页
+                when('/insurance/contact', {
+                    templateUrl: 'modules/static/insurance.html'
+                }).
                 //服务合同静态页
                 when('/contact/service', {
                     templateUrl: 'modules/static/serviceContact.html'

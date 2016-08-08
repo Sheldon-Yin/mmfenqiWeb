@@ -72,6 +72,7 @@ define(function (require, exports, module) {
                         $scope.$root.loading = false;
                         if(res.result == 0){
                             $scope.referer = res.data.referer;
+                            window.localStorage.appToken = res.data.APP_TOKEN;
                             Toast('登录成功');
                             window.location.href = (!!$scope.referer && $scope.referer != undefined && $scope.referer != 'undefined' && $scope.referer != null) ? decodeURI($scope.referer) : '/index';
                         }else {

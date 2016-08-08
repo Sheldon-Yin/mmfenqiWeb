@@ -311,3 +311,23 @@ td {
 .app-bootstrap-padding-zero {
     padding: 0;
 }
+
+
+
+
+.app-bootstrap-white{
+    background-color: #FFFFff;
+    margin: 0 -15px;
+}
+
+.app-bootstrap-input{
+    border-bottom: 1px solid #e2e6e9;margin:0 1rem; padding: 1rem 0;
+    overflow: hidden;
+}
+
+
+.app-white-code-text{
+    width: 50%;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+}

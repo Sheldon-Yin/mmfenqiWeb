@@ -1,50 +1,101 @@
+<style>
+    .bg_bd{
+        border: 1px solid #ff4d67;
+        color: #ff4d67;
+    }
+
+    ._bg_bd{
+        background: #e5e5e5;
+        color: #FFFFff;
+        border: 1px solid #e5e5e5;
+    }
+
+</style>
+<link rel="stylesheet" href="modules/verify/css/verify-student.css">
+<div class="verify-select-dialog-container" ng-if="selecting">
+    <div class="verify-select-dialog-background" ng-click="hideSelect()">
+    </div>
+    <div class="verify-select-dialog">
+        <div class="container" style="height: 10%">
+            <div class="row" style="height: 100%">
+                <div class="verify-select-dialog-title">
+                    {{selectTitle}}
+                </div>
+            </div>
+        </div>
+        <div class="container" style="overflow: scroll;height: 90%;">
+            <div class="row">
+
+                <div class="col-xs-12 verify-select-dialog-item"
+                     ng-repeat="x in selectItems" ng-click="selectCallBack(x[itemName],x[itemValue])">
+                    {{x[itemName]}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="container app-grey-background-container">
 
-
-    <div class="row text-center" style="font-size: 1.3rem;padding-top: 1.7rem;padding-bottom: 1.3rem">
-        已发送验证码（免费）到号码
-    </div>
-    <div class="row text-center app-very-blue-text" style="font-size: 2.5rem;padding-bottom: 1.7rem;font-weight: bold;">
-        {{telephone}}
-    </div>
-
-    <form ng-submit="register()">
-        <div class="app-white-input row">
-            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">验证码</label>
-            <input type="text" ng-model="verifyCode" class="app-white-input-text" placeholder="输入验证码" style="width: 50%" required>
-            <span class="app-white-input-label app-very-blue-text" style="font-size: 1.2rem" ng-click="getVerifyCode()">{{verifyText}}</span>
+    <form ng-submit="business_register()" name="myForm">
+        <div class="row text-center" style="font-size: 1.4rem;padding: 1.7rem;background: #ff4d67; color: #fff;">
+            实名通过后方可消费，请先补充个人信息
         </div>
 
-        <div class="app-white-input row app-margin-top-two-px">
-            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">登录密码</label>
-            <input type="password" ng-model="password" class="col app-white-input-text" placeholder="按设置登录密码" required>
+        <div style="margin-top: 1rem" class="app-bootstrap-white">
+            <div class="app-bootstrap-input">
+                <div class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">手机号</div>
+                <input type="number" ng-pattern="/^[1]\d{10}$/" class="app-white-input-text" placeholder="请输入手机号" value={{telephone}} ng-model="telephone" required>
+            </div>
+
+
+            <div class="app-bootstrap-input" style="padding: 0.3rem 0;">
+                <div class="app-bootstrap-padding-zero app-white-input-label" style="display: inline-block; margin-right: -3px;">验证码</div>
+                <input type="number"  class="app-white-code-text" placeholder="请输入收到的验证码" ng-model="code" required>
+                <div ng-class="{false:'_bg_bd',true:'bg_bd'}[verifyStatus]"  style="display: inline-block; padding: 0.7rem 0 ; width: 27%;">
+                    <div class="text-center" ng-click="getCode()">{{text}}</div>
+                </div>
+            </div>
+
+            <div class="app-bootstrap-input" style="border: 0;">
+                <div class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">密码</div>
+                <input type="password" ng-pattern="/^.{6,16}$/" ng-model="pwd" class="app-white-input-text" placeholder="请输入6-16位字符登录密码" ng-model="telephone" required>
+            </div>
         </div>
 
-        <div class="app-white-input row app-margin-top-one">
-            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">邀请码</label>
-            <input class="col app-white-input-text" ng-model="recommendedCode" type="text" placeholder="输入邀请码（可选填）">
-        </div>
+        <div style="margin-top: 1rem" class="app-bootstrap-white">
+            <div class="app-bootstrap-input" >
+                <div class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">姓名</div>
+                <input type="text" class="app-white-input-text" placeholder="请输入您的真实姓名" ng-model="name" required>
+            </div>
 
-        <div class="app-margin-top-one" style="font-size: 1.2rem">
-            密码区分大小写，建议使用6位以上数字、字母组合
-        </div>
 
-        <label style="display: block;">
-            <div class="app-little-pink-radius-button app-padding-one text-center">
-                确认
+            <div class="app-bootstrap-input">
+                <div class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">身份证</div>
+                <input type="number" ng-pattern="/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/" class="app-white-code-text" placeholder="如362429199411025318" ng-model="identitycode" required>
+            </div>
+
+            <div class="app-bootstrap-input row" style="border: 0;" ng-click="selectCode()">
+                <div class="col-xs-4 app-bootstrap-padding-zero">选择身份</div>
+                <div class="col-xs-5 col-xs-offset-2 text-right app-bootstrap-padding-zero">{{selectName}}</div>
+                <div class="col-xs-1 text-right" style="padding-right: 0">
+                    <img src="modules/login/img/option.jpg" height="17" style="vertical-align: middle; float: right;">
+                </div>
+
+            </div>
+        </div>
+        <label style="display: block">
+
+            <div class="app-padding-one text-center" ng-class="{true:'app-little-pink-radius-button',false:'app-pink-radius-button'}[!telephone]">
+                下一步
             </div>
             <button type="submit" style="display: none"></button>
         </label>
-
-        <div class="row text-center app-margin-top-one" ng-click="toggleCheck()"
-             style="font-size: 1.2rem;line-height: 2rem;">
-
-            <img ng-src="{{isCheckedImg}}" src="modules/login/img/checked.png"
-                 style="width: 1.3rem;margin-right: 0.5rem">
-
-            同意<span class="app-blue-text">《美眉分期用户协议》</span>
-
-        </div>
+        <!--<div class="row text-center app-very-blue-text" style="margin-top: 50px;font-size: 1.4rem"-->
+        <!--ng-click="goToFastLogin()">-->
+        <!--快捷登录-->
+        <!--</div>-->
     </form>
 
 </div>

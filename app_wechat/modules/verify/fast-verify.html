@@ -28,8 +28,6 @@
             <div class="row text-center app-pink-text" style="font-size: 1.8rem;padding: 1rem" ng-click="submitSecondInfoWithCode()">
                 确定
             </div>
-
-
         </div>
     </div>
 </div>
@@ -146,21 +144,21 @@
         </div>
     </div>
 
-    <div class="row selector">
-        <div class="col-xs-6" ng-class="{0: 'selector-hightlight', 1: 'selector-normal'}[currentSelectorIndex]"
-             ng-click="onSelectorToggle(0)">
-            工作信息
-        </div>
-        <div class="col-xs-6" ng-class="{1: 'selector-hightlight', 0: 'selector-normal'}[currentSelectorIndex]"
-             ng-click="onSelectorToggle(1)">
-            手机服务码
-        </div>
-        <div class="col-xs-offset-4 col-xs-4 selector-img">
-            <img src="modules/verify/img/student/selector.png" ng-click="onSelectorToggle((currentSelectorIndex+1)%2)"/>
-        </div>
-    </div>
+    <!--<div class="row selector">-->
+        <!--<div class="col-xs-6" ng-class="{0: 'selector-hightlight', 1: 'selector-normal'}[currentSelectorIndex]"-->
+             <!--ng-click="onSelectorToggle(0)">-->
+            <!--工作信息-->
+        <!--</div>-->
+        <!--<div class="col-xs-6" ng-class="{1: 'selector-hightlight', 0: 'selector-normal'}[currentSelectorIndex]"-->
+             <!--ng-click="onSelectorToggle(1)">-->
+            <!--手机服务码-->
+        <!--</div>-->
+        <!--<div class="col-xs-offset-4 col-xs-4 selector-img">-->
+            <!--<img src="modules/verify/img/student/selector.png" ng-click="onSelectorToggle((currentSelectorIndex+1)%2)"/>-->
+        <!--</div>-->
+    <!--</div>-->
 
-    <div class="app-white-input row" style="margin-top: 10px" ng-show="currentSelectorIndex == 0">
+    <div class="app-white-input row" style="margin-top: 10px">
         <label class="col-xs-12 app-bootstrap-padding-zero">上传工作证明信息（清晰可见）</label>
         <div class="col-xs-6 app-padding-one" ng-click="uploadWorkProvePic()" style="position: relative">
             <img src="modules/verify/img/fast-second-add.png" id="workProvePic" style="width: 100%">
@@ -169,14 +167,14 @@
         </div>
     </div>
 
-    <div class="row" ng-show="currentSelectorIndex == 0">
+    <div class="row">
         <div class="col-xs-12 app-padding-one" style="color: #fb2282;">
             <img src="modules/verify/img/fast-second-tips.png" style="width: 1rem;padding-bottom: 0.25rem">
             提醒:上传名片/工牌/信用卡/社保信息/手持纸质同意书照片。额度更高哦！
         </div>
     </div>
 
-    <div class="row app-padding-one" style="background-color: white" ng-show="currentSelectorIndex == 0">
+    <div class="row app-padding-one" style="background-color: white">
         <div class="col-xs-6">
             <img style="width: 100%" src="modules/verify/img/fast-templete.jpg">
         </div>
@@ -195,27 +193,25 @@
         </div>
     </div>
 
-    <div class="row" ng-show="currentSelectorIndex == 1">
-
+    <div class="row">
         <div class="col-xs-12 app-padding-one app-grey-text">
             手机信息认证将收集您手机号码的基本信息、通话记录、亲密联系人等信息，运营商会发短信告知您。这是正常的验证过程，我们不会泄露您的信息
         </div>
-
     </div>
 
-    <div class="app-white-input row app-margin-top-two-px" ng-show="currentSelectorIndex == 1">
+    <div class="app-white-input row app-margin-top-two-px">
         <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">手机号</label>
         <input type="text" ng-model="$parent.myTelephone" class="col app-white-input-text"
                placeholder="你的手机号">
     </div>
 
-    <div class="app-white-input row app-margin-top-two-px" ng-show="currentSelectorIndex == 1">
+    <div class="app-white-input row app-margin-top-two-px">
         <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">服务码</label>
         <input type="text" ng-model="$parent.serviceCode" class="col app-white-input-text"
                placeholder="手机服务码">
     </div>
 
-    <div class="row" ng-show="currentSelectorIndex == 1">
+    <div class="row">
         <div class="col-xs-12">
             <h3 class="app-padding-one">移动用户：</h3>
             <p class=" app-grey-text">拨打10086获取你的手机服务密码</p>

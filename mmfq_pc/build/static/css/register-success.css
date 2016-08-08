@@ -1,0 +1,23 @@
+.wrap-content{
+    width: 1200px;
+    margin: 0 auto;
+    background-image: url("../images/register.jpg");
+    height: 650px;
+
+}
+
+.wrap-content >div{
+    text-align: center;
+}
+.wrap-content .foot_btn{
+    padding: 10px 50px !important;
+    margin-top: 528px;
+    border-radius: 0 !important;
+    background: #69beff !important;
+}
+
+
+.wrap-content .foot_btn a{
+    text-decoration: none;
+    color: #FFFFff;
+}

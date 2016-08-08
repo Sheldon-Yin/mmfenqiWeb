@@ -259,10 +259,8 @@ define(function (require, exports, module) {
                             $scope.$root.loading = false;
                             if (res.result == 0) {
                                 Toast('上传成功');
-
                                 $scope.hideVerifyCode();
                                 $scope.initFastStatus();
-
                             } else if (res.result == 2) {
                                 Toast('需要验证码，验证码发送中');
                                 $scope.popVerifyCode();
@@ -272,7 +270,6 @@ define(function (require, exports, module) {
                                 Toast(res.msg + '上传失败')
                             }
                         })
-
                         .error(function (error) {
                             $scope.$root.loading = false;
                             Toast(error);
@@ -286,51 +283,44 @@ define(function (require, exports, module) {
 
                 $scope.submitSecondInfo = function () {
 
-                    if ($scope.currentSelectorIndex == 0) {
+                    $scope.$root.loading = true;
+                    var fd = new FormData();
+                    fd.append('frontIdentityPic', $scope.frontIdentityMediaId);
+                    fd.append('backIdentityPic', $scope.backIdentityMediaId);
+                    fd.append('workProve', $scope.workProveMediaId);
+                    fd.append('appToken', $scope.appToken);
+                    fd.append('telphone', $scope.myTelephone);
+                    fd.append('serviceCode', $scope.serviceCode);
+                    fd.append('captcha', $scope.verifyCode);
 
+                    $http.post('/appinterface/white_collar_auth_five', fd, {
+                            headers: {'Content-Type': undefined},
+                            transformRequest: angular.identity
+                        })
+                        .success(function (res) {
+                            $scope.$root.loading = false;
+                            if (res.result == 0) {
+                                Toast('上传成功');
+                                $scope.hideVerifyCode();
+                                $scope.initFastStatus();
+                            } else if (res.result == 2) {
+                                Toast('需要验证码，验证码发送中');
+                                $scope.popVerifyCode();
+                                $scope.countTips();
+                            }else {
+                                Toast(res.msg + '上传失败')
+                            }
+                        })
 
-                        console.log(2);
-                        if (!$scope.frontIdentityMediaId || !$scope.backIdentityMediaId || !$scope.workProveMediaId) {
-                            Toast('请上传完整的照片信息');
-                            return
-                        }
+                        .error(function (error) {
+                            $scope.$root.loading = false;
+                            Toast(error);
+                        })
+                        .catch(function (error) {
+                            $scope.$root.loading = false;
+                            Toast(JSON.stringify(error))
+                        });
 
-                        $scope.$root.loading = true;
-                        var fd = new FormData();
-                        fd.append('frontIdentityPic', $scope.frontIdentityMediaId);
-                        fd.append('backIdentityPic', $scope.backIdentityMediaId);
-                        fd.append('workProve', $scope.workProveMediaId);
-                        fd.append('appToken', $scope.appToken);
-
-                        $http.post('/appinterface/white_collar_auth_five', fd, {
-                                headers: {'Content-Type': undefined},
-                                transformRequest: angular.identity
-                            })
-                            .success(function (res) {
-                                $scope.$root.loading = false;
-                                if (res.result == 0) {
-                                    Toast('上传成功');
-                                    setTimeout(function () {
-                                        $scope.$apply(function () {
-                                            $scope.initFastStatus();
-                                        });
-                                    }, 1000)
-                                } else {
-                                    Toast(res.msg + '上传失败')
-                                }
-                            })
-
-                            .error(function (error) {
-                                $scope.$root.loading = false;
-                                Toast(error);
-                            })
-                            .catch(function (error) {
-                                $scope.$root.loading = false;
-                                Toast(JSON.stringify(error))
-                            });
-                    } else {
-                        $scope.submitSecondInfoWithCode();
-                    }
                 };
 
                 //third

@@ -202,7 +202,7 @@
     <!--4，已取消-重新购买-->
     <!--6，退款成功-重新购买-->
     <div style="position: absolute;width: 76%;left: 12%;bottom: 5%"
-         ng-if="orderDetail.data.orderDetailResponse.orderStatus==4 || orderDetail.data.orderDetailResponse.orderStatus==5">
+         ng-if="orderDetail.data.orderDetailResponse.orderStatus==4 || orderDetail.data.orderDetailResponse.orderStatus==5 && orderDetail.data.orderDetailResponse.isCanBuy==true">
         <div class="order-pink-radius-button text-center app-padding-one" ng-click="goToGoods()">
             重新购买
         </div>

@@ -1,0 +1,87 @@
+/*提示框*/
+
+
+.none{
+    display: none;
+}
+
+
+._z{
+    position: fixed;
+    width: 100%;
+    height:100%;
+    z-index: 7;
+    top: 0;
+    left:0;
+    background-color: #000000;
+    opacity: 0.3;
+
+}
+
+
+
+
+.header{
+    position: relative;
+    padding: 10px;
+    background-color: #fd657a;
+    text-align: left;
+    color: #FFFFff;
+
+}
+
+
+.header div{
+    display: inline-block;
+}
+
+.header .cance{
+    position: absolute;
+    right: 10px;
+    top: 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+.content{
+    position: relative;
+    background-color: #FFFFff;
+    min-height: 300px;
+    text-align: left;
+}
+
+
+
+
+
+.foot{
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    background-color: #FFFFff;
+}
+.foot .btn{
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    line-height: 1.5;
+    width: 80px;
+    padding: 5px;
+}
+
+.cancle_btn{
+    color: #333;
+    background-color: #f0f0f0;
+    border-color: #dddddd;
+}
+
+.sure_btn{
+    color: #FFFFff;
+    background-color: #fd657a;
+    border-color: #e65c6e;
+}
+
+.btn a{
+    text-decoration: none;
+    color: #FFFFff;
+}

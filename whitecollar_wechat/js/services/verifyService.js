@@ -45,10 +45,9 @@ define(function (require, exports, module) {
                         })
                     },
                     verifyBaseInfoSecond: function () {
-                        return $resource('/appinterface/white_collar_auth_five', {}, {
+                        return $resource('/appinterface/white_collar_auth_five_h5', {}, {
                             save: {
                                 method: 'POST', params: {
-
                                 }
                             }
                         })
@@ -62,11 +61,18 @@ define(function (require, exports, module) {
                             }
                         })
                     },
+                    resultForVerifyBaseInfoForStudent: function () {
+                        return $resource('/appinterface/query_fastCredit_info', {}, {
+                            query: {
+                                method: 'GET', params: {
+                                }
+                            }
+                        })
+                    },
                     verifyBankPayment: function () {
-                        return $resource('/appinterface/payment_credit', {}, {
+                        return $resource('/appinterface/bank_statement_credit_h5', {}, {
                             save: {
                                 method: 'POST', params: {
-
                                 }
                             }
                         })
@@ -75,7 +81,6 @@ define(function (require, exports, module) {
                         return $resource('/appinterface/business_credit', {}, {
                             save: {
                                 method: 'POST', params: {
-
                                 }
                             }
                         })
@@ -84,7 +89,6 @@ define(function (require, exports, module) {
                         return $resource('/appinterface/query_white_collar_credit', {}, {
                             query: {
                                 method: 'GET', params: {
-
                                 }
                             }
                         })
@@ -93,8 +97,83 @@ define(function (require, exports, module) {
                         return $resource('/appinterface/authZMXY', {}, {
                             query: {
                                 method: 'GET', params: {
+                                }
+                            }
+                        })
+                    },
+                    verifyStudentFirst: function () {
+                        return $resource('/appinterface/school_credit_h5',{},{
+                            save:{
+                                method:'POST',params:{
+                                }
+                            }
+                        })
+                    },
+                    verifyStudentSecond: function () {
+                        return $resource('/appinterface/relation_credit',{},{
+                            save:{
+                                method:'POST',params:{
 
                                 }
+                            }
+                        })
+                    },
+                    verifyStudentThird: function () {
+                        return $resource('/appinterface/upload_identity_pic_h5',{},{
+                            save:{
+                                method:'POST',params:{
+
+                                }
+                            }
+                        })
+                    },
+                    getProvince: function () {
+                        return $resource('/appinterface/get_province',{},{
+                            query:{
+                                method:'GET',params:{
+
+                                }
+                            }
+                        })
+                    },
+                    getCity:  function () {
+                        return $resource('/appinterface/get_city',{},{
+                            query:{
+                                method:'GET',params:{
+
+                                }
+                            }
+                        })
+                    },
+                    getSchool:  function () {
+                        return $resource('/appinterface/get_school',{},{
+                            query:{
+                                method:'GET',params:{
+
+                                }
+                            }
+                        })
+                    },
+                    verifyReForCaptcha: function () {
+                        return $resource('/appinterface/reForCaptcha',{},{
+                            save:{
+                                method:'POST',params:{
+                                }
+                            }
+                        })
+                    },
+                    getIp : function () {
+                        return $resource('/appinterface/getIP',{},{
+                            query:{
+                                method:'GET',params:{
+                                }
+                            }
+                        })
+                    },
+                    verifyGetPages: function () {
+                        return $resource('/appinterface/query_financial_status',{},{
+                            query:{
+                                method:'GET',params:{}
                             }
                         })
                     }
