@@ -43,6 +43,10 @@
 
 }
 
+.one-pay del{
+    font-size: 20px;
+}
+
 .one-pay div:nth-child(2){
     color: #f95e57;
     font-size: 16px;
@@ -94,28 +98,45 @@
 
 
 .goods-info .infoTit1 {
-    padding: 5px;
+    padding: 5px 5px 0 5px;
     color: #333333;
     min-height: 38px;
     font-size: 14px;
+    overflow: hidden;
 }
 .goods-info .infoTit2{
-    padding: 5px;
+    padding: 0 5px;
 }
 
-.goods-info .infoTit2 b{
-    margin-right:120px;
+.infoTit2 div{
+    display: inline-block;
+
+}
+
+.infoTit2 div:nth-child(1){
+    width: 150px;
+    text-align: left;
+}
+
+
+.infoTit2 div:nth-child(2){
+    width: 120px;
+    text-align: right;
+}
+
+.goods-info .infoTit2 .pink{
     color: #fd657a;
 }
 
 
 .goods-info .infoTit2 del{
     color: #999 !important;
+    font-size: 14px;
 }
 
 
 .goods-info .infoTit2 span{
-    font-size: 30px;
+    font-size: 36px;
 }
 
 .combo-main .two-g{

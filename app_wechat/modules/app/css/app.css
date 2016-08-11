@@ -10,7 +10,7 @@
 
 .app-tab-bar-button {
     padding: 0;
-    color: #333;
+    color: rgb(186,186,186);
 }
 
 .app-tab-bar-button > label {
@@ -24,4 +24,8 @@
 
 .app-tab-bar-button > label > span {
     margin-top: .8rem;
+}
+
+.app-bottom-bar-pink-text{
+    color: #EA6274
 }

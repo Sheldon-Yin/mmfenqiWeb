@@ -40,7 +40,7 @@
 .goods-date .left .today-time > div{
     display: inline-block;
     padding: 8px;
-    margin-right: 10px;
+    margin: 0 5px;
     background: #FFFFff;
 
 }
@@ -168,7 +168,8 @@
 .activity-content .one{
     width: 385px;
     float: left;
-    margin: 5px;
+    margin-right: 15px;
+    margin-top: 10px;
 
 }
 
@@ -214,9 +215,10 @@
 
 .goods-info p:first-child{
     color: #666666;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 10px 0 10px;
     font-size: 14px;
-    min-height: 32px;
+    height: 42px;
+    overflow: hidden;
 }
 
 .goods-info >div{
@@ -270,8 +272,13 @@
 .bg-img2 .month-pay{
     color: #FFF;
     font-size: 14px;
-    width: 160px;
+    width: 145px;
+    text-align: center;
 
+}
+.bg-img2 div:nth-child(2),
+.bg-img div:nth-child(2){
+    margin: 0 15px;
 }
 
 .bg-img .month-pay span,

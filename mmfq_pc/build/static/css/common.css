@@ -914,3 +914,94 @@ input[type='file']{
 
 
 
+/*交互提示*/
+.none{
+    display: none;
+}
+
+._z{
+    position: fixed;
+    width: 100%;
+    height:100%;
+    z-index: 7;
+    top: 0;
+    left:0;
+    background-color: #000000;
+    opacity: 0.3;
+
+}
+.layer_content{
+    width: 400px;
+    height: 200px;
+    position: fixed;
+    z-index: 10;
+    margin-left: -200px;
+    left: 50%;
+    top: 50%;
+    margin-top: -100px;
+}
+
+
+.layer_content .header{
+    position: relative;
+    padding: 10px;
+    background-color: #fd657a;
+    text-align: left;
+    color: #FFFFff;
+
+}
+
+.layer_content .header div{
+    display: inline-block;
+}
+
+.layer_content .header .cance{
+    position: absolute;
+    right: 10px;
+    top: 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+.layer_content2{
+    position: relative;
+    background-color: #FFFFff;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+}
+
+
+.t_foot{
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    background-color: #FFFFff;
+}
+.t_foot .btn{
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    line-height: 1.5;
+    width: 80px;
+    padding: 5px;
+    margin: 0 10px;
+}
+
+.t_foot .cancle_btn{
+    color: #333;
+    background-color: #f0f0f0;
+    border-color: #dddddd;
+}
+
+.t_foot .sure_btn{
+    color: #FFFFff;
+    background-color: #fd657a;
+    border-color: #e65c6e;
+}
+
+.t_foot .btn a{
+    text-decoration: none;
+    color: #FFFFff;
+}
+

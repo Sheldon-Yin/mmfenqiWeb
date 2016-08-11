@@ -52,7 +52,6 @@
 }
 .wrap-content .wrap-content-right .top-content {
     width: 100%;
-    padding-bottom: 20px;
 }
 
 .wrap-content .wrap-content-right .top-content .one,
@@ -68,7 +67,7 @@
 .wrap-content .wrap-content-right .top-content .two ul
 
 {
-    padding:15px;
+    padding: 20px 15px;
     margin: 0;
     overflow: hidden;
 
@@ -85,7 +84,6 @@
 
 .one .sub-content,.refund,
 .two .sub-content,.refund{
-    margin: 0 10px;
     position: relative;
 }
 .one .sub-content,
@@ -95,7 +93,6 @@
 
 .one .refund,
 .two .refund{
-    padding: 0 15px;
     width: 100%;
 }
 
@@ -104,23 +101,36 @@
 .two .refund > div{
     padding: 15px 0;
     display: inline-block;
+
 }
+
+.one .refund >div:nth-child(1){
+    min-width: 200px;
+    text-align: center;
+}
+
+.one .refund >div:nth-child(2){
+    width: 180px;
+    text-align: left;
+}
+
+
 
 .one .refund div:first-child span,
 .two .refund div:first-child span{
     color: #fc6578;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .one .refund .btn,
 .two .refund .btn{
-    width: 400px;
+    width: 492px;
     text-align: right;
 }
 
 .one .page_foot div{
     display: inline-block;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 
@@ -153,7 +163,7 @@
     text-align: left;
     font-size: 12px;
     color: #333;
-    width: 25%;
+    width: 23%;
 }
 
 
@@ -220,7 +230,7 @@ table .bg_bd {
     cursor: pointer;
     line-height: 1.5;
     width: 100px;
-    padding: 5px;
+    padding: 8px 5px;
     border-radius: 5px;
     color: #fff;
     background-color: #fd657a;
@@ -230,7 +240,7 @@ table .bg_bd {
 
 
 .wrap-content span{
-    font-size: 18px;
+    font-size: 20px;
     color: #fc6578;
 }
 

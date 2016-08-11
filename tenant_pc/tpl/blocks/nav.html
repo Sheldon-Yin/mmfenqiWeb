@@ -60,6 +60,28 @@
       <!--</li>-->
     </ul>
   </li>
+  <li ng-show="app.user.role == 0" class="active">
+    <a href class="auto" ui-sref="app.report.list">
+  <span class="pull-right text-muted">
+  <i class="fa fa-fw fa-angle-right text"></i>
+  <i class="fa fa-fw fa-angle-down text-active"></i>
+  </span>
+      <i class="fa fa-group icon"></i>
+      <span class="">查询报单</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>查询报单</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.report.list">
+          <span>全部报单</span>
+        </a>
+      </li>
+    </ul>
+  </li>
   <!--<li ng-show="app.user.role == 0" class="active">-->
     <!--<a href class="auto"  ui-sref="app.setting.userList">-->
       <!--<span class="pull-right text-muted">-->

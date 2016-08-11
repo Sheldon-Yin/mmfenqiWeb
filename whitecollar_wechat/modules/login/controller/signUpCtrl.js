@@ -14,7 +14,7 @@ define(function (require, exports, module) {
 
                 WeChatTitle('手机号');
 
-                $scope.telephone = $location.search().telephone;
+                $scope.telephone = parseInt($location.search().telephone);
 
                 $scope.$root.loading = false;
 
@@ -122,8 +122,9 @@ define(function (require, exports, module) {
 
                             var hosId=$location.search().hosId;
 
-                            window.location.href = window.localStorage.referer;
+                            //window.location.href = window.localStorage.referer;
 
+                            $location.url('/login/telephone');
 
                             // $location.url('')
                             // switch (res.data.telephone_exist) {
@@ -136,6 +137,7 @@ define(function (require, exports, module) {
                             //     default:
                             //         Toast('从服务器返回了奇怪的数据')
                             // }
+
                         } else {
                             Toast(res.message);
                         }

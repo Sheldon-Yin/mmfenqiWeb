@@ -1,10 +1,7 @@
 /*提示框*/
-
-
 .none{
     display: none;
 }
-
 
 ._z{
     position: fixed;
@@ -17,11 +14,19 @@
     opacity: 0.3;
 
 }
+.layer_content{
+    width: 400px;
+    height: 200px;
+    position: fixed;
+    z-index: 10;
+    margin-left: -200px;
+    left: 50%;
+    top: 50%;
+    margin-top: -100px;
+}
 
 
-
-
-.header{
+.layer_content .header{
     position: relative;
     padding: 10px;
     background-color: #fd657a;
@@ -30,36 +35,33 @@
 
 }
 
-
-.header div{
+.layer_content .header div{
     display: inline-block;
 }
 
-.header .cance{
+.layer_content .header .cance{
     position: absolute;
     right: 10px;
     top: 0;
     cursor: pointer;
     font-size: 20px;
 }
-.content{
+.layer_content2{
     position: relative;
     background-color: #FFFFff;
-    min-height: 300px;
-    text-align: left;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
 }
 
 
-
-
-
-.foot{
+.t_foot{
     position: relative;
     padding: 10px;
     text-align: center;
     background-color: #FFFFff;
 }
-.foot .btn{
+.t_foot .btn{
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -67,21 +69,22 @@
     line-height: 1.5;
     width: 80px;
     padding: 5px;
+    margin: 0 10px;
 }
 
-.cancle_btn{
+.t_foot .cancle_btn{
     color: #333;
     background-color: #f0f0f0;
     border-color: #dddddd;
 }
 
-.sure_btn{
+.t_foot .sure_btn{
     color: #FFFFff;
     background-color: #fd657a;
     border-color: #e65c6e;
 }
 
-.btn a{
+.t_foot .btn a{
     text-decoration: none;
     color: #FFFFff;
 }

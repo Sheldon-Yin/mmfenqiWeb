@@ -1,7 +1,7 @@
 /**
  * Created by sheldon on 2016/5/9.
  */
-app.controller('BillListCtrl', ['$scope', '$state', 'FinanceInfo', 'QueryOrderList', 'GetCash', 'toaster', '$log', function ($scope, $state, FinanceInfo, QueryOrderList, GetCash, toaster, $log) {
+app.controller('ReportListCtrl', ['$scope', '$state', 'FinanceInfo', 'QueryOrderList', 'GetCash', 'toaster', '$log', function ($scope, $state, FinanceInfo, QueryOrderList, GetCash, toaster, $log) {
 
     $scope.setPage = function (pageNo) {
         $scope.currentPage = pageNo;
@@ -16,7 +16,6 @@ app.controller('BillListCtrl', ['$scope', '$state', 'FinanceInfo', 'QueryOrderLi
     $scope.maxSize = 15;
     $scope.bigCurrentPage = 1;
     //分页相关
-
 
     $scope.start_time = new Date();
     $scope.start_time.setMonth((new Date()).getMonth() - 1);
@@ -81,7 +80,7 @@ app.controller('BillListCtrl', ['$scope', '$state', 'FinanceInfo', 'QueryOrderLi
     };
 
     $scope.goToBillDetail = function (x) {
-        var urlHref = $state.href('app.bill.detail', {id: x.orderId, orderSn: x.orderSn});
+        var urlHref = $state.href('app.report.repeat', {id: x.orderId, orderSn: x.orderSn});
         window.open(urlHref);
     };
 

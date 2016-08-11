@@ -44,6 +44,10 @@ define(function (require, exports, module) {
                     templateUrl: 'modules/login/info.html',
                     controller: 'InfoCtrl',
                     controllerUrl: './modules/login/controller/infoCtrl.js'
+                }).when('/login/insure',{
+                    templateUrl: 'modules/login/insure.html',
+                    controller: 'InsureCtrl',
+                    controllerUrl: './modules/login/controller/insureCtrl.js'
                 }).
 
                 //实名认证提额

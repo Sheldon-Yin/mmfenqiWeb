@@ -86,6 +86,38 @@ angular.module('app')
                         }
                     })
 
+                    //报备
+                    .state('app.report', {
+                        url: '/report',
+                        template: '<div ui-view></div>'
+                    })
+                    .state('app.report.list', {
+                        url: '/list',
+                        templateUrl: 'tpl/report/reportList.html',
+                        resolve: {
+                            deps: ['$ocLazyLoad',
+                                function ($ocLazyLoad) {
+                                    return $ocLazyLoad.load('toaster').then(
+                                        function () {
+                                            return $ocLazyLoad.load(['js/controllers/report/reportListCtrl.js']);
+                                        })
+                                }]
+                        }
+                    })
+                    .state('app.report.repeat', {
+                        url: '/repeat',
+                        templateUrl: 'tpl/report/reportRepeat.html',
+                        resolve: {
+                            deps: ['$ocLazyLoad',
+                                function ($ocLazyLoad) {
+                                    return $ocLazyLoad.load('toaster').then(
+                                        function () {
+                                            return $ocLazyLoad.load(['js/controllers/report/reportRepeatCtrl.js']);
+                                        })
+                                }]
+                        }
+                    })
+
                     //订单
                     .state('app.order', {
                         url: '/order',

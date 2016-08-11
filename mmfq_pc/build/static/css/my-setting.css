@@ -50,8 +50,8 @@
 
 }
 
-.phone .right p:first-child,
-.pwd .right p:first-child{
+.phone .right div:first-child,
+.pwd .right div:first-child{
     margin-top: -5px;
     margin-bottom: 5px;
 }

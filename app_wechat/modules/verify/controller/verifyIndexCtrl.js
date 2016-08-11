@@ -186,13 +186,6 @@ define(function (require, exports, module) {
                     }
                 });
 
-                //Bridge.listenEvent(function (message, callback) {
-                //    if (message == 10003) {
-                //        $scope.initStatus();
-                //    }
-                //})
-
-
             }])
     }
 });

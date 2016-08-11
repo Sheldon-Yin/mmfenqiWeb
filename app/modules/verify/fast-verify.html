@@ -1,4 +1,27 @@
 <link href="modules/verify/css/verify.css" rel="stylesheet">
+<link href="modules/verify/css/verify-student.css" rel="stylesheet">
+
+<div class="verify-select-dialog-container" ng-if="selecting">
+    <div class="verify-select-dialog-background" ng-click="hideSelect()">
+    </div>
+    <div class="verify-select-dialog">
+        <div class="container" style="height: 10%">
+            <div class="row" style="height: 100%">
+                <div class="verify-select-dialog-title">
+                    {{selectTitle}}
+                </div>
+            </div>
+        </div>
+        <div class="container" style="overflow: scroll;height: 90%;">
+            <div class="row">
+                <div class="col-xs-12 verify-select-dialog-item"
+                     ng-repeat="x in selectItems" ng-click="selectCallBack(x[itemValue],x[itemName])">
+                    {{x[itemName]}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="confirmDialogContainer" class="app-grey-dialog-container" style="display: block;" ng-show="showVerify">
     <div class="verify-bank-verifyCode-dialog">
@@ -71,6 +94,13 @@
             <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">本人住址</label>
             <input type="text" ng-model="$parent.address" class="col app-white-input-text"
                    placeholder="如:杭州市西湖区X小区X幢X单元X号" required>
+        </div>
+        <div class="app-white-input row app-margin-top-two-px" ng-click="selectEducation()">
+            <div class="col-xs-4 app-bootstrap-padding-zero app-white-input-label">学历类型</div>
+            <div class="col-xs-8 cell-detail">{{selectEducationName}}</div>
+            <div class="col-xs-1">
+                <img src="modules/verify/img/student/arrow.png" class="cell-arrow"/>
+            </div>
         </div>
 
         <div class="row verify-fast-title" style="font-weight: bold">
@@ -297,6 +327,20 @@
                        style="padding-left: 1rem">
                     <span>否</span>
                     <input type="radio" name="is_house" ng-model="$parent.isHouse" value="false">
+                </label>
+            </div>
+        </div>
+        <div class="app-white-input row app-margin-top-two-px">
+            <label class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-label">6.是否已婚</label>
+            <div class="col-xs-1 app-bootstrap-padding-zero verify-fast-third-check-area">
+                <label ng-class="{true: 'verify-fast-checked', false: 'verify-fast-unchecked',undefined:'verify-fast-unchecked'}[$parent.isMarry]">
+                    <span>是</span>
+                    <input type="radio" name="isMarry" ng-model="$parent.isMarry" value="true">
+                </label>
+                <label ng-class="{true: 'verify-fast-unchecked', false: 'verify-fast-checked',undefined:'verify-fast-unchecked'}[$parent.isMarry]"
+                       style="padding-left: 1rem">
+                    <span>否</span>
+                    <input type="radio" name="isMarry" ng-model="$parent.isMarry" value="false">
                 </label>
             </div>
         </div>

@@ -88,7 +88,7 @@
 .fastZT2 li{ background:#fff; min-height:428px}
 .fastZT2 li:first-child{ background:none}
 /*partTit*/
-.partTit{ width:1200px; margin:0 auto; height:120px; padding-bottom:52px; overflow:hidden}
+.partTit{ width:1200px; margin:0 auto; height:120px; padding-bottom:5px; overflow:hidden}
 .partTit p{ height:73px;border-bottom:1px solid #efefef; position:relative; text-align:center}
 .partTit p span{ display:block; width:250px; height:113px; background-color:#fff; margin:0 auto}
 .partTit .ft31{ font-size:32px; display:block; padding-top:36px; text-align:center}
@@ -340,6 +340,14 @@ li:hover .infoImg .lastDays{ opacity: 0.8; filter:alpha(opacity=80);}
 
 .topicsTit.partTit { height:48px;}
 .topicsTit.partTit p{ margin-top:-20px;}
+
+.partTit .today-time  div{
+    display: inline-block;
+    padding: 8px;
+    margin:0 5px;
+    background: #FFFFff;
+
+}
 
 /* ipad */
 @media screen and (max-width:1024px){

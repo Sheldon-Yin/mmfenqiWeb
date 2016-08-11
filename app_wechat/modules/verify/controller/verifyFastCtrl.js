@@ -12,6 +12,41 @@ define(function (require, exports, module) {
 
                 WeChatTitle('基础认证申请额度');
 
+                //选择学历逻辑
+
+                $scope.selectEducationName = '选择';
+
+                $scope.initShowSelect = function (items, title, itemName, itemValue, cb) {
+                    $scope.selecting = true;
+                    $scope.selectItems = items;
+                    $scope.selectTitle = title;
+                    $scope.itemName = itemName;
+                    $scope.itemValue = itemValue;
+                    $scope.selectCallBack = cb;
+                };
+
+                $scope.selectEducation = function () {
+                    $scope.educations = [
+                        {educationName: '普通本科', educationValue: 3},
+                        {educationName: '普通专科', educationValue: 4},
+                        {educationName: '普通硕士研究生', educationValue: 5},
+                        {educationName: '普通博士研究生', educationValue: 6},
+                        {educationName: '普通专升本', educationValue: 7},
+                        {educationName: '自考本科', educationValue: 8},
+                        {educationName: '自考专科', educationValue: 9},
+                        {educationName: '成人本科', educationValue: 10},
+                        {educationName: '成人专科', educationValue: 11},
+                        {educationName: '其它', educationValue: 12}
+                    ];
+                    $scope.initShowSelect($scope.educations, '学历类型', 'educationName', 'educationValue', function (educationValue, educationName) {
+                        $scope.selectEducationName = educationName;
+                        $scope.selectEducationValue = educationValue;
+                        $scope.selecting = false;
+                    })
+                };
+
+                //选择学历逻辑
+
                 Bridge.appToken(function (response) {
                     $scope.appToken = response;
                     $scope.initFastStatus = function () {
@@ -37,6 +72,7 @@ define(function (require, exports, module) {
                                 $scope.isInvestment = false;
                                 $scope.isDriving = false;
                                 $scope.isHouse = false;
+                                $scope.isMarry = false;
 
                                 if (!!res.data.whiteCollarCreditInfo) {
                                     $scope.company_name = res.data.whiteCollarCreditInfo.companyName;
@@ -95,7 +131,8 @@ define(function (require, exports, module) {
                         name: $scope.name,
                         relation: $scope.relation,
                         telphone: $scope.telphone,
-                        appToken: $scope.appToken
+                        appToken: $scope.appToken,
+                        education: $scope.selectEducationValue
                     });
                     $scope.$root.loading = true;
 
@@ -272,6 +309,7 @@ define(function (require, exports, module) {
                                 });
 
                             $scope.secondeInfo = $scope.secondInfoReq.jsonpquery({
+                                workProve: $scope.workProveMediaId,
                                 frontIdentityPic: $scope.frontIdentityMediaId,
                                 backIdentityPic: $scope.backIdentityMediaId,
                                 telphone: $scope.myTelephone,
@@ -380,10 +418,11 @@ define(function (require, exports, module) {
                         is_investment: $scope.isInvestment,
                         is_driving: $scope.isDriving,
                         is_house: $scope.isHouse,
-                        appToken: $scope.appToken
+                        appToken: $scope.appToken,
+                        isMarry: $scope.isMarry
                     });
 
-                    $scope.$root.loading = true;
+                     $scope.$root.loading = true;
 
                     $scope.thirdInfoReq.$promise.then(function (res) {
                         console.log(res);
