@@ -1,0 +1,162 @@
+<style>
+    .bg_bd{
+        border: 1px solid #ff4d67;
+        color: #ff4d67;
+    }
+
+    ._bg_bd{
+        background: #e5e5e5;
+        color: #FFFFff;
+        border: 1px solid #e5e5e5;
+    }
+
+
+
+
+
+</style>
+<html>
+<link rel="stylesheet" href="modules/bill/css/bill.css">
+<div class="verify-select-dialog-container" ng-if="selecting">
+    <div class="verify-select-dialog-background" ng-click="hideSelect()"></div>
+    <div class="verify-select-dialog">
+        <div class="container" style="height: 10%">
+            <div class="row" style="height: 100%">
+                <div class="verify-select-dialog-title">
+                    {{selectTitle}}
+                </div>
+            </div>
+        </div>
+        <div class="container" style="overflow: scroll;height: 90%;">
+            <div class="row">
+                <div class="col-xs-12 verify-select-dialog-item"
+                     ng-repeat="x in selectItems" ng-click="selectCallBack(x[itemName],x[itemValue])">
+                    {{x[itemName]}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--<div class="verify-select-dialog-container">-->
+    <!--<div class="verify-select-dialog-background" ng-click="hideSelect()"></div>-->
+
+<!--</div>-->
+
+
+<div class="verify-select-dialog-container" ng-if="B_time">
+    <div class="_z" ng-click="_time()"></div>
+    <div class="layer_content">
+        <div class="header">
+            <div class="title">到期时间说明</div>
+            <div class="cance" ng-click="_time()"><img src="modules/bill/img/X.png" alt=""></div>
+        </div>
+        <div class="layer_content2">
+            <div>
+                身份证反面可以查看该时间
+            </div>
+
+        </div>
+        <div class="t_foot">
+            <!--<div class="btn cancel_btn">取消</div>-->
+            <!--<div class="btn sure_btn">确定</div>-->
+            <div> 我知道了</div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container app-grey-background-container">
+    <div class="row"
+         style="color: #ffffff; background: #ff4d66; padding: 1.1rem 2rem; font-size: 1.2rem; line-height: 1.4rem;">
+        <div>为保证自助扣款开通成功，以下所填写信息请与本人银行卡关联的姓名，手机号，身份证号保持一致</div>
+    </div>
+    <form ng-submit="verify()" name="myForm">
+    <div style="margin-top: 2rem" class="app-bootstrap-white">
+        <div class="app-bootstrap-input row">
+            <div class="col-xs-3 app-bootstrap-padding-zero">姓名</div>
+            <input type="text" class="col-xs-7 text-left app-bootstrap-padding-zero" placeholder="姓名" ng-model="realName" required>
+        </div>
+        <div class="app-bootstrap-input row" ng-click="selectBank()">
+            <div class="col-xs-3 app-bootstrap-padding-zero">储存卡类型</div>
+            <div class="col-xs-4 col-xs-offset-4 text-right app-bootstrap-padding-zero" style="color: #333;">{{bankCardType}}</div>
+            <div class="col-xs-1 text-right app-bootstrap-padding-zero" style="padding-right: 0">
+                <img src="modules/bill/img/option.jpg" height="17" style="vertical-align: middle; float: right;">
+            </div>
+            <!--<div class="col-xs-3 text-right app-bootstrap-padding-zero"><img src="modules/login/img/option.jpg" height="17" style="vertical-align: middle;"></div>-->
+        </div>
+        <div class="app-bootstrap-input row" style="border: 0;">
+            <div class="col-xs-3 app-bootstrap-padding-zero">储蓄卡号</div>
+            <input type="text"  class="col-xs-7 text-left app-bootstrap-padding-zero" placeholder="如:6237236000901733" ng-model="bankCardNo" required>
+        </div>
+
+    </div>
+
+    <div style="margin-top: 1rem" class="app-bootstrap-white">
+        <div class="app-bootstrap-input">
+            <div class="col-xs-3 app-bootstrap-padding-zero">身份证号</div>
+            <input type="text" class="col-xs-7 text-left app-bootstrap-padding-zero"  ng-model="certNo" required>
+        </div>
+        <div class="app-bootstrap-input">
+            <div class="col-xs-3 app-bootstrap-padding-zero">到期时间</div>
+            <input type="text" class="col-xs-7 text-left app-bootstrap-padding-zero"  ng-model="validityTime" required>
+            <abcd config="config" isopen="isopen" sure="sure()"></abcd>
+            <div class="col-xs-1 col-xs-offset-1 text-right app-bootstrap-padding-zero" style="padding-right: 0">
+                <img src="modules/bill/img/weihao.png" height="17" style="vertical-align: middle; float: right;" ng-click="openCt()">
+            </div>
+        </div>
+    </div>
+
+
+    <div style="margin-top: 1rem" class="app-bootstrap-white">
+        <div class="app-bootstrap-input">
+            <div class="col-xs-3 app-bootstrap-padding-zero">手机号</div>
+            <input type="number" class="col-xs-6  text-left app-bootstrap-padding-zero" ng-model="mobileNo"/>
+            <div class="col-xs-1 col-xs-offset-2 text-right app-bootstrap-padding-zero" style="padding-right: 0">
+                <img src="modules/bill/img/weihao.png" height="17" style="vertical-align: middle; float: right;">
+            </div>
+        </div>
+        <div class="app-bootstrap-input" style="padding: 0.3rem 0; border: 0;">
+            <div class="app-bootstrap-padding-zero app-white-input-label" style="display: inline-block; width: 25%; margin-right: -3px;">验证码</div>
+            <input type="number"  class="app-white-code-text" placeholder="请输入收到的验证码" ng-model="verifyCode" required style="width: 45%;">
+            <div ng-class="{false:'_bg_bd',true:'bg_bd'}[verifyStatus]"  style="display: inline-block; padding: 0.7rem 0 ; width: 27%;">
+                <div class="text-center" ng-click="getCode()">{{text}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="padding: 1rem 0;">
+        <div class="col-xs-6" >
+            <div style="position: relative;">
+                <img ng-src="{{imgPreId}}" id="idCard" style="width: 100%" ng-click="uploadIdCard()">
+                <img ng-if="defaultDeleteIdCard" ng-click="deleteIdCard()" src="modules/bill/img/delete.png" style="position: absolute; right: 0; top: 0; z-index: 8;">
+            </div>
+        </div>
+        <div class="col-xs-6" >
+            <div style="position: relative">
+                <img ng-src="{{bankCardId}}" id="bankCard" style="width: 100%;" ng-click="uploadBankCard()">
+                <img ng-if="defaultDeleteBankCard" ng-click="deleteBankCard()" src="modules/bill/img/delete.png" style="position: absolute; right: 0; top: 0; z-index: 8;">
+            </div>
+        </div>
+    </div>
+
+
+    <label style="display: block">
+
+        <div  class="app-padding-one text-center" style="margin: 1rem 0;" ng-class="{false:'app-little-pink-radius-button',true:'app-pink-radius-button'}[!!realName && !!validityTime && !!bankCardType && !!bankCardNo && !!certNo && !!mobileNo && !!verifyCode &&!! bankCardFrontPic&& !!identityBackPic]">
+            提交
+        </div>
+
+        <button type="submit" style="display: none"></button>
+    </label>
+    <!--<div class="row text-center app-very-blue-text" style="margin-top: 50px;font-size: 1.4rem"-->
+    <!--ng-click="goToFastLogin()">-->
+    <!--快捷登录-->
+    <!--</div>-->
+</form>
+</div>
+
+</html>

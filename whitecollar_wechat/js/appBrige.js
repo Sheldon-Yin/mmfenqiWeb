@@ -36,7 +36,7 @@ function initWx() {
                             console.log('ready')
                         });
                         wx.error(function (res) {
-                            alert(res.errMsg);
+                            //alert(res.errMsg);
                         });
                     } else {
                         console.log(res);

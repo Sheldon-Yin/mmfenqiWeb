@@ -1,0 +1,140 @@
+<style>
+    .bg-black .nav .nav-sub > li > a:hover{
+        background-color: #16232d;
+    }
+    .bg-black .nav .nav-sub > li > a:focus {
+        background-color: #ff5c57;
+    }
+
+    .bg-black .nav .nav-sub >li > a:focus .img {
+        display: inline-block;
+    }
+
+    .bg-black .nav .nav-sub > li.active > a{
+        background-color: #ff5c57;
+    }
+
+    .bg-black .nav .nav-sub > li.active > a .img{
+        display: inline-block;
+    }
+
+    .bg-black .img{
+        position: absolute;
+        right: 0;
+        display: none;
+        top: 10px;
+    }
+</style>
+<!-- list -->
+<ul class="nav" style="margin-top: 10px;">
+    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+        <span>美眉分期后台管理系统</span>
+    </li>
+    <!--高亮显示-->
+    <li ng-class="{active:$state.includes('app.customer')}">
+        <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+            <i class="icon icon-users"></i>
+            <span>会员管理</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span>客户管理</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-class="{active:$state.includes('app.customer.detail')}" style="position: relative;">
+                <a ui-sref="app.customer.list">
+                    <span>订单管理</span>
+                    <img class="img" src="img/left_.png">
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li ng-class="{active:$state.includes('app.verifier')}">
+        <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+            <i  class="icon icon-graph"></i>
+            <span>风控管理</span>
+            <!--<span>()</span>-->
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span>风控管理</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-class="{active:$state.includes('app.verifier.detail')}" style="position: relative;">
+                <a ui-sref="app.verifier.paymenting">
+                    <span>还款账单</span>
+                    <img class="img" src="img/left_.png">
+                </a>
+            </li>
+            <li ui-sref-active="active" style="position: relative;">
+                <a ui-sref="app.verifier.userAttestation">
+                    <span>用户实名认证</span>
+                    <img class="img" src="img/left_.png">
+                </a>
+            </li>
+            <li ui-sref-active="active" style="position: relative;">
+
+                <a ui-sref="app.verifier.studentCredit">
+                    <span>学生信用审核</span>
+                    <img class="img" src="img/left_.png">
+                </a>
+            </li>
+            <li ui-sref-active="active" style="position: relative;">
+                <a ui-sref="app.verifier.colBlanc">
+                    <span>白领审核资料</span>
+                    <img class="img" src="img/left_.png">
+                </a>
+            </li>
+        </ul>
+    </li>
+
+
+    <li ng-class="{active:$state.includes('app.finance')}">
+        <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+            <i  class="icon icon-graph"></i>
+            <span>财务管理</span>
+            <!--<span>()</span>-->
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span>财务管理</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-class="{active:$state.includes('app.finance.merchantDetail')}"   style="position: relative;">
+                <a ui-sref="app.finance.reimbursement">
+                    <span>用户还款账单</span>
+                    <img class="img" src="img/left_.png">
+                </a>
+            </li>
+            <li ui-sref-active="active" style="position: relative;">
+                <a ui-sref="app.finance.merchant">
+                    <span>商户还款账单</span>
+                    <img class="img" src="img/left_.png">
+                </a>
+            </li>
+            <li ui-sref-active="active" style="position: relative;">
+
+                <a ui-sref="app.finance.insuranceBil">
+                    <span>保险账单管理</span>
+                    <img class="img" src="img/left_.png">
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<!-- / list -->

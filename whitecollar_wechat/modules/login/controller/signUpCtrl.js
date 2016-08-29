@@ -89,7 +89,7 @@ define(function (require, exports, module) {
                                 $scope.counter --;
                             },1000)
                         }else{
-                            Toast(res.message);
+                            Toast(res.msg);
                         }
                     })
                 };
@@ -99,6 +99,11 @@ define(function (require, exports, module) {
 
                     if ($scope.telephone == undefined) {
                         Toast('请输入正确的手机号');
+                        return
+                    }
+
+                    if($scope.$root.ensureRegister == false){
+                        Toast('请同意服务协议');
                         return
                     }
 
@@ -139,7 +144,7 @@ define(function (require, exports, module) {
                             // }
 
                         } else {
-                            Toast(res.message);
+                            Toast(res.msg);
                         }
                     }).catch(function (error) {
                         console.log(error);
@@ -150,6 +155,17 @@ define(function (require, exports, module) {
 
                 $scope.goToFastLogin = function () {
                     $location.url('/login/fast?telephone=' + $scope.telephone + '&referer=' + $location.search().referer)
+                };
+
+                $scope.$root.ensureRegister = true;
+
+                $scope.changeEnsureRegister = function () {
+                    console.log($scope.$root.ensureRegister);
+                    $scope.$root.ensureRegister = !$scope.$root.ensureRegister;
+                };
+
+                $scope.goToRegisterContact = function () {
+                    window.location.href = $location.absUrl().split('#')[0] + 'modules/static/registerContact.html'
                 }
 
             }])

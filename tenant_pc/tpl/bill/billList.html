@@ -25,7 +25,7 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-9">
-                        账单列表  <span style="color:blue;font-size:12px;">（注：账单信息为美眉分期审核通过后的订单）</span>
+                        账单列表 <span style="color:blue;font-size:12px;">（注：账单信息为美眉分期审核通过后的订单）</span>
                     </div>
                     <div class="col-xs-3 text-right">
                         <button class="btn btn-info" ng-click="goToOutput()">导出数据</button>
@@ -40,22 +40,22 @@
                     搜索用户手机号: <input type="text" class="form-control input-sm w-sm inline m-r" ng-model="telephone"/>
                 </div>
                 <!--<div class="col-xs-12 col-md-6 col-lg-4" style="padding: 10px">-->
-                    <!--知情同意书状态:-->
-                    <!--<select type="text" class="form-control input-sm w-sm inline m-r" ng-model="projectReviewStatus">-->
-                        <!--<option value="">全部</option>-->
-                        <!--<option value="0">未上传</option>-->
-                        <!--<option value="1">审核中</option>-->
-                        <!--<option value="2">审核通过</option>-->
-                        <!--<option value="3">审核失败</option>-->
-                    <!--</select>-->
+                <!--知情同意书状态:-->
+                <!--<select type="text" class="form-control input-sm w-sm inline m-r" ng-model="projectReviewStatus">-->
+                <!--<option value="">全部</option>-->
+                <!--<option value="0">未上传</option>-->
+                <!--<option value="1">审核中</option>-->
+                <!--<option value="2">审核通过</option>-->
+                <!--<option value="3">审核失败</option>-->
+                <!--</select>-->
                 <!--</div>-->
                 <!--<div class="col-xs-12 col-md-6 col-lg-4" style="padding: 10px">-->
-                    <!--订单状态:-->
-                    <!--<select type="text" class="form-control input-sm w-sm inline m-r" ng-model="orderstat">-->
-                        <!--<option value="">全部</option>-->
-                        <!--<option value="1">已支付</option>-->
-                        <!--<option value="4">已完成</option>-->
-                    <!--</select>-->
+                <!--订单状态:-->
+                <!--<select type="text" class="form-control input-sm w-sm inline m-r" ng-model="orderstat">-->
+                <!--<option value="">全部</option>-->
+                <!--<option value="1">已支付</option>-->
+                <!--<option value="4">已完成</option>-->
+                <!--</select>-->
                 <!--</div>-->
                 <div class="col-xs-12 col-md-6 col-lg-4" style="padding: 10px">
                     收据审核状态:
@@ -91,12 +91,16 @@
             </div>
         </div>
 
-        <div>
-            <pagination previous-text="上一页" first-text="第一页" ng-change="pageChanged()" next-text="下一页" last-text="最后一页"
-                        total-items="bigTotalItems" ng-model="currentPage" max-size="maxSize"
-                        class="pagination-sm m-t-none m-b" boundary-links="true" rotate="false"
-                        num-pages="numPages"></pagination>
+        <div style="height: 30px;">
+            <div style="float:right">
+                <pagination previous-text="上一页" first-text="第一页" ng-change="pageChanged()" next-text="下一页"
+                            last-text="最后一页"
+                            total-items="bigTotalItems" ng-model="currentPage" max-size="maxSize"
+                            class="pagination-sm m-t-none m-b" boundary-links="true" rotate="false"
+                            num-pages="numPages"></pagination>
+            </div>
         </div>
+
 
         <div>
             <table class="table m-b-none">
@@ -124,10 +128,10 @@
                         订单号
                     </th>
                     <!--<th data-hide="phone,tablet">-->
-                        <!--<span popover="已完成&nbsp未完成&nbsp待完成&nbsp已取消" popover-trigger="mouseenter">订单状态</span>-->
+                    <!--<span popover="已完成&nbsp未完成&nbsp待完成&nbsp已取消" popover-trigger="mouseenter">订单状态</span>-->
                     <!--</th>-->
                     <!--<th data-hide="phone,tablet">-->
-                        <!--<span popover="未上传&nbsp审核中&nbsp审核成功&nbsp审核失败" popover-trigger="mouseenter">知情同意书状态</span>-->
+                    <!--<span popover="未上传&nbsp审核中&nbsp审核成功&nbsp审核失败" popover-trigger="mouseenter">知情同意书状态</span>-->
                     <!--</th>-->
                     <th data-hide="phone,tablet">
                         <span popover="未审核&nbsp审核中&nbsp审核成功&nbsp审核失败&nbsp提现中&nbsp提现成功" popover-trigger="mouseenter">收据审核状态</span>
@@ -168,12 +172,15 @@
                 </tbody>
             </table>
         </div>
-        <div>
-            <pagination previous-text="上一页" first-text="第一页" next-text="下一页" last-text="最后一页"
-                        total-items="bigTotalItems" ng-model="currentPage" ng-change="pageChanged()"
-                        max-size="maxSize" class="pagination-sm m-t-none m-b" boundary-links="true" rotate="false"
-                        num-pages="numPages"></pagination>
+        <div style="height: 30px;">
+            <div style="float:right">
+                <pagination previous-text="上一页" first-text="第一页" next-text="下一页" last-text="最后一页"
+                            total-items="bigTotalItems" ng-model="currentPage" ng-change="pageChanged()"
+                            max-size="maxSize" class="pagination-sm m-t-none m-b" boundary-links="true" rotate="false"
+                            num-pages="numPages"></pagination>
+            </div>
         </div>
+
     </div>
 </div>
 

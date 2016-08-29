@@ -55,6 +55,10 @@ define(function (require, exports, module) {
                     templateUrl: 'modules/verify/dispatcher.html',
                     controller: 'VerifyDispatcherCtrl',
                     controllerUrl: './modules/verify/controller/verifyDispatcherCtrl.js'
+                }).when('/verify/real-name', {
+                    templateUrl: 'modules/verify/real-name.html',
+                    controller: 'VerifyRealNameCtrl',
+                    controllerUrl: './modules/verify/controller/verifyRealNameCtrl.js'
                 }).
 
                 //首页
@@ -62,6 +66,10 @@ define(function (require, exports, module) {
                     templateUrl: 'modules/index/index.html',
                     controller: 'IndexCtrl',
                     controllerUrl: './modules/index/controller/indexCtrl.js'
+                }).when('/mine/setting', {
+                    templateUrl: 'modules/mine/setting.html',
+                    controller: 'SettingCtrl',
+                    controllerUrl: './modules/mine/controller/settingCtrl.js'
                 }).
 
                 //分类页面
@@ -204,6 +212,8 @@ define(function (require, exports, module) {
                     controller: 'CouponCtrl',
                     controllerUrl: './modules/coupon/controller/couponCtrl.js'
                 }).
+
+
 
                 //默认首页
                 otherwise({

@@ -1,0 +1,326 @@
+.hospital-wrap{
+    width: 100%;
+}
+
+.hospital-wrap .theme{
+    width: 100%;
+    height: 504px;
+    background: url(../images/hospital-active/theme.jpg);
+    min-width: 1200px;
+    position: relative;
+    background-position: center center;
+
+}
+.hospital-wrap .doctor{
+    width: 100%;
+    height: 200px;
+    background: url(../images/hospital-active/t3.jpg);
+    min-width: 1200px;
+    position: relative;
+    background-position: center center;
+}
+
+
+
+
+.hospital-wrap .banner{
+        width: 100%;
+    background-color: #FCFCFC;
+}
+
+
+.banner .bannerImg{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.banner .bannerImg .inner{
+    width: 942px;
+    height: 450px;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    margin: 0 auto;
+}
+
+
+.banner .bannerImg li{
+    width: 942px;
+    height: 450px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    display: none;
+    z-index: 0;
+}
+
+.banner .bannerImg li .button{
+    background: url(../images/hospital-active/btn.png);
+    height:50px;width:160px;
+    position: absolute;
+    top: 377px;
+    left: 447px;
+    cursor: pointer;
+}
+
+.bannerImg .left{
+    background: url(../images/hospital-active/hospital-active.png);
+    height:70px;width:30px;background-position:0 0;
+    position: absolute;
+    top: 190px;
+    z-index: 1;
+}
+
+.bannerImg .right{
+    background: url(../images/hospital-active/hospital-active.png);
+    height:70px;width:30px;background-position:0 -70px;
+    position: absolute;
+    top: 190px;
+    right: 0;
+    z-index: 1;
+}
+
+
+
+
+.hospital-wrap .t1{
+    width: 100%;
+    height: 710px;
+    background: url(../images/hospital-active/t1.jpg);
+    min-width: 1200px;
+    position: relative;
+    background-position: center center;
+}
+
+.hospital-wrap .selects{
+    width: 100%;
+    height: auto;
+    min-width: 1200px;
+}
+.hospital-wrap .selects .t3{
+    width: 100%;
+    height: 234px;
+    background: url(../images/hospital-active/t2.jpg);
+    min-width: 1200px;
+    position: relative;
+    background-position: center center;
+}
+
+
+.hospital-wrap .step5{
+    width: 100%;
+    height: 690px;
+    background: url(../images/hospital-active/t5.jpg);
+    min-width: 1200px;
+    position: relative;
+    background-position: center center;
+}
+
+.hospital-wrap .step6{
+    width: 100%;
+    height: 516px;
+    background: url(../images/hospital-active/t6.jpg);
+    min-width: 1200px;
+    position: relative;
+    background-position: center center;
+}
+
+.hospital-wrap .selects .banner2{
+    width: 100%;
+    background-color: #ffffff;
+}
+
+
+
+
+.banner2 .bannerImg2{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.banner2 .bannerImg2 .inner{
+    width: 1200px;
+    height: auto;
+    position: relative;
+    z-index: 0;
+    margin: 0 auto;
+
+}
+
+
+.banner2 .bannerImg2 li{
+    width: 1123px;
+    height: 617px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 0;
+}
+
+.banner2 .bannerImg2 .tabIcon{
+    width: 1200px;
+    margin: 0 auto;
+    position: absolute;
+    height: 103px;
+    top: 0;
+    margin-top: -117px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.banner2 .bannerImg2 .tabIcon .aa{
+    width: 1200px;
+    text-align: center;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+
+.tabIcon .one_active{
+    background: url(../images/hospital-active/hospital-active.png);
+    height:103px;width:209px;background-position:0 -591px;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 20px;
+
+
+}
+
+
+.tabIcon .two_active{
+    background: url(../images/hospital-active/hospital-active.png);
+    height:103px;width:209px;background-position:0 -282px;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 20px;
+
+
+}
+
+.tabIcon .three_active{
+    background: url(../images/hospital-active/hospital-active.png);
+    height:103px;width:209px;background-position:0 -694px;
+    cursor: pointer;
+   display: inline-block;
+}
+
+.banner2 .bannerImg2 li .button{
+    background: url(../images/hospital-active/hospital-active.png);
+    height:39px;width:138px;background-position:0 -140px;
+    position: absolute;
+    top: 481px;
+    left: 616px;
+    cursor: pointer;
+}
+
+.bannerImg2 .left{
+    background: url(../images/hospital-active/hospital-active.png);
+    height:70px;width:30px;background-position:0 0;
+    position: absolute;
+    top: 190px;
+    z-index: 1;
+}
+
+
+.bannerImg2 .right{
+    background: url(../images/hospital-active/hospital-active.png);
+    height:70px;width:30px;background-position:0 -70px;
+    position: absolute;
+    top: 190px;
+    right: 0;
+    z-index: 1;
+}
+
+
+.hospital-wrap .e-g{
+    width: 100%;
+    height: 454px;
+    min-width: 1200px;
+
+    background-color: #ffffff;
+}
+
+
+.e-g .e-main{
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 40px;
+    color: #FFFFff;
+}
+
+
+.e-main .e-content{
+    width: 810px;
+    margin: 0 auto;
+    position: relative;
+
+}
+
+.e-content .sc{
+    position: absolute;
+    width: 20px;
+    height: 291px;
+    background-color: #ffffff;
+}
+
+.e-content .e-t{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.e-t div{
+    display: inline-block;
+}
+
+.e-t p{
+    font-size: 24px;
+    margin: 0 40px;
+}
+.e-t div{
+    width: 200px;
+    background: #000;
+    height:1px;
+    margin: 5px;
+}
+
+.e-content .tab-list{
+    width: 103%;
+    height: 291px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.e-g .company{
+    width: 741px;
+    margin: 0 auto;
+    text-align: right;
+
+}
+
+.tab-list table{
+    width: 100%;
+}
+
+
+.tab-list table .wid-10{
+    width: 10%;
+}
+
+table tr td div{
+    padding: 6px 0;
+    text-align: center;
+}
+
+
+table .wid-10 img{
+    width: 100%;
+    height: 100%;
+}
+table .wid-30{
+    width: 30%;
+}
+table .wid-20{
+    width: 20%;
+}

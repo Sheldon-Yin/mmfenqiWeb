@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="modules/activities/president/css/president.css">
+<div class="activities-president-container">
+    <div class="container">
+        <div class='row activities-president-img'>
+
+            <img class="img" src="modules/activities/president/img/1.jpg" />
+            <img class="img" src="modules/activities/president/img/2.jpg" />
+            <img class="img" src="modules/activities/president/img/3.jpg" />
+            <div class="four" onclick="javascript:document.getElementById('F1').scrollIntoView()">
+                <img class="img2" src="modules/activities/president/img/4.jpg" />
+                <span  class="four-button"><img src="modules/activities/president/img/botton.png"></span>
+            </div>
+            <div class="four" onclick="javascript:document.getElementById('F1').scrollIntoView()">
+                <img class="img2" src="modules/activities/president/img/5.jpg" />
+                <span  class="five-button"><img src="modules/activities/president/img/botton.png"></span>
+            </div>
+            <div class="four" onclick="javascript:document.getElementById('F1').scrollIntoView()">
+                <img class="img2" src="modules/activities/president/img/6.jpg" />
+                <span  class="six-button"><img src="modules/activities/president/img/botton.png"></span>
+            </div>
+
+            <img class="img" src="modules/activities/president/img/7.jpg" />
+            <img class="img" src="modules/activities/president/img/8.jpg" />
+            <img class="img" src="modules/activities/president/img/9.jpg" />
+            <div class="four" style="margin-bottom: 0.5rem; cursor: pointer;" ng-click="goToGoodsDetails('528')" id="F1">
+                <img class="img2" src="modules/activities/president/img/doctor4.jpg" />
+                <span class="doctor-btn" ><img src="modules/activities/president/img/botton2.png"/></span>
+            </div>
+            <div class="four" style="margin-bottom: 0.5rem; cursor: pointer;" ng-click="goToGoodsDetails('378')">
+                <img class="img2" src="modules/activities/president/img/doctor.jpg" />
+                <span class="doctor-btn" ><img src="modules/activities/president/img/botton2.png"/></span>
+            </div>
+
+            <div class="four" style="margin-bottom: 0.5rem; cursor: pointer;" ng-click="goToGoodsDetails('378')">
+                <img class="img2" src="modules/activities/president/img/doctor2.jpg" />
+                <span class="doctor-btn"><img src="modules/activities/president/img/botton2.png"/></span>
+            </div>
+            <div class="four" style="cursor: pointer;" ng-click="goToGoodsDetails('381')">
+                <img class="img2" src="modules/activities/president/img/doctor3.jpg" />
+                <span class="doctor-btn" ><img src="modules/activities/president/img/botton2.png"/></span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center" style="padding: 2rem 0;">已预约用户</div>
+        </div>
+
+        <div class="row" ng-show="!showMore" ng-repeat="x in orderList | limitTo:10" style="margin-bottom: 1rem;">
+            <div class="col-xs-3"><img ng-src="{{x.sculptureUrl}}" style="border-radius: 50%; width: 3rem; height: 3rem;"></div>
+            <div class="col-xs-6">
+
+                <div>用户:{{x.telphone}}</div>
+                <div>{{x.createTime | date: 'yyyy-MM-dd hh:mm:ss'}}</div>
+            </div>
+
+            <div class="col-xs-3" style="color:#fb695b">
+                已预约
+            </div>
+
+
+        </div>
+
+        <div class="row" ng-repeat="x in orderList" ng-show="showMore" style="margin-bottom: 1rem;">
+            <div class="col-xs-3"><img ng-src="{{x.sculptureUrl}}" width="100%" style="border-radius: 50%; width: 3rem; height: 3rem;"></div>
+            <div class="col-xs-6">
+
+                <div>用户:{{x.telphone}}</div>
+                <div>{{x.createTime | date: 'yyyy-MM-dd hh:mm:ss'}}</div>
+            </div>
+
+            <div class="col-xs-3" style="color:#fb695b">
+                已预约
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 text-right" style="font-size: 0.5rem; padding-bottom: 1rem;">
+                本活动最终解释权归杭州优呗网络科技公司所有
+            </div>
+        </div>
+
+        <div class="row" ng-show="!showMore" ng-click="showMoreUser()">
+            <div class="col-xs-12 text-center" style="padding-bottom: 1rem;">查看更多</div>
+        </div>
+    </div>
+</div>

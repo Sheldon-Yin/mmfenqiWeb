@@ -1,0 +1,41 @@
+.activities-president-container {}
+
+.activities-president-img .img {
+    width: 100%
+}
+
+.activities-president-img .img2 {
+    width: 100%
+}
+
+.activities-president-img .four {
+    position: relative;
+}
+
+.activities-president-img .four .four-button {
+    position: absolute;
+    top: 77%;
+    left: 53%;
+}
+
+.activities-president-img .four .five-button {
+    position: absolute;
+    top: 77%;
+    left: 53%;
+}
+.activities-president-img .four .six-button {
+    position: absolute;
+    top: 82%;
+    left: 53%;
+}
+
+.activities-president-img .four span img{
+    width: 8rem;
+    height: 2.5rem;
+}
+
+.activities-president-img .four .doctor-btn {
+    position: absolute;
+    top: 81%;
+    left: 47%;
+}

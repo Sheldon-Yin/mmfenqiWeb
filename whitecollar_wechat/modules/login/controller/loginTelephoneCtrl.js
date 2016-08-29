@@ -43,7 +43,7 @@ define(function (require, exports, module) {
                                     Toast('从服务器返回了奇怪的数据')
                             }
                         } else {
-                            Toast(res.message);
+                            Toast(res.msg);
                         }
                     }).catch(function (error) {
                         console.log(error);

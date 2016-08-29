@@ -71,7 +71,7 @@
         <div class="container" ng-repeat="x in bill.data.billDetailResponse.repaymentList">
             <label style="display: block">
                 <input type="checkbox" style="display: none" ng-init="x.isChecked=false" ng-model="x.isChecked"
-                       ng-change="countPrice(x)">
+                       ng-change="countPrice(x)" ng-disabled="{{!x.first}}">
                 <div class="row" style="background-color: #FFFFFF;padding: 1rem 0">
                     <div class="col-xs-2">
                         <img style="width: 1.6rem;" src="modules/bill/img/bill-checked.png" ng-show="x.isChecked" ng-if="x.repayment_status!=1">

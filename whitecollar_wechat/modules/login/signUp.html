@@ -60,7 +60,7 @@
 
             <div class="app-bootstrap-input" style="border: 0;">
                 <div class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">密码</div>
-                <input type="password" ng-pattern="/^.{6,16}$/" ng-model="pwd" class="app-white-input-text" placeholder="请输入6-16位字符登录密码" ng-model="telephone" required>
+                <input type="password" maxlength="16" minlength="6" ng-model="pwd" class="app-white-input-text" placeholder="请输入6-16位字符登录密码" ng-model="telephone" required>
             </div>
         </div>
 
@@ -73,7 +73,7 @@
 
             <div class="app-bootstrap-input">
                 <div class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">身份证</div>
-                <input type="number" ng-pattern="/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/" class="app-white-code-text" placeholder="如362429199411025318" ng-model="identitycode" required>
+                <input type="text" ng-pattern="/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/" class="app-white-code-text" placeholder="如362429199411025318" ng-model="identitycode" required>
             </div>
 
             <div class="app-bootstrap-input row" style="border: 0;" ng-click="selectCode()">
@@ -82,12 +82,20 @@
                 <div class="col-xs-1 text-right" style="padding-right: 0">
                     <img src="modules/login/img/option.jpg" height="17" style="vertical-align: middle; float: right;">
                 </div>
-
             </div>
+
         </div>
+
+        <div class="container text-center"  style="margin-bottom: 1rem;margin-top: 1rem">
+            <img ng-click="changeEnsureRegister()" style="width: 1rem;margin-right: 0.5rem" src="modules/pay/img/contact-checked.png" ng-show="$root.ensureRegister">
+            <img ng-click="changeEnsureRegister()" style="width: 1rem;margin-right: 0.5rem" src="modules/pay/img/contact-unchecked.png" ng-show="!$root.ensureRegister">
+            我已同意并授权<a class="app-blue-text" ng-click="goToRegisterContact()">《信用咨询和管理服务条款》</a>
+
+        </div>
+
         <label style="display: block">
 
-            <div class="app-padding-one text-center" ng-class="{true:'app-little-pink-radius-button',false:'app-pink-radius-button'}[!telephone]">
+            <div class="app-padding-one text-center" ng-class="{true:'app-little-pink-radius-button',false:'app-pink-radius-button'}[!telephone || !$root.ensureRegister]">
                 下一步
             </div>
             <button type="submit" style="display: none"></button>

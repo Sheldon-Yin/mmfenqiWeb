@@ -1,0 +1,780 @@
+<style>
+    .wrap {
+        width: 100%;
+
+    }
+    .wrap_content {
+        width: 1206px;
+        margin: 20px auto;
+        padding: 0 20px;
+        font-family: 'Microsoft YaHei', SimHei, sans-serif;
+    }
+
+    .nav-tabs > li{
+        background-color: #f7f7f7;
+    }
+
+    .nav-tabs li a{
+        font-weight: bold;
+        color: #4e6c88;
+    }
+
+    .tableContent{
+        width: 100%;
+    }
+
+    .tableContent table {
+        width: 100%;
+        margin-top: 20px;
+        color: #666666;
+    }
+
+    .tableContent table .width-3 {
+        width: 40px !important;
+
+    }
+
+    .tableContent table .width-10 {
+        width: 80px;
+
+    }
+
+    .tableContent table .width-12 {
+        width: 120px !important;
+
+    }
+
+    .tableContent table .width-8 {
+        width: 80px;
+    }
+
+    .tableContent table .width-7 {
+        width: 70px;
+    }
+
+    .tableContent table .width-5 {
+        width: 60px;
+
+    }
+
+    .tableContent table thead tr th {
+        padding: 10px 5px;
+        background: #f7f7f7;
+        text-align: center;
+        color: #666666;
+        font-weight: 200;
+        font-size: 14px;
+
+    }
+
+    .tableContent table tr td {
+        text-align: center;
+        padding: 10px 0;
+        border: 1px solid #f9f9f9;
+        font-size: 12px;
+
+    }
+
+    .tableContent table tr td ul {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .tableContent table tr td ul li {
+        list-style: none;
+        color: #666666;
+    }
+
+    .tableContent table tr td ul li a:hover{
+        text-decoration: underline!important;
+    }
+
+    .tableContent table tr td ul .cc {
+        color: #cccccc;
+    }
+
+    .panel-body {
+        padding: 0;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid #cccccc;
+    }
+
+    .panel-body .btn_one {
+        padding: 20px 0 20px 40px;;
+        background-color: #fbf7f3;
+        border-top: 4px solid #f9c4b1;
+    }
+
+    .panel-body .input-group {
+        display: inline-block;
+        width: 200px;
+    }
+
+    ._pagination .btn_one_share_pagination {
+        font-size: 14px;
+        display: inline-block;
+        padding: 5px 4px;
+        *zoom: 1;
+        *display: inline;
+        vertical-align: middle;
+    }
+
+    ._pagination .btn_one_share_pagination.totoal {
+        font-size: 12px;
+        margin-top: 15px;
+    }
+
+    ._pagination input, button {
+        width: 50px;
+        vertical-align: middle;
+    }
+
+    .panel-body .btn_one_share {
+        font-size: 14px;
+        display: inline-block;
+        padding: 5px 4px;
+        *zoom: 1;
+        *display: inline;
+        vertical-align: middle;
+    }
+
+    .panel-body input[type='text'], input[type='tel'] {
+        padding: 8px;
+        background-color: #f2f2f2;
+        border: 0;
+        vertical-align: middle;
+    }
+
+    .panel-body input[type='button'] {
+        margin: 0 10px;
+        vertical-align: middle;
+    }
+
+    .panel-body .selectize-control.single .selectize-input {
+        padding: 8px;
+        background-color: #FFFFFF !important;
+        border: 0;
+
+    }
+
+    .ff {
+        background-color: #ffffff !important;
+        border-bottom: #ffffff !important;
+        position: relative;
+        z-index: 2;
+    }
+
+    .lookBtn{
+        color: #4292dd !important;
+        cursor: pointer;
+    }
+
+</style>
+<html>
+<div class="wrap" ng-controller="PaymentingCtrl">
+    <div class="wrap_content">
+        <tabset class="tab-container">
+            <tab>
+                <tab-heading>
+                    还款中账单
+                </tab-heading>
+                <div class="panel-body b-light">
+                    <div class="btn_one_share">姓名</div>
+                    <input type="text" ng-model="user.userName" style="width: 140px;">
+                    <div class="btn_one_share">手机号</div>
+                    <input type="tel" ng-model="user.telephone" style="width: 120px;">
+                    <div class="btn_one_share">订单号</div>
+                    <input type="text" ng-model="user.orderSn">
+                    <div class="btn_one_share">项目名称</div>
+                    <input type="text" ng-model="user.orderName">
+                    <div class="btn_one_share">角色</div>
+                    <ui-select ng-model="roleType.selected" theme="selectize" ng-disabled="disabled"
+                               style="width: 120px;"
+                               class="btn_one_share">
+                        <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="y in roleData | filter: $select.search">
+                            <span ng-bind-html="y.name | highlight: $select.search"></span>
+                            <!--<small ng-bind-html="y.code | highlight: $select.search"></small>-->
+                        </ui-select-choices>
+                    </ui-select>
+
+                    <br>
+
+                    <div class="btn_one_share">还款状态</div>
+                    <ui-select ng-model="moneyType.selected" theme="selectize" ng-disabled="disabled"
+                               style="width: 120px;"
+                               class="btn_one_share">
+                        <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="y in moneyTypeData | filter: $select.search">
+                            <span ng-bind-html="y.name | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+
+
+
+                    <div class="btn_one_share">到期应还款开始时间</div>
+                    <div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}"
+                               ng-model="datetime.start_time" placeholder="时间" is-open="opened"
+                               datepicker-options="dateOptions" ng-change="updateData()"
+                               ng-required="true" close-text="关闭" style="width: 140px;"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                    </div>
+
+                    <!--{{datetime.start_time | date:'yyyy-MM-dd HH:mm:ss'}}-->
+                    <div class="btn_one_share">结束时间</div>
+                    <div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}"
+                               ng-model="datetime.start_end" placeholder="时间" is-open="opened"
+                               datepicker-options="dateOptions" ng-change="updateData()"
+                               ng-required="true" close-text="关闭" style="width: 140px;"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                    </div>
+
+                    <input type="button" class="btn btn-lg btn-danger btn_one_share" value="查询" ng-click="search()"
+                           style=" width: 84px; padding: 8px 16px; margin-bottom: 7px;">
+                    <input type="button" class="btn btn-lg btn-success btn_one_share" value="导出"
+                           ng-click="exportOrderInfo()" style=" width: 84px; padding: 8px 16px; margin-bottom: 7px;">
+                </div>
+                <div class="tableContent">
+                    <table cellpadding="0" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <!--<th class="width-3">-->
+                                <!--<input type="checkbox" name="checkbox">-->
+                            <!--</th>-->
+                            <th class="width-10">
+                                姓名
+                            </th>
+                            <th class="width-12">
+                                订单号
+                            </th>
+                            <th class="width-12">
+                                商品名称
+                            </th>
+                            <th class="width-7">
+                                账单生成日
+                            </th>
+                            <th class="width-7">
+                                近期应还款时间
+                            </th>
+                            <th class="width-7">
+                                项目总金额
+                            </th>
+                            <th class="width-7">
+                               还款期数
+                            </th>
+                            <th class="width-7">
+                                距下次还款天数
+                            </th>
+                            <th class="width-7">
+                                每期还款金额
+                            </th>
+                            <th class="width-8">
+                                还款状态
+                            </th>
+                            <th class="width-5">
+                               角色
+                            </th>
+                            <th class="width-5">
+                                操作
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="y in userBillListData" style="border: 1px solid #f9f9f9; ">
+                            <!--<td>-->
+                                <!--<ul>-->
+                                    <!--<li><input type="checkbox" name="checkbox"></li>-->
+                                <!--</ul>-->
+                            <!--</td>-->
+                            <td>
+
+                                <ul>
+                                    <li>{{y.name}}</li>
+                                    <li>{{y.telephone}}</li>
+
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.orderSn}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.orderName}}</li>
+
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.createTime | date :'yyyy-MM-dd'}}</li>
+                                </ul>
+
+                            </td>
+                            <td>
+                                <ul>
+                                    <li> {{y.payTime | date :'yyyy-MM-dd'}}</li>
+                                </ul>
+
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.orderPrice}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.stagingStr}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.days}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.payAmount}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.monthRepaymentSituation}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.userType}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li  ng-click="jumpToDetail(y.userBillId)" ><a class="lookBtn">查看</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="_pagination">
+                    <pagination class="btn_one_share_pagination" total-items="page.totalItem" ng-model="$parent.$parent.currentPage"
+                                max-size="maxSize" rotate="false" items-per-page="page.pageSize" previous-text="上一页"
+                                next-text="下一页"></pagination>
+                    <div class="btn_one_share_pagination totoal">共{{page.totalPage}}页</div>
+                    <div class="btn_one_share_pagination">转到</div>
+                    <input type="text" ng-model="inputPage" placeholder="第几页" style="padding-left:5px; ">
+                    <button ng-click="selectPage3(inputPage)"
+                            style="background-color: #b7b7b7; border: 0; padding: 3px 0;">
+                        确定
+                    </button>
+                    <div class="btn_one_share_pagination" style="text-align: right; float: right; line-height: 87px;">
+                        总订单数:{{page.totalItem}}
+                    </div>
+                </div>
+            </tab>
+            <tab>
+                <tab-heading>
+                    逾期账单
+                </tab-heading>
+                <div class="panel-body b-light">
+
+                    <div class="btn_one_share">姓名</div>
+                    <input type="text" ng-model="OverDueBillUser.userName" style="width: 140px;">
+                    <div class="btn_one_share">手机号</div>
+                    <input type="tel" ng-model="OverDueBillUser.telephone" style="width: 120px;">
+                    <div class="btn_one_share">订单号</div>
+                    <input type="text" ng-model="OverDueBillUser.orderSn">
+                    <div class="btn_one_share">项目名称</div>
+                    <input type="text" ng-model="OverDueBillUser.orderName">
+
+
+
+                    <div class="btn_one_share">角色</div>
+                    <ui-select ng-model="roleType2.selected" theme="selectize" ng-disabled="disabled"
+                               style="width: 120px;"
+                               class="btn_one_share">
+                        <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="y in roleData | filter: $select.search">
+                            <span ng-bind-html="y.name | highlight: $select.search"></span>
+                            <!--<small ng-bind-html="y.code | highlight: $select.search"></small>-->
+                        </ui-select-choices>
+                    </ui-select>
+
+                    <div class="btn_one_share">联系情况</div>
+                    <ui-select ng-model="isContactType.selected" theme="selectize" ng-disabled="disabled"
+                               style="width: 120px;"
+                               class="btn_one_share">
+                        <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="y in isContactData | filter: $select.search">
+                            <span ng-bind-html="y.name | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+
+
+
+                    <div class="btn_one_share">到期应还款开始时间</div>
+                    <div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}"
+                               ng-model="datetime2.time_start" placeholder="时间" is-open="opened"
+                               datepicker-options="dateOptions" ng-change="updateData()"
+                               ng-required="true" close-text="关闭" style="width: 140px;"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                    </div>
+
+                    <!--{{datetime.start_time | date:'yyyy-MM-dd HH:mm:ss'}}-->
+                    <div class="btn_one_share">结束时间</div>
+                    <div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}"
+                               ng-model="datetime2.time_end" placeholder="时间" is-open="opened"
+                               datepicker-options="dateOptions" ng-change="updateData()"
+                               ng-required="true" close-text="关闭" style="width: 140px;"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                    </div>
+                    <input type="button" class="btn btn-lg btn-danger btn_one_share" value="查询" ng-click="$parent.$parent.search2()"
+                           style=" width: 84px; padding: 8px 16px; margin-bottom: 7px;">
+                    <input type="button" class="btn btn-lg btn-success btn_one_share" value="导出"
+                           ng-click="exportOverBill()" style=" width: 84px; padding: 8px 16px; margin-bottom: 7px;">
+                </div>
+                <div class="tableContent">
+                    <table cellpadding="0" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th class="width-10">
+                                <div>姓名</div>
+                            </th>
+                            <th class="width-12">
+                                <div>订单号</div>
+                            </th>
+                            <th class="width-12">
+                                <div>项目名称</div>
+                            </th>
+                            <th class="width-7">
+                                <div>账单生成日</div>
+                            </th>
+                            <th class="width-7">
+                                <div>近期应还款时间</div>
+                            </th>
+                            <th class="width-7">
+                                <div>第几期逾期</div>
+                            </th>
+                            <th class="width-7">
+                                <div>逾期天数</div>
+                            </th>
+                            <th class="width-7">
+                                <div>逾期金额</div>
+                            </th>
+                            <th class="width-8">
+                                <div>应还总金额</div>
+                            </th>
+                            <th class="width-7">
+                                <div>当日联系情况</div>
+                            </th>
+                            <th class="width-5">
+                                <div>角色</div>
+                            </th>
+                            <th class="width-5">
+                                <div>操作</div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="y in OverDueBillListData" style="border: 1px solid #f9f9f9; ">
+                            <td>
+
+                                <ul>
+                                    <li>{{y.name}}</li>
+                                    <li>{{y.telephone}}</li>
+
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.orderSn}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.orderName}}</li>
+
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.createTime | date :'yyyy-MM-dd'}}</li>
+                                </ul>
+
+                            </td>
+                            <td>
+                                <ul>
+                                    <li> {{y.payTime | date :'yyyy-MM-dd'}}</li>
+                                </ul>
+
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.stagingStr}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.overDays}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.overBreachAmount}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.payAmount}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.isContact}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.userType}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li class="lookBtn" ng-click="jumpToDetail(y.userBillId)">查看</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="_pagination">
+                    <pagination class="btn_one_share_pagination" total-items="page2.totalItem" ng-model="$parent.$parent.currentPage2"
+                                max-size="maxSize" rotate="false" items-per-page="page2.pageSize" previous-text="上一页"
+                                next-text="下一页"></pagination>
+                    <div class="btn_one_share_pagination totoal">共{{page2.totalPage}}页</div>
+                    <div class="btn_one_share_pagination">转到</div>
+                    <input type="text" ng-model="inputPage" placeholder="第几页" style="padding-left:5px; ">
+                    <button ng-click="selectPage2(inputPage)"
+                            style="background-color: #b7b7b7; border: 0; padding: 3px 0;">
+                        确定
+                    </button>
+                    <div class="btn_one_share_pagination" style="text-align: right; float: right; line-height: 87px;">
+                        总订单数:{{page2.totalItem}}
+                    </div>
+                </div>
+            </tab>
+            <tab>
+                <tab-heading>
+                    已全部还款账单
+                </tab-heading>
+                <div class="panel-body b-light">
+
+                    <div class="btn_one_share">姓名</div>
+                    <input type="text" ng-model="userFinishBill.userName" style="width: 140px;">
+                    <div class="btn_one_share">手机号</div>
+                    <input type="tel" ng-model="userFinishBill.telephone" style="width: 120px;">
+                    <div class="btn_one_share">订单号</div>
+                    <input type="text" ng-model="userFinishBill.orderSn">
+                    <div class="btn_one_share">项目名称</div>
+                    <input type="text" ng-model="userFinishBill.orderName">
+
+
+
+
+                    <div class="btn_one_share">角色</div>
+                    <ui-select ng-model="roleType3.selected" theme="selectize" ng-disabled="disabled"
+                               style="width: 120px;"
+                               class="btn_one_share">
+                        <ui-select-match>{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="y in roleData | filter: $select.search">
+                            <span ng-bind-html="y.name | highlight: $select.search"></span>
+                            <!--<small ng-bind-html="y.code | highlight: $select.search"></small>-->
+                        </ui-select-choices>
+                    </ui-select>
+
+                    <br>
+                    <div class="btn_one_share">到期应还款开始时间</div>
+                    <div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}"
+                               ng-model="datetime3.time_start" placeholder="时间" is-open="opened"
+                               datepicker-options="dateOptions" ng-change="updateData()"
+                               ng-required="true" close-text="关闭" style="width: 140px;"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                    </div>
+
+                    <!--{{datetime.start_time | date:'yyyy-MM-dd HH:mm:ss'}}-->
+                    <div class="btn_one_share">结束时间</div>
+                    <div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}"
+                               ng-model="datetime3.time_end" placeholder="时间" is-open="opened"
+                               datepicker-options="dateOptions" ng-change="updateData()"
+                               ng-required="true" close-text="关闭" style="width: 140px;"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                    </div>
+
+                    <input type="button" class="btn btn-lg btn-danger btn_one_share" value="查询" ng-click="search3()"
+                           style=" width: 84px; padding: 8px 16px; margin-bottom: 7px;">
+                    <input type="button" class="btn btn-lg btn-success btn_one_share" value="导出"
+                           ng-click="exportFinishBill()" style=" width: 84px; padding: 8px 16px; margin-bottom: 7px;">
+                </div>
+                <div class="tableContent">
+                    <table cellpadding="0" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <!--<th class="width-3">-->
+                                <!--<div><input type="checkbox" name="checkbox"></div>-->
+                            <!--</th>-->
+                            <th class="width-10">
+                                <div>姓名</div>
+                            </th>
+                            <th class="width-12">
+                                <div>订单号</div>
+                            </th>
+                            <th class="width-12">
+                                <div>商品名称</div>
+                            </th>
+                            <th class="width-7">
+                                <div>账单生成日</div>
+                            </th>
+                            <th class="width-7">
+                                <div>近期应还款时间</div>
+                            </th>
+                            <th class="width-7">
+                                <div>项目总金额</div>
+                            </th>
+                            <th class="width-7">
+                                <div>还款期数</div>
+                            </th>
+                            <th class="width-7">
+                                <div>距下次还款天数</div>
+                            </th>
+                            <th class="width-7">
+                                <div>每期还款金额</div>
+                            </th>
+                            <th class="width-5">
+                                <div>角色</div>
+                            </th>
+                            <th class="width-5">
+                                <div>操作</div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="y in finishedBillList">
+                            <!--<td>-->
+                                <!--<ul>-->
+                                    <!--<li><input type="checkbox" name="checkbox"></li>-->
+                                <!--</ul>-->
+                            <!--</td>-->
+                            <td>
+
+                                <ul>
+                                    <li>{{y.name}}</li>
+                                    <li>{{y.telephone}}</li>
+
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.orderSn}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.orderName}}</li>
+
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.createTime | date :'yyyy-MM-dd'}}</li>
+                                </ul>
+
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>--</li>
+                                </ul>
+
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.orderPrice}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.totalTimes}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>--</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.monthPay}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>{{y.userType}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li ng-click="jumpToDetail(y.userBillId)" class="lookBtn">查看</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="_pagination">
+                    <pagination class="btn_one_share_pagination" total-items="page3.totalItem" ng-model="$parent.$parent.currentPage3"
+                                max-size="maxSize" rotate="false" items-per-page="page3.pageSize" previous-text="上一页"
+                                next-text="下一页"></pagination>
+                    <div class="btn_one_share_pagination totoal">共{{page3.totalPage}}页</div>
+                    <div class="btn_one_share_pagination">转到</div>
+                    <input type="text" ng-model="inputPage" placeholder="第几页" style="padding-left:5px; ">
+                    <button ng-click="selectPage(inputPage)"
+                            style="background-color: #b7b7b7; border: 0; padding: 3px 0;">
+                        确定
+                    </button>
+                    <div class="btn_one_share_pagination" style="text-align: right; float: right; line-height: 87px;">
+                        总订单数:{{page3.totalItem}}
+                    </div>
+                </div>
+            </tab>
+        </tabset>
+
+
+    </div>
+
+</div>
+</html>

@@ -107,12 +107,27 @@ angular.module('app')
                     .state('app.report.repeat', {
                         url: '/repeat',
                         templateUrl: 'tpl/report/reportRepeat.html',
+                        params: {'id': null},
                         resolve: {
                             deps: ['$ocLazyLoad',
                                 function ($ocLazyLoad) {
                                     return $ocLazyLoad.load('toaster').then(
                                         function () {
                                             return $ocLazyLoad.load(['js/controllers/report/reportRepeatCtrl.js']);
+                                        })
+                                }]
+                        }
+                    })
+                    .state('app.report.detail', {
+                        url: '/detail',
+                        params: {'id': null},
+                        templateUrl: 'tpl/report/reportDetail.html',
+                        resolve: {
+                            deps: ['$ocLazyLoad',
+                                function ($ocLazyLoad) {
+                                    return $ocLazyLoad.load('toaster').then(
+                                        function () {
+                                            return $ocLazyLoad.load(['js/controllers/report/reportDetailCtrl.js']);
                                         })
                                 }]
                         }

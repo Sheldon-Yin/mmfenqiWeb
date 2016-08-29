@@ -1,0 +1,131 @@
+<style>
+    .container{
+        width: 100%;
+    }
+
+
+    .modal-backdrop{
+        background: #000000;
+    }
+
+    .modal-body [class*='col-sm']{
+        padding:10px 0!important;
+    }
+
+    .modal-content{
+        width: 473px;
+        border: 0;
+        border-radius: 0;
+
+    }
+    .modal-header{
+        padding: 10px 15px;
+        font-size: 14px;
+        background: #f0f0f0;
+    }
+    .modal-body{
+        font-size: 12px;
+        padding: 15px 15px 0 15px;
+    }
+
+    .modal-body input{
+        border: 1px solid #f7f7f7;
+    }
+
+    .modal-body .content{
+        background: #f0f0f0;
+        margin: 0 -30px;
+    }
+    .modal-footer{
+        text-align: center;
+        border-radius: 0;
+        padding: 13px;
+        border: 0;
+    }
+
+    .modal-footer a{
+        height: 28px;
+        line-height: 28px;
+        margin: 0 24px;
+        padding: 2px 30px;
+        border: 1px solid #51abf0;
+        font-weight: 500;
+        cursor: pointer;
+        text-decoration: none;
+        background: #57b6ff;
+        width: 96px;
+        color: #ffffff;
+    }
+
+</style>
+<div class="modal-header">
+    <div class="modal-title">修改</div>
+    <span class="icon icon-close icon-large" style="right: 10px;top: 10px; position: absolute; cursor: pointer;"
+               ng-click="cancel()"></span>
+</div>
+<div class="modal-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">期数:</div>
+            <div class="col-sm-3"><input type="text" ng-model="modal.ljb"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">状态:</div>
+            <div class="col-sm-3">1</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">应还本金(元):</div>
+            <div class="col-sm-3">1</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">服务费(元):</div>
+            <div class="col-sm-3">1</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">逾期利息:</div>
+            <div class="col-sm-3">1</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">应还款金额:</div>
+            <div class="col-sm-3">1</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">应还款时间:</div>
+            <div class="col-sm-3">1</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">实际还款时间:</div>
+            <div class="col-sm-3">1</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">优惠还款金额:</div>
+            <div class="col-sm-3">1</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">逾期天数:</div>
+            <div class="col-sm-3">1</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">支付方式:</div>
+            <div class="col-sm-3">1</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">支付订单号:</div>
+            <div class="col-sm-3">1</div>
+        </div>
+
+        <div class="content">
+            <div class="row" style="margin: 0 15px;">
+                <div class="col-sm-3">备注</div>
+            </div>
+            <div class="row" style="margin: 0 15px;padding-bottom: 15px;">
+                <div class="col-sm-11">
+                    <textarea name="textarea" id="textarea" cols="65" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <a ng-click="ok()">提交</a>
+</div>

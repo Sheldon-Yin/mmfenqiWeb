@@ -40,6 +40,12 @@ define(function (require, exports, module) {
                         angular.forEach(res.data.billDetailResponse.repaymentList, function (each) {
                             each.isChecked = false;
                             if (each.repayment_status != 1) {
+                                if (!$scope.firstFlag) {
+                                    each.first = true;
+                                    $scope.firstFlag = true
+                                } else {
+                                    each.first = false
+                                }
                                 $scope.couldSelect += 1;
                                 $scope.allMoney += each.repaymentAmount;
                             }

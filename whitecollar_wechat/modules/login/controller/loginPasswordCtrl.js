@@ -32,7 +32,7 @@ define(function (require, exports, module) {
                             var appToken = res.data.APP_TOKEN;
                             Bridge.saveAppToken(appToken, function (res) {
                                 console.log(window.localStorage.referer);
-                                var href = !!window.localStorage.referer ? window.localStorage.referer : '#?/login/info';
+                                var href = !!window.localStorage.referer ? window.localStorage.referer : ($location.absUrl().split('#')[0] + '#?/login/info');
                                 window.location.href = is_weixn() ? ("/appinterface/webAuthorize?appToken=" + appToken + "&state=" + encodeURIComponent(href)) : href;
                             });
                             console.log(appToken)

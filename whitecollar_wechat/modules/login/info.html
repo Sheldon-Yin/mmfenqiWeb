@@ -1,0 +1,109 @@
+<style>
+    .container p:first-child{
+        font-size: 2rem;
+    }
+
+</style>
+<link rel="stylesheet" href="modules/verify/css/verify-student.css">
+<div class="verify-select-dialog-container" ng-if="selecting">
+    <div class="verify-select-dialog-background" ng-click="hideSelect()">
+    </div>
+    <div class="verify-select-dialog">
+        <div class="container" style="height: 10%">
+            <div class="row" style="height: 100%">
+                <div class="verify-select-dialog-title">
+                    {{selectTitle}}
+                </div>
+            </div>
+        </div>
+        <div class="container" style="overflow: scroll;height: 90%;">
+            <div class="row">
+
+                <div class="col-xs-12 verify-select-dialog-item"
+                     ng-repeat="x in selectItems" ng-click="selectCallBack(x[itemName],x[itemValue])">
+                    {{x[itemName]}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container app-grey-background-container">
+
+    <form ng-submit="goToPay()" name="myForm">
+        <div class="row text-center" style="font-size: 1.4rem;padding: 1.7rem 0;background: #ff4d67; color: #fff;">
+            <div class="col-xs-6 text-center app-bootstrap-padding-zero">
+                <p>{{price ? price :'--' }}</p>
+                <p>项目分期总额度(元)</p>
+            </div>
+
+            <div class="col-xs-1 text-right" style="padding: 0;">
+                <div style="width: 1px ; height: 3.5rem; background: #dfdfdf;"></div>
+            </div>
+            <div class="col-xs-5 text-center app-bootstrap-padding-zero">
+                <p>{{remainMoney}}</p>
+                <p>当前可用额度(元)</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 2rem" class="app-bootstrap-white">
+            <div class="app-bootstrap-input" >
+                <div class="col-xs-2 app-bootstrap-padding-zero">项目名称</div>
+                <input type="text"  class="col-xs-7" placeholder="如玻尿酸，瘦脸针" ng-model="goodsName"  required>
+                <div class="col-xs-1 col-xs-offset-2 text-right app-bootstrap-padding-zero"></div>
+            </div>
+            <div class="app-bootstrap-input">
+                <div class="col-xs-2 app-bootstrap-padding-zero">项目价格</div>
+                <input type="number" class="col-xs-7" placeholder="如有多个项目，则填写总价" ng-model="price"  ng-change="handleChange()" required>
+
+                <!--<div class="col-xs-3 text-right app-bootstrap-padding-zero"><img src="modules/login/img/option.jpg" height="17" style="vertical-align: middle;"></div>-->
+            </div>
+
+
+
+            <div class="app-bootstrap-input row" ng-click="staging()">
+                <div class="col-xs-3 app-bootstrap-padding-zero">选择期数</div>
+                <div class="col-xs-4 col-xs-offset-4 text-right app-bootstrap-padding-zero">{{id}}</div>
+                <div class="col-xs-1 text-right" style="padding-right: 0">
+                    <img src="modules/login/img/option.jpg" height="17" style="vertical-align: middle; float: right;">
+                </div>
+            </div>
+
+            <div class="app-bootstrap-input row"  style="border: 0;">
+                <div class="col-xs-3 app-bootstrap-padding-zero">是否购买保险</div>
+                <div class="col-xs-2 text-left" ng-click="inSure()"><img src="modules/login/img/weihao.png" height="17" style="vertical-align: middle;float: left;" ></div>
+                <div class="col-xs-4 col-xs-offset-2 text-right app-bootstrap-padding-zero" ng-click="selectCode()">{{name ?name :'--'}}</div>
+                <div class="col-xs-1 text-right" style="padding-right: 0">
+                    <img src="modules/login/img/option.jpg" height="17" style="vertical-align: middle; float: right;">
+                </div>
+            </div>
+
+        </div>
+
+        <div style="margin-top: 1rem" class="app-bootstrap-white">
+            <div class="app-bootstrap-input" >
+                <div class="col-xs-5 app-bootstrap-padding-zero">月供金额(包含服务费)</div>
+                <div class="col-xs-3 col-xs-offset-4 text-right app-bootstrap-padding-zero">{{strAmount}}</div>
+
+
+            </div>
+        </div>
+
+        <div ng-if="nottoPay" class="app-padding-one text-center" ng-class="{true:'app-little-pink-radius-button',false:'app-pink-radius-button'}[!price]" ng-click="goToVerify()">
+            去申请资料
+        </div>
+
+
+
+        <label style="display: block">
+            <div ng-if="toPay" class="app-padding-one text-center" ng-class="{true:'app-little-pink-radius-button',false:'app-pink-radius-button'}[!price]">
+                下单
+            </div>
+            <button  type="submit" style="display: none"></button>
+        </label>
+        <!--<div class="row text-center app-very-blue-text" style="margin-top: 50px;font-size: 1.4rem"-->
+             <!--ng-click="goToFastLogin()">-->
+            <!--快捷登录-->
+        <!--</div>-->
+    </form>
+
+</div>

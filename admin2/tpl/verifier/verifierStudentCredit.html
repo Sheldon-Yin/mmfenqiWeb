@@ -1,0 +1,753 @@
+<link rel="stylesheet" href="tpl/verifier/css/verifierStudentCreditCss.css">
+<style>
+    .selectize-control.single .selectize-input{
+        padding: 6px;
+    }
+
+    /*.xueji, input[type='text']{*/
+        /*border: 0;*/
+        /*padding: 0;*/
+
+    /*}*/
+    .contact, input[type='text']{
+        border: 0;
+        padding: 0;
+
+    }
+    .col-sm-2 a{
+        color: #82c9ff;
+    }
+
+    .one{
+        width: 100%;
+        background: #FFFFFF;
+        padding: 10px 20px;
+        font-size: 12px;
+
+    }
+    .one label{
+        vertical-align: middle;
+    }
+    .one div{
+        margin: 5px 0;
+    }
+    .two{
+        width: 100%;
+        background: #e6e6e6;
+        padding: 10px 20px;
+    }
+
+
+
+    .xueji input[type='text'] ,.contact input[type='text'] , ._idNameCard input[type='text'] {
+        padding: 0;
+        border: 1px solid #ffffff;
+        color: #666666;
+        padding-left: 5px;
+    }
+    ._idNameCard a{
+        color: #82c9ff;
+    }
+    .xueji a ,.contact a{
+        color: #82c9ff;
+    }
+
+    .xueji .col-sm-4{
+        padding: 9px 0;
+    }
+
+    .contact .col-sm-8 ,._idNameCard .col-sm-8{
+        padding: 9px 0;
+    }
+
+
+    .row ._999999{
+        color: #999999 !important;
+        white-space: normal;
+        padding-left:0 ;
+    }
+
+    .row .col-sm-6{
+        padding: 15px;
+    }
+
+
+    .pager li > a{
+        color: #82c9ff !important;
+    }
+
+
+
+
+
+</style>
+<html>
+<div class="wrap_Student" ng-controller="StuCreditCtrl">
+
+    <div class="wrap_top">
+        <div class="wrap_top_content">
+            <div class="btn_one_share">姓名</div>
+            <input type="text" ng-model="realName">
+            <div class="btn_one_share">手机号</div>
+            <input type="tel" ng-model="telphone">
+            <div class="btn_one_share">审核状态</div>
+
+            <select ng-model="check" style="min-width: 100px;">
+                <option ng-repeat="x in _checkStatus" ng-selected="x.checkStatus==''" value="{{x.checkStatus}}">{{x.message}}</option>
+            </select>
+
+
+            <div class="btn_one_share">下单时间</div>
+            <div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">
+                <input type="text" class="form-control" datepicker-popup="{{format}}"
+                       ng-model="$parent.time_start" placeholder="时间" is-open="opened"
+                       datepicker-options="dateOptions"
+                       ng-required="true" close-text="关闭" style="width: 150px;"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+            </div>
+
+
+            <div class="btn_one_share">-</div>
+            <div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">
+                <input type="text" class="form-control" datepicker-popup="{{format}}"
+                       ng-model="$parent.time_end" placeholder="时间" is-open="opened"
+                       datepicker-options="dateOptions"
+                       ng-required="true" close-text="关闭" style="width: 150px;"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+            </div>
+
+            <!--<div class="btn_one_share">合同编号</div>-->
+            <!--<input type="text">-->
+
+            <input type="button" class="btn btn-lg btn-danger btn_one_share" value="查询" ng-click="search()"
+                   style=" width: 84px; padding: 6px 16px;">
+        </div>
+    </div>
+
+    <div class="wrap_content">
+
+        <div class="wrap_content_left">
+
+            <div class="title">
+                <div class="_user">用户</div>
+                <div class="_type">(√通过，◎待审核，△未提交，×未通过)</div>
+            </div>
+            <a class="_a"  ng-repeat="y in studentCreditListdate" >
+
+                    <div class="info" id="{{y.id}}" ng-click="UserInfo(y.id,y.basicCreditStatus,y.bankInfoCreditStatus,y.businessCreditStatus,y.sesameCreditStatus)">
+                        <div class="user_info">{{y.name}}</div>
+                        <div class="user_type">{{y.newCreditStatus | _newCreditStatus}}</div>
+                        <div class="user_time">{{y.fastUploadTime | date: 'yyyy-MM-dd HH:ss:mm'}}</div>
+                        <div class="user_all_type">
+                            (
+                            <div>
+                                <div ng-show="y.basicCreditStatus=='1'"><img src="img/sure.png"><span>基础认证</span></div>
+                                <div ng-show="y.basicCreditStatus=='0'"><img src="img/sj.png"><span>基础认证</span></div>
+                                <div ng-show="y.basicCreditStatus=='2'"><img src="img/false.png"><span>基础认证</span></div>
+                                <div ng-show="y.basicCreditStatus=='3'" style="color: #7cbf30;"><img src="img/quan.png"><span>基础认证</span></div>
+
+                            </div>
+                            <div>
+                                <div ng-show="y.bankInfoCreditStatus=='1'"><img src="img/sure.png"><span>银行流水</span></div>
+                                <div ng-show="y.bankInfoCreditStatus=='0'"><img src="img/sj.png"><span>银行流水</span></div>
+                                <div ng-show="y.bankInfoCreditStatus=='2'"><img src="img/false.png"><span>银行流水</span></div>
+                                <div ng-show="y.bankInfoCreditStatus=='3'" style="color: #7cbf30;"><img src="img/quan.png"><span>银行流水</span></div>
+
+                            </div>
+                            <div>
+
+                                <div  ng-show="y.sesameCreditStatus=='1'"><img src="img/sure.png"><span>芝麻信用</span></div>
+                                <div  ng-show="y.sesameCreditStatus=='0'"><img src="img/sj.png"><span>芝麻信用</span></div>
+                                <div  ng-show="y.sesameCreditStatus=='2'"><img src="img/false.png"><span>芝麻信用</span></div>
+                                <div  ng-show="y.sesameCreditStatus=='3'" style="color: #7cbf30;"><img src="img/quan.png"><span>芝麻信用</span></div>
+
+                            </div>
+                            <div>
+                                <div ng-show="y.businessCreditStatus=='1'"><img src="img/sure.png"><span>电商认证</span></div>
+                                <div ng-show="y.businessCreditStatus=='0'"><img src="img/sj.png"><span>电商认证</span></div>
+                                <div ng-show="y.businessCreditStatus=='2'"><img src="img/false.png"><span>电商认证</span></div>
+                                <div ng-show="y.businessCreditStatus=='3'" style="color: #7cbf30;"><img src="img/quan.png"><span>电商认证</span></div>
+
+                            </div>
+                            )
+                        </div>
+                    </div>
+            </a>
+
+
+            <div class="_pagination">
+
+                <div class="btn_one_share_pagination">共{{page.totalPage}}页</div>
+                <div class="btn_one_share_pagination">
+                    总订单数:{{page.totalItem}}
+                </div>
+
+                <pager class="btn_one_share_pagination" previous-text="上一页" next-text="下一页" total-items="page.totalItem"
+                       ng-model="currentPage"></pager>
+
+            </div>
+        </div>
+
+
+        <div class="wrap_content_right">
+
+            <div style="background: #FFFFFF; width: 100%; padding: 25px 0; border: 1px solid #e6e6e6;" ng-hide="leftContnet">
+                <div style="text-align: center; color: #999;">还没有选择用户</div>
+            </div>
+            <div class="container" style="width: 100%; padding: 0;" ng-if="leftContnet">
+                <!--用户基本信息-->
+                <accordion close-others="oneAtATime">
+                    <accordion-group is-open="status.open" class="b-info">
+                        <accordion-heading>
+                            <div class="row">
+                                <div class="col-sm-10">用户信息</div>
+                                <div class="col-sm-1">&nbsp;</div>
+                                <div class="col-sm-1"><i class="pull-right fa fa-angle-right"
+                                                         ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                                </div>
+                            </div>
+
+                        </accordion-heading>
+                        <div class="_idNameCard">
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d">用户姓名</div>
+                                <div class="col-sm-8 text-center"><input type="text" ng-model="data.name" readonly="readonly"></div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d">用户手机号码</div>
+                                <div class="col-sm-8 text-center"><input type="text" ng-model="data.telphone" readonly="readonly"></div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d">用户身份证</div>
+                                <div class="col-sm-8 text-center">
+
+                                    <input type="text" ng-model="data.identityCode" readonly="readonly" id="idNameCard">
+                                    <a ng-hide="idNameCard" ng-click="idNameCard_bianji()">编辑</a>
+                                    <!--<a ng-show="idNameCard" ng-click="idNameCard_sure()">确定</a>-->
+                                </div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d">用户额度</div>
+                                <div class="col-sm-8 text-center"><input type="text" ng-model="data.realloanmoney" readonly="readonly"></div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d">已用额度</div>
+                                <div class="col-sm-8 text-center"><input type="text" ng-model="data.usedRealLoanMoney" readonly="readonly"></div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d">是否实名认证</div>
+                                <div class="col-sm-8 text-center" style="padding: 4px 0 5px 0;">
+                                    <select ng-model="data.isValidateRealName" style="padding: 5px 0;">
+                                        <option ng-repeat="x in isValid" ng-selected="x.isValidateRealName==data.isValidateRealName" value="{{x.isValidateRealName}}">{{x.msg}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d">审核状态</div>
+                                <div class="col-sm-8 text-center" style="padding: 4px 0 5px 0;">
+                                    <select ng-model="data.realNameStatus" style="padding: 5px 0;">
+                                        <option ng-repeat="x in _realNameStatus" ng-selected="x.realNameStatus==data.realNameStatus" value="x.realNameStatus">{{x.msg}}</option>
+                                    </select>
+
+
+                                    <a ng-click="_submit(data.userId)">提交</a>
+                                </div>
+                            </div>
+                        </div>
+                    </accordion-group>
+                </accordion>
+                <!--学籍信息-->
+                <accordion close-others="oneAtATime">
+
+
+                    <accordion-group is-open="status.isFirstOpen" class="b-info" ng-repeat="y in schoolInfoResponsedate"
+                                     id="{{y.credit.userId}}">
+                        <accordion-heading>
+                            <div class="row">
+                                <div class="col-sm-2">基础认证</div>
+                                <div class="col-sm-5 _999999">提交时间:&nbsp;{{y.submitCheckTime|date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                                <div class="col-sm-2 _999999">待审核</div>
+                                <div class="col-sm-2 _999999" style="white-space: normal; padding-right: 0;">审核状态:&nbsp;{{y.schoolCreditStatus | query_user_sesame_credit}}</div>
+                                <div class="col-sm-1">
+                                    <i class="pull-right fa fa-angle-right"
+                                       ng-class="{'fa-angle-down': status.isFirstOpen, 'fa-angle-right': !status.isFirstOpen}"></i>
+                                </div>
+                            </div>
+                        </accordion-heading>
+                        <!--学籍信息-->
+                        <div class="xueji">
+                            <div class="row margin-left-0" style=" border-top:1px solid #e6e6e6; margin-right: 0; padding: 10px 0; ">
+                                <div class="col-sm-10">
+                                    学籍信息
+                                </div>
+                                <div class="col-sm-2 text-right" >
+                                    <a ng-hide="xueji_btn" ng-click="credit(y.credit.userId)">编辑</a>
+                                    <a ng-show="xueji_btn" ng-click="sure(y.credit.userId,y)">确定</a>
+                                </div>
+                            </div>
+                            <div class="row margin-0-15 bg_d">
+                                <div class="col-sm-4 text-center">&nbsp;</div>
+                                <div class="col-sm-4 text-center">学生证</div>
+                                <div class="col-sm-4 text-center">学信网</div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d padding10_0">省份</div>
+                                <div class="col-sm-4 text-center" style="padding: 0; padding-top: 1px;">
+                                    <select ng-model="y.credit.provid" style="padding: 5px 0; margin: 4px 0;" ng-change="changeProv(y.credit.provid)">
+                                        <option ng-repeat="x in provList track by $index" ng-selected="x.proid==y.credit.provid" value="{{x.proid}}">
+                                            {{x.proname}}
+                                        </option>
+                                    </select>
+                                    <!--<input type="text"  readonly="readonly" ng-model="y.credit.provid">-->
+                                </div>
+                                <div class="col-sm-4 text-center padding10_0" style="color:#ffffff;">ss</div>
+                            </div>
+
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d padding10_0">城市</div>
+                                <div class="col-sm-4 text-center" style="padding: 0; padding-top: 1px;">
+                                    <select ng-model="y.credit.cityid" style="padding: 5px 0; margin: 4px 0;" ng-change="changeCity(y.credit.cityid)">
+                                        <option ng-repeat="x in cityList track by $index" ng-selected="x.cityid==y.credit.cityid" value="{{x.cityid}}">{{x.cityname}}</option>
+                                    </select>
+                                    <!--<input type="text" ng-model="y.credit.cityname" readonly="readonly">-->
+                                </div>
+                                <div class="col-sm-4 text-center padding10_0" style="color:#ffffff;">sfs</div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d padding10_0">学校</div>
+                                <div class="col-sm-4 text-center" style="padding: 0; padding-top: 1px;">
+
+                                    <!--<input type="text" ng-model="y.credit.schoolname" readonly="readonly">-->
+                                    <select ng-model="y.credit.schoolid" style="padding: 5px 0; margin: 4px 0;">
+                                        <option ng-repeat="x in collageList" ng-selected="x.schoolid==y.credit.schoolid" value="{{x.schoolid}}">{{x.schoolname}}</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-sm-4 text-center padding10_0">{{y.xuexin.school}}
+
+
+                                </div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d padding10_0">入学年份</div>
+                                <div class="col-sm-4 text-center"><input type="text" ng-model="y.credit.rxYear" readonly="readonly"></div>
+                                <div class="col-sm-4 text-center padding10_0">{{y.xuexin.enrollment |date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d padding10_0">毕业年份</div>
+                                <div class="col-sm-4 text-center"><input type="text" ng-model="y.credit.byYear" readonly="readonly"></div>
+                                <div class="col-sm-4 text-center padding10_0">{{y.xuexin.eduStatus |date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d padding10_0">学历类型</div>
+                                <div class="col-sm-4 text-center" style="padding: 0; padding-top:1px;">
+                                    <select ng-model="y.credit.educationaa" style="padding: 5px 0; margin: 4px 0;">
+                                        <option ng-repeat="x in educationEnumList" ng-selected="x.code==y.credit.educationaa" value="{{x.code}}">{{x.message}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4 text-center padding10_0">{{y.xuexin.education?y.xuexin.education:'&nbsp;'}}</div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d padding10_0">寝室号</div>
+                                <div class="col-sm-4 text-center"><input type="text" ng-model="y.credit.dormitory" readonly="readonly"></div>
+                                <div class="col-sm-4 text-center padding10_0">&nbsp;</div>
+                            </div>
+
+
+                            <div class="row margin-left-0">
+                                <div class="col-sm-11" style="padding: 10px 15px;">学生证照片(封面页，学籍页，注册页)</div>
+                            </div>
+
+                            <div class="row margin-0-15">
+                                <div class="col-sm-6">
+                                    <img src="{{y.credit.studentcardcover}}" style="width: 100%;">
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="{{y.credit.studentcard}}" style="width: 100%;">
+                                </div>
+                            </div>
+
+                            <div class="row margin-0-15">
+                                <div class="col-sm-6">
+                                    <img src="{{y.credit.studentcard2}}" style="width: 100%;">
+                                </div>
+                                <div class="col-sm-6">
+                                </div>
+                            </div>
+
+
+                            <div class="row margin-0-15" style="width: 100%;">
+                                <div style="padding: 10px 0">
+                                    <input type="radio" id="one" name="radio" value="true" ng-model="authStudentInfo">
+                                    <label for="one">通过</label>
+                                    <input type="radio" id="two" name="radio" value="false" ng-model="authStudentInfo">
+                                    <label for="two">不通过</label>
+                                </div>
+                                <div style="margin: 0 -15px; width:100%; height: 1px; background: #e6e6e6;"></div>
+                            </div>
+                        </div>
+                        <div class="contact">
+
+                            <div class="row margin-left-0" style="padding: 10px 0px; margin-right: 0;">
+                                <div class="col-sm-5">联系方式</div>
+
+                                <div class="col-sm-5 text-right">待审核:</div>
+
+                                <div class="col-sm-2 text-right">
+
+                                    <a ng-click="contactCredit(y.credit.userId)" ng-hide="contact_btn">编辑</a>
+                                    <a ng-click="contactSure(y.credit.userId,BaseUserAddinfodate.firstName,BaseUserAddinfodate.firstTelphone,BaseUserAddinfodate.secondName,BaseUserAddinfodate.secondTelphone,BaseUserAddinfodate.address)" ng-show="contact_btn">确定</a>
+                                </div>
+
+                            </div>
+
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d">父母姓名</div>
+                                <div class="col-sm-8 text-center"><input type="text" ng-model="BaseUserAddinfodate.firstName" readonly="readonly"></div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d">手机号</div>
+                                <div class="col-sm-8 text-center"><input type="text" ng-model="BaseUserAddinfodate.firstTelphone" readonly="readonly"></div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d">同学姓名</div>
+                                <div class="col-sm-8 text-center"><input type="text" ng-model="BaseUserAddinfodate.secondName" readonly="readonly"></div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d">手机号</div>
+                                <div class="col-sm-8 text-center"><input type="text" ng-model="BaseUserAddinfodate.secondTelphone" readonly="readonly"></div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-4 text-center bg_d">家庭住址</div>
+                                <div class="col-sm-8 text-center"><input type="text" ng-model="BaseUserAddinfodate.address" readonly="readonly"></div>
+                            </div>
+
+                            <div class="row margin-0-15" style="width: 100%;">
+                                <div style="padding: 10px 0">
+                                    <input type="radio" id="ten" name="radio2" ng-model="authUserContact" value="true">
+                                    <label for="ten">通过</label>
+                                    <input type="radio" id="nine" name="radio2" ng-model="authUserContact" value="false">
+                                    <label for="nine">不通过</label>
+                                </div>
+                                <div style="margin: 0 -15px; width:100%; height: 1px; background: #e6e6e6;"></div>
+                            </div>
+
+
+
+                            <div class="row margin-left-0">
+                                <div class="col-sm-11" style="padding: 10px 15px;">身份证(正面，反面)</div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-6 "><img src="{{identityPic.identitypic1}}"  style="width: 100%;"></div>
+                                <div class="col-sm-6 "><img src="{{identityPic.identitypic2}}"  style="width: 100%;"></div>
+                            </div>
+                            <div class="row margin-0-15" style="width: 100%;">
+                                <div style="padding: 10px 0">
+                                    <input type="radio" id="four" name="radio3" ng-model="authIdendityPic" value="true">
+                                    <label for="four">通过</label>
+                                    <input type="radio" id="three" name="radio3" ng-model="authIdendityPic" value="false">
+                                    <label for="three">不通过</label>
+                                </div>
+                                <div style="margin: 0 -15px; width:100%; height: 1px; background: #e6e6e6;"></div>
+                            </div>
+                            <div class="row margin-0-15 padding_boder">
+                                <div class="col-sm-4 text-center bg_bd">基本认证额度</div>
+                                <div class="col-sm-8 text-center bd_cl"><input type="number" required ng-model="basicCreditQuota" style="border: 0; padding: 0;"></div>
+                            </div>
+                            <div class="row margin-0-15">
+                                <div class="col-sm-5 text-right">
+                                    <input type="button" class="btn m-b-xs w-xs btn-danger btn_one_share"  value="通过"
+
+                                           ng-click="_studentNo('yes',y.credit.userId,authStudentInfo,authUserContact,authIdendityPic,basicCreditQuota)">
+                                </div>
+                                <div class="col-sm-5 col-sm-offset-2 text-left">
+                                    <input type="button" class="btn m-b-xs w-xs btn-default btn_one_share"   value="不通过"
+                                           ng-click="_studentNo('no',y.credit.userId,authStudentInfo,authUserContact,authIdendityPic,basicCreditQuota)">
+                                </div>
+                            </div>
+                            </div>
+
+                    </accordion-group>
+                </accordion>
+
+
+                <!--银行流水认证-->
+                <accordion close-others="oneAtATime">
+                    <accordion-group is-open="$root.isFirstOpen_bankInfoCreditStatus" class="b-info">
+                        <accordion-heading>
+                            <div class="row">
+                                <div class="col-sm-2">银行卡流水认证</div>
+                                <div class="col-sm-5 _999999">提交时间:&nbsp;{{bankData.submitCheckTime | date :'yyyy-MM-dd HH:mm:ss'}}</div>
+
+                                <div class="col-sm-2 _999999">待审核</div>
+                                <div class="col-sm-2 _999999" style="padding-right: 0; white-space: normal;">审核状态:&nbsp;{{bankData.bankCreditStatus | query_user_sesame_credit}}</div>
+                                <div class="col-sm-1"><i class="pull-right fa fa-angle-right"
+                                                         ng-class="{'fa-angle-down': $root.isFirstOpen_bankInfoCreditStatus, 'fa-angle-right': !$root.isFirstOpen_bankInfoCreditStatus}"></i>
+                                </div>
+
+                            </div>
+
+                        </accordion-heading>
+
+
+                        <div class="row margin-0-15">
+                            <div class="col-sm-6" ng-repeat="y in info">
+                                <!--<img src="{{info[0]}}" width="100%;">-->
+                                <img src="{{y}}"  width="100%">
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="row margin-0-15" style="width: 100%;">
+                            <div style="padding: 10px 0">
+                                <input type="radio" id="five" name="radio" ng-model="student_bank_credit_auth1" value="true">
+                                <label for="five">通过</label>
+                                <input type="radio" id="six" name="radio" ng-model="student_bank_credit_auth1" value="false">
+                                <label for="six">不通过</label>
+                            </div>
+                            <div style="margin: 0 -15px; width:100%; height: 1px; background: #e6e6e6;"></div>
+                        </div>
+
+                        <div class="row margin-0-15 padding_boder">
+                            <div class="col-sm-4 text-center bg_bd">银行流水认证金额</div>
+                            <div class="col-sm-8 text-center bd_cl"><input type="number" required ng-model="bankData.bankInfoCreditQuota" style="padding: 0; border: 0;"></div>
+                        </div>
+                        <div class="row margin-0-15">
+                            <div class="col-sm-5 text-right">
+                                <input type="button" class="btn m-b-xs w-xs btn-danger btn_one_share" value="通过"
+                                       ng-click="student_bank_credit_auth('yes',data.userId,bankData.bankInfoCreditQuota,student_bank_credit_auth1)">
+                            </div>
+                            <div class="col-sm-5 col-sm-offset-2 text-left">
+                                <input type="button" class="btn m-b-xs w-xs btn-default btn_one_share" value="不通过"
+                                       ng-click="student_bank_credit_auth('no',data.userId,bankData.bankInfoCreditQuota,student_bank_credit_auth1)">
+                            </div>
+                        </div>
+
+                    </accordion-group>
+                </accordion>
+                <!--芝麻-->
+
+                <accordion close-others="oneAtATime">
+                    <accordion-group is-open="$root.isFirstOpen_sesameCreditStatus" class="b-info">
+                        <accordion-heading>
+                            <div class="row">
+                                <div class="col-sm-2">芝麻信用认证</div>
+                                <div class="col-sm-5 _999999">提交时间:&nbsp;{{sesameCreditData.submitCheckTime | date:'yyyy-MM-dd HH:ss:mm'}}</div>
+                                <div class="col-sm-2 _999999"></div>
+                                <div class="col-sm-2 _999999" style="white-space: normal; padding-right: 0;">审核状态:&nbsp;{{sesameCreditData.sesameCreditStatus | query_user_sesame_credit}}</div>
+                                <div class="col-sm-1"><i class="pull-right fa fa-angle-right"
+                                                         ng-class="{'fa-angle-down': $root.isFirstOpen_sesameCreditStatus, 'fa-angle-right': !$root.isFirstOpen_sesameCreditStatus}"></i>
+                                </div>
+
+                            </div>
+
+                        </accordion-heading>
+                        <div class="row margin-0-15" style="padding-top:20px; border-top:1px solid #e6e6e6;">
+                            <div class="col-sm-4 text-center bg_d">芝麻信用分</div>
+                            <div class="col-sm-8 text-center">{{sesameCreditData.sesameScore}}</div>
+                        </div>
+                        <div class="row margin-0-15">
+                            <div class="col-sm-4 text-center bg_d">芝麻认证额度</div>
+                            <div class="col-sm-8 text-center">{{sesameCreditData.sesameCreditQuota}}</div>
+                        </div>
+
+
+                    </accordion-group>
+                </accordion>
+
+
+                <!--电商认证-->
+                <accordion close-others="oneAtATime">
+                    <accordion-group is-open="$root.isFirstOpen_businessCreditStatus" class="b-info">
+                        <accordion-heading>
+                            <div class="row">
+                                <div class="col-sm-2">电商认证</div>
+                                <div class="col-sm-5 _999999">提交时间:&nbsp;{{businessInfo.submitCheckTime | date :'yyyy-MM-dd HH:mm:ss'}}</div>
+                                <div class="col-sm-2 _999999">待审核</div>
+                                <div class="col-sm-2 _999999" style="padding-right: 0px;">审核状态:&nbsp;{{businessInfo.businessCreditStatus | query_user_sesame_credit}}</div>
+                                <div class="col-sm-1"><i class="pull-right fa fa-angle-right"
+                                                         ng-class="{'fa-angle-down': $root.isFirstOpen_businessCreditStatus, 'fa-angle-right': !$root.isFirstOpen_businessCreditStatus}"></i>
+                                </div>
+
+                            </div>
+
+                        </accordion-heading>
+                        <div class="row margin-0-15" style="padding-top: 20px; border-top:1px solid #e6e6e6; ">
+                            <div class="col-sm-12 text-center bg_d">淘宝认证</div>
+                        </div>
+                        <div class="row margin-0-15">
+                            <div class="col-sm-4 text-center bg_d">淘宝账号</div>
+                            <div class="col-sm-8 text-center">{{businessInfo.taoBaoAccount}}</div>
+                        </div>
+                        <div class="row margin-0-15">
+                            <div class="col-sm-4 text-center bg_d">淘宝密码</div>
+                            <div class="col-sm-8 text-center">{{businessInfo.taoBaoPassword}}</div>
+                        </div>
+                        <div class="row margin-0-15" style="margin-top: 20px;">
+                            <div class="col-sm-12 text-center bg_d">京东基本信息</div>
+                        </div>
+                        <div class="row margin-0-15">
+                            <div class="col-sm-4 text-center bg_d">是否实名认证</div>
+                            <div class="col-sm-8 text-center">{{jingdongAccountInfo.isValidateRealName}}</div>
+                        </div>
+                        <div class="row margin-0-15">
+                            <div class="col-sm-4 text-center bg_d">真实姓名</div>
+                            <div class="col-sm-8 text-center">{{jingdongAccountInfo.realName}}</div>
+                        </div>
+                        <div class="row margin-0-15">
+                            <div class="col-sm-4 text-center bg_d">注册时间</div>
+                            <div class="col-sm-8 text-center">{{jingdongAccountInfo.registerDate | date : 'yyyy-MM-dd HH:mm:ss'}}</div>
+                        </div>
+                        <div class="row margin-0-15">
+                            <div class="col-sm-4 text-center bg_d">网址</div>
+                            <div class="col-sm-8 text-center">{{jingdongAccountInfo.website}}</div>
+                        </div>
+                        <div class="row margin-0-15">
+                            <div class="col-sm-4 text-center bg_d">京东使用天数</div>
+                            <div class="col-sm-8 text-center">{{jingdongAccountInfo.ebusinessUseDay}}</div>
+                        </div>
+                        <div class="row margin-0-15">
+                            <div class="col-sm-4 text-center bg_d">平均每日消费金额</div>
+                            <div class="col-sm-8 text-center">{{jingdongAccountInfo.ebusinessPricePerDay}}</div>
+                        </div>
+
+
+                        <div class="row margin-0-15" style="margin-top: 20px;">
+                            <div class="col-sm-12 text-center bg_d">京东认证</div>
+                        </div>
+
+                        <div class="row margin-0-15">
+                            <table collapse="0" cellpadding="0" width="100%">
+                                <tr>
+                                    <th>姓名</th>
+                                    <th style="width: 195px;">地址</th>
+                                    <th style="width: 160px;">开始结束时间</th>
+                                    <th style="width: 100px;">地址类型</th>
+                                    <th style="width: 100px;">消费总金额</th>
+                                    <th style="width: 100px;">消费总笔数</th>
+                                </tr>
+                                <tr ng-repeat="x in jingdongAccountInfo.jingDongAddressList">
+                                    <td>
+                                        <ul>
+                                            <li>{{x.receiver_list[0].name}}</li>
+                                            <li>{{x.receiver_list[0].phone_num}}</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>{{x.address}}</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>{{x.begin_date}}至</li>
+                                            <li>{{x.end_date}}</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>{{x.predict_addr_type}}</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>{{x.total_amount}}</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>{{x.total_count}}</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="row margin-0-15" style="width: 100%;">
+                            <div style="padding: 10px 0">
+                                <input type="radio" id="b" name="radio" value="true" ng-model="studentBusinessCredituth">
+                                <label for="b">通过</label>
+                                <input type="radio" id="_business" name="radio" value="false" ng-model="studentBusinessCredituth">
+                                <label for="_business">不通过</label>
+                            </div>
+                            <div style="margin: 0 -15px; width:100%; height: 1px; background: #e6e6e6;"></div>
+                        </div>
+
+
+                        <div class="row margin-0-15 padding_boder">
+                            <div class="col-sm-4 text-center bg_bd">电商认证额度</div>
+                            <div class="col-sm-8 text-center bd_cl"><input type="number" ng-model="businessCreditQuota" required style="border: 0; padding: 0;"></div>
+                        </div>
+                        <div class="row margin-0-15">
+                            <div class="col-sm-5 text-right">
+                                <input type="button" class="btn m-b-xs w-xs btn-danger btn_one_share" value="通过"
+                                       ng-click="student_business_credit_auth('yes',data.userId,studentBusinessCredituth,businessCreditQuota)">
+                            </div>
+                            <div class="col-sm-5 col-sm-offset-2 text-left">
+                                <input type="button" class="btn m-b-xs w-xs btn-default btn_one_share" value="不通过"
+                                       ng-click="student_business_credit_auth('no',data.userId,studentBusinessCredituth,businessCreditQuota)">
+                            </div>
+                        </div>
+
+
+                    </accordion-group>
+                </accordion>
+
+            </div>
+
+    </div>
+
+
+
+
+</div>
+</div>
+
+<script type="text/html" id="stuNo">
+    <div style="width: 400px;">
+        <div class="one">
+            <div>
+                <input type="checkbox" id="one_1" name="checkbox" value="学生证信息不全（需提交封面、个人信息页、注册盖章页）">
+                <label for="one_1">学生证信息不全（需提交封面、个人信息页、注册盖章页）</label>
+            </div>
+            <div>
+                <input type="checkbox" id="two_2" name="checkbox" value="寝室号填写不规范（请精确到xx幢xx号）
+">
+                <label for="two_2">寝室号填写不规范（请精确到xx幢xx号）
+                </label>
+            </div>
+            <div>
+                <input type="checkbox" id="three_3" name="checkbox" value="家庭住址填写不规范（尽量精确到门牌号）
+">
+                <label for="three_3">家庭住址填写不规范（尽量精确到门牌号）
+                </label>
+            </div>
+            <div>
+                <input type="checkbox" id="four_4" name="checkbox" value="淘宝账号密码不正确
+">
+                <label for="four_4">淘宝账号密码不正确
+                </label>
+            </div>
+            <div>
+                <input type="checkbox" id="five_5" name="checkbox" value="身份证照片上传不规范
+">
+                <label for="five_5">身份证照片上传不规范
+                </label>
+            </div>
+        </div>
+        <div class="two">
+            <div>请填写原因</div>
+            <textarea name="textarea" id="textarea" cols="48" rows="3"></textarea>
+        </div>
+    </div>
+</script>
+</html>
+

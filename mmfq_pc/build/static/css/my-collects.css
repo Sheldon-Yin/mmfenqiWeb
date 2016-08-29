@@ -3,9 +3,9 @@
 }
 
 .wrap-content .wrap-content-right > div:first-child {
-    margin: 32px 0 0 2px;
+    margin: 32px 0 32px 2px;
     border: 1px solid #e8e8e8;
-    padding: 0 22px;
+    padding: 0 20px 20px 20px;
 
 }
 
@@ -29,58 +29,102 @@
     color: #333;
 }
 .wrap-content .top-content{
-    padding: 10px 0;
+
 }
 
-.top-content ul{
+.top-content .goods-collect ul{
     padding: 0;
     margin: 0;
-    overflow: hidden;
 }
 
-.top-content ul li{
-    float: left;
+.goods-collect ul li{
     border: 1px solid #efefef;
-    width: 215px;
-    height: 248px;
-    position: relative;
-    /*overflow: hidden;*/
-}
-
-.top-content .goods-collect .babyInfo{
-    padding-bottom: 18px;
-    margin-bottom: 11px;
+    width: 100%;
+    margin-top: 20px;
 }
 
 
-.goods-collect .babyInfo .infoTit1{
-    font-size: 14px;
-    height: 49px;
-    line-height: 18px;
+ul li .bodyInfo {
+    margin: 20px 80px 20px 20px;
     overflow: hidden;
-    padding-top: 12px;
-    margin-bottom: 5px;
+    display: inline-block;
 }
+.bodyInfo .img{
+    width: 158px;
+    height: 158px;
 
-.goods-collect .babyInfo .infoTit2{
-    margin-bottom: 5px;
-}
-.goods-collect .babyInfo .infoTit2 del{
-    color: #b1b1b1;
-    padding-left: 5px;
+    float: left;
 
 }
 
-.goods-collect .babyInfo .infoTit3{
-    width: 100%;
-    background: #fd657a;
+
+.bodyInfo .info{
+    width: 415px;
+    float: left;
+    padding-left: 20px;
+}
+
+.info .title{
+    height: 50px;
+    font-size: 18px;
+    margin-bottom: 20px;
+
+    overflow: hidden;
 
 }
-.goods-collect .babyInfo .infoTit3 a{
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
+.info .title a{
+    color: #333333;
     text-decoration: none;
+}
+.info .title:hover a{
+    color: #FD657A;
 
-    color: #ffffff;
+}
+
+.info .addr{
+    height: 55px;
+    color: #999999;
+}
+
+.info .money{
+    height: 30px;
+}
+
+.money span:first-child{
+    display: inline-block;
+    width: 105px;
+    text-align: left;
+    color: #FD657A;
+
+}
+
+
+.money span:first-child i{
+    font-size: 26px;
+}
+
+.money .del{
+    display: inline-block;
+    width: 105px;
+    text-align: left;
+    color: #999999;
+}
+
+.bodyInfo .Operation{
+    float: left;
+    width: 220px;
+    text-align: right;
+    margin: 53px 0;
+}
+
+
+.Operation .detail{
+    color: #FD657A;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.Operation .cancel{
+    color: #999999;
+    cursor: pointer;
 }

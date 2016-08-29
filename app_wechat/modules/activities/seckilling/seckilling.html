@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="modules/activities/seckilling/css/seckilling.css">
+
+<div class="seckilling-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="banner"><img src="modules/activities/seckilling/img/banner.png" style="width: 100%"></div>
+        </div>
+        <div class="row">
+            <div class="row s_type">
+                <div class="s_bg">
+                    <div style="width: 50%; float: left; padding-left: 1.5rem; font-size: 1.2rem;">
+                        <img src="modules/activities/seckilling/img/daojishi.png" style="vertical-align: middle; width: 1.5rem; height: 1.6rem;"><span>每天10点 限时秒杀</span>
+                    </div>
+
+                    <div style="width: 50%; float: right; text-align: right; padding-right: 1.5rem; font-size: 1.2rem;">
+                        <div class="daojishi">{{text}} {{h}}:{{m}}:{{s}}</div>
+                    </div>
+                </div>
+
+                <div style="width: 50%; float: left; height: 7.5rem; font-size: 1.4rem; background: #fb1787;" ng-show="todayed" ng-click="today()">
+                    <div class="today">今日秒杀</div>
+                    <div style="text-align: center;position: relative;height: 0.7rem;"><img src="modules/activities/seckilling/img/sj.png" style="width: 1.4rem;vertical-align:top;"></div>
+
+                </div>
+
+
+                <div style="width: 50%; float: left; height: 7.5rem; font-size: 1.4rem; background: #fb1787;" ng-show="!todayed" ng-click="today()">
+                    <div class="today">今日秒杀</div>
+                </div>
+
+
+
+                <div  style="width: 50%; float: left; height: 7.5rem; background: #333" ng-show="tomorrowed" ng-click="tomorrow()">
+                    <div class="tomm">明日秒杀</div>
+                    <div style="text-align: center;position: relative; height: 0.7rem;"><img src="modules/activities/seckilling/img/sj.png" style="width: 1.4rem; vertical-align: top;"></div>
+                </div>
+
+
+                <div  style="width: 50%; float: left; height: 7.5rem; background: #333" ng-show="!tomorrowed" ng-click="tomorrow()">
+                    <div class="tomm">明日秒杀</div>
+                </div>
+            </div>
+        </div>
+
+        <label ng-repeat="x in flashSaleGoodsItemList" style="display: block;position: relative" ng-click="goToGoodsDetails(x)">
+            <div class="row app-project-container" ng-click="goToGoodsDetails(x.goodsHerf,x.teamEndTime,x.teamBeginTime)">
+
+
+                <div class="col-xs-5" style="width: 34%;position: relative">
+                    <img src="modules/activities/seckilling/img/doing.png" style="position: absolute; top: 0; width: 3rem; height: 3rem; " ng-if="time < x.teamEndTime &&  time >= x.teamBeginTime"/>
+                    <img src="modules/activities/seckilling/img/start.png" style="position: absolute; top: 0; width: 3rem; height: 3rem; " ng-if="!(time < x.teamEndTime &&  time >= x.teamBeginTime)"/>
+
+                    <img ng-src="{{x.goodsHerPic}}" width="100%" style="min-height: 6.5rem;">
+                </div>
+                <div class="col-xs-7 app-project-content" style="width: 66%">
+                    <div class="double-line app-project-title">
+                        {{x.hotItemName}}
+                    </div>
+                    <div class="single-line app-project-hospital">
+                        {{x.hospitalName}}
+                    </div>
+                </div>
+                <div class="col-xs-12 text-left app-project-price-area">
+                    <div class="col-xs-6 app-pink-text" style="padding: 0">
+                        <span style="font-size: 1.2rem">￥</span><span
+                            style="font-size: 1.6rem;line-height: 2.6rem">{{x.monthlyPrice}}</span>
+                        <span>x{{x.staging}}期</span>
+                    </div>
+
+                    <div class="col-xs-6 text-right"
+                         style="padding: 0;font-size: 0.7rem;margin-top:0.5rem">
+                        <div class="col-xs-12" style="padding: 0; color: #666666; font-size: 1.5rem;">
+                            <del>￥{{x.marketPrice}}</del>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <hr class="app-bootstrap-hr">
+        </label>
+
+        <div class="row" ng-show="showMore">
+            <div class="col-xs-12 text-center" style="padding: 1rem 0;" ng-click="getSome()">
+                查看更多
+            </div>
+        </div>
+    </div>
+</div>

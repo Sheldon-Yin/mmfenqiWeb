@@ -57,6 +57,7 @@ app.controller('CustomerListCtrl', ['$scope', '$state', 'toaster', '$resource', 
             console.log(res);
             $scope.customerListData = res.data;
             $scope.bigTotalItems = res.data.length;
+            $scope.currentPage = index;
         });
     };
 

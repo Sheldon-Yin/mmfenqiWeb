@@ -92,3 +92,7 @@
 .pseudo .right .two_btn img{
     margin: 0 50px;
 }
+
+*{
+    box-sizing:content-box;
+}

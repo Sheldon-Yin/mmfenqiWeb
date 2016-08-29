@@ -1,0 +1,25 @@
+<div class="_head" ng-include="">
+    <div  onclick="angular.element(this).scope().$root.transformr()">旋转+</div>
+    <div  onclick="angular.element(this).scope().$root.transforml()">旋转-</div>
+    <div id="next">上一页</div>
+    <div id="current"></div>
+    <div id="all"></div>
+    <div id="prev">下一页</div>
+    <div onclick="angular.element(this).scope().$root.transformd()">放大</div>
+    <div onclick="angular.element(this).scope().$root.transformx()">放小</div>
+
+</div>
+<div class="_content" id="_content">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img  src="img/4.jpeg" id="img2" style="width: 100%; height: 100%"></div>
+            <div class="swiper-slide"><img  src="img/4.jpeg" id="img2" style="width: 100%; height: 100%"></div>
+            <div class="swiper-slide"><img  src="img/4.jpeg" id="img2" style="width: 100%; height: 100%"></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination" id='list2'></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>

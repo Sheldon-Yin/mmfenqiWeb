@@ -29,5 +29,20 @@ define(function (require, exports, module) {
                     query: {method:'GET'}
                 })
             }]);
+        app.register.factory('verifyBankCard', ['$resource',
+            function ($resource) {
+                return $resource('/appinterface/verify_bank_card',{},{
+                    save: {method:'POST'}
+                })
+            }]);
+        app.register.factory('userGetCode', ['$resource',
+            function ($resource) {
+                return $resource('/appinterface/user_getcode',{},{
+                    save: {method:'POST'}
+                })
+            }]);
+
+
+
     }
 });

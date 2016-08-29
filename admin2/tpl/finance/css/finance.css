@@ -1,0 +1,218 @@
+.wrap{
+    width: 100%;
+}
+.wrapbg{
+    width: 100%;
+    background-color: #fafafa;
+}
+
+.wrap-content{
+    width: 1026px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+
+.nav-tabs > li{
+    background-color: #f7f7f7;
+}
+
+.nav-tabs li a{
+    font-weight: bold;
+    color: #4e6c88;
+}
+
+.wrap-content .panel-content{
+    padding: 20px 0;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.wrap-content .user-info{
+    width: 100%;
+}
+
+.wrap-content .user-info .container,
+.wrap-content .goods-info .container,
+.wrap-content .bill-info .container,
+.wrap-content .operate-info .container
+{
+    width: 100%;
+
+}
+.wrap-content .user-info .title1,
+.wrap-content .goods-info .title2,
+.wrap-content .bill-info .title3,
+.wrap-content .operate-info .title4 {
+    padding: 10px;
+    background-color: #f0f0f0;
+    margin-top: 20px;
+}
+
+.wrap-content .row{
+    background-color: #ffffff;
+}
+
+
+
+.wrap-content .tab-container{
+    width: 100% ;
+}
+
+.wrap-content .tab-container .panel-content{
+    width: 100%;
+}
+
+
+.wrap-content .tab-container .panel-content .btn_one_share{
+    font-size: 14px;
+    display: inline-block;
+    padding: 5px 4px;
+    *zoom: 1;
+    *display: inline;
+    vertical-align: middle;
+}
+
+.panel-content .input-group {
+    display: inline-block;
+    width: 200px;
+}
+
+.panel-content input[type='text'] {
+    padding: 8px;
+    background-color: #f2f2f2;
+    border: 0;
+    vertical-align: middle;
+}
+
+.panel-content input[type='button'] {
+    margin: 0 10px;
+    vertical-align: middle;
+}
+
+.panel-content .selectize-control.single .selectize-input {
+    padding: 8px;
+    background-color: #FFFFFF !important;
+    border: 0;
+
+}
+.wrap-content .tab-container .table-content{
+    width: 100%;
+    padding-top: 10px;
+}
+
+table {
+    width: 100% !important;
+}
+
+table .width-14 {
+    width: 15%
+}
+
+
+
+table tr th {
+    padding: 10px 0;
+    background: #f7f7f7;
+    text-align: center;
+    color: #666666;
+    font-weight: 200;
+    font-size: 14px;
+
+}
+
+table tr td {
+    text-align: center;
+    padding: 10px 0;
+    border: 1px solid #f9f9f9;
+    font-size: 12px;
+
+}
+
+table tr td ul {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+table tr td ul li {
+    list-style: none;
+    color: #666666;
+}
+table tr td ul li a:hover{
+    text-decoration: underline!important;
+}
+
+table tr td ul .cc {
+    color: #cccccc;
+}
+
+
+
+.bill-info table {
+    width: 100% !important;
+}
+
+.bill-info table .width-14 {
+    width: 15%
+}
+
+
+.bill-info table tr th {
+    padding: 10px 0;
+    background: #FF6B6B;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 200;
+    font-size: 14px;
+    border: 1px solid #f9f9f9;
+
+}
+
+.bill-info table tr td {
+    text-align: center;
+    padding: 10px 0;
+    border: 1px solid #f9f9f9;
+    font-size: 12px;
+
+}
+
+.bill-info table tr td ul {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.bill-info table tr td ul li {
+    list-style: none;
+    color: #666666;
+}
+.bill-info table tr td ul li a:hover{
+    text-decoration: underline!important;
+}
+
+.bill-info table tr td ul .cc {
+    color: #cccccc;
+}
+.wrap-content .tab-container ._pagination{
+
+}
+
+
+._pagination .btn_one_share_pagination {
+    font-size: 14px;
+    display: inline-block;
+    padding: 5px 4px;
+    *zoom: 1;
+    *display: inline;
+    vertical-align: middle;
+}
+
+._pagination .btn_one_share_pagination.totoal {
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+._pagination input, button {
+    width: 50px;
+    vertical-align: middle;
+}

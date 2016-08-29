@@ -1,0 +1,90 @@
+
+<div id="confirmDialogContainer" class="app-grey-dialog-container" style="display: block;" ng-show="showVerify">
+    <div class="verify-bank-verifyCode-dialog">
+        <div class="container">
+            <div class="text-center row app-padding-one" style="font-size: 1.4rem">
+                <div class="col-xs-10 text-left">
+                    手机短信验证码已发送
+                </div>
+                <div class="col-xs-2 text-right" ng-click="hideVerifyCode()">
+                    <span class="fa fa-times fa-lg"></span>
+                </div>
+
+            </div>
+            <hr class="app-bootstrap-hr">
+
+            <div class="row app-padding-one" style="border-radius: 5px;border: 1px solid #ccc;margin: 1rem;">
+                <div class="col-xs-8">
+                    <input placeholder="请输入验证码" ng-model="verifyCode">
+                </div>
+                <div class="col-xs-4 text-center app-bootstrap-padding-zero app-grey-text" style="border-left: 1px solid #ccc"
+                     ng-click="reSendVerifyCode()">
+                    {{codeTips}}
+                </div>
+            </div>
+
+            <hr class="app-bootstrap-hr">
+            <div class="row text-center app-pink-text" style="font-size: 1.8rem;padding: 1rem" ng-click="goToVerifyWithCode()">
+                确定
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <img src="modules/verify/img/new/6.jpg" alt="第六步"  style="width: 100%">
+    </div>
+</div>
+
+<div class="container app-grey-background-container">
+    <form ng-submit="verifyTaobao()">
+        <div class="row text-left" style="font-size: 1.4rem;padding: 1.7rem">
+            请输入您在
+            <span ng-if="type == 0" class="app-yellow-text" style="font-weight: bold;font-size: 1.6rem">淘宝</span>
+            <span class="app-blue-text" style="font-weight: bold;font-size: 1.6rem" ng-if="type == 1">京东</span>
+            的账号和密码
+        </div>
+        <div class="app-white-input row">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">账号</label>
+            <input class="col app-white-input-text" ng-model="$parent.account" type="text" placeholder="请输入账号" required>
+        </div>
+
+        <div class="app-white-input row app-margin-top-two-px">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">密码</label>
+            <input type="password" ng-model="$parent.password" class="col app-white-input-text" placeholder="请输入密码" required>
+        </div>
+
+        <label style="display: block;">
+            <div class="app-padding-one text-center"
+                 ng-class="{true:'app-little-pink-radius-button',false:'app-pink-radius-button'}[!password || !account]">
+                提交审核
+            </div>
+            <button type="submit" style="display: none"></button>
+        </label>
+
+        <div class="app-padding-one" style="font-size: 1.2rem">
+            验证您电商网站的基本信息、送货地址、订单信息等用于认证服务
+        </div>
+
+        <div class="row text-right" style="font-size: 1.4rem">
+            <div class="col-xs-4">
+
+            </div>
+            <div class="col-xs-8">
+                <div ng-click="setType(1)" ng-if="type == 0" class="app-yellow-text">
+                    没有淘宝？换<span class="app-blue-text">京东</span>账号!
+                </div>
+                <div ng-click="setType(0)" ng-if="type == 1" class="app-blue-text">
+                    没有京东？换<span class="app-yellow-text">淘宝</span>账号!
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div style="font-size: 1.4rem;text-align: center;margin-top: 1rem;margin-bottom: 1rem">
+    完善的资料，通过的机会更大！<span style="color: #66c5fe;" ng-click="jumpToNext()">跳过</span>
+</div>

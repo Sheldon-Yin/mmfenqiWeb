@@ -1,0 +1,246 @@
+<link rel="stylesheet" href="tpl/finance/css/finance.css">
+
+<html>
+<div class="wrap" ng-controller="insuranceBilCtrl">
+    <div class="wrap-content">
+
+
+        <button class="btn btn-default btn-sm" ng-click="tabs[0].active = true">Select second tab</button>
+        <button class="btn btn-default btn-sm" ng-click="tabs[1].active = true">Select third tab</button>
+
+
+        <tabset class="tab-container">
+            <tab>
+                <tab-heading>
+                全部账单
+                </tab-heading>
+                <div class="panel-content">
+                    sfsfslfjsljfs
+                </div>
+            </tab>
+            <tab active="_tab.active1">
+                <tab-heading>
+                    全部账单52222
+                </tab-heading>
+                <div class="panel-content">
+                    李建棚33
+                </div>
+            </tab>
+            <tab active="_tab.active2">
+                <tab-heading>
+                    全部账单52222
+                </tab-heading>
+                <div class="panel-content">
+                    李建极
+                </div>
+            </tab>
+        </tabset>
+
+
+        <div  class="panel b-a">
+            <script type="text/ng-template" id="myModalContent.html">
+                <div ng-include="'tpl/modal.html'"></div>
+            </script>
+            <div class="panel-heading b-b b-light">Modal</div>
+            <div class="panel-body">
+                <button class="btn btn-success" ng-click="open(1111)">Open me!</button>
+                <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
+                <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
+            </div>
+        </div>
+
+
+        <div ng-click="addPolicy()">添加</div>
+
+
+
+
+
+
+        <!--<tabset class="tab-container">-->
+            <!--<tab>-->
+                <!--<tab-heading>-->
+                    <!--全部账单-->
+                <!--</tab-heading>-->
+                <!--<div class="panel-content">-->
+                    <!--<div class="btn_one_share">姓名</div>-->
+                    <!--<ui-select ng-model="queryType.selected" theme="selectize" ng-disabled="disabled" style="width: 120px;"-->
+                               <!--class="btn_one_share">-->
+                        <!--<ui-select-match placeholder="姓名">{{$select.selected.message}}</ui-select-match>-->
+                        <!--<ui-select-choices repeat="y in newSelectTypeEnumListData | filter: $select.search">-->
+                            <!--<span ng-bind-html="y.message | highlight: $select.search"></span>-->
+                            <!--&lt;!&ndash;<small ng-bind-html="y.code | highlight: $select.search"></small>&ndash;&gt;-->
+                        <!--</ui-select-choices>-->
+                    <!--</ui-select>-->
+                    <!--<input type="text" placeholder="查询姓名/手机号/订单号/交易号/商品名称" ng-model="queryTypeValue.no" style="width: 280px;">-->
+                    <!--<div class="btn_one_share">医院</div>-->
+                    <!--<ui-select ng-model="hospitalId.selected" theme="selectize" ng-disabled="disabled" style="width: 200px;"-->
+                               <!--class="btn_one_share">-->
+                        <!--<ui-select-match placeholder="全部">{{$select.selected.hosName}}</ui-select-match>-->
+                        <!--<ui-select-choices repeat="y in hospitalListData | filter: $select.search">-->
+                            <!--<span ng-bind-html="y.hosName | highlight: $select.search"></span>-->
+                        <!--</ui-select-choices>-->
+                    <!--</ui-select>-->
+                    <!--<div class="btn_one_share">状态</div>-->
+                    <!--<ui-select ng-model="orderStatus.selected" theme="selectize" ng-disabled="disabled" style="width: 100px;"-->
+                               <!--class="btn_one_share">-->
+                        <!--<ui-select-match placeholder="全部">{{$select.selected.message}}</ui-select-match>-->
+                        <!--&lt;!&ndash;<span ng-bind-html="">全部</span>&ndash;&gt;-->
+                        <!--<ui-select-choices repeat="y in orderstatEnumListData | filter: $select.search">-->
+
+                            <!--<span ng-bind-html="y.message | highlight: $select.search"></span>-->
+                        <!--</ui-select-choices>-->
+                    <!--</ui-select>-->
+
+
+                    <!--<br>-->
+
+
+
+                    <!--<div class="btn_one_share">下单时间</div>-->
+                    <!--<div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">-->
+                        <!--<input type="text" class="form-control" datepicker-popup="{{format}}"-->
+                               <!--ng-model="$parent.time_start" placeholder="时间" is-open="opened"-->
+                               <!--datepicker-options="dateOptions" ng-change="updateData()"-->
+                               <!--ng-required="true" close-text="关闭" style="width: 140px;"/>-->
+                                      <!--<span class="input-group-btn">-->
+                                        <!--<button type="button" class="btn btn-default" ng-click="open($event)"><i-->
+                                                <!--class="glyphicon glyphicon-calendar"></i></button>-->
+                                      <!--</span>-->
+                    <!--</div>-->
+
+                    <!--&lt;!&ndash;{{datetime.start_time | date:'yyyy-MM-dd HH:mm:ss'}}&ndash;&gt;-->
+                    <!--<div class="btn_one_share">结束时间</div>-->
+                    <!--<div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">-->
+                        <!--<input type="text" class="form-control" datepicker-popup="{{format}}"-->
+                               <!--ng-model="$parent.time_end" placeholder="时间" is-open="opened"-->
+                               <!--datepicker-options="dateOptions" ng-change="updateData()"-->
+                               <!--ng-required="true" close-text="关闭" style="width: 140px;"/>-->
+                                      <!--<span class="input-group-btn">-->
+                                        <!--<button type="button" class="btn btn-default" ng-click="open($event)"><i-->
+                                                <!--class="glyphicon glyphicon-calendar"></i></button>-->
+                                      <!--</span>-->
+                    <!--</div>-->
+
+                    <!--<input type="button" class="btn btn-lg btn-danger btn_one_share" value="查询" ng-click="search()"-->
+                           <!--style=" width: 84px; padding: 8px 16px; margin-bottom: 7px;">-->
+                    <!--<input type="button" class="btn btn-lg btn-success btn_one_share" value="导出"-->
+                           <!--ng-click="exportOrderInfo()" style=" width: 84px; padding: 8px 16px; margin-bottom: 7px;">-->
+                <!--</div>-->
+                <!--<div class="table-content">-->
+
+                <!--</div>-->
+                <!--<div class="_pagination">-->
+                    <!--<pagination class="btn_one_share_pagination" total-items="page.totalItem" ng-model="$parent.$parent.currentPage"-->
+                                <!--max-size="maxSize" rotate="false" items-per-page="page.pageSize" previous-text="上一页"-->
+                                <!--next-text="下一页"></pagination>-->
+                    <!--<div class="btn_one_share_pagination totoal">共{{page.totalPage}}页</div>-->
+                    <!--<div class="btn_one_share_pagination">转到</div>-->
+                    <!--<input type="text" ng-model="inputPage" placeholder="第几页" style="padding-left:5px; ">-->
+                    <!--<button ng-click="selectPage3(inputPage)"-->
+                            <!--style="background-color: #b7b7b7; border: 0; padding: 3px 0;">-->
+                        <!--确定-->
+                    <!--</button>-->
+                    <!--<div class="btn_one_share_pagination" style="text-align: right; float: right; line-height: 87px;">-->
+                        <!--总订单数:{{page.totalItem}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</tab>-->
+            <!--<tab>-->
+                <!--<tab-heading>-->
+                    <!--全部账单-->
+                <!--</tab-heading>-->
+                <!--<div class="panel-content">-->
+                    <!--<div class="btn_one_share">姓名</div>-->
+                    <!--<ui-select ng-model="queryType.selected" theme="selectize" ng-disabled="disabled" style="width: 120px;"-->
+                               <!--class="btn_one_share">-->
+                        <!--<ui-select-match placeholder="姓名">{{$select.selected.message}}</ui-select-match>-->
+                        <!--<ui-select-choices repeat="y in newSelectTypeEnumListData | filter: $select.search">-->
+                            <!--<span ng-bind-html="y.message | highlight: $select.search"></span>-->
+                            <!--&lt;!&ndash;<small ng-bind-html="y.code | highlight: $select.search"></small>&ndash;&gt;-->
+                        <!--</ui-select-choices>-->
+                    <!--</ui-select>-->
+                    <!--<input type="text" placeholder="查询姓名/手机号/订单号/交易号/商品名称" ng-model="queryTypeValue.no" style="width: 280px;">-->
+                    <!--<div class="btn_one_share">医院</div>-->
+                    <!--<ui-select ng-model="hospitalId.selected" theme="selectize" ng-disabled="disabled" style="width: 200px;"-->
+                               <!--class="btn_one_share">-->
+                        <!--<ui-select-match placeholder="全部">{{$select.selected.hosName}}</ui-select-match>-->
+                        <!--<ui-select-choices repeat="y in hospitalListData | filter: $select.search">-->
+                            <!--<span ng-bind-html="y.hosName | highlight: $select.search"></span>-->
+                        <!--</ui-select-choices>-->
+                    <!--</ui-select>-->
+                    <!--<div class="btn_one_share">状态</div>-->
+                    <!--<ui-select ng-model="orderStatus.selected" theme="selectize" ng-disabled="disabled" style="width: 100px;"-->
+                               <!--class="btn_one_share">-->
+                        <!--<ui-select-match placeholder="全部">{{$select.selected.message}}</ui-select-match>-->
+                        <!--&lt;!&ndash;<span ng-bind-html="">全部</span>&ndash;&gt;-->
+                        <!--<ui-select-choices repeat="y in orderstatEnumListData | filter: $select.search">-->
+
+                            <!--<span ng-bind-html="y.message | highlight: $select.search"></span>-->
+                        <!--</ui-select-choices>-->
+                    <!--</ui-select>-->
+
+
+                    <!--<br>-->
+
+
+
+                    <!--<div class="btn_one_share">下单时间</div>-->
+                    <!--<div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">-->
+                        <!--<input type="text" class="form-control" datepicker-popup="{{format}}"-->
+                               <!--ng-model="$parent.time_start" placeholder="时间" is-open="opened"-->
+                               <!--datepicker-options="dateOptions" ng-change="updateData()"-->
+                               <!--ng-required="true" close-text="关闭" style="width: 140px;"/>-->
+                                      <!--<span class="input-group-btn">-->
+                                        <!--<button type="button" class="btn btn-default" ng-click="open($event)"><i-->
+                                                <!--class="glyphicon glyphicon-calendar"></i></button>-->
+                                      <!--</span>-->
+                    <!--</div>-->
+
+                    <!--&lt;!&ndash;{{datetime.start_time | date:'yyyy-MM-dd HH:mm:ss'}}&ndash;&gt;-->
+                    <!--<div class="btn_one_share">结束时间</div>-->
+                    <!--<div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">-->
+                        <!--<input type="text" class="form-control" datepicker-popup="{{format}}"-->
+                               <!--ng-model="$parent.time_end" placeholder="时间" is-open="opened"-->
+                               <!--datepicker-options="dateOptions" ng-change="updateData()"-->
+                               <!--ng-required="true" close-text="关闭" style="width: 140px;"/>-->
+                                      <!--<span class="input-group-btn">-->
+                                        <!--<button type="button" class="btn btn-default" ng-click="open($event)"><i-->
+                                                <!--class="glyphicon glyphicon-calendar"></i></button>-->
+                                      <!--</span>-->
+                    <!--</div>-->
+
+                    <!--<input type="button" class="btn btn-lg btn-danger btn_one_share" value="查询" ng-click="search()"-->
+                           <!--style=" width: 84px; padding: 8px 16px; margin-bottom: 7px;">-->
+                    <!--<input type="button" class="btn btn-lg btn-success btn_one_share" value="导出"-->
+                           <!--ng-click="exportOrderInfo()" style=" width: 84px; padding: 8px 16px; margin-bottom: 7px;">-->
+                <!--</div>-->
+                <!--<div class="table-content">-->
+
+                <!--</div>-->
+                <!--<div class="_pagination">-->
+                    <!--<pagination class="btn_one_share_pagination" total-items="page.totalItem" ng-model="$parent.$parent.currentPage"-->
+                                <!--max-size="maxSize" rotate="false" items-per-page="page.pageSize" previous-text="上一页"-->
+                                <!--next-text="下一页"></pagination>-->
+                    <!--<div class="btn_one_share_pagination totoal">共{{page.totalPage}}页</div>-->
+                    <!--<div class="btn_one_share_pagination">转到</div>-->
+                    <!--<input type="text" ng-model="inputPage" placeholder="第几页" style="padding-left:5px; ">-->
+                    <!--<button ng-click="selectPage3(inputPage)"-->
+                            <!--style="background-color: #b7b7b7; border: 0; padding: 3px 0;">-->
+                        <!--确定-->
+                    <!--</button>-->
+                    <!--<div class="btn_one_share_pagination" style="text-align: right; float: right; line-height: 87px;">-->
+                        <!--总订单数:{{page.totalItem}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</tab>-->
+            <!--</tabset>-->
+    </div>
+</div>
+<script type="text/html" id="policyNo">
+    <div id="policyNo_contnet">
+        <label for="No">保单号</label>
+        <input type="text" id="No" >
+    </div>
+</script>
+</html>

@@ -278,6 +278,7 @@ td {
     /*position: relative!important;*/
 /*}*/
 
+
 .swiper-pagination-bullet-active {
     opacity: 1;
     background: #fb1787 !important;
@@ -306,4 +307,19 @@ td {
 
 .app-bootstrap-padding-zero {
     padding: 0;
+}
+
+
+.app-bootstrap-padding-zero {
+    padding: 0;
+}
+
+.app-bootstrap-white{
+    background-color: #FFFFff;
+    margin: 0 -15px;
+}
+
+.app-bootstrap-input{
+    border-bottom: 1px solid #e2e6e9;margin:0 1rem; padding: 1rem 0;
+    overflow: hidden;
 }

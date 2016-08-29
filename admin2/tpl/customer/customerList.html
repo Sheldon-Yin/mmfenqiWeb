@@ -1,0 +1,379 @@
+<style>
+    .wrap {
+        width: 100%;
+        font-family: 'Microsoft YaHei', SimHei, sans-serif;
+    }
+
+    .wrap_content_all{
+        margin: 20px auto; width: 1336px;
+        padding: 0 20px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table .width-14 {
+        width: 15%;
+    }
+
+    table .width-20 {
+        width: 18%;
+    }
+
+    table .width-10 {
+        width: 10%;
+    }
+
+    table tr th {
+        padding: 10px 0;
+        background: #f7f7f7;
+        text-align: center;
+        color: #666666;
+        font-weight: 200;
+        font-size: 14px;
+
+    }
+
+    table tr td {
+        text-align: center;
+        padding: 10px 0;
+        border: 1px solid #f9f9f9;
+        font-size: 12px;
+
+    }
+
+    table tr td ul {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    table tr td ul li {
+        list-style: none;
+        color: #666666;
+    }
+    table tr td ul li a:hover{
+        text-decoration: underline!important;
+    }
+
+    table tr td ul .cc {
+        color: #cccccc;
+    }
+
+    .panel-body {
+
+        padding: 0;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid #cccccc !important;
+
+    }
+
+    .panel-body .btn_one {
+        padding: 20px 0 20px 40px;;
+        background-color: #fbf7f3;
+        border-top: 4px solid #f9c4b1;
+    }
+
+    .panel-body .input-group {
+        display: inline-block;
+        width: 200px;
+    }
+
+    ._pagination .btn_one_share_pagination {
+        font-size: 14px;
+        display: inline-block;
+        padding: 5px 4px;
+        *zoom: 1;
+        *display: inline;
+        vertical-align: middle;
+    }
+
+    ._pagination .btn_one_share_pagination.totoal {
+        font-size: 12px;
+        margin-top: 15px;
+    }
+
+    ._pagination input, button {
+        width: 50px;
+        vertical-align: middle;
+    }
+
+    .panel-body .btn_one_share {
+        font-size: 14px;
+        display: inline-block;
+        padding: 5px 4px;
+        *zoom: 1;
+        *display: inline;
+        vertical-align: middle;
+    }
+
+    .panel-body input[type='text'] {
+        padding: 8px;
+        background-color: #f2f2f2;
+        border: 0;
+        vertical-align: middle;
+    }
+
+    .panel-body input[type='button'] {
+        margin: 0 10px;
+        vertical-align: middle;
+    }
+
+    .panel-body .selectize-control.single .selectize-input {
+        padding: 8px;
+        background-color: #FFFFFF !important;
+        border: 0;
+
+    }
+
+    .projectReviewStatus_color {
+        color: #ff7b77;
+    }
+
+    .tabs-content {
+        width: 100%;
+        float: none;
+        border-bottom: 1px solid #dddddd;
+        clear: both;
+        height: 41px;
+    }
+
+    .tabs-content ul {
+        margin-bottom: 0;
+        float: none;
+        padding-left: 0;
+
+    }
+
+    .tabs-content ul li {
+        background-color: #f7f7f7;
+        cursor: pointer;
+        padding: 10px;
+        float: left;
+        min-width: 100px;
+        list-style: none;
+        text-align: center;
+        display: block;
+        border: 1px solid #dddddd;
+
+    }
+
+    .ff {
+        background-color: #ffffff !important;
+        border-bottom: #ffffff !important;
+        position: relative;
+        z-index: 2;
+    }
+
+    body  .layui-layer-page .layui-layer-content{
+        background-color: #ffffff;
+        padding: 20px 30px 20px 30px;
+        font-size: 14px;
+        font-family: 'Microsoft YaHei';
+        text-align: center;
+        overflow: hidden;
+        margin: 0;
+        border: 0;
+
+    }
+
+</style>
+<div class="wrap" ng-controller="CustomerListCtrl">
+
+    <div class="wrap_content_all">
+        <div class="tabs-content">
+            <ul>
+                <li ng-class="{'ff':isSelect100}" ng-click="selectTab(100)"><a href="">全部订单</a></li>
+                <li ng-class="{'ff':isSelect0}" ng-click="selectTab(0)"><a href="">未上传(知情书)</a></li>
+                <li ng-class="{'ff':isSelect1}" ng-click="selectTab(1)"><a href="">待审核&nbsp;&nbsp;<span class="badge badge-sm center bg-danger pull-right-xs">{{waitAuditOrderNum}}</span></a></li>
+                <li ng-class="{'ff':isSelect10}" ng-click="selectTab(10)"><a href="">退款处理&nbsp;&nbsp;<span class="badge badge-sm center bg-danger pull-right-xs">{{refundAuditOrderNum}}</span></a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+
+
+            <div class="panel-body b-light" ng-hide="isSelect0||isSelect1||isSelect10">
+                <ui-select ng-model="queryType.selected" theme="selectize" ng-disabled="disabled" style="width: 120px;"
+                           class="btn_one_share">
+                    <ui-select-match placeholder="姓名">{{$select.selected.message}}</ui-select-match>
+                    <ui-select-choices repeat="y in newSelectTypeEnumListData | filter: $select.search">
+                        <span ng-bind-html="y.message | highlight: $select.search"></span>
+                        <!--<small ng-bind-html="y.code | highlight: $select.search"></small>-->
+                    </ui-select-choices>
+                </ui-select>
+                <input type="text" placeholder="查询姓名/手机号/订单号/交易号/商品名称" ng-model="queryTypeValue.no" style="width: 280px;">
+                <div class="btn_one_share">商品类型</div>
+                <ui-select ng-model="goodsType.selected" theme="selectize" ng-disabled="disabled" style="width: 100px;"
+                           class="btn_one_share">
+                    <ui-select-match placeholder="全部">{{$select.selected.message}}</ui-select-match>
+                    <ui-select-choices repeat="y in newGoodsTypeEnumListData | filter: $select.search">
+                        <span ng-bind-html="y.message | highlight: $select.search"></span>
+                        <!--<small ng-bind-html="y.code | highlight: $select.search"></small>-->
+                    </ui-select-choices>
+                </ui-select>
+
+                <div class="btn_one_share">知情书审核状态</div>
+                <ui-select ng-model="projectReviewStatus.selected" theme="selectize" ng-disabled="disabled"
+                           style="width: 140px;" class="btn_one_share">
+                    <ui-select-match placeholder="全部">{{$select.selected.message}}</ui-select-match>
+                    <ui-select-choices repeat="y in projectReviewStatusData | filter: $select.search">
+                        <span ng-bind-html="y.message | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+                <div class="btn_one_share">状态</div>
+                <ui-select ng-model="orderStatus.selected" theme="selectize" ng-disabled="disabled" style="width: 100px;"
+                           class="btn_one_share">
+                    <ui-select-match placeholder="全部">{{$select.selected.message}}</ui-select-match>
+                    <!--<span ng-bind-html="">全部</span>-->
+                    <ui-select-choices repeat="y in orderstatEnumListData | filter: $select.search">
+
+                        <span ng-bind-html="y.message | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+
+                <div class="btn_one_share">合同编号</div>
+                <input type="text" ng-model="contractNo.no" placeholder="合同编号">
+                <br>
+
+                <div class="btn_one_share">下单时间</div>
+                <div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">
+                    <input type="text" class="form-control" datepicker-popup="{{format}}"
+                           ng-model="datetime.start_time" placeholder="时间" is-open="opened"
+                           datepicker-options="dateOptions" ng-change="updateData()"
+                           ng-required="true" close-text="关闭" style="width: 140px;"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                </div>
+
+                <!--{{datetime.start_time | date:'yyyy-MM-dd HH:mm:ss'}}-->
+                <div class="btn_one_share">-</div>
+                <div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">
+                    <input type="text" class="form-control" datepicker-popup="{{format}}"
+                           ng-model="datetime.start_end" placeholder="时间" is-open="opened"
+                           datepicker-options="dateOptions" ng-change="updateData()"
+                           ng-required="true" close-text="关闭" style="width: 140px;"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                </div>
+
+                <div class="btn_one_share"></div>
+
+                <div class="btn_one_share">医院</div>
+                <ui-select ng-model="hospitalId.selected" theme="selectize" ng-disabled="disabled" style="width: 200px;"
+                           class="btn_one_share">
+                    <ui-select-match placeholder="全部">{{$select.selected.hosName}}</ui-select-match>
+                    <ui-select-choices repeat="y in hospitalListData | filter: $select.search">
+                        <span ng-bind-html="y.hosName | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+
+
+                <input type="button" class="btn btn-lg btn-danger btn_one_share" value="查询" ng-click="search()"
+                       style=" width: 84px; padding: 8px 16px; margin-bottom: 7px;">
+                <input type="button" class="btn btn-lg btn-success btn_one_share" value="导出" ng-click="exportOrderInfo()"
+                       style=" width: 84px; padding: 8px 16px; margin-bottom: 7px;">
+            </div>
+
+
+            <div style="padding-top: 40px;">
+                <table cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th class="width-10">姓名</th>
+                        <th class="width-20">订单号</th>
+                        <th class="width-20">商品名称</th>
+                        <th class="width-14">订单金额(元)</th>
+                        <th class="width-10 ">分期</th>
+                        <th class="width-10">知情书审核</th>
+                        <th class="width-10">订单状态</th>
+                        <th class="width-14">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="y in customerListData2" style="border: 1px solid #f9f9f9; ">
+                        <td>
+                            <ul>
+                                <li>{{y.userName}}</li>
+                                <li>{{y.userTelphone}}</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>订单号{{y.orderNo}}</li>
+                                <li class="cc">交易号{{y.orderSn}}</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>{{y.orderName}}</li>
+                                <li class="cc">{{y.hospitalName}}</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>{{y.orderAmt | number:2}}+{{y.insuranceOrderAmount==undefined ? 0:y.insuranceOrderAmount
+                                    | number:2}}(保险)
+                                </li>
+                                <li class="cc">下单时间{{y.orderTime | date:'yyyy-MM-dd HH:mm:ss'}}</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>{{y.totalTimes}}期</li>
+                                <li class="cc">首付{{y.downpayPercentage}}%</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li ng-class="{'projectReviewStatus_color':y.projectReviewStatus==1}">
+                                    {{y.projectReviewStatus | _projectReviewStatus}}
+                                </li>
+                            </ul>
+
+                        </td>
+                        <td>
+                            <ul>
+                                <li>{{y.orderStatus | _orderStatus}}</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li ng-if="y.projectReviewStatus!=1"  ng-click="jumpToDetail(y.orderId)"><a href="" class="cc">详情</a>
+                                </li>
+                                <li ng-if="y.projectReviewStatus==1" class="cc" ng-click="jumpToDetail(y.orderId)"><a style="color: #82c9ff;" href="">审核</a>
+                                </li>
+                                <li ng-if="y.orderStatus==0||y.orderStatus==1||y.orderStatus==4"
+                                    ng-click="cancel_order(y.orderId)" style=" cursor: pointer;" class="cc">取消订单
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="_pagination">
+                <!--{{noOfPages}}-->
+                <!--<paginationss  num-pages="$parent.$parent.noOfPages"  current-page="$parent.$parent.currentPage" class="pagination-small"></paginationss>-->
+                <pagination class="btn_one_share_pagination" total-items="page2.totalItem" ng-model="currentPage"
+                            max-size="maxSize" rotate="false" items-per-page="page2.pageSize" previous-text="上一页"
+                            next-text="下一页"></pagination>
+                <div class="btn_one_share_pagination totoal">共{{page2.totalPage}}页</div>
+                <div class="btn_one_share_pagination">转到</div>
+                <input type="text" ng-model="inputPage" placeholder="第几页" style="padding-left:5px; ">
+                <button ng-click="selectPage3(inputPage)" style="background-color: #b7b7b7; border: 0; padding: 3px 0;">确定
+                </button>
+                <div class="btn_one_share_pagination" style="text-align: right; float: right; line-height: 87px;">
+                    总订单数:{{page2.totalItem}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,161 @@
+.isOpenWrapSwiter {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 6;
+}
+
+.isOpenWrap {
+    position: fixed;
+    height: 80%;
+    width: 60%;
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*width: 600px;*/
+    /*height: 800px;*/
+    /*margin:0;*/
+    /*margin-top: -400px;*/
+    z-index: 7;
+    left: 20%;
+    top: 10%;
+
+}
+
+.isOpenWrap .img-modal-center {
+    position: relative;
+    margin: 0;
+}
+
+.content {
+    background: #f9f9f9;
+    height: 100%;
+    width: 100%;
+
+}
+
+.content ._head {
+    padding: 10px 0;
+    background: #f0f0f0;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #b3b3b3;
+}
+
+.content ._head div {
+    display: inline-block;
+}
+
+.content ._content {
+    /*border: 1px solid red;*/
+
+    /*width: 100%;*/
+    /*width: 400px;*/
+    /*min-height: 600px;*/
+    /*width: 100%;*/
+
+    /*height: auto;*/
+    margin: 50px auto;
+}
+
+.swiper-container {
+
+    /*width: auto;*/
+
+
+    /*min-width: 400px;*/
+}
+
+.swiper-wrapper {
+    /*width: auto;*/
+
+}
+
+.switer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 8;
+    cursor: pointer;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    background-image: url('');
+    position: absolute;
+
+}
+
+.swiper-button-next {
+
+}
+
+.swiper-button-prev {
+
+}
+
+/*.swiper-pagination-fraction{*/
+/*bottom: 0;*/
+/*padding: 0 50px;*/
+/*}*/
+
+._swiper-pagination {
+
+    width: 40px;
+
+}
+
+
+body .layui-layer{
+    border-radius: 7px;
+    /*behavior: url('/js/myradius.htc');*/
+}
+
+body .layui-layer-title {
+    background: #f9f9f9;
+    color: #999999;
+    font-size: 14px;
+    border-radius: 5px ;
+    /*height: 23px;*/
+
+    /*behavior: url('/js/myradius.htc');*/
+}
+
+
+body .layui-layer-page .layui-layer-content{
+    background-color: #ffffff;
+    padding: 20px 30px 20px 30px;
+    font-size: 14px;
+    font-family: 'Microsoft YaHei';
+    text-align: center;
+    overflow: hidden;
+    margin: 0;
+    border: 0;
+
+
+}
+body .layui-layer-page .layui-layer-content textarea{
+    border: 0;
+    background: #EEEEEE;
+}
+
+body .layui-layer-page .layui-layer-content textarea:focus{
+    border: 1px solid #b0b0b0;
+    background: #ffffff;
+}
+
+
+
+body .layui-layer-setwin .layui-layer-close1 {
+    background-position: 4px -40px;
+    cursor: pointer;
+}
+
+
+body .sure .layui-layer-btn a{
+    background: #82c9ff;
+    color: #ffffff;
+}

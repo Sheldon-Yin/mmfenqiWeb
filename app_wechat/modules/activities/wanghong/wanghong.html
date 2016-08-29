@@ -1,0 +1,237 @@
+<link rel="stylesheet" href="modules/activities/wanghong/css/wanghong.css">
+<div class="activities-wanghong-container">
+    <img src="modules/activities/wanghong/img/NO1.jpg">
+    <div style="position:absolute;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6" style="padding: 0 1.5rem">
+                    <div style="border: 1px solid #e3e3e3;margin-top: 8.3rem"
+                         ng-click="goToGoodsDetails(goods[0].goodsItemGroupList[0].goodsHerf)">
+                        <img ng-src="{{goods[0].goodsItemGroupList[0].goodsHerPic}}" style="width: 100%">
+                        <div style="height: 2.5rem;line-height: 1.25rem;overflow: hidden;padding: 0 2px">
+                            {{goods[0].goodsItemGroupList[0].hotItemName}}
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5 text-left app-pink-text"
+                                 style="font-size: 1.4rem;line-height: 1.5rem;font-weight: bolder">
+                                ￥{{goods[0].goodsItemGroupList[0].presentPrice}}
+                            </div>
+                            <div class="col-xs-7 text-right"
+                                 style="line-height: 1.5rem;color: #ccc;font-size: .6rem;text-decoration: line-through;margin-left: -5px">
+                                ￥{{goods[0].goodsItemGroupList[0].marketPrice}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6" style="padding: 0 1.5rem">
+                    <div style="border: 1px solid #e3e3e3;margin-top: 8.3rem"
+                         ng-click="goToGoodsDetails(goods[0].goodsItemGroupList[1].goodsHerf)">
+                        <img ng-src="{{goods[0].goodsItemGroupList[1].goodsHerPic}}" style="width: 100%">
+                        <div style="height: 2.5rem;line-height: 1.25rem;overflow: hidden;padding: 0 2px">
+                            {{goods[0].goodsItemGroupList[1].hotItemName}}
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5 text-left app-pink-text"
+                                 style="font-size: 1.4rem;line-height: 1.5rem;font-weight: bolder">
+                                ￥{{goods[0].goodsItemGroupList[1].presentPrice}}
+                            </div>
+                            <div class="col-xs-7 text-right"
+                                 style="line-height: 1.5rem;color: #ccc;font-size: .6rem;text-decoration: line-through;margin-left: -5px">
+                                ￥{{goods[0].goodsItemGroupList[1].marketPrice}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center" style="margin-top: 1rem">
+                <div class="col-xs-2 text-center" style="text-decoration: line-through;line-height: 2rem">
+                    ￥{{goods[0].netRedGoodsItem.marketPrice | number:2}}
+                </div>
+                <div class="col-xs-7 text-center app-pink-text"
+                     style="font-size: 1.4rem;line-height: 2rem;font-weight: bold;padding: 0">
+                    <span style="font-size: 1.1rem">专享价:</span>￥{{goods[0].netRedGoodsItem.monthlyPrice}} x <span style="font-size: 1rem;">{{goods[0].netRedGoodsItem.staging}}</span>
+                </div>
+                <div class="col-xs-3 text-center" style="line-height: 2rem"
+                     ng-click="goToGoodsDetails(goods[0].netRedGoodsItem.goodsHerf)">
+                    <div style="width: 100%;background: #f95e57;color: white;border-radius: 3px">
+                        立即分期
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="modules/activities/wanghong/img/NO2.jpg">
+    <img src="modules/activities/wanghong/img/NO3.jpg">
+    <div style="position:absolute;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6" style="padding: 0 1.5rem">
+                    <div style="border: 1px solid #e3e3e3;margin-top: 4.5rem"
+                         ng-click="goToGoodsDetails(goods[1].goodsItemGroupList[0].goodsHerf)">
+                        <img ng-src="{{goods[1].goodsItemGroupList[0].goodsHerPic}}" style="width: 100%">
+                        <div style="height: 2.5rem;line-height: 1.25rem;overflow: hidden;padding: 0 2px">
+                            {{goods[1].goodsItemGroupList[0].hotItemName}}
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5 text-left app-pink-text"
+                                 style="font-size: 1.4rem;line-height: 1.5rem;font-weight: bolder">
+                                ￥{{goods[1].goodsItemGroupList[0].presentPrice}}
+                            </div>
+                            <div class="col-xs-7 text-right"
+                                 style="line-height: 1.5rem;color: #ccc;font-size: .6rem;text-decoration: line-through;margin-left: -5px">
+                                ￥{{goods[1].goodsItemGroupList[0].marketPrice}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6" style="padding: 0 1.5rem">
+                    <div style="border: 1px solid #e3e3e3;margin-top: 4.5rem"
+                         ng-click="goToGoodsDetails(goods[1].goodsItemGroupList[1].goodsHerf)">
+                        <img ng-src="{{goods[1].goodsItemGroupList[1].goodsHerPic}}" style="width: 100%">
+                        <div style="height: 2.5rem;line-height: 1.25rem;overflow: hidden;padding: 0 2px">
+                            {{goods[1].goodsItemGroupList[1].hotItemName}}
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5 text-left app-pink-text"
+                                 style="font-size: 1.4rem;line-height: 1.5rem;font-weight: bolder">
+                                ￥{{goods[1].goodsItemGroupList[1].presentPrice}}
+                            </div>
+                            <div class="col-xs-7 text-right"
+                                 style="line-height: 1.5rem;color: #ccc;font-size: .6rem;text-decoration: line-through;margin-left: -5px">
+                                ￥{{goods[1].goodsItemGroupList[1].marketPrice}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center" style="margin-top: 1rem">
+                <div class="col-xs-3 text-center" style="text-decoration: line-through;line-height: 2rem">
+                    ￥{{goods[1].netRedGoodsItem.marketPrice | number:2}}
+                </div>
+                <div class="col-xs-5 text-center app-pink-text"
+                     style="font-size: 1.4rem;line-height: 2rem;font-weight: bold;padding: 0">
+                    <span style="font-size: 1.1rem">专享价:</span>￥{{goods[1].netRedGoodsItem.monthlyPrice}} x <span style="font-size: 1rem;">{{goods[1].netRedGoodsItem.staging}}</span>
+                </div>
+                <div class="col-xs-4 text-center" style="line-height: 2rem"
+                     ng-click="goToGoodsDetails(goods[1].netRedGoodsItem.goodsHerf)">
+                    <div style="width: 100%;background: #f95e57;color: white;border-radius: 3px">
+                        立即分期
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="modules/activities/wanghong/img/NO4.jpg">
+    <img src="modules/activities/wanghong/img/NO5.jpg">
+    <div style="position:absolute;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6" style="padding: 0 1.5rem">
+                    <div style="border: 1px solid #e3e3e3;margin-top: 4.5rem"
+                         ng-click="goToGoodsDetails(goods[2].goodsItemGroupList[0].goodsHerf)">
+                        <img ng-src="{{goods[2].goodsItemGroupList[0].goodsHerPic}}" style="width: 100%">
+                        <div style="height: 2.5rem;line-height: 1.25rem;overflow: hidden;padding: 0 2px">
+                            {{goods[2].goodsItemGroupList[0].hotItemName}}
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5 text-left app-pink-text"
+                                 style="font-size: 1.4rem;line-height: 1.5rem;font-weight: bolder">
+                                ￥{{goods[2].goodsItemGroupList[0].presentPrice}}
+                            </div>
+                            <div class="col-xs-7 text-right"
+                                 style="line-height: 1.5rem;color: #ccc;font-size: .6rem;text-decoration: line-through;margin-left: -5px">
+                                ￥{{goods[2].goodsItemGroupList[0].marketPrice}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6" style="padding: 0 1.5rem">
+                    <div style="border: 1px solid #e3e3e3;margin-top: 4.5rem"
+                         ng-click="goToGoodsDetails(goods[2].goodsItemGroupList[1].goodsHerf)">
+                        <img ng-src="{{goods[2].goodsItemGroupList[1].goodsHerPic}}" style="width: 100%">
+                        <div style="height: 2.5rem;line-height: 1.25rem;overflow: hidden;padding: 0 2px">
+                            {{goods[2].goodsItemGroupList[1].hotItemName}}
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5 text-left app-pink-text"
+                                 style="font-size: 1.4rem;line-height: 1.5rem;font-weight: bolder">
+                                ￥{{goods[2].goodsItemGroupList[1].presentPrice}}
+                            </div>
+                            <div class="col-xs-7 text-right"
+                                 style="line-height: 1.5rem;color: #ccc;font-size: .6rem;text-decoration: line-through;margin-left: -5px">
+                                ￥{{goods[2].goodsItemGroupList[1].marketPrice}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center" style="margin-top: 1rem">
+                <div class="col-xs-3 text-center" style="text-decoration: line-through;line-height: 2rem">
+                    ￥{{goods[2].netRedGoodsItem.marketPrice | number:2}}
+                </div>
+                <div class="col-xs-5 text-center app-pink-text"
+                     style="font-size: 1.4rem;line-height: 2rem;font-weight: bold;padding: 0">
+                    <span style="font-size: 1.1rem">专享价:</span>￥{{goods[2].netRedGoodsItem.monthlyPrice}} x <span style="font-size: 1rem;">{{goods[2].netRedGoodsItem.staging}}</span>
+                </div>
+                <div class="col-xs-4 text-center" style="line-height: 2rem"
+                     ng-click="goToGoodsDetails(goods[2].netRedGoodsItem.goodsHerf)">
+                    <div style="width: 100%;background: #f95e57;color: white;border-radius: 3px">
+                        立即分期
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="modules/activities/wanghong/img/NO6.jpg">
+    <img src="modules/activities/wanghong/img/NO7.jpg">
+    <img src="modules/activities/wanghong/img/NO8.jpg">
+    <img src="modules/activities/wanghong/img/NO9.jpg">
+    <img src="modules/activities/wanghong/img/NO10.jpg">
+    <img src="modules/activities/wanghong/img/NO11.jpg">
+    <div style="background: url('modules/activities/wanghong/img/background.jpg');background-size: 100% 100%">
+        <div class="text-center" style="padding-top: 1rem;margin-bottom: 2rem;font-size: 1.4rem">
+            用户预订记录
+        </div>
+        <div class="container" ng-show="!showMore">
+            <div class="row" ng-repeat="x in messages | limitTo: 10" style="margin-top: 1rem">
+                <div style="width: 10%" class="col-xs-1">
+                    <img ng-src="{{x.sculptureUrl}}" style="border-radius: 100%;width: 3rem;height: 3rem;">
+                </div>
+                <div style="width: 65%;padding-left: 2rem" class="col-xs-1">
+                    <div style="color: #333;">
+                        用户{{x.telphone}}
+                    </div>
+                    <div style="color: #A6A6A6">
+                        {{x.createTime | date: 'yyyy-MM-dd hh:mm:ss'}}
+                    </div>
+                </div>
+                <div  class="col-xs-1" style="width: 25%;color: #fb695b;">
+                    已预约
+                </div>
+            </div>
+        </div>
+
+        <div class="container" ng-show="showMore">
+            <div class="row" ng-repeat="x in messages" style="margin-top: 1rem">
+                <div style="width: 10%" class="col-xs-1">
+                    <img ng-src="{{x.sculptureUrl}}" style="border-radius: 100%;width: 3rem;height: 3rem;">
+                </div>
+                <div style="width: 65%;padding-left: 2rem" class="col-xs-1">
+                    <div style="color: #333;">
+                        用户{{x.telphone}}
+                    </div>
+                    <div style="color: #A6A6A6">
+                        {{x.createTime | date: 'yyyy-MM-dd hh:mm:ss'}}
+                    </div>
+                </div>
+                <div  class="col-xs-1" style="width: 25%;color: #fb695b;">
+                    已预约
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center;padding: 1rem" ng-show="!showMore" ng-click="showMoreUser()">
+            查看更多
+        </div>
+    </div>
+</div>

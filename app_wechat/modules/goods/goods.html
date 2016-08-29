@@ -83,19 +83,7 @@
 
             <hr class="app-bootstrap-hr-no-match">
 
-            <div class="row text-center goods-information-feature" style="font-size: 0.8rem">
-                <div class="col-xs-1" style="width: auto">
-                    <img src="modules/goods/img/yes.png" style="width: 1rem">未消费随便退
-                </div>
-
-                <div class="col-xs-1" style="width: auto">
-                    <img src="modules/goods/img/yes.png" style="width: 1rem">0首付分期
-                </div>
-
-                <div class="col-xs-1" style="width: auto">
-                    <img src="modules/goods/img/yes.png" style="width: 1rem">医美全程陪护
-                </div>
-            </div>
+            <img src="modules/goods/img/process.png" style="width: 100%;padding: .5rem 0">
 
         </div>
 
@@ -171,9 +159,23 @@
 <div class="goods-categories-bottom-bar">
 
     <div style="width: 20%;text-align: center;border-right: #ececec 1px solid;float: left;color: #000;" ng-click="callMmfq()">
-        <img src="modules/goods/img/phone.png" style="width: 35%">
+        <img src="modules/goods/img/phone.png" style="width: 30%">
         <div>
             电话咨询
+        </div>
+    </div>
+
+    <div style="width: 20%;text-align: center;border-right: #ececec 1px solid;float: left;color: #000;" ng-click="addCollect()" ng-show="!collected">
+        <img src="modules/goods/img/uncollected.png" style="width: 30%">
+        <div>
+            收藏
+        </div>
+    </div>
+
+    <div style="width: 20%;text-align: center;border-right: #ececec 1px solid;float: left;color: #000;" ng-click="cancelCollect()" ng-show="collected">
+        <img src="modules/goods/img/collected.png" style="width: 30%">
+        <div style="color: #FB1787;">
+            已收藏
         </div>
     </div>
 
@@ -182,7 +184,7 @@
                                                                             style="font-size: 1.9rem">{{price||defaultPrice}}元</span>
     </div>
 
-    <div style="font-size: 1.5rem;width: 50%;float: left;background-color: #fb1787;color: #FFFFFF;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: center"
+    <div style="font-size: 1.5rem;width: 30%;float: left;background-color: #fb1787;color: #FFFFFF;margin: -0.6rem 0;height: 4.8rem;line-height: 4.8rem;text-align: center"
          ng-click="goToOrder()">
         立即分期
     </div>

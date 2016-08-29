@@ -118,6 +118,42 @@ angular.module('app')
                 query: {method: 'GET', params: {cityId: '0'}}
             });
         }])
+    .factory('Reports', ['$resource',
+        function ($resource) {
+            return $resource('/tenant/query_order_report', {}, {
+                query: {method: 'GET', params: {}}
+            });
+        }])
+    .factory('ReportDetail', ['$resource',
+        function ($resource) {
+            return $resource('/tenant/query_order_report_detail', {}, {
+                query: {method: 'GET', params: {}}
+            });
+        }])
+    .factory('ReportNoRepeat', ['$resource',
+        function ($resource) {
+            return $resource('/tenant/order_report_status_operate', {}, {
+                query: {method: 'GET', params: {}}
+            });
+        }])
+    .factory('ReportRepeat', ['$resource',
+        function ($resource) {
+            return $resource('/tenant/upload_voucher_pic', {}, {
+                query: {method: 'GET', params: {cityId: '0'}}
+            });
+        }])
+    .factory('ReportResume', ['$resource',
+        function ($resource) {
+            return $resource('/tenant/consume_status_operate', {}, {
+                save: {method: 'POST', params: {}}
+            });
+        }])
+    .factory('ReportMessage', ['$resource',
+        function ($resource) {
+            return $resource('/tenant/upload_order_report_message', {}, {
+                save: {method: 'POST', params: {}}
+            });
+        }])
 
 
 ;

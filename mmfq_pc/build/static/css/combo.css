@@ -9,6 +9,7 @@
     background: url(../images/combo/top-img.jpg);
     min-width: 1200px;
     background-position: center center;
+
 }
 
 
@@ -136,7 +137,7 @@
 
 
 .goods-info .infoTit2 span{
-    font-size: 36px;
+    font-size: 34px;
 }
 
 .combo-main .two-g{

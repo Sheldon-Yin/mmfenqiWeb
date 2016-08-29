@@ -8,8 +8,9 @@ define(function (require, exports, module) {
         require('services/goodsDetail.js')(app);
         require('services/isRealNameService.js')(app);
         require('services/weChatService.js')(app);
-        app.register.controller('GoodsCtrl', ['$scope', 'GoodsDetail', '$location', 'IsRealName', 'Bridge',
-            function ($scope, GoodsDetail, $location, IsRealName, Bridge) {
+        require('services/collectionService.js')(app);
+        app.register.controller('GoodsCtrl', ['$scope', 'GoodsDetail', '$location', 'IsRealName', 'Bridge', 'Collection',
+            function ($scope, GoodsDetail, $location, IsRealName, Bridge, Collection) {
 
                 var swiper;
                 $scope.initBannerSwiper = function () {
@@ -28,7 +29,6 @@ define(function (require, exports, module) {
                     swiper.update();
                     swiper.reLoop()
                 });
-
 
                 var goodsId = $location.search();
                 console.log(goodsId);
@@ -105,27 +105,47 @@ define(function (require, exports, module) {
                     window.location.href = 'tel://' + '400-711-8898';
                 };
 
-                //if (myBridge) {
-                //    myBridge.registerHandler('sendMessageToHTML', function (message, callback) {
-                //        if (message == 0) {
-                //            Toast('Message=' + message);
-                //            myBridge.callHandler('sendMessageToApp', {
-                //                type: message, data: {
-                //                    description: '美眉分期精品推荐~',
-                //                    title: '美眉分期',
-                //                    url: $location.absUrl(),
-                //                    imageUrl: 'http://www.mmfenqi.com/static/masserts/pc/img/login/logo.png'
-                //                }
-                //            }, function (response) {
-                //                //todo custom
-                //            });
-                //        } else {
-                //            myBridge.callHandler('sendMessageToApp', {type: message, data: {}}, function (response) {
-                //                //todo custom
-                //            });
-                //        }
-                //    });
-                //}
+
+                $scope.collected = false;
+
+                if (!!$location.search().collectionId){
+                    $scope.collected = true;
+                    $scope.collectionId = $location.search().collectionId;
+                }
+
+                $scope.addCollect = function () {
+                    Bridge.appToken(function (res) {
+                        $scope.appToken = res;
+                        Collection.add().save({
+                            appToken: $scope.appToken,
+                            collectionId: $location.search().goodsId,
+                            collectionType:1
+                        }).$promise.then(function (res) {
+                            Toast(res.msg);
+                            $scope.collected = true;
+                            $scope.collectionId = res.data.goodsCollection.id;
+                        }).catch(function (err) {
+                            Toast('服务器返回错误'+ err)
+                        })
+                    });
+
+                };
+
+                $scope.cancelCollect = function () {
+                    if (!!$scope.collectionId){
+                        Collection.cancel().save({
+                            appToken: $scope.appToken,
+                            id: $scope.collectionId
+                        }).$promise.then(function (res) {
+                            Toast(res.msg);
+                            $scope.collected = false;
+                        }).catch(function (err) {
+                            Toast('服务器返回错误'+ err)
+                        })
+                    } else {
+
+                    }
+                }
 
             }])
     }

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="vendor/jquery/jquery.min.js"></script>
+<style>
+    .one{
+        width: 100%;
+        background: #FFFFFF;
+        padding: 10px 20px;
+
+    }
+    .one div{
+        margin: 5px 0;
+    }
+    .two{
+        width: 100%;
+        background: #e6e6e6;
+        padding: 10px 20px;
+    }
+</style>
+<body>
+<div style="width: 400px;">
+    <div class="one">
+        <div>
+            <input type="checkbox" id="one" name="checkbox" value="1">
+            <label for="one">56664646</label>
+        </div>
+        <div>
+            <input type="checkbox" id="two" name="checkbox" value="2">
+            <label for="two">56664646ssss</label>
+        </div>
+        <div>
+            <input type="checkbox" id="three" name="checkbox" value="3">
+            <label for="three">56664646</label>
+        </div>
+        <div>
+            <input type="checkbox" id="four" name="checkbox" value="4">
+            <label for="four">56664646</label>
+        </div>
+        <div>
+            <input type="checkbox" id="five" name="checkbox" value="5">
+            <label for="five">56664646ss</label>
+        </div>
+    </div>
+    <div class="two">
+        <div>请填写原因</div>
+        <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
+    </div>
+
+    <button onclick="chk()">
+        465464
+    </button>
+</div>
+</body>
+
+<script>
+function chk() {
+    var obj=document.getElementsByName('checkbox');
+    var s='';
+    for(var i=0; i<obj.length; i++){
+        if(obj[i].checked) s+=obj[i].value+',';  //如果选中，将value添加到变量s中
+    }
+    //那么现在来检测s的值就知道选中的复选框的值了
+    alert(s==''?'你还没有选择任何内容！':s);
+}
+    var s='true'
+    var ss='false'
+
+    alert(Boolean(s))
+    alert(Boolean(ss))
+
+    function acb(cb) {
+        return cb
+    }
+    function acb(func) {
+
+    }
+
+</script>
+</html>

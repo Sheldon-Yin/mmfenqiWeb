@@ -38,7 +38,9 @@ define(function (require, exports, module) {
                 return {
                     login: function (href) {
 
-                        window.localStorage.referer = !!href ? href :window.location.href;
+                        if(window.location.href != ($location.absUrl().split('#')[0] + '#?/login/telephone')){
+                            window.localStorage.referer = window.location.href;
+                        }
 
                         var login = function () {
                             window.location.href = $location.absUrl().split('#')[0] + '#?/login/telephone'
@@ -56,7 +58,7 @@ define(function (require, exports, module) {
                             document.cookie = cname + "=" + cvalue + "; " + expires;
                         }
                         setCookie('appToken', "", -1);
-                        window.localStorage.referer = $location.absUrl().split('#')[0];
+                        window.localStorage.referer = $location.absUrl().split('#')[0]+'#?/login/info';
                         console.log('登出成功')
                     },
                     appToken: function (cb) {
@@ -68,7 +70,9 @@ define(function (require, exports, module) {
                         if (!!window.localStorage.appToken) {
                             return cb(window.localStorage.appToken)
                         } else {
-                            window.localStorage.referer = window.location.href;
+                            if(window.location.href != ($location.absUrl().split('#')[0] + '#?/login/telephone')){
+                                window.localStorage.referer = window.location.href;
+                            }
                             setTimeout(function () {
                                 login();
                             },0)

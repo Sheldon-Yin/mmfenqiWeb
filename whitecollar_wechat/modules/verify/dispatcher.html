@@ -1,0 +1,25 @@
+<link href="modules/verify/css/verify.css" rel="stylesheet">
+<link href="modules/verify/css/verify-student.css" rel="stylesheet">
+
+<div style="min-height: 100%">
+    <div ng-include="'modules/verify/collar-first.html'" ng-controller="VerifyCollarFirstCtrl"
+         ng-if="nowPage == 1 && userType==6"></div>
+    <div ng-include="'modules/verify/collar-second.html'" ng-controller="VerifyCollarSecondCtrl"
+         ng-if="nowPage == 2 && userType==6"></div>
+    <div ng-include="'modules/verify/collar-third.html'" ng-controller="VerifyCollarThirdCtrl"
+         ng-if="nowPage == 3 && userType==6"></div>
+    <div ng-include="'modules/verify/student-first.html'" ng-controller="VerifyStudentFirstCtrl"
+         ng-if="nowPage == 1 && userType==0"></div>
+    <div ng-include="'modules/verify/student-second.html'" ng-controller="VerifyStudentSecondCtrl"
+         ng-if="nowPage == 2 && userType==0"></div>
+    <div ng-include="'modules/verify/student-third.html'" ng-controller="VerifyStudentThirdCtrl"
+         ng-if="nowPage == 3 && userType==0"></div>
+    <div ng-include="'modules/verify/bank-forth.html'" ng-controller="VerifyBankForthCtrl"
+         ng-if="nowPage == 4"></div>
+    <div ng-include="'modules/verify/zm-fifth.html'" ng-controller="VerifyZmFifthCtrl"
+         ng-if="nowPage == 5"></div>
+    <div ng-include="'modules/verify/taobao-sixth.html'" ng-controller="VerifyTaobaoSixthCtrl"
+         ng-if="nowPage == 6"></div>
+    <div ng-include="'modules/verify/complete.html'" ng-controller="VerifyCompleteCtrl"
+         ng-if="nowPage == 0"></div>
+</div>

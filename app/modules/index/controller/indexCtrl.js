@@ -8,7 +8,6 @@ define(function (require, exports, module) {
         require('services/indexService.js')(app);
         app.register.controller('IndexCtrl', ['$scope', 'Index', '$location',
             function ($scope, Index, $location) {
-
                 $scope.cityName = '杭州';
                 $scope.cityId = 2;
                 $scope.cityName = !!$location.search().cityName ? $location.search().cityName : $scope.cityName;
@@ -42,6 +41,7 @@ define(function (require, exports, module) {
                     //初始化banner图的swiper
                 };
                 $scope.initBannerSwiper();
+
 
                 $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
                     swiper.update();
@@ -143,8 +143,7 @@ define(function (require, exports, module) {
                             type: 2, data: {
                                 url: x,
                                 title: '精品活动',
-                                leftNavItems: [1],
-                                rightNavItems: [0]
+                                leftNavItems: [1]
                             }
                         }, function (response) {
                             //todo custom

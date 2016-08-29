@@ -1,0 +1,129 @@
+<style>
+  .app-header-lineheight{
+    line-height: 56px;
+    height: 56px;
+    display: inline-block;
+    color: #999999;
+  }
+  .padder{
+    padding: 0 10px;
+  }
+  .navbar-nav > li > a {
+
+    padding: 0 10px;
+    height: 56px;
+    line-height: 56px;
+    min-width: 140px;
+    text-align: center;
+  }
+
+  .navbar-nav > li> a span{
+    vertical-align: middle;
+  }
+  .navbar-right .dropdown-menu{
+    left: 0;
+  }
+  .navbar-nav > li > .dropdown-menu{
+    width: 200px;
+  }
+
+  .list-group a div{
+   line-height: 20px;
+   font-size: 14px;
+    display: inline-block;
+    width: 80px;
+
+  }
+  .list-group a div:first-child+div{
+    text-align: right;
+  }
+
+
+
+
+</style>
+<!-- navbar header -->
+      <div class="navbar-header {{app.settings.navbarHeaderColor}}" style="height: 56px !important;">
+
+        <div style="text-align: center; padding: 10px; margin-bottom: 10px;">
+        <img src="img/logo_.png" width="76px" style="height: 65px; !important;">
+        </div>
+        <!--<a href="#/" class="navbar-brand text-lt">-->
+          <!--&lt;!&ndash;<i class="fa fa-smile-o"></i>&ndash;&gt;-->
+          <!--<img src="img/logo.png" alt=".">-->
+          <!--&lt;!&ndash;<span class="hidden-folded m-l-xs">{{app.name}}</span>&ndash;&gt;-->
+        <!--</a>-->
+        <!-- / brand -->
+      </div>
+      <!-- / navbar header -->
+
+      <!-- navbar collapse -->
+      <div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}">
+
+        <div class="nav navbar-nav hidden-xs">
+          <div class="app-header-lineheight" ng-if=" (17<app.dateInfo.date) && (app.dateInfo.date<22) ">下午</div>
+          <div class="app-header-lineheight" ng-if=" (17<app.dateInfo.date) && (app.dateInfo.date<10) ">下午</div>
+          <div class="app-header-lineheight">今天是{{app.dateInfo.year}}年{{app.dateInfo.month}}月{{app.dateInfo.toDay}}{{app.dateInfo.week}}</div>
+
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+
+
+          <li class="dropdown" dropdown>
+            <a href class="dropdown-toggle" dropdown-toggle>
+              <img src="img/info.png">
+              <span>消息</span>
+              <span class="badge badge-sm center bg-danger pull-right-xs">{{waitAuditOrderNum}}</span>
+            </a>
+            <!-- dropdown -->
+            <div class="dropdown-menu w-xl animated fadeInUp">
+              <div class="panel bg-white">
+
+                <div class="list-group">
+
+                  <a ng-click="$root._queryWaitAuditNum()" class="media list-group-item">
+                       <div>待审核项目</div>
+                       <div>{{waitAuditOrderNum}}</div>
+                  </a>
+                </div>
+                <div class="list-group">
+
+                  <a ng-click="$root.bill()" class="media list-group-item">
+                       <div>财务</div>
+                       <div>{{}}</div>
+                  </a>
+                </div>
+                <!--<div class="list-group">-->
+                  <!--<a href="#/app/customer/not-return" class="media list-group-item">-->
+                    <!--<div>查看更多</div>-->
+                    <!--<div>666</div>-->
+                  <!--</a>-->
+                <!--</div>-->
+              </div>
+            </div>
+            <!-- / dropdown -->
+          </li>
+
+          <li>
+            <a>
+              <img src="img/user_.png">
+              <span style="color: #82c9ff;">{{user.name}}</span>
+              <span>管理员</span>
+            </a>
+          </li>
+          <li>
+            <a ui-sref="access.signin">
+              <img src="img/layout.png">
+              <span style="color: #82c9ff;">退出系统</span>
+            </a>
+          </li>
+
+        </ul>
+        <!-- / navbar right -->
+
+
+
+
+      </div>
+      <!-- / navbar collapse -->

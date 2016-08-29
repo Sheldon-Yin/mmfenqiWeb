@@ -1,0 +1,128 @@
+
+<div class="verify-select-dialog-container" ng-if="selecting">
+    <div class="verify-select-dialog-background" ng-click="hideSelect()">
+    </div>
+    <div class="verify-select-dialog">
+        <div class="container" style="height: 10%">
+            <div class="row" style="height: 100%">
+                <div class="verify-select-dialog-title">
+                    {{selectTitle}}
+                </div>
+            </div>
+        </div>
+        <div class="container" style="overflow: scroll;height: 90%;">
+            <div class="row">
+                <div class="col-xs-12 verify-select-dialog-item"
+                     ng-repeat="x in selectItems" ng-click="selectCallBack(x[itemValue],x[itemName])">
+                    {{x[itemName]}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="verify-select-dialog-container" ng-show="showing" ng-click="hideImg()">
+    <div class="verify-select-dialog-background">
+    </div>
+    <div class="verify-select-dialog">
+        <div class="container" style="height: 10%">
+            <div class="row" style="height: 100%">
+                <img id="imgPreShow" style="width: 100%">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <img src="modules/verify/img/new/2.jpg" alt="第二步"  style="width: 100%">
+    </div>
+</div>
+
+<div class="container-fluid">
+
+    <div class="row tips">
+        <span>若您长期不还款且无法联系到您时,美眉分期将通过以下方式间接与您获得联系</span>
+    </div>
+
+    <form ng-submit="commitSecondStep()">
+        <div class="row">
+            <div class="col-xs-12 cell">
+                <div class="row">
+                    <div class="col-xs-3">父/母姓名</div>
+                    <div class="col-xs-9">
+                        <input type="text" placeholder="请输入父/母真实姓名" ng-model="$parent.parentName">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 cell">
+                <div class="row">
+                    <div class="col-xs-3">手机号码</div>
+                    <div class="col-xs-9">
+                        <input type="text" placeholder="请输入父/母手机号码" ng-model="$parent.parentPhone">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 cell">
+                <div class="row" ng-click="secondChooseProvince()">
+                    <div class="col-xs-3">居住省份</div>
+                    <div class="col-xs-8 cell-detail">{{$parent.selectProvName}}</div>
+                    <div class="col-xs-1">
+                        <img src="modules/verify/img/student/arrow.png" class="cell-arrow"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 cell">
+                <div class="row" ng-click="secondChooseCity()">
+                    <div class="col-xs-3">居住城市</div>
+                    <div class="col-xs-8 cell-detail">{{$parent.selectCityName}}</div>
+                    <div class="col-xs-1">
+                        <img src="modules/verify/img/student/arrow.png" class="cell-arrow"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 cell">
+                <div class="row">
+                    <div class="col-xs-3">详细地址</div>
+                    <div class="col-xs-9">
+                        <input type="text" class="input-address" placeholder="如(文三路478号 B403 杭州优贝网络科技有限公司)"
+                               ng-model="$parent.address">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 cell">
+                <div class="row">
+                    <div class="col-xs-3">银行卡号</div>
+                    <div class="col-xs-9">
+                        <input type="text" class="input-address" placeholder="如:6221 5555 8888 9999"
+                               ng-model="$parent.bankcardcode">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 cell" style="margin-top: 15px;">
+                <div class="row">
+                    <div class="col-xs-3">同学姓名</div>
+                    <div class="col-xs-9">
+                        <input type="text" placeholder="请输入同学姓名" ng-model="$parent.schoolmateName">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 cell">
+                <div class="row">
+                    <div class="col-xs-3">手机号码</div>
+                    <div class="col-xs-9">
+                        <input type="text" placeholder="请输入同学手机号码" ng-model="$parent.schoolmatePhone">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <input type="submit" class="submit-btn" value="确定,下一步">
+            </div>
+        </div>
+    </form>
+</div>

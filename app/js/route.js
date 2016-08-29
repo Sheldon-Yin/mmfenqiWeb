@@ -90,13 +90,38 @@ define(function (require, exports, module) {
                     controllerUrl: './modules/bill/controller/billPaySuccessCtrl.js'
                 }).
 
+                //收藏模块
+                when('/collection', {
+                    templateUrl: 'modules/collection/collection.html',
+                    controller: 'CollectionCtrl',
+                    controllerUrl: './modules/collection/controller/collectionCtrl.js'
+                }).
 
-                //毕业季活动页面
-                when('/activities/graduation', {
+
+                //活动页面
+                when('/activities', {
+                    templateUrl: 'modules/activities/common/activity.html',
+                    controller: 'ActivityCtrl',
+                    controllerUrl: './modules/activities/common/controller/activity.js'
+                }).when('/activities/graduation', {
                     templateUrl: 'modules/activities/graduation/graduation.html',
                     controller: 'GraduationCtrl',
                     controllerUrl: './modules/activities/graduation/controller/graduation.js'
+                }).when('/activities/wanghong', {
+                    templateUrl: 'modules/activities/wanghong/wanghong.html',
+                    controller: 'WanghongCtrl',
+                    controllerUrl: './modules/activities/wanghong/controller/wanghong.js'
+                }).when('/activities/president', {
+                    templateUrl: 'modules/activities/president/president.html',
+                    controller: 'PresidentCtrl',
+                    controllerUrl: './modules/activities/president/controller/president.js'
+                }).when('/activities/seckilling', {
+                    templateUrl: 'modules/activities/seckilling/seckilling.html',
+                    controller: 'SeckillingCtrl',
+                    controllerUrl: './modules/activities/seckilling/controller/seckilling.js'
                 }).
+
+
 
                 //商品列表
                 when('/list', {
@@ -245,7 +270,7 @@ define(function (require, exports, module) {
                     templateUrl: 'modules/verify/fast-verify-student.html',
                     controller: 'VerifyFastStudentCtrl',
                     controllerUrl: './modules/verify/controller/verifyFastStudentCtrl.js'
-                }).when('/verify/how-to-register',{
+                }).when('/verify/how-to-register', {
                     templateUrl: 'modules/verify/how-to-register.html'
                 }).
 

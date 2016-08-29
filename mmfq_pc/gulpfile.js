@@ -16,7 +16,6 @@ gulp.task('default', function () {
     gulp.run('component', 'container','service');
 });
 
-
 //npm install gulp-react gulp-babel babel-preset-es2015 babel-preset-react gulp-watch gulp-plumber gulp-uglify
 
 gulp.task('container', function () {

@@ -1,3 +1,5 @@
+
+<link rel="stylesheet" href="modules/bill/css/bill.css">
 <div style="width: 100%;position: fixed;height:100%;left: 0;z-index:999" ng-if="!bill.data  && !loadError">
     <div style="top: 45%;position: absolute;width: 100%;left: 45%">
         <img src="img/loading/loadingOuter.png" class="fa fa-spin" style="width: 10%">
@@ -17,7 +19,21 @@
         <!--</div>-->
     <!--</div>-->
 
+
+
+
     <div class="app-bootstrap-grey-bold-hr"></div>
+
+
+
+    <abcd isopen='isopen' config="config" sure="sure()"></abcd>
+    <div class="container" style="background: #ffffff; margin-bottom: 1rem;">
+        <div class="row" ng-click="openCt()">
+            <div class="col-xs-12 text-center" style="padding: 1rem 0; font-size: 1.2rem; color: #666666;">
+                <span style="vertical-align:middle;">管理自动还款</span> <img src="modules/bill/img/rightjiantou.jpg" style="vertical-align:middle; width: 0.6rem;">
+            </div>
+        </div>
+    </div>
 
     <!--for one-->
     <div style="background-color: #FFFFFF;padding: 1rem 0" ng-repeat="x in bill.data.myBillResponse">

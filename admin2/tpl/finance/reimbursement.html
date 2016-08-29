@@ -1,0 +1,154 @@
+<link rel="stylesheet" href="tpl/finance/css/finance.css">
+
+<html>
+<div class="wrap" ng-controller="ReimbursementCtrl">
+    <div class="wrap-content">
+        <tabset class="tab-container">
+            <tab>
+                <tab-heading>
+                    全部付款账单
+                </tab-heading>
+                <div class="panel-content">
+                    <div class="btn_one_share">姓名</div>
+                    <ui-select ng-model="queryType.selected" theme="selectize" ng-disabled="disabled" style="width: 120px;"
+                               class="btn_one_share">
+                        <ui-select-match placeholder="姓名">{{$select.selected.message}}</ui-select-match>
+                        <ui-select-choices repeat="y in newSelectTypeEnumListData | filter: $select.search">
+                            <span ng-bind-html="y.message | highlight: $select.search"></span>
+                            <!--<small ng-bind-html="y.code | highlight: $select.search"></small>-->
+                        </ui-select-choices>
+                    </ui-select>
+                    <input type="text" placeholder="查询姓名/手机号/订单号/交易号/商品名称" ng-model="queryTypeValue.no" style="width: 280px;">
+                    <div class="btn_one_share">医院</div>
+                    <ui-select ng-model="hospitalId.selected" theme="selectize" ng-disabled="disabled" style="width: 200px;"
+                               class="btn_one_share">
+                        <ui-select-match placeholder="全部">{{$select.selected.hosName}}</ui-select-match>
+                        <ui-select-choices repeat="y in hospitalListData | filter: $select.search">
+                            <span ng-bind-html="y.hosName | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                    <div class="btn_one_share">状态</div>
+                    <ui-select ng-model="orderStatus.selected" theme="selectize" ng-disabled="disabled" style="width: 100px;"
+                               class="btn_one_share">
+                        <ui-select-match placeholder="全部">{{$select.selected.message}}</ui-select-match>
+                        <!--<span ng-bind-html="">全部</span>-->
+                        <ui-select-choices repeat="y in orderstatEnumListData | filter: $select.search">
+
+                            <span ng-bind-html="y.message | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+
+
+                    <br>
+
+
+
+                    <div class="btn_one_share">下单时间</div>
+                    <div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}"
+                               ng-model="$parent.time_start" placeholder="时间" is-open="opened"
+                               datepicker-options="dateOptions" ng-change="updateData()"
+                               ng-required="true" close-text="关闭" style="width: 140px;"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                    </div>
+
+                    <!--{{datetime.start_time | date:'yyyy-MM-dd HH:mm:ss'}}-->
+                    <div class="btn_one_share">结束时间</div>
+                    <div ng-controller="DatepickerDemoCtrl" class="input-group btn_one_share">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}"
+                               ng-model="$parent.time_end" placeholder="时间" is-open="opened"
+                               datepicker-options="dateOptions" ng-change="updateData()"
+                               ng-required="true" close-text="关闭" style="width: 140px;"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                                                class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                    </div>
+
+                    <input type="button" class="btn btn-lg btn-danger btn_one_share" value="查询" ng-click="search()"
+                           style=" width: 84px; padding: 8px 16px; margin-bottom: 7px;">
+                    <input type="button" class="btn btn-lg btn-success btn_one_share" value="导出"
+                           ng-click="exportOrderInfo()" style=" width: 84px; padding: 8px 16px; margin-bottom: 7px;">
+                </div>
+                <div class="table-content">
+                    <table width="100%">
+                        <thead>
+                        <tr>
+                            <th class="width-14">姓名</th>
+                            <th class="width-14">订单号</th>
+                            <th class="width-14">商品名称</th>
+                            <th class="width-14">订单金额(元)</th>
+                            <th class="width-14">应付金额(元)</th>
+                            <th class="width-14">付款状态</th>
+                            <th class="width-14">操作</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>李建彬</li>
+                                    <li>136470786451</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>订单号</li>
+                                    <li>订单号</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>订单号</li>
+                                    <li>订单号</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>订单标杆要号</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>订单标杆要号</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>订单标杆要号</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><a href="" ng-click="go(1)">详情</a></li>
+                                    <li><a href="" ng-click="sure_refund()">确定</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="_pagination">
+                    <pagination class="btn_one_share_pagination" total-items="page.totalItem" ng-model="$parent.$parent.currentPage"
+                                max-size="maxSize" rotate="false" items-per-page="page.pageSize" previous-text="上一页"
+                                next-text="下一页"></pagination>
+                    <div class="btn_one_share_pagination totoal">共{{page.totalPage}}页</div>
+                    <div class="btn_one_share_pagination">转到</div>
+                    <input type="text" ng-model="inputPage" placeholder="第几页" style="padding-left:5px; ">
+                    <button ng-click="selectPage3(inputPage)"
+                            style="background-color: #b7b7b7; border: 0; padding: 3px 0;">
+                        确定
+                    </button>
+                    <div class="btn_one_share_pagination" style="text-align: right; float: right; line-height: 87px;">
+                        总订单数:{{page.totalItem}}
+                    </div>
+                </div>
+            </tab>
+    </div>
+</div>
+</html>
+

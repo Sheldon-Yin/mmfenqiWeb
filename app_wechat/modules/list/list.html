@@ -51,7 +51,6 @@
                 </div>
             </div>
 
-
             <!--项目分类-->
             <div class="col-xs-4 single-line" style="padding: 0"
                  ng-click="(selectState==2) ? (selectState=0) : (selectState=2)">
@@ -160,7 +159,7 @@
         <label ng-repeat="x in goods.data.goodsListResponse.goodsItemList" style="display: block;position: relative" ng-click="jumpToGoods('#?/goods?goodsId='+x.goodsHerf)">
             <div class="row app-project-container">
                 <div class="col-xs-5" style="width: 34%">
-                    <img ng-src="{{x.goodsHerPic}}" width="100%">
+                    <img ng-src="{{x.goodsHerPic}}" width="100%" style="min-height: 6.5rem;">
                 </div>
                 <div class="col-xs-7 app-project-content" style="width: 66%">
                     <div class="double-line app-project-title">

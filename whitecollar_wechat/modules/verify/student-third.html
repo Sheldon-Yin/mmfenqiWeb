@@ -1,0 +1,72 @@
+
+<div class="verify-select-dialog-container" ng-if="selecting">
+    <div class="verify-select-dialog-background" ng-click="hideSelect()">
+    </div>
+    <div class="verify-select-dialog">
+        <div class="container" style="height: 10%">
+            <div class="row" style="height: 100%">
+                <div class="verify-select-dialog-title">
+                    {{selectTitle}}
+                </div>
+            </div>
+        </div>
+        <div class="container" style="overflow: scroll;height: 90%;">
+            <div class="row">
+                <div class="col-xs-12 verify-select-dialog-item"
+                     ng-repeat="x in selectItems" ng-click="selectCallBack(x[itemValue],x[itemName])">
+                    {{x[itemName]}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="verify-select-dialog-container" ng-show="showing" ng-click="hideImg()">
+    <div class="verify-select-dialog-background">
+    </div>
+    <div class="verify-select-dialog">
+        <div class="container" style="height: 10%">
+            <div class="row" style="height: 100%">
+                <img id="imgPreShow" style="width: 100%">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <img src="modules/verify/img/new/3.jpg" alt="第三步"  style="width: 100%">
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-xs-12 cell">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="modules/verify/img/student/idcard.png" class="cell-img"/>
+                    <span class="cell-title">上传身份证正反面(清晰可见)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <hr class="app-bootstrap-hr">
+            <div class="row app-padding-one" style="background-color: white">
+                <div class="col-xs-6">
+                    <img src="modules/verify/img/student/front.png" id="frontIdentityPic" width="100%"
+                         ng-click="onUploadFront()"/>
+                </div>
+                <div class="col-xs-6">
+                    <img src="modules/verify/img/verify-back.png" id="backIdentityPic" width="100%"
+                         ng-click="onUploadBackend()"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <input type="button" class="submit-btn" value="确定" ng-click="submitThirdInfo()">
+        </div>
+    </div>
+</div>

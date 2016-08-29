@@ -1,0 +1,308 @@
+<style>
+    .wrap {
+        width: 100%;
+        background-color: #fafafa;
+        height: auto;
+        font-family: 'Microsoft YaHei', SimHei, sans-serif;
+    }
+
+    .wrap_content {
+        width: 100%;
+        padding-top: 20px;
+        clear: both;
+    }
+
+    .wrap .title {
+        padding: 10px 0;
+        background: #f0f0f0;
+        color: #333333;
+        font-size: 16px;
+    }
+
+    .wrap .ffffff {
+        background-color: #FFFFFF;
+        padding: 8px 0;
+
+    }
+
+    .wrap .f0f0f0 {
+        background-color: #f0f0f0;
+        padding: 8px 0;
+    }
+
+
+    .wrap .col-md-1 {
+        width: 105px;
+        padding: 10px 0;
+        border: 1px solid #FFFFFF;
+        display: inline-block!important;
+    }
+
+    .wrap .col-md-1 li{
+        list-style: none;
+    }
+
+    .wrap .col-md-4 {
+        padding: 8px 0;
+        border: 1px solid #dddddd;
+    }
+
+    .wrap .left {
+        width: 48%;
+        display: inline-block;
+        background-color: #ffffff;
+        height: 415px;
+
+    }
+
+    .wrap .right {
+        width: 50%;
+        background-color: #ffffff;
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 19px;
+        height: 415px;
+
+    }
+
+    .col-xs-12{
+        border-bottom: 1px solid #f7f7f7;
+        padding: 10px 15px;
+
+    }
+
+
+     textarea {
+        border: 0;
+        background: #EEEEEE;
+    }
+
+     textarea:focus {
+        border: 1px solid #b0b0b0;
+        background: #ffffff;
+    }
+
+     table tr th{
+         background: #ff6b6b; margin: 15px; color: #ffffff;
+         border-left:1px solid #ffffff;
+         width: 125px;
+         text-align: center;
+         padding: 8px 0;
+     }
+
+    table tr td{
+        width: 103px;
+        text-align: center;
+        padding: 8px 0;
+    }
+
+</style>
+<html>
+<div class="wrap" ng-controller="paymentingDetailCtrl">
+
+
+
+
+    <div style="width: 1200px; margin: 0 auto; clear: both;">
+        <div class="wrap_content">
+            <div class="container" style="width: 100%;">
+                <div class="row title">
+                    <div class="col-md-10">用户信息</div>
+                </div>
+                <div class="row ffffff">
+                    <div class="col-md-2">姓名</div>
+                    <div class="col-md-2">{{user.name}}</div>
+                    <div class="col-md-2">手机号码</div>
+                    <div class="col-md-2">{{user.telephone}}</div>
+                    <div class="col-md-2">可用额度(元)</div>
+                    <div class="col-md-2">{{user.realloanmoney | number:2}}</div>
+                </div>
+                <div class="row ffffff">
+                    <div class="col-md-2">角色</div>
+                    <div class="col-md-2">{{user.userType}}</div>
+                    <div class="col-md-2">身份证</div>
+                    <div class="col-md-2">{{user.identitycode}}</div>
+                    <div class="col-md-2">信用额度(元)</div>
+                    <div class="col-md-2">{{user.usedRealLoanMoney | number:2}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_content">
+            <div class="container" style="width: 100%;">
+                <div class="row title">
+                    <div class="col-md-10">联系人信息</div>
+                </div>
+                <div class="row ffffff">
+                    <div class="row" style="background: #ff6b6b; margin:0 15px; color: #ffffff;">
+                        <div class="col-md-4 text-center">&nbsp;</div>
+                        <div class="col-md-4 text-center">第一联系人</div>
+                        <div class="col-md-4 text-center">第二联系人</div>
+
+                    </div>
+                    <div class="row " style="margin:0 15px;">
+                        <div class="col-md-4 text-center f0f0f0">姓名</div>
+                        <div class="col-md-4 text-center">{{contactInfo.firstName}}</div>
+                        <div class="col-md-4 text-center">{{contactInfo.otherName}}</div>
+
+                    </div>
+                    <div class="row" style="margin:0 15px;">
+                        <div class="col-md-4 text-center f0f0f0">关系</div>
+                        <div class="col-md-4 text-center">{{contactInfo.firstRelation}}</div>
+                        <div class="col-md-4 text-center">{{contactInfo.otherRelation}}</div>
+
+                    </div>
+                    <div class="row" style="margin:0 15px;">
+                        <div class="col-md-4 text-center f0f0f0">手机号码</div>
+                        <div class="col-md-4 text-center">{{contactInfo.firstTelephone}}</div>
+                        <div class="col-md-4 text-center">{{contactInfo.otherTelephone==null ?
+                            'null':contactInfo.otherTelephone}}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="wrap_content">
+            <div class="container" style="width: 100%;">
+                <div class="row title">
+                    <div class="col-md-10">项目信息</div>
+                </div>
+                <div class="row ffffff">
+                    <div class="col-md-2">项目名称</div>
+                    <div class="col-md-6">{{order.orderName}}</div>
+                    <div class="col-md-2">订单金额(元)</div>
+                    <div class="col-md-2">{{order.orderPrice}}</div>
+                </div>
+                <div class="row ffffff">
+                    <div class="col-md-2">所属医院</div>
+                    <div class="col-md-6">{{order.hosName}}</div>
+                    <div class="col-md-2">首付比例</div>
+                    <div class="col-md-2">{{order.downpayPercentage}}</div>
+                </div>
+                <div class="row ffffff">
+                    <div class="col-md-2">订单号</div>
+                    <div class="col-md-6">{{order.orderSn}}</div>
+                    <div class="col-md-2">首付金额(元)</div>
+                    <div class="col-md-2">{{order.downpayAmount}}</div>
+                </div>
+                <div class="row ffffff">
+                    <div class="col-md-2">商品类型</div>
+                    <div class="col-md-6">{{order.orderType}}</div>
+                    <div class="col-md-2">分期数</div>
+                    <div class="col-md-2">{{order.totalTimes}}</div>
+                </div>
+                <div class="row ffffff">
+                    <div class="col-md-2">月供(元)</div>
+                    <div class="col-md-6">{{order.monthPay}}</div>
+                    <div class="col-md-2">本金(元)</div>
+                    <div class="col-md-2">{{order.loanAmount}}</div>
+                </div>
+                <div class="row ffffff">
+                    <div class="col-md-2">服务(元)</div>
+                    <div class="col-md-6">{{order.monthServicePay}}</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="wrap_content">
+            <div class="container" style="width: 100%;">
+                <div class="row title">
+                    <div class="col-md-10">账单信息</div>
+                </div>
+                <div class="row ffffff">
+                    <div class="row" style="background-color: #FFFFFF; margin: 15px; ">
+
+
+                        <table collapse="0" cellpadding="0">
+                            <tr>
+                                <th style="width: 60px;">期数</th>
+                                <th>逾期天数</th>
+                                <th>逾期费</th>
+                                <th>应还款金额</th>
+                                <th>应还款时间</th>
+                                <th style="width: 120px;">实际还款时间</th>
+                                <th style="width: 235px;">支付单号</th>
+                                <th>还款方式</th>
+                                <th>状态</th>
+                            </tr>
+                            <tr ng-repeat="y in repaymentPlanaListData">
+                                <td style="width: 60px;">{{y.staing}}</td>
+                                <td>{{y.overDays}}</td>
+                                <td>{{y.overBreachAmount}}</td>
+                                <td>{{y.payAmount}}</td>
+                                <td>{{y.payTime | date:'yyyy-MM-dd'}}</td>
+                                <td  style="width: 120px;">{{y.actualPayTime| date:'yyyy-MM-dd'}}</td>
+                                <td  style="width: 235px;">{{y.outTradeNo}}</td>
+                                <td>{{y.payType}}</td>
+                                <td>{{y.status}}</td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="wrap_content" style="padding-bottom: 20px;">
+            <div class="left">
+                <div class="container" style="width: 100%">
+                    <div class="row">
+                        <div class="col-xs-12">回访记录</div>
+                    </div>
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col-xs-10">
+                            <textarea name="textarea" id="textarea" ng-model="$parent.$parent.content" cols="74" rows="5" placeholder="添加回访记录"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 text-right">
+                            <input type="button" class="btn btn-lg btn-danger btn_one_share" value="提交"
+                                   ng-click="addUserBillReturnVisitRecord()" style="  width: 120px; padding: 8px; font-size: 12px;">
+                        </div>
+                    </div>
+                    <!--<div class="row">-->
+                    <!--<div class="col-md-2"></div>-->
+                    <!--<div class="col-md-2"></div>-->
+                    <!--<div class="col-md-2"></div>-->
+                    <!--<div class="col-md-3"><input type="button" class="btn btn-lg btn-danger btn_one_share" value="查询" ng-click="search()" style=" width: 120px; padding: 5px; font-size: 12px;">-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <div style="max-height: 200px; overflow-y: auto; overflow-x: hidden;">
+                        <div class="row" ng-repeat="y in returnVisitRecordListData" style="padding: 5px;">
+                            <div class="col-xs-6">时间:{{y.returnVisitTime | date:'yyyy-MM-dd: HH-mm-ss'}}</div>
+                            <div class="col-xs-6">操作人:{{y.returnVisitPersonnel}}</div>
+                            <div class="col-xs-11">{{y.content}}</div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="right">
+
+                <div class="container" style="width: 100%">
+                    <div class="row">
+                        <div class="col-xs-12">操作记录</div>
+                    </div>
+                    <div style="overflow-y: auto;  max-height:350px;padding-top: 10px; overflow-x: hidden;">
+                        <div class="row" ng-repeat="y in operationLogList" style="padding: 8px">
+                            <div class="col-xs-4">{{y.adminName}}'{{y.logContent}}'</div>
+                            <div class="col-xs-8">时间:{{y.createTime | date:'yyyy-MM-dd: HH-mm-ss'}}</div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</html>

@@ -91,4 +91,39 @@ angular.module('app')
             }
         }
     })
+
+
+
+    .filter('orderReportStatus', function () {
+        return function (value) {
+            switch (value){
+                case 0:
+                    return '待处理';
+                    break;
+                case 1:
+                    return '未重单';
+                    break;
+                case 2:
+                    return '重单';
+                    break;
+                default:
+                    return '未知的处理状态'
+            }
+        }
+    })
+    .filter('consumeStatus', function () {
+        return function (value) {
+            switch (value){
+                case 1:
+                    return '未消费';
+                    break;
+                case 2:
+                    return '已消费';
+                    break;
+                default:
+                    return '未知的消费状态'
+            }
+        }
+    })
+
 ;

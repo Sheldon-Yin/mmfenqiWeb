@@ -3,16 +3,16 @@
  */
 
 //console.log('route中');
-define(function (require, exports, module) {
+define(function(require, exports, module) {
     "use strict";
-    module.exports = function (app) {
+    module.exports = function(app) {
         app.config(['$routeProvider', '$httpProvider', '$locationProvider',
-            function ($routeProvider, $httpProvider, $locationProvider) {
+            function($routeProvider, $httpProvider, $locationProvider) {
 
                 $locationProvider.hashPrefix('?');
 
                 $routeProvider.
-                //Demo
+                    //Demo
                 when('/phones/list', {
                     templateUrl: 'modules/demo/phone-list.html',
                     controller: 'PhoneListCtrl',
@@ -145,14 +145,53 @@ define(function (require, exports, module) {
                     templateUrl: 'modules/bill/billPaySuccess.html',
                     controller: 'BillPaySuccessCtrl',
                     controllerUrl: './modules/bill/controller/billPaySuccessCtrl.js'
+                }).when('/bill/bankCard', {
+                    templateUrl: 'modules/bill/bindBankCard.html',
+                    controller: 'BillBankCardCtrl',
+                    controllerUrl: './modules/bill/controller/billBankCardCtrl.js'
+                }).when('/bill/bindSuccess', {
+                    templateUrl: 'modules/bill/bindSuccess.html',
+                    controller: 'BillBankCardCtrl',
+                    controllerUrl: './modules/bill/controller/billBankCardCtrl.js'
+                }).when('/bill/manageBankCard', {
+                    templateUrl: 'modules/bill/manageBankCard.html',
+                    controller: 'BillBankCardCtrl',
+                    controllerUrl: './modules/bill/controller/billBankCardCtrl.js'
+                }).
+
+                    //收藏模块
+                when('/collection', {
+                    templateUrl: 'modules/collection/collection.html',
+                    controller: 'CollectionCtrl',
+                    controllerUrl: './modules/collection/controller/collectionCtrl.js'
                 }).
 
 
-                //毕业季活动页面
+                //活动页面
+                when('/activities', {
+                    templateUrl: 'modules/activities/common/activity.html',
+                    controller: 'ActivityCtrl',
+                    controllerUrl: './modules/activities/common/controller/activity.js'
+                }).
                 when('/activities/graduation', {
                     templateUrl: 'modules/activities/graduation/graduation.html',
                     controller: 'GraduationCtrl',
                     controllerUrl: './modules/activities/graduation/controller/graduation.js'
+                }).
+                when('/activities/wanghong', {
+                    templateUrl: 'modules/activities/wanghong/wanghong.html',
+                    controller: 'WanghongCtrl',
+                    controllerUrl: './modules/activities/wanghong/controller/wanghong.js'
+                }).
+                when('/activities/president', {
+                    templateUrl: 'modules/activities/president/president.html',
+                    controller: 'PresidentCtrl',
+                    controllerUrl: './modules/activities/president/controller/president.js'
+                }).
+                when('/activities/seckilling', {
+                    templateUrl: 'modules/activities/seckilling/seckilling.html',
+                    controller: 'SeckillingCtrl',
+                    controllerUrl: './modules/activities/seckilling/controller/seckilling.js'
                 }).
 
                 //商品列表
@@ -209,27 +248,27 @@ define(function (require, exports, module) {
 
                 //保险说明静态页
                 when('/insurance/introduce', {
-                    templateUrl: 'modules/static/insuranceIntroduce.html'
-                }).
-                //保险条款静态页
+                        templateUrl: 'modules/static/insuranceIntroduce.html'
+                    }).
+                    //保险条款静态页
                 when('/insurance/contact', {
-                    templateUrl: 'modules/static/insurance.html'
-                }).
-                //服务合同静态页
+                        templateUrl: 'modules/static/insurance.html'
+                    }).
+                    //服务合同静态页
                 when('/contact/service', {
-                    templateUrl: 'modules/static/serviceContact.html'
-                }).
-                //借款合同静态页
+                        templateUrl: 'modules/static/serviceContact.html'
+                    }).
+                    //借款合同静态页
                 when('/contact/loan', {
-                    templateUrl: 'modules/static/loanContact.html'
-                }).
-                //芝麻信用回调
+                        templateUrl: 'modules/static/loanContact.html'
+                    }).
+                    //芝麻信用回调
                 when('/zmxy/callback', {
-                    templateUrl: 'modules/static/zmVerifyCallback.html',
-                    controller: 'ZmVerifyCallbackCtrl',
-                    controllerUrl: './modules/static/controller/zmVerifyCallbackCtrl.js'
-                }).
-                //优惠券
+                        templateUrl: 'modules/static/zmVerifyCallback.html',
+                        controller: 'ZmVerifyCallbackCtrl',
+                        controllerUrl: './modules/static/controller/zmVerifyCallbackCtrl.js'
+                    }).
+                    //优惠券
                 when('/coupon', {
                     templateUrl: 'modules/coupon/coupon.html',
                     controller: 'CouponCtrl',
@@ -289,6 +328,12 @@ define(function (require, exports, module) {
                 }).
 
 
+
+
+
+
+
+
                 //拼团
                 when('/groupbuy/detail', {
                     templateUrl: 'modules/groupbuy/detail.html',
@@ -313,6 +358,8 @@ define(function (require, exports, module) {
                 }).
 
 
+
+
                 //首页
                 when('/', {
                     templateUrl: 'modules/app/app.html',
@@ -335,8 +382,9 @@ define(function (require, exports, module) {
                  * @param {Object} obj
                  * @return {String}
                  */
-                var param = function (obj) {
-                    var query = '', name, value, fullSubName, subName, subValue, innerObj, i;
+                var param = function(obj) {
+                    var query = '',
+                        name, value, fullSubName, subName, subValue, innerObj, i;
 
                     for (name in obj) {
                         value = obj[name];
@@ -349,8 +397,7 @@ define(function (require, exports, module) {
                                 innerObj[fullSubName] = subValue;
                                 query += param(innerObj) + '&';
                             }
-                        }
-                        else if (value instanceof Object) {
+                        } else if (value instanceof Object) {
                             for (subName in value) {
                                 subValue = value[subName];
                                 fullSubName = name + '[' + subName + ']';
@@ -358,20 +405,20 @@ define(function (require, exports, module) {
                                 innerObj[fullSubName] = subValue;
                                 query += param(innerObj) + '&';
                             }
-                        }
-                        else if (value !== undefined && value !== null)
+                        } else if (value !== undefined && value !== null)
                             query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
                     }
 
                     return query.length ? query.substr(0, query.length - 1) : query;
                 };
 
-// Override $http service's default transformRequest
-                $httpProvider.defaults.transformRequest = [function (data) {
+                // Override $http service's default transformRequest
+                $httpProvider.defaults.transformRequest = [function(data) {
                     return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
                 }];
 
-            }]);
+            }
+        ]);
     }
 
 

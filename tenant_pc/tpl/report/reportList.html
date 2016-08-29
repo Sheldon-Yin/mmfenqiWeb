@@ -3,6 +3,25 @@
 </div>
 
 <div ng-controller="ReportListCtrl">
+
+    <!-- modal -->
+    <div class="panel b-a">
+        <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-header">
+                <h3 class="modal-title">确认操作!</h3>
+            </div>
+            <div class="modal-body">
+                <b>{{ $root.tips }}</b>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" ng-click="cancel()">取消</button>
+                <button class="btn btn-primary" ng-click="ok()">确认</button>
+            </div>
+        </script>
+    </div>
+    <!-- /modal -->
+
+
     <div class="wrapper-md bg-light b-b">
         <div class="panel panel-default">
             <div class="panel-body b-b b-light">
@@ -14,34 +33,33 @@
                 </div>
                 <div class="col-xs-12 col-md-6 col-lg-4" style="padding: 10px">
                     重单状态:
-                    <select type="text" class="form-control input-sm w-sm inline m-r" ng-model="receiptAudit">
+                    <select type="text" class="form-control input-sm w-sm inline m-r" ng-model="orderReportStatus">
                         <option value="">全部</option>
-                        <option value="0">未登记</option>
-                        <option value="1">重单</option>
-                        <option value="2">为重单</option>
+                        <option value="1">未重单</option>
+                        <option value="2">重单</option>
                     </select>
                 </div>
                 <div class="col-xs-12 col-md-6 col-lg-4" style="padding: 10px">
                     消费状态:
-                    <select type="text" class="form-control input-sm w-sm inline m-r" ng-model="receiptAudit">
+                    <select type="text" class="form-control input-sm w-sm inline m-r" ng-model="consumeStatus">
                         <option value="">全部</option>
-                        <option value="0">已消费</option>
                         <option value="1">未消费</option>
+                        <option value="2">已消费</option>
                     </select>
                 </div>
                 <div class="col-xs-12 col-md-6 col-lg-4" style="padding: 10px">
-                    选择开始日期:
+                    报单开始日期:
                     <input type="date" ng-model="start_time" ng-change="updateDate()"
                            class="form-control w-sm inline m-r"/>
                 </div>
 
                 <div class="col-xs-12 col-md-6 col-lg-4" style="padding: 10px">
-                    选择结束时间
+                    报单结束时间
                     <input type="date" ng-model="end_time" ng-change="updateDate()"
                            class="form-control w-sm inline m-r"/>
                 </div>
 
-                <div class="col-xs-12 text-right" ng-click="initBillList()">
+                <div class="col-xs-12 text-right" ng-click="initReportList()">
                     <div class="btn btn-info">
                         查询
                     </div>
@@ -51,12 +69,15 @@
             </div>
         </div>
 
-        <div>
-            <pagination previous-text="上一页" first-text="第一页" ng-change="pageChanged()" next-text="下一页" last-text="最后一页"
-                        total-items="bigTotalItems" ng-model="currentPage" max-size="maxSize"
-                        class="pagination-sm m-t-none m-b" boundary-links="true" rotate="false"
-                        num-pages="numPages"></pagination>
+        <div style="height: 30px;">
+            <div style="float:right">
+                <pagination previous-text="上一页" first-text="第一页" ng-change="pageChanged()" next-text="下一页" last-text="最后一页"
+                            total-items="bigTotalItems" ng-model="currentPage" max-size="maxSize"
+                            class="pagination-sm m-t-none m-b" boundary-links="true" rotate="false"
+                            num-pages="numPages"></pagination>
+            </div>
         </div>
+
 
         <div>
             <table class="table m-b-none">
@@ -87,23 +108,23 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="x in data">
-                    <td>{{x.name}}</td>
-                    <td><a href>{{x.telphone}}</a></td>
-                    <td>{{x.goodsName}}</td>
-                    <td>{{x.orderPrice}}</td>
-                    <td>{{x.totalTimes}}</td>
-                    <td>{{x.realAmount}}</td>
+                    <td>{{x.userName}}</td>
+                    <td><a href>{{x.userTelephone}}</a></td>
+                    <td>{{x.orderName}}</td>
+                    <td>{{x.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <td>{{x.orderReportStatus | orderReportStatus}}</td>
+                    <td>{{x.consumeStatus | consumeStatus}}</td>
                     <td>
                         <div class="row">
-                            <button class="btn btn-info" ng-click="goToBillDetail(x)"
-                                    ng-if="x.projectReviewStatus == 2 && x.receiptAudit==0">未重单
+                            <button class="btn btn-info" ng-click="goToConsumeOpen(x)"
+                                    ng-if="x.orderReportStatus == 1 && x.consumeStatus == 1">
+                                消费
                             </button>
-                            <button class="btn" ng-click="goToBillDetail(x)"
-                                    ng-if="x.projectReviewStatus != 2 || (x.receiptAudit !=0 && x.receiptAudit != 3)">
+                            <button class="btn btn-danger" ng-click="goToReportRepeat(x)"
+                                    ng-if="x.orderReportStatus == 1 && x.consumeStatus == 1">
                                 重单
                             </button>
-                            <button class="btn btn-danger" ng-click="goToBillDetail(x)"
-                                    ng-if="x.projectReviewStatus == 2 && x.receiptAudit==3">
+                            <button class="btn btn-default" ng-click="goToReportDetail(x)">
                                 查看详情
                             </button>
                         </div>
@@ -112,12 +133,15 @@
                 </tbody>
             </table>
         </div>
-        <div>
-            <pagination previous-text="上一页" first-text="第一页" next-text="下一页" last-text="最后一页"
-                        total-items="bigTotalItems" ng-model="currentPage" ng-change="pageChanged()"
-                        max-size="maxSize" class="pagination-sm m-t-none m-b" boundary-links="true" rotate="false"
-                        num-pages="numPages"></pagination>
+        <div style="height: 30px;">
+            <div style="float:right">
+                <pagination previous-text="上一页" first-text="第一页" next-text="下一页" last-text="最后一页"
+                            total-items="bigTotalItems" ng-model="currentPage" ng-change="pageChanged()"
+                            max-size="maxSize" class="pagination-sm m-t-none m-b" boundary-links="true" rotate="false"
+                            num-pages="numPages"></pagination>
+            </div>
         </div>
+
     </div>
 </div>
 

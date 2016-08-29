@@ -1,0 +1,582 @@
+<link rel="stylesheet" href="tpl/customer/customerDetailCss.css">
+<style>
+    .wrap {
+        width: 1207px;
+        margin: 0 auto;
+        padding: 20px 40px;
+        font-size: 14px;
+        font-family: 'Microsoft YaHei', SimHei, sans-serif;
+    }
+
+    .wrap .manage {
+        color: #b3b3b3;
+    }
+
+    .wrap .title {
+        padding: 10px 20px;
+        background: #f0f0f0;
+        margin-top: 20px;
+        color: #333333;
+        font-size: 16px;
+    }
+
+    .wrap .info_1,
+    .wrap .info_2 {
+        width: 100%;
+        font-size: 12px;
+        color: #868686;
+        border-right: 1px solid #edf0f2;
+        border-left: 1px solid #edf0f2;
+        border-bottom: 1px solid #edf0f2;
+    }
+
+    .wrap .info_1 table tr td {
+        padding: 10px 20px;
+
+    }
+
+    .wrap .info_2, .info_1 {
+        background: #FFFFFF;
+    }
+
+    .wrap .info_2 .left .left_table tr td {
+        padding: 10px 10px !important;
+    }
+
+    .wrap .info_2 .left .left_table ._info {
+        font-size: 10px;
+        display: inline-block;
+    }
+
+    .wrap .info_1 table tr td,
+    .wrap .info_2 .left table tr td {
+        min-width: 150px;
+    }
+
+    .wrap .info_2 .left .left_table tr td {
+        min-width: 100px;
+    }
+
+    .wrap .info_1 table tr .width_180,
+    .wrap .info_2 .left .width_180 {
+        width: 265px;
+    }
+
+    .wrap .info_2 .left {
+        width: 720px;
+        border-right: 1px solid #dddddd;
+    }
+
+    .wrap .info_2 .left table tr td {
+        padding: 10px 20px;
+
+    }
+
+    .wrap .info_2 .left .verificationCode span {
+        margin-right: 20px;
+    }
+
+    .wrap .info_2 .left.width50 table tr td {
+        width: 360px;
+    }
+
+    .wrap .info_2 .left table tr:nth-child(5) td {
+        padding-top: 30px;
+    }
+
+    .wrap .info_2 .right {
+        width: 400px;
+    }
+
+    .wrap .info_2 .right .right_ct {
+        padding: 0 40px;
+
+    }
+
+    .wrap .info_2 .right .right_ct div {
+        padding-top: 10px;
+    }
+
+    .wrap .right_ct .pact span:first-child {
+        margin-right: 20px;
+    }
+
+    .wrap .right_ct .money_protocol a {
+        margin-right: 10px;
+    }
+
+    .wrap .right_ct .page_pact span {
+        margin-right: 20px;
+    }
+
+    .wrap .right_ct a {
+        color: #82c9ff;
+    }
+
+    .wrap .right_ct .order_type span {
+        margin-left: 20px;
+    }
+
+    .wrap .right_ct .sur_btn {
+        text-align: right;
+        width: 345px;
+    }
+
+    .wrap ._btn {
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        cursor: pointer;
+        padding: 5px 10px;
+        font-size: 16px;
+        line-height: 1.5;
+        border-radius: 3px;
+        margin: 10px 20px;
+        width: 100px;
+    }
+
+    /*搜索*/
+    .wrap ._btn.sure_btn {
+        color: #fff;
+        background-color: #57b6ff;
+        border-color: #2e79f0;
+    }
+
+    .wrap ._btn.sure_btn:active {
+        color: #fff;
+        background-color: #57b6ff;
+        border-color: #2142ee;
+    }
+
+    .update_boder {
+        border: 1px solid #dddddd !important;
+        ime-mode: active !important;
+
+    }
+
+    .truedisabled {
+        ime-mode: active !important;
+    }
+
+    .typeColor {
+        color: #ff5c57;
+    }
+
+
+</style>
+<div style="width: 100%; height: 100%;position: relative;" ng-controller="CustomerDetailCtrl">
+    <div class="wrap">
+        <div class="manage">订单管理 <span>>订单详情 </span></div>
+        <div class="title">用户信息</div>
+        <div class="info_1" ng-repeat="x in userInfoList">
+            <table collapse="0" cellpadding="0" width="100%">
+                <tbody>
+                <tr>
+                    <td>姓名</td>
+                    <td class="width_180">{{x.userName}}</td>
+                    <td>角色</td>
+                    <td>{{x.userType | _userType}}</td>
+                    <td>现居地</td>
+                    <td>{{x.presentAddress}}</td>
+                </tr>
+                <tr>
+                    <td>手机号</td>
+                    <td>{{x.userTelphone}}</td>
+                    <td>可用额度(元)</td>
+                    <td>{{x.remainLoanmoney | number:2}}</td>
+                </tr>
+                <tr>
+                    <td>出生日期</td>
+                    <td>{{x.birthday}}</td>
+                    <td>信用额度(元)</td>
+                    <td>{{x.realloanmoney | number:2}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="title">商品订单信息</div>
+        <div class="info_2">
+            <table>
+                <tr>
+                    <td>
+                        <div class="left">
+
+                            <table collapse="0" cellpadding="0" width="100%">
+                                <tr>
+                                    <td rowspan="4" colspan="2" style="vertical-align: top;">
+                                        <div class="left_table" style="width: 100%;">
+
+                                            <table style="width: 100%;" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td rowspan="2" style="width: 40px;">
+
+
+                                                    </td>
+                                                    <td>
+                                                        <div><b>{{x.orderName}}</b></div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div ng-repeat="x in someThing track by $index" class="_info">
+                                                            <span class="pink-text"
+                                                                  style="">{{x.key}}</span>
+                                                            <span class="blue-text"
+                                                                  style=""> {{x.value}} </span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 40px;">
+                                                        <div>医院</div>
+                                                    </td>
+                                                    <td style="padding-left: 30px !important;">
+                                                        <div>{{x.hospitalName}}</div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div>分期数</div>
+                                    </td>
+                                    <td>
+                                        <div>{{x.totalTimes}}</div>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>
+                                        <div>服务费(元)</div>
+                                    </td>
+
+                                    <td>
+                                        <div>{{x.servicePay | number:2}}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        <div>合计(元)</div>
+                                    </td>
+                                    <td>
+                                        <div>{{x.together | number:2}}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>下单时间</div>
+                                    </td>
+                                    <td style="white-space:nowrap;">
+                                        <div>{{x.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        <div>订单号</div>
+                                    </td>
+                                    <td class="width_180">
+                                        <div>{{x.orderNo}}</div>
+                                    </td>
+                                    <td>
+                                        <div>订单金额(元)</div>
+                                    </td>
+                                    <td>
+                                        <div>{{x.orderAmt | number:2}}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        <div>商品类型</div>
+                                    </td>
+                                    <td class="width_180">
+                                        <div>{{x.ordertype | goodsType}}</div>
+                                    </td>
+                                    <td>
+                                        <div>首付金额(元)</div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <span>{{x.downpayAmount | number:2}}</span>
+                                            <div style="display: inline-block;background-image: url('img/downpayPercentage.png'); width: 39px; height: 17px; margin-left: 5px;">
+                                                <div style="text-align: center; color: #ffffff;">
+                                                    {{x.downpayPercentage}}%
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        <div>交易号</div>
+                                    </td>
+                                    <td class="width_180">
+                                        <div>{{x.orderSn}}</div>
+                                    </td>
+                                    <td>
+                                        <div>信用金额(元)</div>
+                                    </td>
+                                    <td>
+                                        <div>{{x.realloanmoney | number:2}}</div>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+                    </td>
+                    <td style="vertical-align: top;">
+                        <div class="right">
+                            <div class="right_ct">
+                                <div class="order_type">项目状态
+                                    <span class="typeColor">{{x.projectReviewStatus | _projectReviewStatus}}</span>
+                                </div>
+                                <div>知情同意书</div>
+                                <div>
+                                    <img src="{{x.projectReviewPicList[0]}}" width="80" height="80"
+                                         ng-click="protImg()">
+                                    <div style="display: inline-block;">
+                                        <span>审核</span>
+                                        <input type="radio" id="no" name="radio" ng-model="projectReviewStatusRadio"
+                                               value="2">
+                                        <label for="no">通过</label>
+                                        <input type="radio" id="yes" name="radio" ng-model="projectReviewStatusRadio"
+                                               value="3">
+                                        <label for="yes">不通过</label>
+                                        <button ng-click="projectReviewStatusAudit()">提交</button>
+                                    </div>
+
+                                    <!--<button class="btn m-b-xs w-xs btn-default disabled">提交</button>-->
+
+
+                                </div>
+                                <div class="pact">
+                                    <span>合同编号</span>
+                                    <!--<span>{{x.contractNo}}</span>-->
+                                    <input type="text" id="contractNo" value="{{x.contractNo}}"
+                                           style="width: 100px; border: 0; margin-right: 20px; " ng-readonly="isupdate"
+                                           ng-class="{'update_boder':!isupdate}">
+                                    <a ng-click="_updatecontractNo()">修改</a>
+                                    <a ng-click="updatecontractNo()">确定</a>
+                                </div>
+                                <div class="money_protocol">
+                                    <a href="{{x.serviceContract}}" target="_blank">借款服务协议</a>
+                                    <a href="{{x.loanContract}}" target="_blank">借款协议</a>
+                                </div>
+                                <div class="page_pact">
+                                    <span>纸质合同</span>
+                                    <a href="">xxxxx</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="title">保单信息</div>
+        <div class="info_2" ng-repeat="x in hashMapListData">
+            <table>
+                <tr>
+                    <td>
+                        <div class="left width50">
+
+                            <table collapse="0" cellpadding="0">
+                                <tr>
+                                    <td>
+                                        <div style="width: 375px;">订单编号</div>
+                                    </td>
+
+                                    <td>
+                                        <div>{{x.orderNo}}</div>
+                                    </td>
+
+
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div>保险单号</div>
+                                    </td>
+
+                                    <td>
+                                        <div>{{x.insuranceNo}}</div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>下单时间</div>
+                                    </td>
+
+                                    <td>
+                                        <div>{{x.insuranceTime | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        <div>保单状态</div>
+                                    </td>
+
+                                    <td>
+                                        <div class="typeColor">{{x.insuranceStatus | _insuranceStatus}}</div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        <div>保单金额(元)
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div>{{x.insuranceAmt | number:2}}</div>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>
+                                        <div>保费
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div>{{x.insuranceOrderAmount | number:2}}</div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        <div>保单生效时间
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div>{{x.insEffectTime}}</div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        <div>保单失效时间
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div>{{x.insInvalidTime}}</div>
+                                    </td>
+
+                                </tr>
+                            </table>
+
+
+                        </div>
+                    </td>
+                    <td style="vertical-align: top;">
+                        <div class="right">
+                            <div class="right_ct">
+                                <div>添加备注</div>
+                                <div>
+                                    <textarea name="textarea" cols="43" rows="7" id="remark" ng-model="x.remark"
+                                              style="padding-left: 10px;">
+                                        {{x.remark}}
+                                    </textarea>
+                                </div>
+                                <div class="sur_btn">
+                                    <div class="_btn sure_btn" ng-click="commitInfo()">提交</div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="title">操作信息{{$root.test}}</div>
+        <div class="info_2">
+
+
+
+            <table>
+                <tr ng-repeat="x in queryLogListData">
+                    <td>
+                        <div class="left" style="border: 0;">
+
+                            <table collapse="0" cellpadding="0">
+                                <tr>
+                                    <td colspan="4">
+                                        <div>{{x.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                                    </td>
+
+
+                                </tr>
+
+
+                            </table>
+
+                        </div>
+                    </td>
+                    <td style="vertical-align: top;">
+                        <div class="right">
+                            <div class="right_ct">
+                                <div><span>{{x.adminName}}</span>&nbsp;&nbsp;<span>{{x.logContent}}</span></div>
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div ng-show="isOpen" class="isOpenWrap">
+            <div class="img-modal-center">
+                <span class="icon icon-close icon-large switer" style="font-size: 25px; right: 10px;top: 10px;"
+                      ng-click="closeAll()" ng-show="isOpen"></span>
+                <div class="content">
+                    <div class="_head" style="position: relative;">
+                        <div ng-click="transforml()"><span class="fa fa-rotate-left fa-lg">左旋转</span></div>
+                        <div ng-click="transformr()"><span class="fa fa-repeat fa-lg">右旋转</span></div>
+                        <span class=" fa fa-chevron-circle-left fa-lg" id="swiper-button-next"
+                              ng-click="_prev()"></span>
+                        <div class="_swiper-pagination" id='swiper-pagination'></div>
+                        <span class=" fa fa-chevron-circle-right fa-lg" id="swiper-button-prev"
+                              ng-click="_next()"></span>
+                        <div ng-click="transformd()"><span class="fa  fa-search-plus fa-lg">放大</span></div>
+                        <div ng-click="transformx()"><span class="fa  fa-search-minus fa-lg">缩小</span></div>
+
+                    </div>
+
+                    <div class="_content" id="_content">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"  ng-repeat="y in x.projectReviewPicList track by $index">
+                                    <img id="swimg_{{$index}}" src="{{y}}" class="_img" style="width: 100%; height: 100%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="isOpenWrapSwiter" ng-show="isOpen"></div>
+</div>

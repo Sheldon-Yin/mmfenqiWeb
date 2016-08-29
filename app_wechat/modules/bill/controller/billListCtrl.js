@@ -7,8 +7,34 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/billService.js')(app);
         require('services/weChatService.js')(app);
+        require('directives/directives.js')(app);
         app.register.controller('BillListCtrl', ['$scope', 'MyBillList', '$location', 'Bridge',
             function ($scope, MyBillList, $location, Bridge) {
+
+
+                /*弹框*/
+
+                $scope.isopen=false;
+
+                $scope.config={
+                    title:'提示',
+                    content:'还款操作繁琐，马上添加储蓄卡轻松按时还款吧',
+                    btn1:'确定',
+                    btn2:'暂时不',
+                    no:false
+                };
+                $scope.openCt=function () {
+                    $scope.isopen=true;
+
+                };
+
+                $scope.sure=function () {
+                    Bridge.jumpTo(encodeURI($location.absUrl().split('#')[0] + '#?/bill/bankCard'),'绑卡');
+                };
+
+
+
+
 
 
                 Bridge.appToken(function (response) {
@@ -135,6 +161,10 @@ define(function (require, exports, module) {
                 //        }
                 //    });
                 //}
+
+
+
+
 
 
             }])

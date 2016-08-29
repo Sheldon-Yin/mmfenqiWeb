@@ -1,0 +1,53 @@
+<div class="graduation-background">
+    <div class="container">
+        <!--post-->
+        <div class="row">
+            <img ng-src="{{data.activityThemeImageH5}}" style="width: 100%">
+        </div>
+
+        <div class="row" ng-repeat="x in data.activityTempInfoList" style="background-color: {{x.backgroundColor}}">
+            <!--activitiesArea begin-->
+            <!--title-->
+            <div style="overflow: hidden;padding-top: 1rem">
+                <img ng-src="{{x.moduleTitlePic}}" style="width: 140%;margin-left: -20%">
+            </div>
+
+            <img ng-src="{{x.moduleIcon}}" style="width: 100%;padding: 1rem 0">
+            <!--case-->
+
+            <div>
+                <!--one case begin-->
+                <div class="col-xs-6 text-center" style="padding-bottom: 1rem" ng-repeat="y in x.goodsItemList" ng-click="goToDetails(y.goodsHerf)">
+                    <div>
+                        <img ng-src="{{y.goodsHerPic}}" style="width: 100%">
+                    </div>
+                    <div style="background-color: white;height: 3rem;line-height: 1.5rem;overflow: hidden;text-align: left;font-weight: bold">
+                        {{y.hotItemName}}
+                    </div>
+                    <div style="color: #ccc;background-color: white">
+                        <span style="font-size: 0.7rem;width: 50%;display: inline-block;text-align: left">
+                            原价:￥{{y.marketPrice}}
+                        </span>
+                        <span style="font-size: 0.7rem;width: 45%;display: inline-block;text-align: right">
+                            现价:￥{{y.presentPrice}}
+                        </span>
+                    </div>
+
+                    <div style="background-color: white;color: #fb1787;">
+                        <span style="font-size: .8rem;width: 55%;display: inline-block;text-align: left">
+                            ￥{{y.monthlyPrice}}x{{y.staging}}期
+                        </span>
+                        <span style="font-size: 0.8rem;width: 40%;display: inline-block;text-align: right">
+                            立刻分期
+                        </span>
+                    </div>
+                </div>
+                <!--one case end-->
+            </div>
+            <!--more-->
+        </div>
+
+
+    </div>
+
+</div>

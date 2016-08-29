@@ -38,7 +38,9 @@ define(function (require, exports, module) {
                 return {
                     login: function (cb) {
 
-                        window.localStorage.referer = window.location.href;
+                        if(window.location.href != ($location.absUrl().split('#')[0] + '#?/login/telephone')){
+                            window.localStorage.referer = window.location.href;
+                        }
 
                         var login = function () {
                             window.location.href = $location.absUrl().split('#')[0] + '#?/login/telephone'
@@ -68,7 +70,9 @@ define(function (require, exports, module) {
                         if (!!window.localStorage.appToken) {
                             return cb(window.localStorage.appToken)
                         } else {
-                            window.localStorage.referer = window.location.href;
+                            if(window.location.href != ($location.absUrl().split('#')[0] + '#?/login/telephone')){
+                                window.localStorage.referer = window.location.href;
+                            }
                             return login();
                         }
 

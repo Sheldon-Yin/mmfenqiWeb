@@ -34,6 +34,8 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', 'Login','Lo
                 $state.go('app.bill.list')
             }else if (res.result == 0 && res.data.tenantInfo.adminType == 2){
                 $state.go('app.bill.list')
+            }else if (res.result == 0 && res.data.tenantInfo.adminType == 3){
+                $state.go('app.report.list')
             }else if (res.result != 0){
                 toaster.pop('error','登录失败',res.msg);
                 console.log('登录失败');

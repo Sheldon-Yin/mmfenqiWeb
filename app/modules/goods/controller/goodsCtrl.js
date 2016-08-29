@@ -7,8 +7,10 @@ define(function (require, exports, module) {
     module.exports = function (app) {
         require('services/goodsDetail.js')(app);
         require('services/isRealNameService.js')(app);
-        app.register.controller('GoodsCtrl', ['$scope', 'GoodsDetail', '$location', 'IsRealName',
-            function ($scope, GoodsDetail, $location, IsRealName) {
+        require('services/collectionService.js')(app);
+        require('services/bridgeService.js')(app);
+        app.register.controller('GoodsCtrl', ['$scope', 'GoodsDetail', '$location', 'IsRealName','Collection','Bridge',
+            function ($scope, GoodsDetail, $location, IsRealName,Collection,Bridge) {
 
                 var swiper;
                 $scope.initBannerSwiper = function () {
@@ -182,6 +184,48 @@ define(function (require, exports, module) {
                             });
                         }
                     });
+                }
+
+
+                $scope.collected = false;
+
+                if (!!$location.search().collectionId){
+                    $scope.collected = true;
+                    $scope.collectionId = $location.search().collectionId;
+                }
+
+                $scope.addCollect = function () {
+                    Bridge.appToken(function (res) {
+                        $scope.appToken = res;
+                        Collection.add().save({
+                            appToken: $scope.appToken,
+                            collectionId: $location.search().goodsId,
+                            collectionType:1
+                        }).$promise.then(function (res) {
+                            Toast(res.msg);
+                            $scope.collected = true;
+                            $scope.collectionId = res.data.goodsCollection.id;
+                        }).catch(function (err) {
+                            Toast('服务器返回错误'+ err)
+                        })
+                    });
+
+                };
+
+                $scope.cancelCollect = function () {
+                    if (!!$scope.collectionId){
+                        Collection.cancel().save({
+                            appToken: $scope.appToken,
+                            id: $scope.collectionId
+                        }).$promise.then(function (res) {
+                            Toast(res.msg);
+                            $scope.collected = false;
+                        }).catch(function (err) {
+                            Toast('服务器返回错误'+ err)
+                        })
+                    } else {
+
+                    }
                 }
 
             }])

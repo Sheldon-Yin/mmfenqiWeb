@@ -69,6 +69,10 @@ define(function (require, exports, module) {
                         Bridge.jumpTo(encodeURI($location.absUrl().split('#')[0] + '#?/groupbuy/mine'), '我的拼团')
                 };
 
+                $scope.goToCollection = function () {
+                    Bridge.jumpTo(encodeURI($location.absUrl().split('#')[0] + '#?/collection'), '我的收藏')
+                };
+
                 $scope.callMmfq = function () {
                     window.location.href = 'tel://' + '400-711-8898';
                 }

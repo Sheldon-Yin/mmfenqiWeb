@@ -10,7 +10,7 @@ define(function (require, exports, module) {
         app.register.controller('OrderListCtrl', ['$scope', 'QueryMyOrder', '$location', 'Bridge',
             function ($scope, QueryMyOrder, $location, Bridge) {
 
-
+                console.log(1);
                 Bridge.appToken(function (response) {
 
                     $scope.appToken = response;

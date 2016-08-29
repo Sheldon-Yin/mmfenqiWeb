@@ -1,28 +1,28 @@
 /**
  * Created by sheldon on 2016/5/9.
  */
-app.controller('ReportRepeatCtrl', ['$scope', '$state', '$stateParams','QueryOrderDetail', 'ReceiptPic', 'toaster',
-    function ($scope, $state, $stateParams,QueryOrderDetail, ReceiptPic, toaster) {
+app.controller('ReportRepeatCtrl', ['$scope', '$state', '$stateParams','QueryOrderDetail', 'ReceiptPic','ReportDetail', 'toaster',
+    function ($scope, $state, $stateParams,QueryOrderDetail, ReceiptPic,ReportDetail, toaster) {
 
         console.log($stateParams.id);
 
         $scope.initOrderDetails = function () {
 
-            $scope.orderDetail = QueryOrderDetail.query({
+            $scope.reportDetail = ReportDetail.query({
                 channel: 1,
-                orderSn: $stateParams.orderSn
+                id: $stateParams.id
             });
 
-            $scope.orderDetail.$promise.then(function (res) {
+            $scope.reportDetail.$promise.then(function (res) {
+                console.log(res);
                 if (res.result == 0) {
-                        $scope.orderDetailInfo = res.data.orderResponse;
-                    $scope.downloadImgUrl = res.data.orderResponse.receiptPicUrl;
+                    $scope.reportDetailInfo = res.data.userOrderReportRecord;
+                    $scope.messages = res.data.userOrderReportMessageList;
                 } else {
-                        toaster.pop('info', '获取失败', res.msg)
+                    toaster.pop('info', '获取失败', res.msg)
                 }
-                console.log(res)
             }).catch(function (error) {
-                    toaster.pop('error', '获取失败', error)
+                toaster.pop('error', '获取失败', error)
             })
 
         };
@@ -38,11 +38,11 @@ app.controller('ReportRepeatCtrl', ['$scope', '$state', '$stateParams','QueryOrd
             var formData = new FormData();
 
             formData.append('channel', 1);
-            formData.append('orderId', $stateParams.id);
-            formData.append('receiptPic', $scope.uploadImgForInform);
+            formData.append('id', $stateParams.id);
+            formData.append('voucherPic', $scope.uploadImgForInform);
             $.ajax(
                 {
-                    url: '/tenant/upload_receipt_pic',
+                    url: '/tenant/upload_voucher_pic',
                     type: 'POST',
                     data: formData,
                     contentType: false, //必须
@@ -51,7 +51,7 @@ app.controller('ReportRepeatCtrl', ['$scope', '$state', '$stateParams','QueryOrd
                         if (res.result == 0) {
                             $scope.$apply(function () {
                                 toaster.pop('success', '上传成功', res.msg);
-                                $scope.downloadImgUrl = res.data.receiptPicUrl;
+                                window.history.back();
                             })
                         } else {
                             $scope.$apply(function () {

@@ -1,0 +1,152 @@
+<div class="verify-select-dialog-container" ng-if="selecting">
+    <div class="verify-select-dialog-background" ng-click="hideSelect()">
+    </div>
+    <div class="verify-select-dialog">
+        <div class="container" style="height: 10%">
+            <div class="row" style="height: 100%">
+                <div class="verify-select-dialog-title">
+                    {{selectTitle}}
+                </div>
+            </div>
+        </div>
+        <div class="container" style="overflow: scroll;height: 90%;">
+            <div class="row">
+                <div class="col-xs-12 verify-select-dialog-item"
+                     ng-repeat="x in selectItems" ng-click="selectCallBack(x[itemValue],x[itemName])">
+                    {{x[itemName]}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <img src="modules/verify/img/new/1.jpg" alt="第一步" style="width: 100%">
+    </div>
+</div>
+
+<!--步骤一：联系方式-->
+<div class="app-grey-background-container container">
+
+    <div class="row">
+        <img src="modules/verify/img/fast-first.png" style="width: 100%">
+    </div>
+
+    <form ng-submit="submitFirstInfo()">
+
+        <div class="row verify-fast-title" style="font-weight: bold">
+            公司信息
+        </div>
+
+        <div class="app-white-input row app-margin-top-two-px">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">公司名称</label>
+            <input type="text" ng-model="$parent.company_name" class="col app-white-input-text"
+                   placeholder="如:杭州优呗网络科技有限公司"
+                   required>
+        </div>
+        <div class="app-white-input row app-margin-top-two-px">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">公司电话</label>
+            <input type="text" ng-model="$parent.company_telphone" class="col app-white-input-text"
+                   placeholder="如:0571-56887778" ng-maxlength="15" ng-minlength="7"
+                   required>
+        </div>
+        <div class="app-white-input row app-margin-top-two-px">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">职务</label>
+            <input type="text" ng-model="$parent.company_position" class="col app-white-input-text" placeholder="如:销售主管"
+                   required>
+        </div>
+        <div class="app-white-input row app-margin-top-two-px">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">公司地址</label>
+            <input type="text" ng-model="$parent.company_addr" class="col app-white-input-text"
+                   placeholder="如:杭州市西湖区华星时代广场B座403室" required>
+        </div>
+        <div class="app-white-input row app-margin-top-two-px">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">本人住址</label>
+            <input type="text" ng-model="$parent.address" class="col app-white-input-text"
+                   placeholder="如:杭州市西湖区X小区X幢X单元X号" required>
+        </div>
+        <div class="app-white-input row app-margin-top-two-px" ng-click="selectEducation()">
+            <div class="col-xs-4 app-bootstrap-padding-zero app-white-input-label">学历类型</div>
+            <div class="col-xs-8 cell-detail">{{selectEducationName}}</div>
+            <div class="col-xs-1">
+                <img src="modules/verify/img/student/arrow.png" class="cell-arrow"/>
+            </div>
+
+        </div>
+
+        <div class="row verify-fast-title" style="font-weight: bold">
+            第一联系人
+        </div>
+
+        <div class="row">
+            <div class="app-white-input app-margin-top-two-px col-xs-6" style="padding: 1rem 0;padding-left: 1rem">
+                <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">姓名</label>
+                <input type="text" ng-model="$parent.name" class="col app-white-input-text" placeholder="如:父/母姓名"
+                       required>
+            </div>
+
+            <div class="app-white-input app-margin-top-two-px col-xs-6" style="padding: 1rem 0">
+                <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">关系</label>
+                <input type="text" ng-model="$parent.relation" class="col app-white-input-text" placeholder="如:母子"
+                       required>
+            </div>
+        </div>
+
+
+        <div class="app-white-input row app-margin-top-two-px">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">手机号</label>
+            <input type="text" ng-model="$parent.telphone" ng-pattern="/^[1]\d{10}$/" class="col app-white-input-text"
+                   placeholder="如:157****7596"
+                   required>
+        </div>
+
+        <div class="row verify-fast-title" style="font-weight: bold">
+            第二联系人
+        </div>
+
+        <div class="row">
+            <div class="app-white-input app-margin-top-two-px col-xs-6" style="padding: 1rem 0;padding-left: 1rem">
+                <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">姓名</label>
+                <input type="text" ng-model="$parent.second_name" class="col app-white-input-text" placeholder="如:父/母姓名"
+                       required>
+            </div>
+
+            <div class="app-white-input app-margin-top-two-px col-xs-6" style="padding: 1rem 0">
+                <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">关系</label>
+                <input type="text" ng-model="$parent.second_relation" class="col app-white-input-text" placeholder="如:母子"
+                       required>
+            </div>
+        </div>
+
+
+        <div class="app-white-input row app-margin-top-two-px">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">手机号</label>
+            <input type="text" ng-model="$parent.second_telphone" ng-pattern="/^[1]\d{10}$/" class="col app-white-input-text"
+                   placeholder="如:157****7596"
+                   required>
+        </div>
+
+        <div class="row verify-fast-title" style="font-weight: bold">
+            您的信用卡/储蓄卡
+        </div>
+
+
+        <div class="app-white-input row app-margin-top-two-px">
+            <label class="col-xs-1 app-bootstrap-padding-zero app-white-input-label">卡号</label>
+            <input type="text" ng-model="$parent.bankcardcode" class="col app-white-input-text"
+                   placeholder="如:6221 5555 8888 9999" required>
+        </div>
+
+
+        <label style="display: block;padding-bottom: 2rem">
+            <div class="app-padding-one text-center"
+                 ng-class="{true:'app-little-pink-radius-button',false:'app-pink-radius-button'}[!$parent.company_name || !$parent.company_telphone|| !$parent.company_position|| !$parent.company_addr|| !$parent.address|| !$parent.name|| !$parent.relation|| !$parent.telphone|| !$parent.bankcardcode]">
+                下一步
+            </div>
+            <button type="submit" style="display: none"></button>
+        </label>
+
+    </form>
+
+</div>

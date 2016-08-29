@@ -1,0 +1,48 @@
+<div class="container">
+
+    <div style="text-align: center" class="app-padding-one" ng-show="goods.length == 0">
+        暂无数据
+    </div>
+
+    <label ng-repeat="x in goods" style="display: block;position: relative" ng-click="goToGoodsDetails(x)">
+        <div class="row app-project-container">
+            <div class="col-xs-5" style="width: 34%">
+                <img ng-src="{{x.goodsItem.goodsHerPic}}" width="100%" style="min-height: 6.5rem;">
+            </div>
+            <div class="col-xs-7 app-project-content" style="width: 66%">
+                <div class="double-line app-project-title">
+                    {{x.goodsItem.hotItemName}}
+                </div>
+                <div class="single-line app-project-hospital">
+                    {{x.goodsItem.hospitalName}}
+                </div>
+            </div>
+            <div class="col-xs-12 text-left app-project-price-area">
+                <div class="col-xs-4 app-pink-text" style="padding: 0">
+                    <span style="font-size: 1.2rem">￥</span><span
+                        style="font-size: 1.6rem;line-height: 2.6rem">{{x.goodsItem.presentPrice}}</span>
+                </div>
+                <div class="col-xs-4 text-left" style="padding: 0">
+                    <span class="app-project-original-price">￥{{x.goodsItem.marketPrice}}</span>
+                </div>
+                <div class="col-xs-4 text-center"
+                     style="padding: 0;font-size: 0.7rem;margin-top:0.5rem">
+                    <div class="col-xs-12" style="padding: 0;">
+                        <div class="app-project-yellow-background-radius col-xs-6">已售</div>
+                        <div class="app-project-yellow-text-radius col-xs-6">{{x.goodsItem.soldNumber}}</div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <hr class="app-bootstrap-hr">
+    </label>
+
+
+    <div class="row" ng-show="showMore">
+        <div class="col-xs-12 text-center" style="padding: 1rem 0;" ng-click="getMore()">
+            查看更多
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<style>
+  .container{
+    min-width: 1327px;
+    width: auto;
+    padding: 0;
+
+  }
+  .container .img{
+    position: absolute;
+    left: 360px;
+    top: 10px;
+
+  }
+  .container .index-log{
+    width: 100%;
+    height: 100%;
+  }
+  .container .m-b-lg{
+    width: 400px;
+    margin: 60px auto;
+  }
+
+  .container label,input[type='checkbox']{
+    font-size: 14px;
+    padding-left: 8px;
+    margin: 0;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+
+  .container input[type='text'],input[type='password']{
+    padding:15px 0 15px 20px;
+    margin-bottom: 20px;
+    border: 1px solid #f0f0f0;
+    height: 45px;
+
+  }
+  .container input:focus{
+    border: 1px solid #ff9491;
+  }
+
+
+  .container button{
+    border: 1px solid #cf4843;
+    background: #ff5c57;
+  }
+  .wrap-footer{
+    padding: 10px 0;
+    margin: 0 auto;
+    background:#e6e6e6;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+  }
+  .wrap-footer div{
+    margin: 0 auto;
+    text-align: center;
+  }
+</style>
+<div class="container" ng-controller="SigninFormController" ng-init="app.settings.container = false">
+  <div><img class="index-log" src="img/login.jpg" alt=".."></div>
+  <div class="m-b-lg">
+    <form name="form" class="form-validation" ng-submit="login()">
+
+      <div class="list-group list-group-sm">
+        <div style="position: relative;">
+          <img src="img/user.png" class="img">
+          <input type="text" placeholder="QIFKSHH" name="username" class="form-control no-border" ng-model="user.name" required>
+        </div>
+        <div style="position: relative;">
+          <img src="img/pwd.png" class="img">
+          <!--<input type="password" style="display: none;" name="password">-->
+          <input type="password" placeholder="密码" class="form-control no-border" name="password" ng-model="user.password" required style="margin: 0;">
+        </div>
+
+          <!--<input type="checkbox" id="me" style="height: 18px; width: 18px;">-->
+          <!--<label for="me">记住我</label>-->
+        <div class="text-danger wrapper text-center" ng-show="authError" style="padding: 5px; margin-bottom: -20px;">
+          {{authError}}
+        </div>
+
+      </div>
+      <button type="submit" class="btn btn-lg btn-danger btn-block">登录</button>
+    </form>
+  </div>
+  <!--<div class="text-center" ng-include="'tpl/blocks/page_footer.html'"></div>-->
+</div>
+
+
+<!-- footer -->
+<div class="wrap-footer">
+  <div>美眉分期后台管理系统</div>
+</div>
+<!-- / footer -->
